@@ -15,21 +15,18 @@ body{
     height: 100%;
 }
 .login-div{
+    margin-top: 15px;
     padding: 10px 35px 35px 35px;
     border-radius: 40px;
-    background: rgba(236, 240, 243, 0.7);
+    background: rgba(236, 240, 243, 0.5);
     box-shadow: 13px 13px 20px #cbced1, -13px -13px 20px #ffffff;
-
-}
-.login-div {
-    width: 430px;
-    height: 700px;
+    width: 33%;
+    height: 100%;
 }
 .form-title {
     font-weight: bold;
     font-size: 25px;
     color: #24cfaa;
-
 }
 .logo{
     background: url("../img/icon.png") no-repeat center;
@@ -103,4 +100,8 @@ input{
     text-decoration: none;
     color: #aaa;
     font-size: 15px;
+}
+.wrapper {
+    background-color: rgba(255, 255, 255, 0.5);
+    margin: 60px;
 }

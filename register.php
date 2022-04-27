@@ -16,7 +16,7 @@
 </head>
 <body>
 <div class="row">
-    <div class="navbar-container">
+    <div class="navbar-container w-100">
         <nav class="navbar navbar-light bg-light">
                 <a class="navbar-brand" href="#">
                     <img src="./assets/img/icon.png" alt="Alva's Icon" width="30" height="30"
@@ -28,7 +28,7 @@
     </div>
        
         <div class="col-md-12">
-            <div class="wrapper">
+            <div class="wrapper p-5">
             <div class="form-title">Registration
             <i class="glyphicon glyphicon-pencil d-inline-block"></i>
             </div>
