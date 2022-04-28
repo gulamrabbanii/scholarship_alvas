@@ -33,55 +33,55 @@
             <i class="glyphicon glyphicon-pencil d-inline-block"></i>
             </div>
             <br>
-    <form class="row g-3 ">
+    <form action="register-users.php" method="post" class="row g-3 ">
         <div class="col-md-6">
             <label for="first-name" class="form-label">First Name</label>
-            <input type="text" class="form-control username" id="first-name" placeholder="YOUR FIRST NAME">
+            <input type="text" name="f-name" class="form-control username" id="first-name" placeholder="YOUR FIRST NAME" required />
         </div>
                 <div class="col-md-6">
             <label for="first-name" class="form-label">Last Name</label>
-            <input type="text" class="form-control username" id="first-name" placeholder="YOUR LAST NAME">
+            <input type="text" name="l-name" class="form-control username" id="first-name" placeholder="YOUR LAST NAME" required />
         </div>
         <div class="col-md-12">
             <label for="username" class="form-label">Username</label>
-            <input type="text" class="form-control" id="username" placeholder="YOUR USN" minlength="10" maxlength="10" pattern = "^[4][alAL]{2}[0-9]{2}[a-zA-Z]{2}[0-9]{3}" required/>
+            <input type="text" name="username" class="form-control" id="username" placeholder="YOUR USN" minlength="10" maxlength="10" pattern = "^4[Aa][Ll][0-9]{2}[A-Za-z]{2}[0-9]{3}" />
         </div>
         <div class="col-md-12">
             <div class="form-group">
                 <label for="branch" class="form-label">Branch</label>
-                <select id="inputState" class="form-control">
-                    <option selected>Choose...</option>
-                    <option>Artificial Intelligence and Machine Learning Engineering</option>
-                    <option>Civil Engineering</option>
-                    <option>Computer Science and Engineering</option>
-                    <option>Electronics and Communication Engineering</option>
-                    <option>Information Science Engineering</option>
-                    <option>Mechanical Engineering</option>
+                <select name="sel-branch" id="inputState" class="form-control" required> 
+                    <option value="" selected>Choose...</option>
+                    <option value="AIML" >Artificial Intelligence and Machine Learning Engineering</option>
+                    <option value="CIVIL">Civil Engineering</option>
+                    <option value="CSE">Computer Science and Engineering</option>
+                    <option value="ECE">Electronics and Communication Engineering</option>
+                    <option value="ISE">Information Science Engineering</option>
+                    <option value="ME">Mechanical Engineering</option>
                 </select>
             </div>
         </div>
         <div class="col-md-12">
             <label for="current-year" class="form-label">Current Year</label>
-            <input type="number" min="1" max="4" class="form-control" id="current-year" placeholder="eg. 3">
+            <input type="number" name="year" min="1" max="4" class="form-control" id="current-year" placeholder="eg. 3" required>
         </div>
         <div class="col-md-12">
             <div class="form-group">
                 <label for="gender" class="form-label">Gender</label>
-                <select id="inputState" class="form-control">
-                    <option selected>Choose...</option>
-                    <option>Male</option>
-                    <option>Female</option>
-                    <option>Other</option>
+                <select name="gender" id="inputState" class="form-control" required>
+                    <option value="" selected>Choose...</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
                 </select>
             </div>
         </div>
         <div class="col-md-6">
             <label for="passwd" class="form-label">Password</label>
-            <input type="password" class="form-control" id="passwd" minlength="6" maxlength="20" placeholder="Password">
+            <input type="password" name="password" class="form-control" id="passwd" minlength="6" maxlength="20" placeholder="Password">
         </div>
         <div class="col-md-6">
             <label for="confirm-paaswd" class="form-label">Confirm Password</label>
-            <input type="password" id="confirm-paaswd" class="form-control" placeholder="CONFIRM PASSWORD">
+            <input type="password" name="cfpassword" id="confirm-paaswd" class="form-control" placeholder="CONFIRM PASSWORD">
         </input>
         </div>
         <div class="col-12">

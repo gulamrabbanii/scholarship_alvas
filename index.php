@@ -25,7 +25,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     if (empty($username_err) && empty($password_err)){
         // Prepare a select statement
         $username = mysqli_real_escape_string($link, $_POST['username']);
-        $password = mysqli_real_escape_string($link, $_POST['password']);
+        $password = mysqli_real_escape_string($link, md5($_POST['password']));
         $sql = "SELECT username, passwd FROM users WHERE username ='" . $username . "' and passwd = '" . $password . "'";
         $query = mysqli_query($link, $sql);
         $result = mysqli_fetch_array($query, MYSQLI_ASSOC);
@@ -124,7 +124,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         </form>
         <div class="link">
             <a href="#">Forgot Password?</a> or 
-            <a href="register.php">Sign up</a>
+            <a href="register.html">Sign up</a>
         </div>
     </div>
 </div>
