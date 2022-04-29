@@ -10,7 +10,7 @@
      
     <!----===== Iconscout CSS ===== -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
     <nav>
@@ -24,29 +24,29 @@
         <div class="menu-items">
             <ul class="nav-links">
                 <li><a href="dashboard.php">
-                    <i class="uil uil-estate"></i>
+                    <i class="fa-solid fa-house"></i>
                     <span class="link-name">Dahsboard</span>
                 </a></li>
-                <li><a href="content.php">
+                <li><a href="createscholarship.php">
                     <i class="uil uil-files-landscapes"></i>
-                    <span class="link-name">Content</span>
+                    <span class="link-name">Create Scholarship</span>
                 </a></li>
-                <li><a href="analytics.php">
+                <li><a href="studentdetails.php">
                     <i class="uil uil-chart"></i>
-                    <span class="link-name">Analytics</span>
+                    <span class="link-name">Students Details</span>
                 </a></li>
-                <li><a href="like.php">
+                <li><a href="verification.php">
                     <i class="uil uil-thumbs-up"></i>
-                    <span class="link-name">Like</span>
+                    <span class="link-name">Verification</span>
                 </a></li>
-                <li><a href="comment.php">
+                <!-- <li><a href="comment.php">
                     <i class="uil uil-comments"></i>
                     <span class="link-name">Comment</span>
                 </a></li>
                 <li><a href="share.php">
                     <i class="uil uil-share"></i>
-                    <span class="link-name">Share</span>
-                </a></li>
+                    <span class="link-name"></span>
+                </a></li> -->
             </ul>
             
             <ul class="logout-mode">

@@ -16,6 +16,7 @@ include("admin-layout.php")
                         <span class="text">Total Scholarships Applied</span>
                         <span class="number">50,120</span>
                     </div>
+                    
                     <div class="box box2">
                         <i class="uil uil-comments"></i>
                         <span class="text">Verified</span>
@@ -45,6 +46,26 @@ include("admin-layout.php")
                         <span class="data-list">Man Shahi</span>
                         <span class="data-list">Ganesh Chand</span>
                         <span class="data-list">Bikash Chand</span>
+                    </div>
+                    <div class="data year">
+                        <span class="data-title">Year</span>
+                        <span class="data-list">4</span>
+                        <span class="data-list">4</span>
+                        <span class="data-list">2</span>
+                        <span class="data-list">4</span>
+                        <span class="data-list">1</span>
+                        <span class="data-list">4</span>
+                        <span class="data-list">3</span>
+                    </div>
+                    <div class="data branch">
+                        <span class="data-title">Branch</span>
+                        <span class="data-list">cse</span>
+                        <span class="data-list">cse</span>
+                        <span class="data-list">cse</span>
+                        <span class="data-list">cse</span>
+                        <span class="data-list">ece</span>
+                        <span class="data-list">mech</span>
+                        <span class="data-list">ise</span>
                     </div>
                     <div class="data email">
                         <span class="data-title">USN</span>

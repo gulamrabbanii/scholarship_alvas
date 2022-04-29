@@ -1,13 +1,12 @@
 <?php
 include("admin-layout.php")
 ?>
-<title>Analytics</title>
-
+<title>Content</title>
         <div class="dash-content">
             <div class="overview">
                 <div class="title">
                     <i class="uil uil-tachometer-fast-alt"></i>
-                    <span class="text">Analytics</span>
+                    <span class="text">Create Scholarship</span>
                 </div>
     
 <!-- Add contents here -->

@@ -1,12 +1,13 @@
 <?php
 include("admin-layout.php")
 ?>
-<title>Content</title>
+<title>Like</title>
+
         <div class="dash-content">
             <div class="overview">
                 <div class="title">
                     <i class="uil uil-tachometer-fast-alt"></i>
-                    <span class="text">Content</span>
+                    <span class="text">Verification</span>
                 </div>
     
 <!-- Add contents here -->
