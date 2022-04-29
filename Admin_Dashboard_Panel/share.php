@@ -1,5 +1,4 @@
 <?php
-session_start();
 include("admin-layout.php")
 ?>
 <title>Share</title>
