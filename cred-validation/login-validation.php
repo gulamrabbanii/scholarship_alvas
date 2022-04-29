@@ -22,18 +22,15 @@ if((preg_match($pattern, $_SESSION["username"]))){
     header("Location: ../Student_Dashboard_Panel/scholarship.php");
 
 }
+$email = "^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$^";
+if((preg_match($email, $_SESSION["username"]))){
 
-$email = test_input($_SESSION["username"]);
-if (filter_var($email, FILTER_VALIDATE_EMAIL)){
     header("Location: ../Admin_Dashboard_Panel/dashboard.php");
+
 }
 
 
 
 
+
 ?>
-
-<a href="../logout.php"> logout</a>
-
-<br>
-<a href="reset-password.php">Reset password?</a>
