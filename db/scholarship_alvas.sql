@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 28, 2022 at 08:12 AM
+-- Generation Time: Apr 29, 2022 at 07:51 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.1
 
@@ -44,8 +44,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `passwd`, `first_name`, `last_name`, `dept`, `year`, `gender`, `created_at`) VALUES
-(0, 'admin', 'admin', 'Gulam', 'Rabbani', 'CSE', 4, 'Male', '2022-04-27 08:50:32'),
-(1, '4AL18CS099', 'admin', 'Gulam', 'Rabbani', 'CSE', 4, 'Male', '2022-04-27 08:50:32');
+(1, '4al18cs026', 'e10adc3949ba59abbe56e057f20f883e', 'ijaz', 'ibrahim', 'CSE', 4, 'Male', '0000-00-00 00:00:00'),
+(2, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'Gulam', 'Rabbani', 'scholarship section', 0, 'Male', '2022-04-28 09:51:38');
 
 --
 -- Indexes for dumped tables
@@ -56,6 +56,16 @@ INSERT INTO `users` (`id`, `username`, `passwd`, `first_name`, `last_name`, `dep
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
