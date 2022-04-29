@@ -15,7 +15,7 @@ if ($_POST['username'] != null && $_POST['password'] != null && $_POST['cfpasswo
     $sql = "INSERT INTO users (username, passwd, first_name, last_name, phone) VALUES ('" . trim($_POST['username']) . "','" . trim(md5($_POST['password'])) . "','" . trim($_POST['f-name']) . "','" . trim($_POST['l-name']) . "','" . trim($_POST['phone']) . "')";
     if ($link->query($sql)) {
         echo "<script>alert('Registration is complete.')</script>";
-        header("Refresh:0 , url = ../index.php");
+        header("Refresh:0 , url = ../Admin_Dashboard_Panel/dashboard.php");
         exit();
     } else {
         echo "<script>alert('Registration isn't complete.')</script>";

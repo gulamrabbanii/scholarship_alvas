@@ -30,9 +30,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $query = mysqli_query($link, $sql);
         $result = mysqli_fetch_array($query, MYSQLI_ASSOC);
         if (!$result) {
-            echo "<script>alert('Invalid username or password')</script>";
-            header("Refresh:0 , url = logout.php");
-            exit();
+            $login_err = "Invalid username or password.";
         } else {
             session_start();
             $_SESSION['username'] = $result['username'];

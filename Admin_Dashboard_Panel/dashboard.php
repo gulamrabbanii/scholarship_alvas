@@ -1,4 +1,5 @@
 <?php
+session_start();
 include("admin-layout.php")
 ?>
 <title>Admin Dashboard Panel</title>

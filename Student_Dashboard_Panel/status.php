@@ -1,5 +1,5 @@
-
- <?php 
+<?php 
+session_start();
 include("sidebar-layout.php");
 ?>
 <title>SCHOLARSHIP | RESULT</title>
