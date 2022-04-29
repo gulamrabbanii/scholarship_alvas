@@ -81,7 +81,7 @@ session_start();
                         <button type="submit" class="btn btn-primary">Sign in</button>
                     </div>
                     <div class="col-md-1">
-                        <a href="../index.php">
+                        <a href="../Admin_Dashboard_Panel/dashboard.php">
                             <button type="button" class="btn btn-danger">Cancel</button>
                         </a>
                     </div>
