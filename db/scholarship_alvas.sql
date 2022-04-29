@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 29, 2022 at 07:51 AM
+-- Generation Time: Apr 29, 2022 at 07:11 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.1
 
@@ -35,7 +35,7 @@ CREATE TABLE `users` (
   `last_name` varchar(100) NOT NULL,
   `dept` text NOT NULL,
   `year` tinyint(4) NOT NULL,
-  `gender` text NOT NULL,
+  `phone` int(11) NOT NULL,
   `created_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -43,9 +43,10 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `passwd`, `first_name`, `last_name`, `dept`, `year`, `gender`, `created_at`) VALUES
-(1, '4al18cs026', 'e10adc3949ba59abbe56e057f20f883e', 'ijaz', 'ibrahim', 'CSE', 4, 'Male', '0000-00-00 00:00:00'),
-(2, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'Gulam', 'Rabbani', 'scholarship section', 0, 'Male', '2022-04-28 09:51:38');
+INSERT INTO `users` (`id`, `username`, `passwd`, `first_name`, `last_name`, `dept`, `year`, `phone`, `created_at`) VALUES
+(1, '4al18cs026', 'e10adc3949ba59abbe56e057f20f883e', 'ijaz', 'ibrahim', 'CSE', 4, 1, '0000-00-00 00:00:00'),
+(2, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'Gulam', 'Rabbani', 'scholarship section', 0, 123456789, '2022-04-28 09:51:38'),
+(3, '4al18cs099', 'e9d6f4c1d51d52f22f6de6bc1ad748f0', 'Gulam', 'Rabbani', 'ECE', 2, 0, '0000-00-00 00:00:00');
 
 --
 -- Indexes for dumped tables
@@ -65,7 +66,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -11,8 +11,8 @@ if ($result) {
     header("Refresh:0 , url = ../registration/stud-register.html");
     exit();
 }else{
-if ($_POST['username'] != null && $_POST['password'] != null && $_POST['f-name'] != null && $_POST['cfpassword'] != null && $_POST['cfpassword'] == $_POST['password']) {
-    $sql = "INSERT INTO users (username, passwd, first_name, last_name, dept, year, gender) VALUES ('" . trim($_POST['username']) . "','" . trim(md5($_POST['password'])) . "','" . trim($_POST['f-name']) . "','" . trim($_POST['l-name']) . "','" . trim($_POST['sel-branch']) . "','" . trim($_POST['year']) . "','" . trim($_POST['gender']) . "')";
+if ($_POST['username'] != null && $_POST['password'] != null && $_POST['cfpassword'] != null && $_POST['cfpassword'] == $_POST['password']) {
+    $sql = "INSERT INTO users (username, passwd, first_name, last_name, dept, year, phone) VALUES ('" . trim($_POST['username']) . "','" . trim(md5($_POST['password'])) . "','" . trim($_POST['f-name']) . "','" . trim($_POST['l-name']) . "','" . trim($_POST['sel-branch']) . "','" . trim($_POST['year']) . "','" . trim($_POST['phone']) . "')";
     if ($link->query($sql)) {
         echo "<script>alert('Registration is complete.')</script>";
         header("Refresh:0 , url = ../index.php");

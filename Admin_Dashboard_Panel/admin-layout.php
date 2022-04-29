@@ -39,11 +39,11 @@
                     <i class="uil uil-thumbs-up"></i>
                     <span class="link-name">Verification</span>
                 </a></li>
-                <!-- <li><a href="comment.php">
+                <li><a href="../registration/admin-register.php">
                     <i class="uil uil-comments"></i>
-                    <span class="link-name">Comment</span>
+                    <span class="link-name">Register</span>
                 </a></li>
-                <li><a href="share.php">
+                <!-- <li><a href="share.php">
                     <i class="uil uil-share"></i>
                     <span class="link-name"></span>
                 </a></li> -->

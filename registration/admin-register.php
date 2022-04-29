@@ -47,17 +47,12 @@
                     </div>
                     <div class="col-md-12">
                         <label for="username" class="form-label">Username</label>
-                        <input type="text" name="username" class="form-control" id="username" placeholder="USERNAME FOR LOGIN PURPOSE" />
+                        <input type="email" name="username" class="form-control" id="username" placeholder="YOUR e-mail ID" />
                     </div>
                     <div class="col-md-12">
                         <div class="form-group">
-                            <label for="gender" class="form-label">Gender</label>
-                            <select name="gender" id="inputState" class="form-control" required>
-                                <option value="" selected>Choose...</option>
-                                <option value="Male">Male</option>
-                                <option value="Female">Female</option>
-                                <option value="Other">Other</option>
-                            </select>
+                            <label for="phone" class="form-label">Mobile Number</label>
+                            <input type="tel" name="phone" class="form-control" id="phone" placeholder="10-digit MOBILE NUMBER" pattern="[0-9]{10}"required />
                         </div>
                     </div>
                     <div class="col-md-6">
