@@ -36,7 +36,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         } else {
             session_start();
             $_SESSION['username'] = $result['username'];
-            header("Location: welcome.php");
+            header("Location: cred-validation/login-validation.php");
             session_write_close();
         }
         
@@ -124,7 +124,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         </form>
         <div class="link">
             <a href="#">Forgot Password?</a> or 
-            <a href="register.html">Sign up</a>
+            <a href="registration/stud-register.html">Sign up</a>
         </div>
     </div>
 </div>

@@ -102,6 +102,9 @@ input{
     font-size: 15px;
 }
 .wrapper {
-    background-color: rgba(255, 255, 255, 0.5);
-    margin: 60px;
+    background-color: rgba(255, 255, 255, 0.7);
+    margin-left: 80px;
+    margin-right: 80px;
+    margin-bottom: 20px;
+    padding: 60px;
 }

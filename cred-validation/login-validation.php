@@ -13,18 +13,18 @@ $pattern = "/4(al)[0-9]{2}[A-Za-z]{2}[0-9]{3}/i";
 
 if($_SESSION["username"] == "admin"){
 
-    header("Location: Admin_Dashboard_Panel/dashboard.php");
+    header("Location: ../registration/admin-register.html");
 
 }
 
 else if((preg_match($pattern, $_SESSION["username"]))){
 
-    header("Location: Student_Dashboard_Panel/scholarship.php");
+    header("Location: ../Student_Dashboard_Panel/scholarship.php");
 
 }
 
 else{
-    header("Location: register.php");
+    header("Location: ../Admin_Dashboard_Panel/dashboard.php");
 }
 
 
@@ -32,7 +32,7 @@ else{
 
 ?>
 
-<a href="logout.php"> logout</a>
+<a href="../logout.php"> logout</a>
 
 <br>
 <a href="reset-password.php">Reset password?</a>
