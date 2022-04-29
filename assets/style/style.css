@@ -1,5 +1,3 @@
-
-
 body{
     margin: 0;
     height: 100vh;
@@ -12,16 +10,16 @@ body{
     justify-content: center;
     color: #555;
     background: url("../img/bg.png") no-repeat center center / cover !important;
-    height: 100%;
 }
 .login-div{
     margin-top: 15px;
+    margin-bottom: 15px;
     padding: 10px 35px 35px 35px;
     border-radius: 40px;
     background: rgba(236, 240, 243, 0.5);
     box-shadow: 13px 13px 20px #cbced1, -13px -13px 20px #ffffff;
-    width: 33%;
-    height: 100%;
+    width: 450px;
+    height: 590px;
 }
 .form-title {
     font-weight: bold;
@@ -107,4 +105,38 @@ input{
     margin-right: 100px;
     margin-bottom: 20px;
     padding: 60px;
+}
+@media only screen and (max-width: 768px) {
+    .login-div, .fields {
+        height: 100%;
+        width: 100%;
+    }
+    .username, .password {
+        margin-bottom: 10px;
+    }
+    .login-div {
+        margin-bottom: 20px;
+    }
+    .fields {
+        padding: 25px 2px 2px 2px;
+    }
+}
+@media only screen and (max-width: 330px) {
+    .title {
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+    
+    input,
+    .signin-button,
+    .sub-title {
+        font-size: 14px;
+    }
+    
+    input {
+        padding: 10px 5px 10px 3px;
+    }
+    .signin-button {
+        height: inherit;
+    }
 }
