@@ -126,13 +126,11 @@ input{
         padding-top: 5px;
         padding-bottom: 5px;
     }
-    
     input,
     .signin-button,
     .sub-title {
         font-size: 14px;
     }
-    
     input {
         padding: 10px 5px 10px 3px;
     }

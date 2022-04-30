@@ -2,7 +2,18 @@
 include("sidebar-layout.php");
 ?>
 <title>SCHOLARSHIP</title>
-      <section>
+
+<style>
+  .card {
+    border-radius: 5px;
+    background: rgba(236, 240, 243, 0.6);
+    box-shadow: 13px 13px 20px #cbced1,
+        -13px -13px 20px #ffffff;
+    height: 400px;
+}
+</style>
+
+<section>
 <div class="container p-4">
   <h2>Scholarship</h2>
 <nav>
@@ -26,17 +37,17 @@ include("sidebar-layout.php");
       <a href="#" class="text-decoration-none text-dark">UPCOMING SCHOLARSHIPS</a>
     </div>
     <div class="p-2 border-success border btn-outline-secondary col-md-auto">
-      <a href="#" class="text-decoration-none text-dark">LAST DATE</a>
+      <a href="#" class="text-decoration-none text-dark">ALWAYS OPEN</a>
     </div>
   </div>
 </div>
 
 <!-- Cards Start -->
 <div class="row">
-  <div class="col-sm-4">
-<div class="card mt-5 text-center">
+<div class="col-sm-4">
+  <div class="card mt-5 text-center">
   <div class="card-header">
-    Deadline: 26/04/2022
+     <i class="fa-solid fa-calendar-days px-2"></i>Deadline: 26/04/2022
   </div>
   <div class="card-body">
     <h5 class="card-title">Scholarship Name</h5>
@@ -49,10 +60,10 @@ include("sidebar-layout.php");
 </div>
 </div>
 
-  <div class="col-sm-4">
+<div class="col-sm-4">
 <div class="card mt-5 text-center">
   <div class="card-header">
-    Deadline: 26/04/2022
+     <i class="fa-solid fa-calendar-days px-2"></i>Deadline: 26/04/2022
   </div>
   <div class="card-body">
     <h5 class="card-title">Scholarship Name</h5>
@@ -65,10 +76,10 @@ include("sidebar-layout.php");
 </div>
 </div>
 
-  <div class="col-sm-4">
+<div class="col-sm-4">
 <div class="card mt-5 text-center">
   <div class="card-header">
-    Deadline: 26/04/2022
+     <i class="fa-solid fa-calendar-days px-2"></i>Deadline: 26/04/2022
   </div>
   <div class="card-body">
     <h5 class="card-title">Scholarship Name</h5>
@@ -88,11 +99,11 @@ include("sidebar-layout.php");
   <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
     <div class="container">
   <div class="row justify-content-md-left">
-    <div class="p-2 border border-success btn-outline-secondary col-md-auto">
+    <div class="p-2 px-2 border border-success btn-outline-secondary col-md-auto">
       <a href="#" class="text-decoration-none text-dark">SC/ST/OBC</a>
     </div>
    
-    <div class="p-2 border-success border btn-outline-secondary col-md-auto">
+    <div class="p-2 px-4 border-success border btn-outline-secondary col-md-auto">
       <a href="#" class="text-decoration-none text-dark">GIRLS</a>
     </div>
     <div class="p-2 border-success border btn-outline-secondary col-md-auto">
@@ -106,10 +117,10 @@ include("sidebar-layout.php");
 
 <!-- Cards Start -->
 <div class="row">
-  <div class="col-sm-4">
+<div class="col-sm-4">
 <div class="card mt-5 text-center">
   <div class="card-header">
-    Deadline: 26/04/2022
+     <i class="fa-solid fa-calendar-days px-2"></i>Deadline: 26/04/2022
   </div>
   <div class="card-body">
     <h5 class="card-title">Scholarship Name</h5>
@@ -122,10 +133,10 @@ include("sidebar-layout.php");
 </div>
 </div>
 
-  <div class="col-sm-4">
+<div class="col-sm-4">
 <div class="card mt-5 text-center">
   <div class="card-header">
-    Deadline: 26/04/2022
+     <i class="fa-solid fa-calendar-days px-2"></i>Deadline: 26/04/2022
   </div>
   <div class="card-body">
     <h5 class="card-title">Scholarship Name</h5>
@@ -138,10 +149,10 @@ include("sidebar-layout.php");
 </div>
 </div>
 
-  <div class="col-sm-4">
+<div class="col-sm-4">
 <div class="card mt-5 text-center">
   <div class="card-header">
-    Deadline: 26/04/2022
+     <i class="fa-solid fa-calendar-days px-2"></i>Deadline: 26/04/2022
   </div>
   <div class="card-body">
     <h5 class="card-title">Scholarship Name</h5>
@@ -156,22 +167,23 @@ include("sidebar-layout.php");
 </div>
 <!-- Cards End -->
   </div>
-  <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab"><div class="container">
+  <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+  <div class="container">
   <div class="row justify-content-md-left">
-    <div class="p-2 border border-success btn-outline-secondary col-md-auto">
-      <a href="#" class="text-decoration-none text-dark">NATIONAL</a>
+    <div class="p-2 px-4 border border-success btn-outline-secondary col-md-auto">
+      <a href="#" class="text-decoration-none text-dark">ALL INDIA</a>
     </div>
    
-    <div class="p-2 border-success border btn-outline-secondary col-md-auto">
+    <div class="p-2 px-4 border-success border btn-outline-secondary col-md-auto">
       <a href="#" class="text-decoration-none text-dark">KARNATAKA</a>
     </div>
 
     <!-- Cards Start -->
 <div class="row">
-  <div class="col-sm-4">
+<div class="col-sm-4">
 <div class="card mt-5 text-center">
   <div class="card-header">
-    Deadline: 26/04/2022
+     <i class="fa-solid fa-calendar-days px-2"></i>Deadline: 26/04/2022
   </div>
   <div class="card-body">
     <h5 class="card-title">Scholarship Name</h5>
@@ -184,10 +196,10 @@ include("sidebar-layout.php");
 </div>
 </div>
 
-  <div class="col-sm-4">
+<div class="col-sm-4">
 <div class="card mt-5 text-center">
   <div class="card-header">
-    Deadline: 26/04/2022
+     <i class="fa-solid fa-calendar-days px-2"></i>Deadline: 26/04/2022
   </div>
   <div class="card-body">
     <h5 class="card-title">Scholarship Name</h5>
@@ -200,10 +212,10 @@ include("sidebar-layout.php");
 </div>
 </div>
 
-  <div class="col-sm-4">
+<div class="col-sm-4">
 <div class="card mt-5 text-center">
   <div class="card-header">
-    Deadline: 26/04/2022
+     <i class="fa-solid fa-calendar-days px-2"></i>Deadline: 26/04/2022
   </div>
   <div class="card-body">
     <h5 class="card-title">Scholarship Name</h5>
@@ -217,16 +229,16 @@ include("sidebar-layout.php");
 </div>
 </div>
 <!-- Cards End -->
-
-  </div>
-</div></div>
+</div>
+</div>
+</div>
   <div class="tab-pane fade" id="nav-non-govt" role="tabpanel" aria-labelledby="nav-non-govt-tab">
     <!-- Cards Start -->
 <div class="row">
   <div class="col-sm-4">
 <div class="card mt-5 text-center">
   <div class="card-header">
-    Deadline: 26/04/2022
+    <i class="fa-solid fa-calendar-days px-2"></i>Deadline: 26/04/2022
   </div>
   <div class="card-body">
     <h5 class="card-title">Scholarship Name</h5>
@@ -242,7 +254,7 @@ include("sidebar-layout.php");
   <div class="col-sm-4">
 <div class="card mt-5 text-center">
   <div class="card-header">
-    Deadline: 26/04/2022
+    <i class="fa-solid fa-calendar-days px-2"></i>Deadline: 26/04/2022
   </div>
   <div class="card-body">
     <h5 class="card-title">Scholarship Name</h5>
@@ -258,7 +270,7 @@ include("sidebar-layout.php");
   <div class="col-sm-4">
 <div class="card mt-5 text-center">
   <div class="card-header">
-    Deadline: 26/04/2022
+    <i class="fa-solid fa-calendar-days px-2"></i>Deadline: 26/04/2022
   </div>
   <div class="card-body">
     <h5 class="card-title">Scholarship Name</h5>
