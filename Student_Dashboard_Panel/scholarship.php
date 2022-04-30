@@ -80,14 +80,199 @@ include("sidebar-layout.php");
   </div>
 </div>
 </div>
+</div>
+<!-- Cards End -->
+</div>
 
+
+  <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+    <div class="container">
+  <div class="row justify-content-md-left">
+    <div class="p-2 border border-success btn-outline-secondary col-md-auto">
+      <a href="#" class="text-decoration-none text-dark">SC/ST/OBC</a>
+    </div>
+   
+    <div class="p-2 border-success border btn-outline-secondary col-md-auto">
+      <a href="#" class="text-decoration-none text-dark">GIRLS</a>
+    </div>
+    <div class="p-2 border-success border btn-outline-secondary col-md-auto">
+      <a href="#" class="text-decoration-none text-dark">MINORITY</a>
+    </div>
+      <div class="p-2 border-success border btn-outline-secondary col-md-auto">
+      <a href="#" class="text-decoration-none text-dark">PHYSICALLY DISABLLED</a>
+    </div>
+  </div>
+</div>
+
+<!-- Cards Start -->
+<div class="row">
+  <div class="col-sm-4">
+<div class="card mt-5 text-center">
+  <div class="card-header">
+    Deadline: 26/04/2022
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Scholarship Name</h5>
+    <p class="card-text">Eligibility</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+  <div class="card-footer text-muted">
+    View Scholarship
+  </div>
+</div>
+</div>
+
+  <div class="col-sm-4">
+<div class="card mt-5 text-center">
+  <div class="card-header">
+    Deadline: 26/04/2022
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Scholarship Name</h5>
+    <p class="card-text">Eligibility</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+  <div class="card-footer text-muted">
+    View Scholarship
+  </div>
+</div>
+</div>
+
+  <div class="col-sm-4">
+<div class="card mt-5 text-center">
+  <div class="card-header">
+    Deadline: 26/04/2022
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Scholarship Name</h5>
+    <p class="card-text">Eligibility</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+  <div class="card-footer text-muted">
+    View Scholarship
+  </div>
+</div>
+</div>
+</div>
+<!-- Cards End -->
+  </div>
+  <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab"><div class="container">
+  <div class="row justify-content-md-left">
+    <div class="p-2 border border-success btn-outline-secondary col-md-auto">
+      <a href="#" class="text-decoration-none text-dark">NATIONAL</a>
+    </div>
+   
+    <div class="p-2 border-success border btn-outline-secondary col-md-auto">
+      <a href="#" class="text-decoration-none text-dark">KARNATAKA</a>
+    </div>
+
+    <!-- Cards Start -->
+<div class="row">
+  <div class="col-sm-4">
+<div class="card mt-5 text-center">
+  <div class="card-header">
+    Deadline: 26/04/2022
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Scholarship Name</h5>
+    <p class="card-text">Eligibility</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+  <div class="card-footer text-muted">
+    View Scholarship
+  </div>
+</div>
+</div>
+
+  <div class="col-sm-4">
+<div class="card mt-5 text-center">
+  <div class="card-header">
+    Deadline: 26/04/2022
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Scholarship Name</h5>
+    <p class="card-text">Eligibility</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+  <div class="card-footer text-muted">
+    View Scholarship
+  </div>
+</div>
+</div>
+
+  <div class="col-sm-4">
+<div class="card mt-5 text-center">
+  <div class="card-header">
+    Deadline: 26/04/2022
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Scholarship Name</h5>
+    <p class="card-text">Eligibility</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+  <div class="card-footer text-muted">
+    View Scholarship
+  </div>
+</div>
 </div>
 </div>
 <!-- Cards End -->
 
-  <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">Hello World</div>
-  <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">Hello World</div>
-  <div class="tab-pane fade" id="nav-non-govt" role="tabpanel" aria-labelledby="nav-non-govt-tab">Hello World</div>
+  </div>
+</div></div>
+  <div class="tab-pane fade" id="nav-non-govt" role="tabpanel" aria-labelledby="nav-non-govt-tab">
+    <!-- Cards Start -->
+<div class="row">
+  <div class="col-sm-4">
+<div class="card mt-5 text-center">
+  <div class="card-header">
+    Deadline: 26/04/2022
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Scholarship Name</h5>
+    <p class="card-text">Eligibility</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+  <div class="card-footer text-muted">
+    View Scholarship
+  </div>
+</div>
+</div>
+
+  <div class="col-sm-4">
+<div class="card mt-5 text-center">
+  <div class="card-header">
+    Deadline: 26/04/2022
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Scholarship Name</h5>
+    <p class="card-text">Eligibility</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+  <div class="card-footer text-muted">
+    View Scholarship
+  </div>
+</div>
+</div>
+
+  <div class="col-sm-4">
+<div class="card mt-5 text-center">
+  <div class="card-header">
+    Deadline: 26/04/2022
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Scholarship Name</h5>
+    <p class="card-text">Eligibility</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+  <div class="card-footer text-muted">
+    View Scholarship
+  </div>
+</div>
+</div>
+</div>
+<!-- Cards End -->
+  </div>
 </div>
 </section>
 
