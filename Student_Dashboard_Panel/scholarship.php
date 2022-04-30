@@ -30,7 +30,7 @@ include("sidebar-layout.php");
 <div class="container">
   <div class="row justify-content-md-left">
     <div class="p-2 border border-success btn-outline-secondary col-md-auto">
-      <a href="#" class="text-decoration-none text-dark">LIVE SCHOLARSHIPS</a>
+      <a href="#" class="tex-color text-decoration-none text-dark">LIVE SCHOLARSHIPS</a>
     </div>
    
     <div class="p-2 border-success border btn-outline-secondary col-md-auto">
@@ -54,8 +54,8 @@ include("sidebar-layout.php");
     <p class="card-text">Eligibility</p>
     <a href="#" class="btn btn-primary">Go somewhere</a>
   </div>
-  <div class="card-footer text-muted">
-    View Scholarship
+  <div class="card-footer">
+    <a href="#" class="text-decoration-none text-dark">View Scholarship</a>
   </div>
 </div>
 </div>

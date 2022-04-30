@@ -1,6 +1,3 @@
-<?php
-session_start();
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,30 +8,54 @@ session_start();
     <title>REGISTER</title>
     <link rel="icon" href="../assets/img/icon.png" type="image/icon type">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../assets/style/style.css">
-    <link rel="stylesheet" href="../assets/style/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+<style>
+    body{
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    background: url("../assets/img/bg.png") no-repeat center center / cover !important;
+}
+.bg-opacity {
+    background-color: rgba(255, 255, 255, 0.7);
+    box-shadow: 13px 13px 20px #f4f5f7, -13px -13px 20px #ffffff;
+}
+    .wrapper {
+    background-color: rgba(255, 255, 255, 0.7);
+    margin-top: 20px;
+    margin-left: 100px;
+    margin-right: 100px;
+    margin-bottom: 20px;
+    padding: 60px;
+}  
+@media (max-width: 768px) {
+    .wrapper {
+    margin: 10px;
+    padding: 10px;
+    }
+}
+</style>
 </head>
-
 <body>
     <div class="row">
-        <div class="navbar-container w-100">
-            <nav class="navbar navbar-light bg-light">
-                <a class="navbar-brand" href="#">
-                    <img src="../assets/img/icon.png" alt="Alva's Icon" width="30" height="30" class="d-inline-block">
-                    <span style="position: relative;
-  top: 4px;"> Alva's Institute of Engineering and Technology</span>
-                </a>
-            </nav>
-        </div>
+        <nav class="navbar navbar-light bg-opacity">
+            <div class="container-fluid">
+                <div class="navbar-brand">
+                    <img src="../assets/img/icon.png" alt="Alva's Icon" width="30" height="30"
+                        class="d-inline-block align-text-top">
+                    Alva's Institute of Engineering and Technology
+                </div>
+            </div>
+        </nav>
 
         <div class="col-md-12">
             <div class="wrapper">
-                <div class="form-title">Administrator Registration
-                    <i class="glyphicon glyphicon-pencil d-inline-block"></i>
+                <div class="form-title font-weight-bold" style="font-size: 25px;">Administrator Registration
+                    <i class="fa-regular fa-pen-to-square"></i>
                 </div>
                 <br>
                 <form action="../cred-validation/register-admin.php" method="post" class="row g-3 ">
@@ -50,12 +71,14 @@ session_start();
                     </div>
                     <div class="col-md-12">
                         <label for="username" class="form-label">Username</label>
-                        <input type="email" name="username" class="form-control" id="username" placeholder="YOUR e-mail ID" />
+                        <input type="email" name="username" class="form-control" id="username"
+                            placeholder="YOUR e-mail ID" />
                     </div>
                     <div class="col-md-12">
                         <div class="form-group">
                             <label for="phone" class="form-label">Mobile Number</label>
-                            <input type="tel" name="phone" class="form-control" id="phone" placeholder="10-digit MOBILE NUMBER" pattern="[0-9]{10}"required />
+                            <input type="tel" name="phone" class="form-control" id="phone"
+                                placeholder="10-digit MOBILE NUMBER" pattern="[0-9]{10}" required />
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -77,7 +100,7 @@ session_start();
                             </label>
                         </div>
                     </div>
-                    <div class="col-md-1">
+                    <div class="col-md-2">
                         <button type="submit" class="btn btn-primary">Sign in</button>
                     </div>
                     <div class="col-md-1">
@@ -90,4 +113,5 @@ session_start();
         </div>
     </div>
 </body>
+
 </html>

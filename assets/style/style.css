@@ -99,13 +99,6 @@ input{
     color: #aaa;
     font-size: 15px;
 }
-.wrapper {
-    background-color: rgba(255, 255, 255, 0.7);
-    margin-left: 100px;
-    margin-right: 100px;
-    margin-bottom: 20px;
-    padding: 60px;
-}
 @media only screen and (max-width: 768px) {
     .login-div, .fields {
         height: 100%;
