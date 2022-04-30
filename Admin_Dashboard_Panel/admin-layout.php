@@ -42,8 +42,8 @@ session_start();
                     <i class="uil uil-thumbs-up"></i>
                     <span class="link-name">Verification</span>
                 </a></li>
-                <li><a href="../registration/admin-register.php">
-                    <i class="uil uil-comments"></i>
+                <li><a href="register.php">
+                    <i class="fa fa-user-plus" aria-hidden="true"></i>
                     <span class="link-name">Register</span>
                 </a></li>
                 <!-- <li><a href="share.php">

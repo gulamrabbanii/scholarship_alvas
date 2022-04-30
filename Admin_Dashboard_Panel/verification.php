@@ -1,7 +1,7 @@
 <?php
 include("admin-layout.php")
 ?>
-<title>Like</title>
+<title>Docs Verification</title>
 
         <div class="dash-content">
             <div class="overview">

@@ -1,7 +1,7 @@
 <?php
 include("admin-layout.php")
 ?>
-<title>Analytics</title>
+<title>Student Details</title>
 
         <div class="dash-content">
             <div class="overview">
