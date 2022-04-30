@@ -2,8 +2,8 @@
 include("admin-layout.php")
 ?>
 <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"> -->
     
     <!----===== Iconscout CSS ===== -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
@@ -16,17 +16,18 @@ include("admin-layout.php")
                     <i class="fa-regular fa-pen-to-square"></i>
                     <div class="text">Administrator Registration</div>
                 </div>    
+            </div> 
 <!-- Add contents here -->
- <div class="row">
-<form action="../cred-validation/register-admin.php" method="post" class="row g-3 ">
+
+           <form action="../cred-validation/register-admin.php" method="post" class="row g-3">
                     <div class="col-md-6">
                         <label for="first-name" class="form-label">First Name</label>
-                        <input type="text" name="f-name" class="form-control username" id="first-name"
+                        <input type="text" name="f-name" class="form-control" id="first-name"
                             placeholder="YOUR FIRST NAME" required />
                     </div>
                     <div class="col-md-6">
                         <label for="first-name" class="form-label">Last Name</label>
-                        <input type="text" name="l-name" class="form-control username" id="first-name"
+                        <input type="text" name="l-name" class="form-control" id="first-name"
                             placeholder="YOUR LAST NAME" required />
                     </div>
                     <div class="col-md-12">
@@ -69,11 +70,9 @@ include("admin-layout.php")
                         </a>
                     </div>
                 </form>
-</div>
+
 <!-- End of content  -->
 
-
-            </div>
         </div>
     </section>
         
