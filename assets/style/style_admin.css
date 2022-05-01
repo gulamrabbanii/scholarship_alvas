@@ -76,7 +76,7 @@ nav{
     transition: var(--tran-05);
 }
 nav.close{
-    width: 83px;
+    width: 93px;
 }
 nav .logo-name{
     display: flex;
@@ -88,7 +88,7 @@ nav .logo-image{
     min-width: 60px;
 }
 nav .logo-image img{
-    margin-left: 45px;
+    margin-left: 52px;
     width: 40px;
     object-fit: cover;
     border-radius: 50%;
@@ -107,7 +107,7 @@ nav.close .logo_name{
 }
 nav .menu-items{
     margin-top: 40px;
-    height: calc(100% - 90px);
+    height: calc(100% - 93px);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -215,8 +215,8 @@ body.dark .switch:before{
     transition: var(--tran-05);
 }
 nav.close ~ .dashboard{
-    left: 83px;
-    width: calc(100% - 83px);
+    left: 93px;
+    width: calc(100% - 93px);
 }
 .dashboard .top{
     position: fixed;
@@ -232,8 +232,8 @@ nav.close ~ .dashboard{
     z-index: 10;
 }
 nav.close ~ .dashboard .top{
-    left: 83px;
-    width: calc(100% - 83px);
+    left: 93px;
+    width: calc(100% - 93px);
 }
 .dashboard .top .sidebar-toggle{
     font-size: 26px;
@@ -365,7 +365,7 @@ nav.close ~ .dashboard .top{
 
 @media (max-width: 1000px) {
     nav{
-        width: 83px;
+        width: 93px;
     }
     nav.close{
         width: 250px;
@@ -387,16 +387,16 @@ nav.close ~ .dashboard .top{
         pointer-events: auto;
     }
     nav ~ .dashboard{
-        left: 83px;
-        width: calc(100% - 83px);
+        left: 93px;
+        width: calc(100% - 93px);
     }
     nav.close ~ .dashboard{
         left: 250px;
         width: calc(100% - 250px);
     }
     nav ~ .dashboard .top{
-        left: 83px;
-        width: calc(100% - 83px);
+        left: 93px;
+        width: calc(100% - 93px);
     }
     nav.close ~ .dashboard .top{
         left: 250px;
@@ -423,7 +423,7 @@ nav.close ~ .dashboard .top{
         width: 0px;
     }
     nav.close{
-        width: 83px;
+        width: 93px;
     }
     nav .logo_name{
         opacity: 0;
@@ -446,8 +446,8 @@ nav.close ~ .dashboard .top{
         width: 100%;
     }
     nav.close ~ .dashboard{
-        left: 83px;
-        width: calc(100% - 83px);
+        left: 93px;
+        width: calc(100% - 93px);
     }
     nav ~ .dashboard .top{
         left: 0;

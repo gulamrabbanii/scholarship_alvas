@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 29, 2022 at 07:11 PM
+-- Generation Time: May 01, 2022 at 08:15 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.1
 
@@ -36,7 +36,7 @@ CREATE TABLE `users` (
   `dept` text NOT NULL,
   `year` tinyint(4) NOT NULL,
   `phone` int(11) NOT NULL,
-  `created_at` datetime NOT NULL
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -44,9 +44,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `passwd`, `first_name`, `last_name`, `dept`, `year`, `phone`, `created_at`) VALUES
-(1, '4al18cs026', 'e10adc3949ba59abbe56e057f20f883e', 'ijaz', 'ibrahim', 'CSE', 4, 1, '0000-00-00 00:00:00'),
-(2, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'Gulam', 'Rabbani', 'scholarship section', 0, 123456789, '2022-04-28 09:51:38'),
-(3, '4al18cs099', 'e9d6f4c1d51d52f22f6de6bc1ad748f0', 'Gulam', 'Rabbani', 'ECE', 2, 0, '0000-00-00 00:00:00');
+(9, '4al18cs099', '$2y$10$3b74M66hIQP2h2gDkMZox.Prf84cWTXavbmo41qz54qb1lyzUJ/UW', 'ijaz', 'ibrahim', 'INFORMATION TECHNOLOGY ENGG', 4, 1594562580, '0000-00-00 00:00:00'),
+(10, 'admin@admin.com', '$2y$10$eKZbj4xwL.9HFS9/GZ0R9O2VegaK/mYVK9.6MaMzU/O78zckkY92a', 'Gulam', 'Rabbani', '', 0, 2147483647, '0000-00-00 00:00:00');
 
 --
 -- Indexes for dumped tables
@@ -66,7 +65,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
