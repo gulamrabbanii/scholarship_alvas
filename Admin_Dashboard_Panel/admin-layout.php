@@ -1,5 +1,9 @@
 <?php
 session_start();
+if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+    header("location: ../index.php");
+    exit;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -46,10 +50,10 @@ session_start();
                     <i class="fa fa-user-plus" aria-hidden="true"></i>
                     <span class="link-name">Register Admin</span>
                 </a></li>
-                <!-- <li><a href="share.php">
+                <li><a href="../reset-password.php">
                     <i class="uil uil-share"></i>
-                    <span class="link-name"></span>
-                </a></li> -->
+                    <span class="link-name">Reset Password</span>
+                </a></li>
             </ul>
             
             <ul class="logout-mode">
