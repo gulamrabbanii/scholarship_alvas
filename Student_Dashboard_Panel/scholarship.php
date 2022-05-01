@@ -28,18 +28,12 @@ include("sidebar-layout.php");
   <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
  
 <div class="container">
-  <div class="row justify-content-md-left">
-    <div class="p-2 border border-success btn-outline-secondary col-md-auto">
-      <a href="#" class="tex-color text-decoration-none text-dark">LIVE SCHOLARSHIPS</a>
-    </div>
-   
-    <div class="p-2 border-success border btn-outline-secondary col-md-auto">
-      <a href="#" class="text-decoration-none text-dark">UPCOMING SCHOLARSHIPS</a>
-    </div>
-    <div class="p-2 border-success border btn-outline-secondary col-md-auto">
-      <a href="#" class="text-decoration-none text-dark">ALWAYS OPEN</a>
-    </div>
-  </div>
+  <div class="btn-group" role="group" aria-label="Basic outlined example">
+  <button type="button" class="btn btn-outline-primary" onclick="window.location.href = '#';">LIVE SCHOLARSHIPS</button>
+  <button type="button" class="btn btn-outline-primary" onclick="window.location.href = '#';">UPCOMING SCHOLARSHIPS</button>
+  <button type="button" class="btn btn-outline-primary" onclick="window.location.href = '#';">ALWAYS OPEN</button>
+</div>
+
 </div>
 
 <!-- Cards Start -->
@@ -97,22 +91,13 @@ include("sidebar-layout.php");
 
 
   <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-    <div class="container">
-  <div class="row justify-content-md-left">
-    <div class="p-2 px-2 border border-success btn-outline-secondary col-md-auto">
-      <a href="#" class="text-decoration-none text-dark">SC/ST/OBC</a>
-    </div>
-   
-    <div class="p-2 px-4 border-success border btn-outline-secondary col-md-auto">
-      <a href="#" class="text-decoration-none text-dark">GIRLS</a>
-    </div>
-    <div class="p-2 border-success border btn-outline-secondary col-md-auto">
-      <a href="#" class="text-decoration-none text-dark">MINORITY</a>
-    </div>
-      <div class="p-2 border-success border btn-outline-secondary col-md-auto">
-      <a href="#" class="text-decoration-none text-dark">PHYSICALLY DISABLLED</a>
-    </div>
-  </div>
+<div class="container">
+<div class="btn-group" role="group" aria-label="Basic outlined example">
+    <button type="button" class="btn btn-outline-primary" onclick="window.location.href = '#';">SC/CT/OBC</button>
+    <button type="button" class="btn btn-outline-primary" onclick="window.location.href = '#';">GIRLS</button>
+    <button type="button" class="btn btn-outline-primary" onclick="window.location.href = '#';">MINORITY</button>
+    <button type="button" class="btn btn-outline-primary" onclick="window.location.href = '#';">PHYSICALLY DISABLED</button>
+</div>
 </div>
 
 <!-- Cards Start -->
@@ -169,13 +154,10 @@ include("sidebar-layout.php");
   </div>
   <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
   <div class="container">
-  <div class="row justify-content-md-left">
-    <div class="p-2 px-4 border border-success btn-outline-secondary col-md-auto">
-      <a href="#" class="text-decoration-none text-dark">ALL INDIA</a>
-    </div>
-   
-    <div class="p-2 px-4 border-success border btn-outline-secondary col-md-auto">
-      <a href="#" class="text-decoration-none text-dark">KARNATAKA</a>
+  <div class="btn-group" role="group" aria-label="Basic outlined example">
+    <button type="button" class="btn btn-outline-primary" onclick="window.location.href = '#';">NATIONAL</button>
+    <button type="button" class="btn btn-outline-primary" onclick="window.location.href = '#';">KARNATAKA</button>
+</div>
     </div>
 
     <!-- Cards Start -->
@@ -229,8 +211,6 @@ include("sidebar-layout.php");
 </div>
 </div>
 <!-- Cards End -->
-</div>
-</div>
 </div>
   <div class="tab-pane fade" id="nav-non-govt" role="tabpanel" aria-labelledby="nav-non-govt-tab">
     <!-- Cards Start -->
@@ -281,11 +261,11 @@ include("sidebar-layout.php");
     View Scholarship
   </div>
 </div>
-</div>
-</div>
+
 <!-- Cards End -->
   </div>
 </div>
+<div>
 </section>
 
 

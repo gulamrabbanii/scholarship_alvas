@@ -9,8 +9,8 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!----======== CSS ======== -->
-    <link rel="stylesheet" href="../assets/style/style_admin.css">
-     
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+     <link rel="stylesheet" href="../assets/style/style_admin.css">
     <!----===== Iconscout CSS ===== -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -32,7 +32,7 @@ session_start();
                 </a></li>
                 <li><a href="createscholarship.php">
                     <i class="uil uil-files-landscapes"></i>
-                    <span class="link-name">Create Scholarship</span>
+                    <span class="link-name">Add Scholarship</span>
                 </a></li>
                 <li><a href="studentdetails.php">
                     <i class="uil uil-chart"></i>
@@ -42,9 +42,9 @@ session_start();
                     <i class="uil uil-thumbs-up"></i>
                     <span class="link-name">Verification</span>
                 </a></li>
-                <li><a href="../registration/admin-register.php">
+                <li><a href="register.php">
                     <i class="fa fa-user-plus" aria-hidden="true"></i>
-                    <span class="link-name">Register</span>
+                    <span class="link-name">Register Admin</span>
                 </a></li>
                 <!-- <li><a href="share.php">
                     <i class="uil uil-share"></i>

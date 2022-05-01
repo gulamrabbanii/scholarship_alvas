@@ -122,7 +122,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         </form>
         <div class="link">
             <a href="#">Forgot Password?</a> or 
-            <a href="registration/stud-register.html">Sign up</a>
+            <a href="stud-register.html">Sign up</a>
         </div>
     </div>
 </div>

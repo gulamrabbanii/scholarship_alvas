@@ -1,5 +1,5 @@
 <?php 
-include("sidebar-layout.php");
+include("../Student_Dashboard_Panel/sidebar-layout.php");
 ?>
 <title>Scholarship | Details </title>
  <section>

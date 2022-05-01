@@ -70,13 +70,13 @@ nav{
     left: 0;
     height: 100%;
     width: 250px;
-    padding: 10px 14px;
+    padding: 10px 0 10px 0;
     background-color: var(--panel-color);
     border-right: 1px solid var(--border-color);
     transition: var(--tran-05);
 }
 nav.close{
-    width: 73px;
+    width: 83px;
 }
 nav .logo-name{
     display: flex;
@@ -85,9 +85,10 @@ nav .logo-name{
 nav .logo-image{
     display: flex;
     justify-content: center;
-    min-width: 45px;
+    min-width: 60px;
 }
 nav .logo-image img{
+    margin-left: 45px;
     width: 40px;
     object-fit: cover;
     border-radius: 50%;
@@ -97,7 +98,7 @@ nav .logo-name .logo_name{
     font-size: 22px;
     font-weight: 600;
     color: var(--text-color);
-    margin-left: 14px;
+    margin-left: 10px;
     transition: var(--tran-05);
 }
 nav.close .logo_name{
@@ -156,6 +157,7 @@ nav.close li a .link-name{
 .nav-links li a:hover .link-name{
     color: var(--primary-color);
 }
+label,
 body.dark .nav-links li a:hover i,
 body.dark .nav-links li a:hover .link-name{
     color: var(--text-color);
@@ -213,8 +215,8 @@ body.dark .switch:before{
     transition: var(--tran-05);
 }
 nav.close ~ .dashboard{
-    left: 73px;
-    width: calc(100% - 73px);
+    left: 83px;
+    width: calc(100% - 83px);
 }
 .dashboard .top{
     position: fixed;
@@ -230,8 +232,8 @@ nav.close ~ .dashboard{
     z-index: 10;
 }
 nav.close ~ .dashboard .top{
-    left: 73px;
-    width: calc(100% - 73px);
+    left: 83px;
+    width: calc(100% - 83px);
 }
 .dashboard .top .sidebar-toggle{
     font-size: 26px;
@@ -363,7 +365,7 @@ nav.close ~ .dashboard .top{
 
 @media (max-width: 1000px) {
     nav{
-        width: 73px;
+        width: 83px;
     }
     nav.close{
         width: 250px;
@@ -385,16 +387,16 @@ nav.close ~ .dashboard .top{
         pointer-events: auto;
     }
     nav ~ .dashboard{
-        left: 73px;
-        width: calc(100% - 73px);
+        left: 83px;
+        width: calc(100% - 83px);
     }
     nav.close ~ .dashboard{
         left: 250px;
         width: calc(100% - 250px);
     }
     nav ~ .dashboard .top{
-        left: 73px;
-        width: calc(100% - 73px);
+        left: 83px;
+        width: calc(100% - 83px);
     }
     nav.close ~ .dashboard .top{
         left: 250px;
@@ -421,7 +423,7 @@ nav.close ~ .dashboard .top{
         width: 0px;
     }
     nav.close{
-        width: 73px;
+        width: 83px;
     }
     nav .logo_name{
         opacity: 0;
@@ -444,8 +446,8 @@ nav.close ~ .dashboard .top{
         width: 100%;
     }
     nav.close ~ .dashboard{
-        left: 73px;
-        width: calc(100% - 73px);
+        left: 83px;
+        width: calc(100% - 83px);
     }
     nav ~ .dashboard .top{
         left: 0;
