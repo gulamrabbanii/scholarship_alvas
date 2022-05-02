@@ -1,15 +1,7 @@
-<?php
-// Initialize the session
-session_start();
- 
-// Check if the user is logged in, otherwise redirect to login page
-if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
-    header("location: index.php");
-    exit;
-}
- 
+<?php 
 // Include config file
-require_once "db/config.php";
+include("admin-layout.php");
+require_once "../db/config.php";
  
 // Define variables and initialize with empty values
 $new_password = $confirm_password = "";
@@ -18,20 +10,26 @@ $new_password_err = $confirm_password_err = "";
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
  
+    $new_password = trim($_POST["new_password"]);
+    $new_password = strip_tags($new_password);
+	$new_password = htmlspecialchars($new_password);
     // Validate new password
-    if(empty(trim($_POST["new_password"]))){
+    if(empty($new_password)){
         $new_password_err = "Please enter the new password.";     
     } elseif(strlen(trim($_POST["new_password"])) < 6){
         $new_password_err = "Password must have atleast 6 characters.";
     } else{
-        $new_password = trim($_POST["new_password"]);
+        $new_password = $new_password;
     }
     
+    $confirm_password = trim($_POST["confirm_password"]);
+    $confirm_password = strip_tags($confirm_password);
+	$confirm_password = htmlspecialchars($confirm_password);
     // Validate confirm password
-    if(empty(trim($_POST["confirm_password"]))){
+    if(empty($confirm_password)){
         $confirm_password_err = "Please confirm the password.";
     } else{
-        $confirm_password = trim($_POST["confirm_password"]);
+        $confirm_password = $confirm_password;
         if(empty($new_password_err) && ($new_password != $confirm_password)){
             $confirm_password_err = "Password did not match.";
         }
@@ -40,7 +38,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Check input errors before updating the database
     if(empty($new_password_err) && empty($confirm_password_err)){
         // Prepare an update statement
-        $sql = "UPDATE users SET password = ? WHERE id = ?";
+        $sql = "UPDATE users SET passwd = ? WHERE id = ?";
         
         if($stmt = $link->prepare($sql)){
             // Bind variables to the prepared statement as parameters
@@ -54,7 +52,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             if($stmt->execute()){
                 // Password updated successfully. Destroy the session, and redirect to login page
                 session_destroy();
-                header("location: index.php");
+                header("location: ../index.php");
                 exit();
             } else{
                 echo "Oops! Something went wrong. Please try again later.";
@@ -69,38 +67,34 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $link->close();
 }
 ?>
- 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Reset Password</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <style>
-        body{ font: 14px sans-serif; }
-        .wrapper{ width: 360px; padding: 20px; }
-    </style>
-</head>
-<body>
-    <div class="wrapper">
-        <h2>Reset Password</h2>
-        <p>Please fill out this form to reset your password.</p>
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post"> 
-            <div class="form-group">
-                <label>New Password</label>
-                <input type="password" name="new_password" class="form-control <?php echo (!empty($new_password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $new_password; ?>">
+
+<title>Reset Password</title>
+<div class="dash-content">
+            <div class="overview">
+                <div class="title">
+                    <i class="uil uil-tachometer-fast-alt"></i>
+                    <span class="text">Reset Password</span>
+                </div>
+            </div>
+<!-- Add contents here -->
+        <label>Please fill out this form to reset your password.</label>
+        <br><br>
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" class="row g-3"> 
+            <div class="col-md-12">
+                <label for="passwd" class="form-label">New Password</label>
+                <input type="password" name="new_password" class="form-control <?php echo (!empty($new_password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $new_password; ?>" id="passwd" minlength="6" maxlength="20" placeholder="NEW PASSWORD">
                 <span class="invalid-feedback"><?php echo $new_password_err; ?></span>
             </div>
-            <div class="form-group">
-                <label>Confirm Password</label>
-                <input type="password" name="confirm_password" class="form-control <?php echo (!empty($confirm_password_err)) ? 'is-invalid' : ''; ?>">
+            <div class="col-md-12">
+                <label for="confirm-passwd" class="form-label">Confirm Password</label>
+                <input type="password" name="confirm_password" class="form-control <?php echo (!empty($confirm_password_err)) ? 'is-invalid' : ''; ?>" id="confirm-passwd" minlength="6" maxlength="20" placeholder="CONFIRM NEW PASSWORD">
                 <span class="invalid-feedback"><?php echo $confirm_password_err; ?></span>
             </div>
             <div class="form-group">
                 <input type="submit" class="btn btn-primary" value="Submit">
-                <a class="btn btn-link ml-2" href="login-validation.php">Cancel</a>
+                <a class="btn btn-danger" href="dashboard.php">Cancel</a>
             </div>
         </form>
-    </div>    
-</body>
-</html>
+    </div>  
+<!-- End of content  -->
+</section>

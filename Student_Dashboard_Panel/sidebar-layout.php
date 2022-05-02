@@ -34,7 +34,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
           <li><a href="scholarship.php"><i class="fa-solid fa-graduation-cap"></i>Scholarship</a></li>
           <li><a href="verification.php"><i class="fas fa-check-circle"></i>Verification</a></li>
           <li><a href="status.php"><i class="fa-solid fa-flag"></i>Status</a></li>
-          <li><a href="../reset-password.php"><i class="fas fa-question-circle"></i>Reset Password</a></li>
+          <li><a href="reset-password.php"><i class="fas fa-question-circle"></i>Reset Password</a></li>
           <li><a href="contact.php"><i class="fas fa-phone-volume"></i>Contact</a></li>
           <li><a href="feedback.php"><i class="fas fa-comments"></i>Feedback</a></li>
           <!-- <li style="border-radius: 50%; widht: 25px; height: 25px;"><a href="feedback.php"><i class="fa-solid fa-power-off"></i></a></li> -->

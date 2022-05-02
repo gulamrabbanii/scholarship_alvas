@@ -52,7 +52,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                     <span class="link-name">Register Admin</span></a></li>';
                     }
                 ?>
-                <li><a href="../reset-password.php">
+                <li><a href="reset-password.php">
                     <i class="fa fa-undo"></i>
                     <span class="link-name">Reset Password</span>
                 </a></li>
