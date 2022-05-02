@@ -89,47 +89,79 @@ include("admin-layout.php")
                 </div>
 
                 <div class="col-md-12">
-                    <label for="elig-crit" class="form-label fw-bolder">Document Requirements (Select all that apply)</label>
-                    <div id="elig-crit">
+                    <label for="docs-req" class="form-label fw-bolder">Document Requirements (Select all that apply)</label>
+                    <div id="docs-req">
                         <div class="form-check form-switch">
                             <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
                             <label for="eligibility-criteria" class="form-check-label">Government ID Proof(eg. Aadhar Card, Driving License etc.)</label>
                         </div>
                         <div class="form-check form-switch">
                             <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-                            <label for="eligibility-criteria" class="form-check-label">Scholarship for SC/ST</label>
+                            <label for="eligibility-criteria" class="form-check-label">Domicile/Residential Certificate</label>
                         </div>
                         <div class="form-check form-switch">
                             <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-                            <label for="eligibility-criteria" class="form-check-label">Scholarship for Women</label>
+                            <label for="eligibility-criteria" class="form-check-label">Income Certificate issued from the Competent Authority</label>
                         </div>
                         <div class="form-check form-switch">
                             <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-                            <label for="eligibility-criteria" class="form-check-label">Community Service Scholarship</label>
+                            <label for="eligibility-criteria" class="form-check-label">PwD Certificate issued from the Competent Authority</label>
                         </div>
                         <div class="form-check form-switch">
                             <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-                            <label for="eligibility-criteria" class="form-check-label">Military Scholarship</label>
+                            <label for="eligibility-criteria" class="form-check-label">Bonafide Certificate</label>
                         </div>
                         <div class="form-check form-switch">
                             <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-                            <label for="eligibility-criteria" class="form-check-label">PwD(Person With Disability) Scholarship</label>
+                            <label for="eligibility-criteria" class="form-check-label">Caste Certificate</label>
                         </div>
                         <div class="form-check form-switch">
                             <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-                            <label for="eligibility-criteria" class="form-check-label">Athletic Scholarship</label>
+                            <label for="eligibility-criteria" class="form-check-label">Aadhar Card of Mother & Father/Guardian</label>
                         </div>
                         <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" role="switch" id="other-scholarship" onclick="scholarshipName()">
+                            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                            <label for="eligibility-criteria" class="form-check-label">Bank Passbook of Student(Aadhar Card should be link with Bank A/C)</label>
+                        </div>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                            <label for="eligibility-criteria" class="form-check-label">College Fee Receipt</label>
+                        </div>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                            <label for="eligibility-criteria" class="form-check-label">10<sup>th</sup> or 12<sup>th</sup>Marks Cards</label>
+                        </div>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                            <label for="eligibility-criteria" class="form-check-label">Previous 2 Semester Marks Card</label>
+                        </div>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                            <label for="eligibility-criteria" class="form-check-label">Copy of Admission Letter to Diploma/Degree Course</label>
+                        </div>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                            <label for="eligibility-criteria" class="form-check-label">Self Declaration Minority Certificate</label>
+                        </div>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                            <label for="eligibility-criteria" class="form-check-label">Student Photograph</label>
+                        </div>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" role="switch" id="other-doc" onclick="docName()">
                             <label for="eligibility-criteria" class="form-check-label">Something else not listed</label>
                         </div>
                         <div class="col-md-6 mt-5">
-                            <input type="text" id="sch-name" class="form-control" style="display:none" placeholder="SCHOLARSHIP NAME">      
+                            <input type="text" id="doc-name" class="form-control" style="display:none" placeholder="OTHER DOCUMENT NAME">      
                         </div>
                     </div>
                 </div>
+            <div class="col-md-6">
+                <label for="web-link" class="form-label fw-bolder">Link to the Website</label>
+                    <input type="text" name="web-link" class="form-control" id="web-link" placeholder="WEBSITE LINK" required />
+            </div>
                 
-            <div class="form-group">
+            <div class="form-group mt-5">
                 <input type="submit" class="btn btn-primary" value="Submit">
                 <a class="btn btn-danger" href="dashboard.php">Cancel</a>
             </div>
@@ -162,6 +194,22 @@ include("admin-layout.php")
     function scholarshipName() {
   // Get the checkbox
   var checkBox = document.getElementById("other-scholarship");
+  // Get the output text
+  var text = document.getElementById("doc-name");
+
+  // If the checkbox is checked, display the output text
+  if (checkBox.checked == true){
+    text.style.display = "block";
+  } else {
+    text.style.display = "none";
+  }
+}
+
+// Other Doc Name
+
+    function docName() {
+  // Get the checkbox
+  var checkBox = document.getElementById("other-doc");
   // Get the output text
   var text = document.getElementById("sch-name");
 
