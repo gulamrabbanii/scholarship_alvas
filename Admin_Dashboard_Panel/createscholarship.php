@@ -195,7 +195,7 @@ include("admin-layout.php")
   // Get the checkbox
   var checkBox = document.getElementById("other-scholarship");
   // Get the output text
-  var text = document.getElementById("doc-name");
+  var text = document.getElementById("sch-name");
 
   // If the checkbox is checked, display the output text
   if (checkBox.checked == true){
@@ -211,7 +211,7 @@ include("admin-layout.php")
   // Get the checkbox
   var checkBox = document.getElementById("other-doc");
   // Get the output text
-  var text = document.getElementById("sch-name");
+  var text = document.getElementById("doc-name");
 
   // If the checkbox is checked, display the output text
   if (checkBox.checked == true){
