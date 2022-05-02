@@ -10,10 +10,13 @@ $pattern = "/4(al)[0-9]{2}[A-Za-z]{2}[0-9]{3}/i";
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
  
+    $username = trim($_POST["username"]);
+    $username = strip_tags($username);
+    $username = htmlspecialchars($username);
     // Validate username
     if(empty(trim($_POST["username"]))){
         $username_err = "Please enter a username.";
-    } elseif(!preg_match($pattern, trim($_POST["username"]))){
+    } elseif(!preg_match($pattern, $username)){
         $username_err = "Username must be your USN No.";
     } else{
         // Prepare a select statement
@@ -24,7 +27,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $stmt->bind_param("s", $param_username);
             
             // Set parameters
-            $param_username = trim($_POST["username"]);
+            $param_username = $username;
             
             // Attempt to execute the prepared statement
             if($stmt->execute()){
@@ -34,7 +37,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 if($stmt->num_rows == 1){
                     $username_err = "This username is already taken.";
                 } else{
-                    $username = trim($_POST["username"]);
+	                $username = $username;
                 }
             } else{
                 echo "Oops! Something went wrong. Please try again later.";
@@ -52,6 +55,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $password_err = "Password must have atleast 6 characters.";
     } else{
         $password = trim($_POST["password"]);
+        $password = strip_tags($password);
+	    $password = htmlspecialchars($password);
     }
     
     // Validate confirm password
@@ -66,10 +71,24 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     // Setting variables to values
     $first_name = trim($_POST['f-name']);
+    $first_name = strip_tags($first_name);
+	$first_name = htmlspecialchars($first_name);
+
     $last_name = trim($_POST['l-name']);
+    $last_name = strip_tags($last_name);
+	$last_name = htmlspecialchars($last_name);
+
     $phone = trim($_POST['phone']);
+    $phone = strip_tags($phone);
+	$phone = htmlspecialchars($phone);
+
     $dept = trim($_POST['sel-branch']);
+    $dept = strip_tags($dept);
+	$dept = htmlspecialchars($dept);
+
     $year = trim($_POST['year']);
+    $dept = strip_tags($dept);
+	$dept = htmlspecialchars($dept);
     // Check input errors before inserting in database
     if(empty($username_err) && empty($password_err) && empty($confirm_password_err)){
         

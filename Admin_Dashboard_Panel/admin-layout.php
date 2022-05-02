@@ -46,12 +46,14 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                     <i class="uil uil-thumbs-up"></i>
                     <span class="link-name">Verification</span>
                 </a></li>
-                <li><a href="register.php">
+                <?php if ($_SESSION["username"] == "admin"){ 
+                    echo '<li><a href="register.php">
                     <i class="fa fa-user-plus" aria-hidden="true"></i>
-                    <span class="link-name">Register Admin</span>
-                </a></li>
+                    <span class="link-name">Register Admin</span></a></li>';
+                    }
+                ?>
                 <li><a href="../reset-password.php">
-                    <i class="uil uil-share"></i>
+                    <i class="fa fa-undo"></i>
                     <span class="link-name">Reset Password</span>
                 </a></li>
             </ul>

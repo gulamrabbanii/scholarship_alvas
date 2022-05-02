@@ -2,7 +2,6 @@
 <?php
 // Include config file
 require_once "../db/config.php";
-
 include("admin-layout.php");
 
  
@@ -13,6 +12,9 @@ $email = "^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$^
 
 // '/^[a-zA-Z0-9_]+$/'
 // Processing form data when form is submitted
+if ($_SESSION['username'] != "admin") {
+    header("location: dashboard.php");
+}  
 if($_SERVER["REQUEST_METHOD"] == "POST"){
  
     // Validate username
@@ -40,6 +42,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     $username_err = "This username is already taken.";
                 } else{
                     $username = trim($_POST["username"]);
+                    $username = strip_tags($username);
+	                $username = htmlspecialchars($username);
                 }
             } else{
                 echo "Oops! Something went wrong. Please try again later.";
@@ -57,6 +61,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $password_err = "Password must have atleast 6 characters.";
     } else{
         $password = trim($_POST["password"]);
+        $password = strip_tags($password);
+	    $password = htmlspecialchars($password);
     }
     
     // Validate confirm password
@@ -71,8 +77,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     // Setting variables to values
     $first_name = trim($_POST['f-name']);
+    $first_name = strip_tags($first_name);
+	$first_name = htmlspecialchars($first_name);
+
     $last_name = trim($_POST['l-name']);
+    $last_name = strip_tags($last_name);
+	$last_name = htmlspecialchars($last_name);
+    
     $phone = trim($_POST['phone']);
+    $phone = strip_tags($phone);
+	$phone = htmlspecialchars($phone);
     // Check input errors before inserting in database
     if(empty($username_err) && empty($password_err) && empty($confirm_password_err)){
         
