@@ -97,7 +97,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
          
         if($stmt = $link->prepare($sql)){
             // Bind variables to the prepared statement as parameters
-            $stmt->bind_param("sssss", $param_username, $param_password, $param_f_name, $param_l_name, $param_dept, $param_year, $param_phone);
+            $stmt->bind_param("sssssss", $param_username, $param_password, $param_f_name, $param_l_name, $param_dept, $param_year, $param_phone);
             
             // Set parameters
             $param_username = $username;
