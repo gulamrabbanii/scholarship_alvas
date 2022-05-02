@@ -38,13 +38,14 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                     <i class="uil uil-files-landscapes"></i>
                     <span class="link-name">Add Scholarship</span>
                 </a></li>
-                <li><a href="studentdetails.php">
-                    <i class="uil uil-chart"></i>
-                    <span class="link-name">Students Details</span>
-                </a></li>
+                
                 <li><a href="verification.php">
                     <i class="uil uil-thumbs-up"></i>
                     <span class="link-name">Verification</span>
+                </a></li>
+                <li><a href="view-scholarships.php">
+                    <i class="uil uil-chart"></i>
+                    <span class="link-name">View scholarships</span>
                 </a></li>
                 <?php if ($_SESSION["username"] == "admin"){ 
                     echo '<li><a href="register.php">
