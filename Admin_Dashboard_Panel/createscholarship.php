@@ -35,16 +35,17 @@ include("admin-layout.php")
                     <label class="form-check-label" for="c-govt">Central Government</label>
                 </div> 
                 <div class="form-check">
-                    <input class="form-check-input" name="s-type" type="radio" id="s-govt" onclick="stateName()">
-                    <label class="form-check-label" for="s-govt">State Government</label>
-                </div>   
-                <div class="col-md-6 mt-5">
-                    <input type="text" id="state" class="form-control" style="display:none" placeholder="STATE NAME">      
+                    <input class="form-check-input" name="s-type" type="radio" id="k-govt">
+                    <label class="form-check-label" for="k-govt">Karnataka</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" name="s-type" type="radio" id="o-govt">
+                    <label class="form-check-label" for="o-govt">Other State</label>
                 </div>    
                </div>
             </div>
                 <div class="col-md-6">
-                <label for="app-deadline" class="form-label fw-bolder">Application Deadline</label>
+                <label for="app-deadline" class="form-label fw-bolder mt-5">Application Deadline</label>
                     <input type="date" name="app-deadline" class="form-control" id="app-deadline" placeholder="LAST DATE TO APPLY" required />
                 </div>
                 <div class="col-md-12">
@@ -83,7 +84,7 @@ include("admin-layout.php")
                             <label for="eligibility-criteria" class="form-check-label">Something else not listed</label>
                         </div>
                         <div class="col-md-6 mt-5">
-                            <input type="text" id="sch-name" class="form-control" style="display:none" placeholder="SCHOLARSHIP NAME">      
+                            <input type="text" id="sch-name" class="form-control" style="display:none" placeholder="OTHER ELIGIBILITY REQUIREMENT">      
                         </div>
                     </div>
                 </div>
@@ -173,21 +174,6 @@ include("admin-layout.php")
 
 <!-- Java Script Links -->
 <script>
-
-// State Name
-    function stateName() {
-  // Get the checkbox
-  var checkBox = document.getElementById("s-govt");
-  // Get the output text
-  var text = document.getElementById("state");
-
-  // If the checkbox is checked, display the output text
-  if (checkBox.checked == true){
-    text.style.display = "block";
-  } else {
-    text.style.display = "none";
-  }
-} 
 
 // Other Scholarship Name
 
