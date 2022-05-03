@@ -41,11 +41,15 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                 
                 <li><a href="verification.php">
                     <i class="uil uil-thumbs-up"></i>
-                    <span class="link-name">Verification</span>
+                    <span class="link-name">Verify Docs</span>
                 </a></li>
                 <li><a href="view-scholarships.php">
                     <i class="uil uil-chart"></i>
                     <span class="link-name">View scholarships</span>
+                </a></li>
+                <li><a href="notify.php">
+                    <i class="uil uil-chart"></i>
+                    <span class="link-name">Notify</span>
                 </a></li>
                 <?php if ($_SESSION["username"] == "admin"){ 
                     echo '<li><a href="register.php">

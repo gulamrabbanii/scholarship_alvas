@@ -7,7 +7,7 @@ include("admin-layout.php")
             <div class="overview">
                 <div class="title">
                     <i class="uil uil-tachometer-fast-alt"></i>
-                    <span class="text">Verification</span>
+                    <span class="text">Verify Uploaded Documents</span>
                 </div>
     
 <!-- Add contents here -->

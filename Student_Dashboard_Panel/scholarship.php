@@ -157,6 +157,7 @@ include("sidebar-layout.php");
   <div class="btn-group" role="group" aria-label="Basic outlined example">
     <button type="button" class="btn btn-outline-primary" onclick="window.location.href = '#';">NATIONAL</button>
     <button type="button" class="btn btn-outline-primary" onclick="window.location.href = '#';">KARNATAKA</button>
+    <button type="button" class="btn btn-outline-primary" onclick="window.location.href = '#';">OTHERS STATE</button>
 </div>
     </div>
 
