@@ -18,9 +18,7 @@ $username_err = $password_err = $login_err = "";
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
-    $username = trim($_POST["username"]);
-    $username = strip_tags($username);
-    $username = htmlspecialchars($username);
+    $username = htmlspecialchars(strip_tags(trim($_POST["username"])));
     // Check if username is empty
     if(empty($username)){
         $username_err = "Please enter username.";
@@ -29,9 +27,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }
     
     // Check if password is empty
-    $password = trim($_POST["password"]);
-    $password = strip_tags($password);
-	$password = htmlspecialchars($password);
+    $password = htmlspecialchars(strip_tags(trim($_POST["password"])));
+    
     if(empty($password)){
         $password_err = "Please enter your password.";
     } else{

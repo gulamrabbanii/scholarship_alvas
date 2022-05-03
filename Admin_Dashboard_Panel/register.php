@@ -15,12 +15,15 @@ $email = "^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$^
 if ($_SESSION['username'] != "admin") {
     header("location: dashboard.php");
 }  
+
 if($_SERVER["REQUEST_METHOD"] == "POST"){
- 
+
     // Validate username
-    if(empty(trim($_POST["username"]))){
+    $username = htmlspecialchars(strip_tags(trim($_POST["username"])));
+ 
+    if(empty($username)){
         $username_err = "Please enter a username.";
-    } elseif(!preg_match($email, trim($_POST["username"]))){
+    } elseif(!preg_match($email, $username)){
         $username_err = "Username can only contain letters, numbers, and underscores.";
     } else{
         // Prepare a select statement
@@ -31,7 +34,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $stmt->bind_param("s", $param_username);
             
             // Set parameters
-            $param_username = trim($_POST["username"]);
+            $param_username = $username;
             
             // Attempt to execute the prepared statement
             if($stmt->execute()){
@@ -41,9 +44,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 if($stmt->num_rows == 1){
                     $username_err = "This username is already taken.";
                 } else{
-                    $username = trim($_POST["username"]);
-                    $username = strip_tags($username);
-	                $username = htmlspecialchars($username);
+                    $username = $username;
                 }
             } else{
                 echo "Oops! Something went wrong. Please try again later.";
@@ -55,38 +56,32 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }
     
     // Validate password
-    if(empty(trim($_POST["password"]))){
+    $password = htmlspecialchars(strip_tags(trim($_POST["password"])));
+
+    if(empty($password)){
         $password_err = "Please enter a password.";     
-    } elseif(strlen(trim($_POST["password"])) < 6){
+    } elseif(strlen($password) < 6){
         $password_err = "Password must have atleast 6 characters.";
     } else{
-        $password = trim($_POST["password"]);
-        $password = strip_tags($password);
-	    $password = htmlspecialchars($password);
+
     }
     
     // Validate confirm password
-    if(empty(trim($_POST["cfpassword"]))){
+    $confirm_password = htmlspecialchars(strip_tags(trim($_POST["cfpassword"])));
+
+    if(empty($confirm_password)){
         $confirm_password_err = "Please confirm password.";     
     } else{
-        $confirm_password = trim($_POST["cfpassword"]);
+        $confirm_password = $confirm_password;
         if(empty($password_err) && ($password != $confirm_password)){
             $confirm_password_err = "Password did not match.";
         }
     }
 
     // Setting variables to values
-    $first_name = trim($_POST['f-name']);
-    $first_name = strip_tags($first_name);
-	$first_name = htmlspecialchars($first_name);
-
-    $last_name = trim($_POST['l-name']);
-    $last_name = strip_tags($last_name);
-	$last_name = htmlspecialchars($last_name);
-    
-    $phone = trim($_POST['phone']);
-    $phone = strip_tags($phone);
-	$phone = htmlspecialchars($phone);
+    $first_name = htmlspecialchars(strip_tags(trim($_POST["f-name"])));
+    $last_name = htmlspecialchars(strip_tags(trim($_POST["l-name"])));
+    $phone = htmlspecialchars(strip_tags(trim($_POST["phone"])));
     // Check input errors before inserting in database
     if(empty($username_err) && empty($password_err) && empty($confirm_password_err)){
         
