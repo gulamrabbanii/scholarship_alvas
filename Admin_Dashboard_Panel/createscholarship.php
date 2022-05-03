@@ -19,6 +19,10 @@ include("admin-layout.php")
                 <label for="scholarship-provider" class="form-label fw-bolder">Scholarship Provider</label>
                     <input type="text" name="provider-name" class="form-control" id="scholarship-provider" placeholder="SCHOLARSHIP PROVIDER NAME" required />
                 </div>
+                <div class="col-md-6 mt-5">
+                <label for="scholarship-year" class="form-label fw-bolder">Scholarship Academic Year</label>
+                    <input type="text" name="s-year" class="form-control" id="scholarship-year" placeholder="eg. 2022-23" pattern="[0-9]{4}-[0-9]{2}" equired />
+                </div>
             <div class="col-md-12">
                 <label for="scholarship-type" class="form-label fw-bolder mt-5">Choose Provider Type</label>
                <div id="scholarship-type">
