@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 01, 2022 at 08:15 PM
+-- Generation Time: May 04, 2022 at 08:45 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.1
 
@@ -20,6 +20,86 @@ SET time_zone = "+00:00";
 --
 -- Database: `scholarship_alvas`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `doc_req`
+--
+
+CREATE TABLE `doc_req` (
+  `sch_name` varchar(255) DEFAULT NULL,
+  `govt_id` varchar(255) DEFAULT NULL,
+  `domicile` varchar(255) DEFAULT NULL,
+  `income` varchar(255) DEFAULT NULL,
+  `pwd` varchar(255) DEFAULT NULL,
+  `bonafide` varchar(255) DEFAULT NULL,
+  `caste` varchar(255) DEFAULT NULL,
+  `parent_aadhar` varchar(255) DEFAULT NULL,
+  `bank_passbook` varchar(255) DEFAULT NULL,
+  `college_fee` varchar(255) DEFAULT NULL,
+  `sslc_puc` varchar(255) DEFAULT NULL,
+  `sem` varchar(255) DEFAULT NULL,
+  `diploma` varchar(255) DEFAULT NULL,
+  `self_dec` varchar(255) DEFAULT NULL,
+  `other_cert` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `doc_req`
+--
+
+INSERT INTO `doc_req` (`sch_name`, `govt_id`, `domicile`, `income`, `pwd`, `bonafide`, `caste`, `parent_aadhar`, `bank_passbook`, `college_fee`, `sslc_puc`, `sem`, `diploma`, `self_dec`, `other_cert`) VALUES
+('National Scholarship', 'Government ID Proof(eg. Aadhar Card, Driving License etc.)', '', '', '', 'Bonafide Certificate', 'Caste Certificate', '', 'Bank Passbook of Student(Aadhar Card should be link with Bank A/C)', 'College Fee Receipt', '', 'Previous 2 Semester Marks Card', '', 'Self Declaration Minority Certificate', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `elig_req`
+--
+
+CREATE TABLE `elig_req` (
+  `sch_name` varchar(255) DEFAULT NULL,
+  `minority` varchar(255) DEFAULT NULL,
+  `sc_st` varchar(255) DEFAULT NULL,
+  `girls` varchar(255) DEFAULT NULL,
+  `community` varchar(255) DEFAULT NULL,
+  `military` varchar(255) DEFAULT NULL,
+  `pwd` varchar(255) DEFAULT NULL,
+  `athletic` varchar(255) DEFAULT NULL,
+  `other_sch` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `elig_req`
+--
+
+INSERT INTO `elig_req` (`sch_name`, `minority`, `sc_st`, `girls`, `community`, `military`, `pwd`, `athletic`, `other_sch`) VALUES
+('National Scholarship', 'Scholarship for Minorities(SC/ST/OBC)', '', '', '', '', '', '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `scholarship_details`
+--
+
+CREATE TABLE `scholarship_details` (
+  `id` int(11) NOT NULL,
+  `sch_name` varchar(255) DEFAULT NULL,
+  `sch_provider` varchar(255) DEFAULT NULL,
+  `sch_academic_year` varchar(255) DEFAULT NULL,
+  `sch_type` varchar(255) DEFAULT NULL,
+  `sch_deadline` date DEFAULT NULL,
+  `sch_mode` varchar(50) DEFAULT NULL,
+  `sch_link` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `scholarship_details`
+--
+
+INSERT INTO `scholarship_details` (`id`, `sch_name`, `sch_provider`, `sch_academic_year`, `sch_type`, `sch_deadline`, `sch_mode`, `sch_link`) VALUES
+(5, 'National Scholarship', 'Central Government', '2022-23', 'Central Government', '2022-05-28', 'Both', 'https://scholarships.gov.in/fresh/schemeSelRegfrmInstruction');
 
 -- --------------------------------------------------------
 
@@ -44,12 +124,33 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `passwd`, `first_name`, `last_name`, `dept`, `year`, `phone`, `created_at`) VALUES
-(9, '4al18cs099', '$2y$10$3b74M66hIQP2h2gDkMZox.Prf84cWTXavbmo41qz54qb1lyzUJ/UW', 'ijaz', 'ibrahim', 'INFORMATION TECHNOLOGY ENGG', 4, 1594562580, '0000-00-00 00:00:00'),
-(10, 'admin@admin.com', '$2y$10$eKZbj4xwL.9HFS9/GZ0R9O2VegaK/mYVK9.6MaMzU/O78zckkY92a', 'Gulam', 'Rabbani', '', 0, 2147483647, '0000-00-00 00:00:00');
+(9, '4al18cs099', '$2y$10$MNkATxHXwrGV7FUkmEXgUuwQqAWRFPwcGBs2.5YSVF9asniY35y42', 'ijaz', 'ibrahim', 'INFORMATION TECHNOLOGY ENGG', 4, 1594562580, '2022-05-02 01:34:36'),
+(10, 'admin', '$2y$10$eKZbj4xwL.9HFS9/GZ0R9O2VegaK/mYVK9.6MaMzU/O78zckkY92a', 'Gulam', 'Rabbani', '', 0, 2147483647, '2022-05-01 23:25:56'),
+(11, 'admin@admin.com', '$2y$10$AK.IMWMsH0JGX8tXmkmW8ebHkyJLv1zpB0VoWrY9zEE0fSOBoB9qW', 'Scholarship', 'Section', '', 0, 2147483647, '2022-05-02 01:35:53'),
+(13, '4al18cs026', '$2y$10$PsHAdIlm0nurm.0aEoneeOniFqq3hqPxQHDk.7Zcab7Gq5KgeBiIC', 'Ijaz', 'Ibrahim', 'COMPUTER SCIENCE &amp;amp; ENGG', 3, 2147483647, '2022-05-03 06:58:25');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `doc_req`
+--
+ALTER TABLE `doc_req`
+  ADD KEY `sch_name` (`sch_name`);
+
+--
+-- Indexes for table `elig_req`
+--
+ALTER TABLE `elig_req`
+  ADD KEY `sch_name` (`sch_name`);
+
+--
+-- Indexes for table `scholarship_details`
+--
+ALTER TABLE `scholarship_details`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `sch_name` (`sch_name`);
 
 --
 -- Indexes for table `users`
@@ -62,10 +163,32 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `scholarship_details`
+--
+ALTER TABLE `scholarship_details`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `doc_req`
+--
+ALTER TABLE `doc_req`
+  ADD CONSTRAINT `doc_req_ibfk_1` FOREIGN KEY (`sch_name`) REFERENCES `scholarship_details` (`sch_name`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `elig_req`
+--
+ALTER TABLE `elig_req`
+  ADD CONSTRAINT `elig_req_ibfk_1` FOREIGN KEY (`sch_name`) REFERENCES `scholarship_details` (`sch_name`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -5,6 +5,7 @@ include("admin-layout.php");
 
 // Define variables and initialize with empty values
 $sch_name_err = $provider_err = $sch_year_err = "";
+$global_err = "";
 
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -12,18 +13,19 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Define variables and initialize with values
     $sch_name = htmlspecialchars(strip_tags(trim($_POST["s-name"])));
     $p_name = htmlspecialchars(strip_tags(trim($_POST["p-name"])));
-    $s_year = htmlspecialchars(strip_tags(trim($_POST["s-year"])));
+    $sch_academic_year = htmlspecialchars(strip_tags(trim($_POST["s-year"])));
     $s_type = htmlspecialchars(strip_tags(trim($_POST["s-type"])));
     $deadline_date = htmlspecialchars(strip_tags(trim($_POST["app-deadline"])));
     $date = date("Y-m-d", strtotime($deadline_date));
     $minority = htmlspecialchars(strip_tags(trim($_POST["minority"])));
     $sc_st = htmlspecialchars(strip_tags(trim($_POST["sc-st"])));
-    $s_girls = htmlspecialchars(strip_tags(trim($_POST["s-girls"])));
-    $c_service = htmlspecialchars(strip_tags(trim($_POST["c-service"])));
-    $m_scholarship = htmlspecialchars(strip_tags(trim($_POST["m-scholarship"])));
+    $s_girls = htmlspecialchars(strip_tags(trim($_POST["s_girls"])));
+    $c_service = htmlspecialchars(strip_tags(trim($_POST["c_service"])));
+    $m_scholarship = htmlspecialchars(strip_tags(trim($_POST["m_scholarship"])));
     $s_pwd = htmlspecialchars(strip_tags(trim($_POST["s-pwd"])));
     $athletics = htmlspecialchars(strip_tags(trim($_POST["athletics"])));
-    $sch_name = htmlspecialchars(strip_tags(trim($_POST["sch-name"])));
+    $other_sch = htmlspecialchars(strip_tags(trim($_POST["sch-name"])));
+    $govt_id = htmlspecialchars(strip_tags(trim($_POST["govt-id"])));
     $resident_cert = htmlspecialchars(strip_tags(trim($_POST["resident-cert"])));
     $income_cert = htmlspecialchars(strip_tags(trim($_POST["income-cert"])));
     $pwd_cert = htmlspecialchars(strip_tags(trim($_POST["pwd-cert"])));
@@ -38,23 +40,22 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $self_declaration = htmlspecialchars(strip_tags(trim($_POST["self-decl"])));
     $student_photo = htmlspecialchars(strip_tags(trim($_POST["s-photo"])));
     $other_doc = htmlspecialchars(strip_tags(trim($_POST["doc-name"])));
+    $sch_mode = htmlspecialchars(strip_tags(trim($_POST["s-mode"])));
     $website_link = htmlspecialchars(strip_tags(trim($_POST["web-link"])));
     
-    // Validate username
-    if(empty(trim($_POST["username"]))){
-        $username_err = "Please enter a username.";
-    } elseif(!preg_match($email, trim($_POST["username"]))){
-        $username_err = "Username can only contain letters, numbers, and underscores.";
+    // Validate scholarship name
+    if(empty($sch_name)){
+        $sch_name_err = "Please enter scholarship name.";
     } else{
         // Prepare a select statement
-        $sql = "SELECT id FROM users WHERE username = ?";
+        $sql = "SELECT id FROM scholarship_details WHERE sch_name = ?";
         
         if($stmt = $link->prepare($sql)){
             // Bind variables to the prepared statement as parameters
-            $stmt->bind_param("s", $param_username);
+            $stmt->bind_param("s", $param_sch_name);
             
             // Set parameters
-            $param_username = trim($_POST["username"]);
+            $param_sch_name = $sch_name;
             
             // Attempt to execute the prepared statement
             if($stmt->execute()){
@@ -62,11 +63,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 $stmt->store_result();
                 
                 if($stmt->num_rows == 1){
-                    $username_err = "This username is already taken.";
+                    $username_err = "This scholarship already exists.";
                 } else{
-                    $username = trim($_POST["username"]);
-                    $username = strip_tags($username);
-	                $username = htmlspecialchars($username);
+                    $sch_name = $sch_name;
                 }
             } else{
                 echo "Oops! Something went wrong. Please try again later.";
@@ -77,55 +76,102 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         }
     }
     
-    // Validate password
-    if(empty(trim($_POST["password"]))){
-        $password_err = "Please enter a password.";     
-    } elseif(strlen(trim($_POST["password"])) < 6){
-        $password_err = "Password must have atleast 6 characters.";
-    } else{
-        $password = trim($_POST["password"]);
+    // Validate provider name
+    if(empty($date)){
+        $provider_err = "Please enter the provider name.";     
+    }  else{
+        $p_name = $p_name;
     }
     
-    // Validate confirm password
-    if(empty(trim($_POST["cfpassword"]))){
-        $confirm_password_err = "Please confirm password.";     
-    } else{
-        $confirm_password = trim($_POST["cfpassword"]);
-        if(empty($password_err) && ($password != $confirm_password)){
-            $confirm_password_err = "Password did not match.";
-        }
+    if(empty($sch_academic_year)){
+        $sch_year_err = "Please enter academic year for scholarship.";     
+    }  else{
+        $sch_academic_year = $sch_academic_year;
     }
 
     // Check input errors before inserting in database
-    if(empty($username_err) && empty($password_err) && empty($confirm_password_err)){
+    if(empty($sch_name_err) && empty($provider_err) && empty($sch_year_err) && !empty($s_type) && !empty($date)){
         
         // Prepare an insert statement
-        $sql = "INSERT INTO users (username, passwd, first_name, last_name, phone) VALUES (?, ?, ?, ?, ?)";
+        $sch_details_insert = "INSERT INTO scholarship_details (sch_name, sch_provider, sch_academic_year, sch_type, sch_deadline, sch_mode, sch_link) VALUES (?, ?, ?, ?, ?, ?, ?)";
+
+        $elig_req_insert = "INSERT INTO elig_req (sch_name, minority, sc_st, girls, community, military, pwd, athletic, other_sch) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+        $doc_req_insert = "INSERT INTO doc_req (sch_name, govt_id, domicile, income, pwd, bonafide, caste, parent_aadhar, bank_passbook, college_fee, sslc_puc, sem, diploma, self_dec, other_cert) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
          
-        if($stmt = $link->prepare($sql)){
+        if($stmt = $link->prepare($sch_details_insert)){
+            
             // Bind variables to the prepared statement as parameters
-            $stmt->bind_param("sssss", $param_username, $param_password, $param_f_name, $param_l_name, $param_phone);
+            $stmt->bind_param("sssssss", $param_sch_name, $param_p_name, $param_academic_year, $param_sch_type, $param_deadline,$param_sch_mode ,$param_link);
             
             // Set parameters
-            $param_username = $username;
-            $param_password = password_hash($password, PASSWORD_DEFAULT); // Creates a password hash
-            $param_f_name = $first_name;
-            $param_l_name = $last_name;
-            $param_phone = $phone;
+            $param_sch_name = $sch_name;
+            $param_p_name = $p_name;
+            $param_academic_year = $sch_academic_year;
+            $param_sch_type = $s_type;
+            $param_deadline = $date;
+            $param_link = $website_link;
+            $param_sch_mode = $sch_mode;
             
             // Attempt to execute the prepared statement
-            if($stmt->execute()){
-                // Redirect to login page
-                header("location: dashboard.php");
-            } else{
-                echo "Oops! Something went wrong. Please try again later.";
-            }
+            $stmt->execute();
+            // Close statement
+            $stmt->close();
+        }
+
+        if($stmt = $link->prepare($elig_req_insert)){
+            
+            // Bind variables to the prepared statement as parameters
+            $stmt->bind_param("sssssssss", $param_sch_name, $param_minority, $param_sc_st, $param_sch_girls, $param_c_service, $param_m_scholarship, $param_s_pwd, $param_athletics, $param_other_sch);
+
+            // Set parameters
+            $param_sch_name = $sch_name;
+            $param_minority = $minority;
+            $param_sc_st = $sc_st;
+            $param_sch_girls = $s_girls;
+            $param_c_service = $c_service;
+            $param_m_scholarship = $m_scholarship;
+            $param_s_pwd = $s_pwd;
+            $param_athletics = $athletics;
+            $param_other_sch = $other_sch;            
+            
+            // Attempt to execute the prepared statement
+            $stmt->execute();
+            // Close statement
+            $stmt->close();
+        }
+
+        if($stmt = $link->prepare($doc_req_insert)){
+            
+            // Bind variables to the prepared statement as parameters
+            $stmt->bind_param("sssssssssssssss", $param_sch_name, $param_govt_id, $param_resident_cert, $param_income_cert, $param_pwd_cert, $param_bonafide_cert, $param_caste_cert, $param_parent_aadhar, $param_bank_passbook, $param_fee_receipt, $param_sslc_puc, $param_sem_marks, $param_diploma_cert, $param_self, $param_other_doc);
+            
+            // Set parameters
+            $param_sch_name = $sch_name;
+            $param_resident_cert = $resident_cert;
+            $param_income_cert = $income_cert;
+            $param_pwd_cert = $pwd_cert;
+            $param_bonafide_cert = $bonafide_cert;
+            $param_caste_cert = $caste_cert;
+            $param_parent_aadhar = $parent_aadhar;
+            $param_bank_passbook = $bank_passbook;
+            $param_fee_receipt = $fee_receipt;
+            $param_sslc_puc = $sslc_puc_marks;
+            $param_sem_marks = $sem_marks;
+            $param_diploma_cert = $diploma_cert;
+            $param_self = $self_declaration;
+            $param_photography = $student_photo;
+            $param_other_doc = $other_doc;
+            $param_sch_mode = $sch_mode;
+            $param_govt_id = $govt_id;
+            
+            // Attempt to execute the prepared statement
+            $stmt->execute();
 
             // Close statement
             $stmt->close();
         }
     }
-    
     // Close connection
     $link->close();
 }
@@ -193,15 +239,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             <label for="sc-st" class="form-check-label">Scholarship for SC/ST only</label>
                         </div>
                         <div class="form-check form-switch">
-                            <input class="form-check-input" name="s-girls" value="Scholarship for Girls" type="checkbox" role="switch" id="s-girls">
+                            <input class="form-check-input" name="s_girls" value="Scholarship for Girls" type="checkbox" role="switch" id="s-girls">
                             <label for="s-girls" class="form-check-label">Scholarship for Girls</label>
                         </div>
                         <div class="form-check form-switch">
-                            <input class="form-check-input" name="c-service" value="Community Service Scholarship" type="checkbox" role="switch" id="c-service">
+                            <input class="form-check-input" name="c_service" value="Community Service Scholarship" type="checkbox" role="switch" id="c-service">
                             <label for="c-service" class="form-check-label">Community Service Scholarship</label>
                         </div>
                         <div class="form-check form-switch">
-                            <input class="form-check-input" name="m-scholarship" value="Military Scholarship" type="checkbox" role="switch" id="m-scholarship">
+                            <input class="form-check-input" name="m_scholarship" value="Military Scholarship" type="checkbox" role="switch" id="m-scholarship">
                             <label for="m-scholarship" class="form-check-label">Military Scholarship</label>
                         </div>
                         <div class="form-check form-switch">
@@ -290,8 +336,26 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         </div>
                     </div>
                 </div>
+            <div class="col-md-12">
+                <label for="sch-mode" class="form-label fw-bolder">Scholarship Mode</label>
+                <div id="sch-mode">
+                    <div class="form-check">
+                        <input class="form-check-input" value="Offline" name="s-mode" type="radio" id="offline">
+                        <label class="form-check-label" for="offline">Offline</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" value="Online" name="s-mode" type="radio" id="online">
+                        <label class="form-check-label" for="online">Online</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" value="Both" name="s-mode" type="radio" id="both">
+                        <label class="form-check-label" for="both">Both</label>
+                    </div>
+                </div>
+            </div>        
+
             <div class="col-md-6">
-                <label for="web-link" class="form-label fw-bolder">Link to the Website</label>
+                <label for="web-link" class="form-label fw-bolder">Link to the Website, if any</label>
                     <input type="text" name="web-link" class="form-control" id="web-link" placeholder="WEBSITE LINK" required />
             </div>
                 
