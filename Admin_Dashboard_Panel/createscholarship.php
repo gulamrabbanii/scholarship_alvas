@@ -360,7 +360,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             </div>
                 
             <div class="form-group mt-5">
-                <input type="submit" class="btn btn-primary" value="Submit">
+                <input type="submit" class="btn btn-primary" value="Create">
                 <a class="btn btn-danger" href="dashboard.php">Cancel</a>
             </div>
         </form>
@@ -373,7 +373,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <script>
 
 // Other Scholarship Name
-
     function scholarshipName() {
   // Get the checkbox
   var checkBox = document.getElementById("other-scholarship");
