@@ -65,7 +65,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 $stmt->store_result();
                 
                 if($stmt->num_rows == 1){
-                    $sch_name_err = "This scholarship already exists.";
+                    echo "<script>alert('This scholarship already exists.')</script>";
+                    header("Refresh:0 , url =  createscholarship.php");
+                    exit();
                 } else{
                     $sch_name = $sch_name;
                 }
@@ -161,7 +163,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $param_other_cert = $doc_name;
             
             // Attempt to execute the prepared statement
-            $stmt->execute();
+            if($stmt->execute()){
+                // Redirect to login page
+                header("location: view-scholarships.php");
+            } else{
+                echo "Oops! Something went wrong. Please try again later.";
+            }
             // Close statement
             $stmt->close();
         }
@@ -183,7 +190,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" class="row g-3">
             <div class="col-md-6">
                 <label for="scholarship-name" class="form-label fw-bolder">Scholarship Name</label>
-                    <input type="text" name="sch-name" class="form-control <?php echo (!empty($sch_name_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $sch_name; ?>" id="scholarship-name" placeholder="SCHOLARSHIP NAME" />
+                    <input type="text" name="sch-name" class="form-control" value="<?php echo $sch_name; ?>" id="scholarship-name" placeholder="SCHOLARSHIP NAME" required />
             </div>
                 <div class="col-md-6">
                 <label for="scholarship-provider" class="form-label fw-bolder">Scholarship Provider</label>
