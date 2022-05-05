@@ -163,16 +163,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $param_other_cert = $doc_name;
             
             // Attempt to execute the prepared statement
-            if($stmt->execute()){
-                // Redirect to login page
-                header("location: view-scholarships.php");
-            } else{
-                echo "Oops! Something went wrong. Please try again later.";
-            }
+            $stmt->execute();
             // Close statement
             $stmt->close();
         }
     }
+    header("Refresh:0 , url =  view-scholarships.php");
 
     // Close connection
     $link->close();
