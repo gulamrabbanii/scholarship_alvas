@@ -2,10 +2,11 @@
 // Include config file
 require_once "../db/config.php";
 include("admin-layout.php");
+error_reporting(E_ALL & ~E_WARNING  & ~E_NOTICE & ~E_STRICT & ~E_DEPRECATED); 
 
- 
+
 // Define variables and initialize with empty values
-$username = $password = $confirm_password = "";
+$sch_name_err = $provider_err = $academic_year_err = "";
 
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -44,7 +45,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $website_link = htmlspecialchars(strip_tags(trim($_POST["web-link"])));
     
     
-    // Validate username
+    // Validate scholarship name
     if(empty($sch_name)){
         $sch_name_err = "Please enter scholarship name.";
     } else{
@@ -77,7 +78,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         }
     }
     
-    // Validate password
     if(empty($provider_name)){
         $provider_err = "Please enter sholarship provider name.";     
     } else{
@@ -166,7 +166,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $stmt->close();
         }
     }
-    
+
     // Close connection
     $link->close();
 }
