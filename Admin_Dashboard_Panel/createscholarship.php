@@ -3,28 +3,28 @@
 require_once "../db/config.php";
 include("admin-layout.php");
 
+ 
 // Define variables and initialize with empty values
-$sch_name_err = $provider_err = $sch_year_err = "";
+$username = $password = $confirm_password = "";
 
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
-    
-    // {{ $array['key'] or 'Default' }};
-    // Define variables and initialize with values
-    $sch_name = htmlspecialchars(strip_tags(trim($_POST["s-name"])));
-    $p_name = htmlspecialchars(strip_tags(trim($_POST["p-name"])));
-    $sch_academic_year = htmlspecialchars(strip_tags(trim($_POST["s-year"])));
-    $s_type = htmlspecialchars(strip_tags(trim($_POST["s-type"])));
-    $deadline_date = htmlspecialchars(strip_tags(trim($_POST["app-deadline"])));
-    $date = date("Y-m-d", strtotime($deadline_date));
+
+    // Setting variables to values
+    $sch_name = htmlspecialchars(strip_tags(trim($_POST["sch-name"])));
+    $provider_name = htmlspecialchars(strip_tags(trim($_POST["provider-name"])));
+    $sch_academic_year = htmlspecialchars(strip_tags(trim($_POST["sch-acad-year"])));
+    $sch_type = htmlspecialchars(strip_tags(trim($_POST["sch-type"])));
+    $sch_deadline = htmlspecialchars(strip_tags(trim($_POST["sch-deadline"])));
+    $deadline_date = date("Y-m-d", strtotime($sch_deadline));
     $minority = htmlspecialchars(strip_tags(trim($_POST["minority"])));
     $sc_st = htmlspecialchars(strip_tags(trim($_POST["sc-st"])));
-    $s_girls = htmlspecialchars(strip_tags(trim($_POST["s_girls"])));
-    $c_service = htmlspecialchars(strip_tags(trim($_POST["c_service"])));
-    $m_scholarship = htmlspecialchars(strip_tags(trim($_POST["m_scholarship"])));
-    $s_pwd = htmlspecialchars(strip_tags(trim($_POST["s-pwd"])));
-    $athletics = htmlspecialchars(strip_tags(trim($_POST["athletics"])));
-    $other_sch = htmlspecialchars(strip_tags(trim($_POST["sch-name"])));
+    $sch_girls = htmlspecialchars(strip_tags(trim($_POST["sch-girls"])));
+    $sch_service = htmlspecialchars(strip_tags(trim($_POST["sch-service"])));
+    $sch_military = htmlspecialchars(strip_tags(trim($_POST["sch-military"])));
+    $sch_pwd = htmlspecialchars(strip_tags(trim($_POST["sch-pwd"])));
+    $sch_athletics = htmlspecialchars(strip_tags(trim($_POST["sch-athletics"])));
+    $other_sch = htmlspecialchars(strip_tags(trim($_POST["other-sch"])));
     $govt_id = htmlspecialchars(strip_tags(trim($_POST["govt-id"])));
     $resident_cert = htmlspecialchars(strip_tags(trim($_POST["resident-cert"])));
     $income_cert = htmlspecialchars(strip_tags(trim($_POST["income-cert"])));
@@ -33,17 +33,18 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $caste_cert = htmlspecialchars(strip_tags(trim($_POST["caste-cert"])));
     $parent_aadhar = htmlspecialchars(strip_tags(trim($_POST["aadhar"])));
     $bank_passbook = htmlspecialchars(strip_tags(trim($_POST["bank-pass"])));
-    $fee_receipt = htmlspecialchars(strip_tags(trim($_POST["fee-rec"])));
-    $sslc_puc_marks = htmlspecialchars(strip_tags(trim($_POST["marks-cards"])));
+    $college_fee_receipt = htmlspecialchars(strip_tags(trim($_POST["fee-rec"])));
+    $sslc_puc = htmlspecialchars(strip_tags(trim($_POST["marks-cards"])));
     $sem_marks = htmlspecialchars(strip_tags(trim($_POST["sem-marks"])));
     $diploma_cert = htmlspecialchars(strip_tags(trim($_POST["dipl-cert"])));
-    $self_declaration = htmlspecialchars(strip_tags(trim($_POST["self-decl"])));
-    $student_photo = htmlspecialchars(strip_tags(trim($_POST["s-photo"])));
-    $other_doc = htmlspecialchars(strip_tags(trim($_POST["doc-name"])));
-    $sch_mode = htmlspecialchars(strip_tags(trim($_POST["s-mode"])));
+    $self_dec = htmlspecialchars(strip_tags(trim($_POST["self-decl"])));
+    $photography = htmlspecialchars(strip_tags(trim($_POST["stud-photo"])));
+    $doc_name = htmlspecialchars(strip_tags(trim($_POST["doc-name"])));
+    $sch_mode = htmlspecialchars(strip_tags(trim($_POST["sch-mode"])));
     $website_link = htmlspecialchars(strip_tags(trim($_POST["web-link"])));
     
-    // Validate scholarship name
+    
+    // Validate username
     if(empty($sch_name)){
         $sch_name_err = "Please enter scholarship name.";
     } else{
@@ -63,7 +64,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 $stmt->store_result();
                 
                 if($stmt->num_rows == 1){
-                    $username_err = "This scholarship already exists.";
+                    $sch_name_err = "This scholarship already exists.";
                 } else{
                     $sch_name = $sch_name;
                 }
@@ -76,42 +77,40 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         }
     }
     
-    // Validate provider name
-    if(isset($p_name)){
-        $p_name = $p_name;
-    }  else{
-        $provider_err = "Please enter the provider name.";     
+    // Validate password
+    if(empty($provider_name)){
+        $provider_err = "Please enter sholarship provider name.";     
+    } else{
+        $provider_name = $provider_name;
     }
-    
-    if(isset($sch_academic_year)){
+    if(empty($sch_academic_year)){
+        $academic_year_err = "Please enter academic year for scholarship.";     
+    } else{
         $sch_academic_year = $sch_academic_year;
-    }  else{
-        $sch_year_err = "Please enter academic year for scholarship.";     
     }
-
+     
     // Check input errors before inserting in database
-    if(empty($sch_name_err) && empty($provider_err) && !empty($sch_year_err) && !empty($s_type) && !empty($date)){
+    if(empty($sch_name_err) && empty($provider_err) && empty($academic_year_err)){
         
         // Prepare an insert statement
-        $sch_details_insert = "INSERT INTO scholarship_details (sch_name, sch_provider, sch_academic_year, sch_type, sch_deadline, sch_mode, sch_link) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        $scholarship_details_sql = "INSERT INTO scholarship_details (sch_name, sch_provider, sch_academic_year, sch_type, sch_deadline, sch_mode, sch_link) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
-        $elig_req_insert = "INSERT INTO elig_req (sch_name, minority, sc_st, girls, community, military, pwd, athletic, other_sch) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $elig_req_sql = "INSERT INTO elig_req (sch_name, minority, sc_st, girls, community, military, pwd, athletic, other_sch) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-        $doc_req_insert = "INSERT INTO doc_req (sch_name, govt_id, domicile, income, pwd, bonafide, caste, parent_aadhar, bank_passbook, college_fee, sslc_puc, sem, diploma, self_dec, other_cert) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $doc_req_sql = "INSERT INTO doc_req (sch_name, govt_id, domicile, income, pwd, bonafide, caste, parent_aadhar, bank_passbook, college_fee, sslc_puc, sem, diploma, self_dec, other_cert) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
          
-        if($stmt = $link->prepare($sch_details_insert)){
-            
+        if($stmt = $link->prepare($scholarship_details_sql)){
             // Bind variables to the prepared statement as parameters
-            $stmt->bind_param("sssssss", $param_sch_name, $param_p_name, $param_academic_year, $param_sch_type, $param_deadline,$param_sch_mode ,$param_link);
+            $stmt->bind_param("sssssss", $param_sch_name, $param_sch_provider, $param_academic_year, $param_sch_type, $param_sch_deadline, $param_sch_mode, $param_sch_link);
             
             // Set parameters
             $param_sch_name = $sch_name;
-            $param_p_name = $p_name;
+            $param_sch_provider = $provider_name;
             $param_academic_year = $sch_academic_year;
-            $param_sch_type = $s_type;
-            $param_deadline = $date;
-            $param_link = $website_link;
+            $param_sch_type = $sch_type;
+            $param_sch_deadline = $deadline_date;
             $param_sch_mode = $sch_mode;
+            $param_sch_link = $website_link;
             
             // Attempt to execute the prepared statement
             $stmt->execute();
@@ -119,21 +118,20 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $stmt->close();
         }
 
-        if($stmt = $link->prepare($elig_req_insert)){
-            
+        if($stmt = $link->prepare($elig_req_sql)){
             // Bind variables to the prepared statement as parameters
-            $stmt->bind_param("sssssssss", $param_sch_name, $param_minority, $param_sc_st, $param_sch_girls, $param_c_service, $param_m_scholarship, $param_s_pwd, $param_athletics, $param_other_sch);
-
+            $stmt->bind_param("sssssssss", $param_sch_name, $param_minority, $param_sc_st, $param_girls, $param_community, $param_military, $param_pwd, $param_athletic, $param_other_sch);
+            
             // Set parameters
             $param_sch_name = $sch_name;
             $param_minority = $minority;
             $param_sc_st = $sc_st;
-            $param_sch_girls = $s_girls;
-            $param_c_service = $c_service;
-            $param_m_scholarship = $m_scholarship;
-            $param_s_pwd = $s_pwd;
-            $param_athletics = $athletics;
-            $param_other_sch = $other_sch;            
+            $param_girls = $sch_girls;
+            $param_community = $sch_service;
+            $param_military = $sch_military;
+            $param_pwd = $sch_pwd;
+            $param_athletic = $sch_athletics;
+            $param_other_sch = $other_sch;
             
             // Attempt to execute the prepared statement
             $stmt->execute();
@@ -141,38 +139,34 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $stmt->close();
         }
 
-        if($stmt = $link->prepare($doc_req_insert)){
-            
+        if($stmt = $link->prepare($doc_req_sql)){
             // Bind variables to the prepared statement as parameters
-            $stmt->bind_param("sssssssssssssss", $param_sch_name, $param_govt_id, $param_resident_cert, $param_income_cert, $param_pwd_cert, $param_bonafide_cert, $param_caste_cert, $param_parent_aadhar, $param_bank_passbook, $param_fee_receipt, $param_sslc_puc, $param_sem_marks, $param_diploma_cert, $param_self, $param_other_doc);
+            $stmt->bind_param("sssssssssssssss", $param_sch_name, $param_govt_id, $param_domicile, $param_income, $param_pwd_cert, $param_bonafide, $param_caste, $param_parent_aadhar, $param_bank_passbook, $param_college_fee, $param_sslc_puc, $param_sem, $param_diploma, $param_self_dec, $param_other_cert);
             
             // Set parameters
             $param_sch_name = $sch_name;
-            $param_resident_cert = $resident_cert;
-            $param_income_cert = $income_cert;
+            $param_govt_id = $govt_id;
+            $param_domicile = $resident_cert;
+            $param_income = $income_cert;
             $param_pwd_cert = $pwd_cert;
-            $param_bonafide_cert = $bonafide_cert;
-            $param_caste_cert = $caste_cert;
+            $param_bonafide = $bonafide_cert;
+            $param_caste = $caste_cert;
             $param_parent_aadhar = $parent_aadhar;
             $param_bank_passbook = $bank_passbook;
-            $param_fee_receipt = $fee_receipt;
-            $param_sslc_puc = $sslc_puc_marks;
-            $param_sem_marks = $sem_marks;
-            $param_diploma_cert = $diploma_cert;
-            $param_self = $self_declaration;
-            $param_photography = $student_photo;
-            $param_other_doc = $other_doc;
-            $param_sch_mode = $sch_mode;
-            $param_govt_id = $govt_id;
+            $param_college_fee = $college_fee_receipt;
+            $param_sslc_puc = $sslc_puc;
+            $param_sem = $sem_marks;
+            $param_diploma = $diploma_cert;
+            $param_self_dec = $self_dec;
+            $param_other_cert = $doc_name;
             
             // Attempt to execute the prepared statement
             $stmt->execute();
-
             // Close statement
             $stmt->close();
         }
     }
-    header("location: view-scholarships.php");
+    
     // Close connection
     $link->close();
 }
@@ -189,44 +183,44 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" class="row g-3">
             <div class="col-md-6">
                 <label for="scholarship-name" class="form-label fw-bolder">Scholarship Name</label>
-                    <input type="text" name="s-name" class="form-control <?php echo (!empty($sch_name_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $sch_name; ?>" id="scholarship-name" placeholder="SCHOLARSHIP NAME" required />
+                    <input type="text" name="sch-name" class="form-control <?php echo (!empty($sch_name_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $sch_name; ?>" id="scholarship-name" placeholder="SCHOLARSHIP NAME" />
             </div>
                 <div class="col-md-6">
                 <label for="scholarship-provider" class="form-label fw-bolder">Scholarship Provider</label>
-                    <input type="text" name="p-name" class="form-control <?php echo (!empty($provider_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $p_name; ?>" id="scholarship-provider" placeholder="SCHOLARSHIP PROVIDER NAME" required />
+                    <input type="text" name="provider-name" class="form-control <?php echo (!empty($provider_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $provider_name; ?>" id="scholarship-provider" placeholder="SCHOLARSHIP PROVIDER NAME" required />
                 </div>
                 <div class="col-md-6 mt-5">
                 <label for="scholarship-year" class="form-label fw-bolder">Scholarship For Academic Year</label>
-                    <input type="text" name="s-year" class="form-control <?php echo (!empty($sch_year_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $sch_academic_year; ?>" id="scholarship-year" placeholder="eg. 2022-23" pattern="[0-9]{4}-[0-9]{2}" required />
+                    <input type="text" name="sch-acad-year" class="form-control <?php echo (!empty($academic_year_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $sch_academic_year; ?>" id="scholarship-year" placeholder="eg. 2022-23" pattern="[0-9]{4}-[0-9]{2}" required />
                 </div>
             <div class="col-md-12">
                 <label for="scholarship-type" class="form-label fw-bolder mt-5">Choose Provider Type</label>
                <div id="scholarship-type">
                 <div class="form-check">
-                    <input class="form-check-input" value="NGO / Non-Profit" name="s-type" type="radio" id="NGO">
+                    <input class="form-check-input" value="NGO / Non-Profit" name="sch-type" type="radio" id="NGO">
                     <label class="form-check-label" for="NGO">NGO / Non-Profit</label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" value="Business, Company, or Corporation" name="s-type" type="radio" id="private">
+                    <input class="form-check-input" value="Business, Company, or Corporation" name="sch-type" type="radio" id="private">
                     <label class="form-check-label" for="private">Business, Company, or Corporation</label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" value="Central Government" name="s-type" type="radio" id="c-govt">
+                    <input class="form-check-input" value="Central Government" name="sch-type" type="radio" id="c-govt">
                     <label class="form-check-label" for="c-govt">Central Government</label>
                 </div> 
                 <div class="form-check">
-                    <input class="form-check-input" value="Karnataka" name="s-type" type="radio" id="k-govt">
+                    <input class="form-check-input" value="Karnataka" name="sch-type" type="radio" id="k-govt">
                     <label class="form-check-label" for="k-govt">Karnataka</label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" value="Other State" name="s-type" type="radio" id="o-govt">
+                    <input class="form-check-input" value="Other State" name="sch-type" type="radio" id="o-govt">
                     <label class="form-check-label" for="o-govt">Other State</label>
                 </div>    
                </div>
             </div>
                 <div class="col-md-6">
                 <label for="app-deadline" class="form-label fw-bolder mt-5">Application Deadline</label>
-                    <input type="date" name="app-deadline" class="form-control" id="app-deadline" placeholder="LAST DATE TO APPLY" required />
+                    <input type="date" name="sch-deadline" class="form-control" id="app-deadline" placeholder="LAST DATE TO APPLY" required />
                 </div>
                 <div class="col-md-12">
                     <label for="elig-crit" class="form-label fw-bolder mt-5">Eligibility Requirements (Select all that apply)</label>
@@ -240,23 +234,23 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             <label for="sc-st" class="form-check-label">Scholarship for SC/ST only</label>
                         </div>
                         <div class="form-check form-switch">
-                            <input class="form-check-input" name="s_girls" value="Scholarship for Girls" type="checkbox" role="switch" id="s-girls">
+                            <input class="form-check-input" name="sch-girls" value="Scholarship for Girls" type="checkbox" role="switch" id="s-girls">
                             <label for="s-girls" class="form-check-label">Scholarship for Girls</label>
                         </div>
                         <div class="form-check form-switch">
-                            <input class="form-check-input" name="c_service" value="Community Service Scholarship" type="checkbox" role="switch" id="c-service">
+                            <input class="form-check-input" name="sch-service" value="Community Service Scholarship" type="checkbox" role="switch" id="c-service">
                             <label for="c-service" class="form-check-label">Community Service Scholarship</label>
                         </div>
                         <div class="form-check form-switch">
-                            <input class="form-check-input" name="m_scholarship" value="Military Scholarship" type="checkbox" role="switch" id="m-scholarship">
+                            <input class="form-check-input" name="sch-military" value="Military Scholarship" type="checkbox" role="switch" id="m-scholarship">
                             <label for="m-scholarship" class="form-check-label">Military Scholarship</label>
                         </div>
                         <div class="form-check form-switch">
-                            <input class="form-check-input" name="s-pwd" value="PwD(Person With Disability) Scholarship" type="checkbox" role="switch" id="s-pwd">
+                            <input class="form-check-input" name="sch-pwd" value="PwD(Person With Disability) Scholarship" type="checkbox" role="switch" id="s-pwd">
                             <label for="s-pwd" class="form-check-label">PwD(Person With Disability) Scholarship</label>
                         </div>
                         <div class="form-check form-switch">
-                            <input class="form-check-input" name="athletics" value="Athletic Scholarship" type="checkbox" role="switch" id="athletics">
+                            <input class="form-check-input" name="sch-athletics" value="Athletic Scholarship" type="checkbox" role="switch" id="athletics">
                             <label for="athletics" class="form-check-label">Athletic Scholarship</label>
                         </div>
                         <div class="form-check form-switch">
@@ -264,7 +258,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             <label for="other-scholarship" class="form-check-label">Something else not listed</label>
                         </div>
                         <div class="col-md-6 mt-5">
-                            <input type="text" id="sch-name" name="sch-name" class="form-control" style="display:none" placeholder="OTHER ELIGIBILITY REQUIREMENT">      
+                            <input type="text" id="sch-name" name="other-sch" class="form-control" style="display:none" placeholder="OTHER ELIGIBILITY REQUIREMENT">      
                         </div>
                     </div>
                 </div>
@@ -277,15 +271,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             <label for="govt-id" class="form-check-label">Government ID Proof(eg. Aadhar Card, Driving License etc.)</label>
                         </div>
                         <div class="form-check form-switch">
-                            <input class="form-check-input" value="resident-cert" value="Domicile/Residential Certificate" type="checkbox" role="switch" id="resident-cert">
+                            <input class="form-check-input" name="resident-cert" value="Domicile/Residential Certificate" type="checkbox" role="switch" id="resident-cert">
                             <label for="resident-cert" class="form-check-label">Domicile/Residential Certificate</label>
                         </div>
                         <div class="form-check form-switch">
-                            <input class="form-check-input" value="income-cert" value="Income Certificate issued from the Competent Authority" type="checkbox" role="switch" id="income-cert">
+                            <input class="form-check-input" name="income-cert" value="Income Certificate issued from the Competent Authority" type="checkbox" role="switch" id="income-cert">
                             <label for="income-cert" class="form-check-label">Income Certificate issued from the Competent Authority</label>
                         </div>
                         <div class="form-check form-switch">
-                            <input class="form-check-input" value="pwd-cert" value="PwD Certificate issued from the Competent Authority" type="checkbox" role="switch" id="pwd-cert">
+                            <input class="form-check-input" name="pwd-cert" value="PwD Certificate issued from the Competent Authority" type="checkbox" role="switch" id="pwd-cert">
                             <label for="pwd-cert" class="form-check-label">PwD Certificate issued from the Competent Authority</label>
                         </div>
                         <div class="form-check form-switch">
@@ -325,7 +319,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             <label for="selt-decl" class="form-check-label">Self Declaration Minority Certificate</label>
                         </div>
                         <div class="form-check form-switch">
-                            <input class="form-check-input" name="s-photo" value="Student Photograph" type="checkbox" role="switch" id="s-photo">
+                            <input class="form-check-input" name="stud-photo" value="Student Photograph" type="checkbox" role="switch" id="s-photo">
                             <label for="s-photo" class="form-check-label">Student Photograph</label>
                         </div>
                         <div class="form-check form-switch">
@@ -341,15 +335,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <label for="sch-mode" class="form-label fw-bolder">Scholarship Mode</label>
                 <div id="sch-mode">
                     <div class="form-check">
-                        <input class="form-check-input" value="Offline" name="s-mode" type="radio" id="offline">
+                        <input class="form-check-input" value="Offline" name="sch-mode" type="radio" id="offline">
                         <label class="form-check-label" for="offline">Offline</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" value="Online" name="s-mode" type="radio" id="online">
+                        <input class="form-check-input" value="Online" name="sch-mode" type="radio" id="online">
                         <label class="form-check-label" for="online">Online</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" value="Both" name="s-mode" type="radio" id="both">
+                        <input class="form-check-input" value="Both" name="sch-mode" type="radio" id="both">
                         <label class="form-check-label" for="both">Both</label>
                     </div>
                 </div>
