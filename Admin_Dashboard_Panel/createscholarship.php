@@ -5,11 +5,11 @@ include("admin-layout.php");
 
 // Define variables and initialize with empty values
 $sch_name_err = $provider_err = $sch_year_err = "";
-$global_err = "";
 
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     
+    // {{ $array['key'] or 'Default' }};
     // Define variables and initialize with values
     $sch_name = htmlspecialchars(strip_tags(trim($_POST["s-name"])));
     $p_name = htmlspecialchars(strip_tags(trim($_POST["p-name"])));
@@ -77,20 +77,20 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }
     
     // Validate provider name
-    if(empty($date)){
-        $provider_err = "Please enter the provider name.";     
-    }  else{
+    if(isset($p_name)){
         $p_name = $p_name;
+    }  else{
+        $provider_err = "Please enter the provider name.";     
     }
     
-    if(empty($sch_academic_year)){
-        $sch_year_err = "Please enter academic year for scholarship.";     
-    }  else{
+    if(isset($sch_academic_year)){
         $sch_academic_year = $sch_academic_year;
+    }  else{
+        $sch_year_err = "Please enter academic year for scholarship.";     
     }
 
     // Check input errors before inserting in database
-    if(empty($sch_name_err) && empty($provider_err) && empty($sch_year_err) && !empty($s_type) && !empty($date)){
+    if(empty($sch_name_err) && empty($provider_err) && !empty($sch_year_err) && !empty($s_type) && !empty($date)){
         
         // Prepare an insert statement
         $sch_details_insert = "INSERT INTO scholarship_details (sch_name, sch_provider, sch_academic_year, sch_type, sch_deadline, sch_mode, sch_link) VALUES (?, ?, ?, ?, ?, ?, ?)";
@@ -172,6 +172,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $stmt->close();
         }
     }
+    header("location: view-scholarships.php");
     // Close connection
     $link->close();
 }
@@ -188,15 +189,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" class="row g-3">
             <div class="col-md-6">
                 <label for="scholarship-name" class="form-label fw-bolder">Scholarship Name</label>
-                    <input type="text" name="s-name" class="form-control" id="scholarship-name" placeholder="SCHOLARSHIP NAME" required />
+                    <input type="text" name="s-name" class="form-control <?php echo (!empty($sch_name_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $sch_name; ?>" id="scholarship-name" placeholder="SCHOLARSHIP NAME" required />
             </div>
                 <div class="col-md-6">
                 <label for="scholarship-provider" class="form-label fw-bolder">Scholarship Provider</label>
-                    <input type="text" name="p-name" class="form-control" id="scholarship-provider" placeholder="SCHOLARSHIP PROVIDER NAME" required />
+                    <input type="text" name="p-name" class="form-control <?php echo (!empty($provider_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $p_name; ?>" id="scholarship-provider" placeholder="SCHOLARSHIP PROVIDER NAME" required />
                 </div>
                 <div class="col-md-6 mt-5">
                 <label for="scholarship-year" class="form-label fw-bolder">Scholarship For Academic Year</label>
-                    <input type="text" name="s-year" class="form-control" id="scholarship-year" placeholder="eg. 2022-23" pattern="[0-9]{4}-[0-9]{2}" equired />
+                    <input type="text" name="s-year" class="form-control <?php echo (!empty($sch_year_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $sch_academic_year; ?>" id="scholarship-year" placeholder="eg. 2022-23" pattern="[0-9]{4}-[0-9]{2}" required />
                 </div>
             <div class="col-md-12">
                 <label for="scholarship-type" class="form-label fw-bolder mt-5">Choose Provider Type</label>
@@ -356,7 +357,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
             <div class="col-md-6">
                 <label for="web-link" class="form-label fw-bolder">Link to the Website, if any</label>
-                    <input type="text" name="web-link" class="form-control" id="web-link" placeholder="WEBSITE LINK" required />
+                    <input type="text" name="web-link" class="form-control" id="web-link" placeholder="WEBSITE LINK" />
             </div>
                 
             <div class="form-group mt-5">

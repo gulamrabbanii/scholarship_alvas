@@ -30,7 +30,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
       <label class=" button cancel" for="check"><i class="fas fa-times"></i></label>
     </div>
     <ul>
-          <li><a href="dashboard.php"><i class="fas fa-qrcode"></i>Profile</a></li>
+          <li><a href="profile.php"><i class="fas fa-qrcode"></i>Profile</a></li>
           <li><a href="scholarship.php"><i class="fa-solid fa-graduation-cap"></i>Scholarship</a></li>
           <li><a href="verification.php"><i class="fas fa-check-circle"></i>Verification</a></li>
           <li><a href="status.php"><i class="fa-solid fa-flag"></i>Status</a></li>
