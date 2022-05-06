@@ -156,9 +156,6 @@ if($result = $link->query($sql)){
 </div>
   <div class="tab-pane fade" id="nav-non-govt" role="tabpanel" aria-labelledby="nav-non-govt-tab">
     <!-- Cards Start -->
-
-    <!-- Cards Start -->
-<h5 class="p-2">Live Scholarship</h5>
 <div class="row">
 <?php
 if($result = $link->query($private_sch_sql)){
@@ -192,8 +189,6 @@ if($result = $link->query($private_sch_sql)){
 $link->close();
 ?>
 </div>
-<!-- Cards End -->
-
 <!-- Cards End -->
   </div>
 </div>

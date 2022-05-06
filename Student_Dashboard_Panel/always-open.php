@@ -191,7 +191,6 @@ $link->close();
 </div>
 <!-- Cards End -->
 
-<!-- Cards End -->
   </div>
 </div>
 
