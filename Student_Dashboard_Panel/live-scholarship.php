@@ -2,7 +2,7 @@
 include("sidebar-layout.php");
 require_once("../db/config.php");
 
-$sql = "SELECT * FROM scholarship_details WHERE sch_deadline <= CURDATE() ORDER BY sch_deadline";
+$sql = "SELECT * FROM scholarship_details WHERE (sch_start_date >= CURDATE()) AND (sch_deadline <= CURDATE()) ORDER BY sch_deadline";
 ?>
 <title>SCHOLARSHIP</title>
 
@@ -51,7 +51,7 @@ if($result = $link->query($sql)){
                 <i class="fa-solid fa-calendar-days px-2"></i>Deadline: <?php echo $row["sch_deadline"] ?>
                 </div>
                 <div class="card-body">
-                <h5 class="card-title"><a href="<?php echo $row['sch_link'] ?>" target="_blank" rel="noopener noreferrer"><?php echo strtoupper($row["sch_name"]) ?></a></h5>
+                <h5 class="card-title"><a href="<?php echo $row['sch_link'] ?>" target="_blank" rel="noopener noreferrer"><?php echo $row["sch_name"] ?></a></h5>
                 <p class="card-text">Eligibility</p>
                 <a href="#" class="btn btn-primary">Go somewhere</a>
                 </div>
