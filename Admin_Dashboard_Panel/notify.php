@@ -1,5 +1,5 @@
 <?php
-include("admin-layout.php")
+include("admin-layout.php");
 ?>
 <title>Notify Students</title>
         <div class="dash-content">
