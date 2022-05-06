@@ -54,7 +54,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                 <?php if ($_SESSION["username"] == "admin"){ 
                     echo '<li><a href="register.php">
                     <i class="fa fa-user-plus" aria-hidden="true"></i>
-                    <span class="link-name">Register Admin</span></a></li>';
+                    <span class="link-name">Add New Admin</span></a></li>';
                     }
                 ?>
                 <li><a href="reset-password.php">
