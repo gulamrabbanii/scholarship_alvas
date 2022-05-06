@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 06, 2022 at 04:16 PM
+-- Generation Time: May 06, 2022 at 04:44 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.1
 
@@ -99,19 +99,20 @@ CREATE TABLE `scholarship_details` (
   `sch_type` varchar(255) DEFAULT NULL,
   `sch_deadline` date DEFAULT NULL,
   `sch_mode` varchar(50) DEFAULT NULL,
-  `sch_link` varchar(512) CHARACTER SET ascii NOT NULL
+  `sch_link` varchar(512) CHARACTER SET ascii NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `scholarship_details`
 --
 
-INSERT INTO `scholarship_details` (`id`, `sch_name`, `sch_provider`, `sch_start_date`, `sch_type`, `sch_deadline`, `sch_mode`, `sch_link`) VALUES
-(16, 'THE CADENCE SCHOLARSHIP PROGRAM', 'Cadence Design Systems Private Limited &amp; Concern India Foundation', '2022-04-06', 'Business, Company, or Corporation', '2022-05-30', 'Online', 'https://cadence.com'),
-(17, 'SHOOLINI ACADEMIC PROGRESSION SCHOLARSHIP (SAPS)', 'Shoolini University', '2022-04-19', 'NGO / Non-Profit', '2022-06-30', 'Online', 'https://shooliniuniversity.com'),
-(18, 'CANARA BANK SCHOLARSHIP', 'Canara Bank', '2022-05-31', 'Business, Company, or Corporation', '2022-07-14', 'Both', 'https://scholarship.canarabank.in'),
-(20, 'NATIONAL SCHOLARSHIP PORTAL', 'Central Government', '2022-04-13', 'Government of India', '2022-07-28', 'Both', 'https://scholarships.gov.in/fresh/schemeSelRegfrmInstruction'),
-(21, 'MAULANA AZAD NATIONAL FELLOWSHIP FOR MINORITY STUDENTS MANF', 'Government of India', '2022-06-30', 'Government of India', '2022-07-31', 'Both', 'http://www.ugc.ac.in');
+INSERT INTO `scholarship_details` (`id`, `sch_name`, `sch_provider`, `sch_start_date`, `sch_type`, `sch_deadline`, `sch_mode`, `sch_link`, `created_at`) VALUES
+(16, 'THE CADENCE SCHOLARSHIP PROGRAM', 'Cadence Design Systems Private Limited &amp; Concern India Foundation', '2022-04-06', 'Business, Company, or Corporation', '2022-05-30', 'Online', 'https://cadence.com', '2022-05-06 14:31:31'),
+(17, 'SHOOLINI ACADEMIC PROGRESSION SCHOLARSHIP (SAPS)', 'Shoolini University', '2022-04-19', 'NGO / Non-Profit', '2022-06-30', 'Online', 'https://shooliniuniversity.com', '2022-05-06 14:31:31'),
+(18, 'CANARA BANK SCHOLARSHIP', 'Canara Bank', '2022-05-31', 'Business, Company, or Corporation', '2022-07-14', 'Both', 'https://scholarship.canarabank.in', '2022-05-06 14:31:31'),
+(20, 'NATIONAL SCHOLARSHIP PORTAL', 'Central Government', '2022-04-13', 'Government of India', '2022-07-28', 'Both', 'https://scholarships.gov.in/fresh/schemeSelRegfrmInstruction', '2022-05-06 14:31:31'),
+(21, 'MAULANA AZAD NATIONAL FELLOWSHIP FOR MINORITY STUDENTS MANF', 'Government of India', '2022-06-30', 'Government of India', '2022-07-31', 'Both', 'http://www.ugc.ac.in', '2022-05-06 14:31:31');
 
 -- --------------------------------------------------------
 

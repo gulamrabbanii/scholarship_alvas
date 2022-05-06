@@ -1,78 +1,102 @@
-<?php 
-// Include config file
+<?php
 include("admin-layout.php");
+require_once("../db/config.php");
 
+$sql = "SELECT * FROM scholarship_details t1 INNER JOIN elig_req t2 ON t2.sch_name = t1.sch_name ORDER BY created_at DESC";
 ?>
-<title>Content</title>
+<title>ALL SCHOLARSHIPS</title>
         <div class="dash-content">
             <div class="overview">
                 <div class="title">
                     <i class="uil uil-tachometer-fast-alt"></i>
-                    <span class="text">Scholarships</span>
+                    <span class="text">ALL SCHOLARSHIPS</span>
                 </div>
     
 <!-- Add contents here -->
-
 <style>
   .card {
     border-radius: 5px;
     background: rgba(236, 240, 243, 0.6);
-    box-shadow: 13px 13px 20px #cbced1,
-        -13px -13px 20px #ffffff;
     height: 400px;
+}
+.card-body {
+  width: 
+}
+.card-text-body {
+  margin-top: 30px;
+  height: calc(100% - 150px);
+}
+.txt:hover {
+    text-decoration: underline;
 }
 </style>
 
-<section>
-<div class="container p-4">
+
 <!-- Cards Start -->
 <div class="row">
-<div class="col-sm-4">
-  <div class="card mt-5 text-center">
-  <div class="card-header">
-     <i class="fa-solid fa-calendar-days px-2"></i>Deadline: 26/04/2022
-  </div>
-  <div class="card-body">
-    <h5 class="card-title">Scholarship Name</h5>
-    <p class="card-text">Eligibility</p>
-    <form method="POST" action="createscholarship.php">
-      <input type="submit"class="btn btn-primary"  value="Add Details"></input>
-    </form>
-   
-  </div>
+<?php
+if($result = $link->query($sql)){
+    if($result->num_rows > 0){
+        while($row = $result->fetch_array()){ ?>
+                <div class="col-sm-4">
+                <div class="card mt-3">
+                <div class="card-header text-center bg-danger">
+                <i class="fa-solid fa-calendar-days px-2"></i>Deadline: <?php echo $row["sch_deadline"] ?>
+                </div>
+                <div class="card-body">
+                <h5 class="card-title txt"><a class="text-decoration-none text-secondary" href="<?php echo $row['sch_link'] ?>" target="_blank" rel="noopener noreferrer"><?php echo $row["sch_name"] ?></a></h5>
+                <hr>
+                <div class="card-text-body">
+                      <div class="card-text text-primary">Eligibility</div>
+                        <?php if(!empty($row['minority'])) {?>
+                        <p><small class="text-muted"><?php echo $row['minority'] ?></small></p>
+                       <?php }?>
+                       <?php if(!empty($row['sc_st'])) {?>
+                        <p><small class="text-muted"><?php echo $row['sc_st'] ?></small></p>
+                       <?php }?>
+                       <?php if(!empty($row['girls'])) {?>
+                        <p><small class="text-muted"><?php echo $row['girls'] ?></small></p>
+                       <?php }?><?php if(!empty($row['community'])) {?>
+                        <p><small class="text-muted"><?php echo $row['community'] ?></small></p>
+                       <?php }?>
+                       <?php if(!empty($row['pwd'])) {?>
+                        <p><small class="text-muted"><?php echo $row['pwd'] ?></small></p>
+                       <?php }?>
+                       <?php if(!empty($row['atthletic'])) {?>
+                        <p><small class="text-muted"><?php echo $row['athletics'] ?></small></p>
+                       <?php }?>
+                       <?php if(!empty($row['other_sch'])) {?>
+                        <p><small class="text-muted"><?php echo $row['other_sch'] ?></small></p>
+                       <?php }?>
+                       <br>
+                      <div class="card-text text-primary"><small> Last Updated On:</small>
+                        <p><small class="text-muted"><?php echo $row['created_at'] ?></small></p>
+                      </div>
+                </div>
+                </div>
+                <div class="card-footer text-center bg-primary">
+                <a href="#" class="text-decoration-none text-dark">View Scholarship</a>
+                </div>
+            </div>
+            </div>            
+<?php    } 
+        // Free result set
+        $result->free();
+    } else{
+        echo "No records matching your query were found.";
+    }
+} else{
+    echo "ERROR: Could not able to execute $sql. " . $mysqli->error;
+}
+?>
 </div>
-</div>
+<!-- Cards End -->
 
-<div class="col-sm-4">
-<div class="card mt-5 text-center">
-  <div class="card-header">
-     <i class="fa-solid fa-calendar-days px-2"></i>Deadline: 26/04/2022
-  </div>
-  <div class="card-body">
-    <h5 class="card-title">Scholarship Name</h5>
-    <p class="card-text">Eligibility</p>
-    <form method="POST" action="createscholarship.php">
-      <input type="submit"class="btn btn-primary"  value="Add Details"></input>
-    </form>
-   
-  </div>
-</div>
-</div>
 
-<div class="col-sm-4">
-<div class="card mt-5 text-center">
-  <div class="card-header">
-     <i class="fa-solid fa-calendar-days px-2"></i>Deadline: 26/04/2022
-  </div>
-  <div class="card-body">
-    <h5 class="card-title">Scholarship Name</h5>
-    <p class="card-text">Eligibility</p>
-    <form method="POST" action="createscholarship.php">
-      <input type="submit"class="btn btn-primary"  value="Add Details"></input>
-    </form>
-   
-  </div>
-  
+
+<!-- End of content  -->
+
+
             </div>
         </div>
     </section>

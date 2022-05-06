@@ -66,7 +66,7 @@ if($result = $link->query($sql)){
                 <h5 class="card-title txt"><a class="text-decoration-none text-secondary" href="<?php echo $row['sch_link'] ?>" target="_blank" rel="noopener noreferrer"><?php echo $row["sch_name"] ?></a></h5>
                 <hr>
                 <div class="card-text-body">
-                      <p class="card-text text-primary">Eligibility</p>
+                      <div class="card-text text-primary">Eligibility</div>
                         <?php if(!empty($row['minority'])) {?>
                         <p><small class="text-muted"><?php echo $row['minority'] ?></small></p>
                        <?php }?>
@@ -202,7 +202,7 @@ if($result = $link->query($private_sch_sql)){
                 <h5 class="card-title txt"><a class="text-decoration-none text-secondary" href="<?php echo $row['sch_link'] ?>" target="_blank" rel="noopener noreferrer"><?php echo $row["sch_name"] ?></a></h5>
                 <hr>
                 <div class="card-text-body">
-                      <p class="card-text text-primary">Eligibility</p>
+                      <div class="card-text text-primary">Eligibility</div>
                         <?php if(!empty($row['minority'])) {?>
                         <p><small class="text-muted"><?php echo $row['minority'] ?></small></p>
                        <?php }?>

@@ -163,13 +163,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $param_other_cert = $doc_name;
             
             // Attempt to execute the prepared statement
-            $stmt->execute();
+            if($stmt->execute()) {
+                echo "<script>alert('Scholarship has been successfully added.')</script>";
+                header("Refresh:0 , url =  view-scholarships.php");
+            }
             // Close statement
             $stmt->close();
         }
     }
-    echo "<script>alert('Scholarship has been successfully added.')</script>";
-    header("Refresh:0 , url =  createscholarship.php");
+    
 
     // Close connection
     $link->close();
