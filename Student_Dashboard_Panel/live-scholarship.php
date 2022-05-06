@@ -21,7 +21,7 @@ $sql = "SELECT * FROM scholarship_details WHERE (sch_start_date <= CURDATE()) AN
   <h2>Scholarship</h2>
 <nav>
   <div class="nav nav-tabs" id="nav-tab" role="tablist">
-    <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">All Scholarships</button>
+    <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true" style="cursor: pointer;" onclick="window.location='live-scholarship.php';">All Scholarships</button>
     <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Category</button>
     <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Government</button>
     <button class="nav-link" id="nav-non-govt-tab" data-bs-toggle="tab" data-bs-target="#nav-non-govt" type="button" role="tab" aria-controls="nav-non-govt" aria-selected="false">Non-Government</button>
@@ -156,58 +156,12 @@ $link->close();
 </div>
   <div class="tab-pane fade" id="nav-non-govt" role="tabpanel" aria-labelledby="nav-non-govt-tab">
     <!-- Cards Start -->
-<div class="row">
-  <div class="col-sm-4">
-<div class="card mt-5 text-center">
-  <div class="card-header">
-    <i class="fa-solid fa-calendar-days px-2"></i>Deadline: 26/04/2022
-  </div>
-  <div class="card-body">
-    <h5 class="card-title">Scholarship Name</h5>
-    <p class="card-text">Eligibility</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-  <div class="card-footer text-muted">
-    View Scholarship
-  </div>
-</div>
-</div>
 
-  <div class="col-sm-4">
-<div class="card mt-5 text-center">
-  <div class="card-header">
-    <i class="fa-solid fa-calendar-days px-2"></i>Deadline: 26/04/2022
-  </div>
-  <div class="card-body">
-    <h5 class="card-title">Scholarship Name</h5>
-    <p class="card-text">Eligibility</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-  <div class="card-footer text-muted">
-    View Scholarship
-  </div>
-</div>
-</div>
-
-  <div class="col-sm-4">
-<div class="card mt-5 text-center">
-  <div class="card-header">
-    <i class="fa-solid fa-calendar-days px-2"></i>Deadline: 26/04/2022
-  </div>
-  <div class="card-body">
-    <h5 class="card-title">Scholarship Name</h5>
-    <p class="card-text">Eligibility</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-  <div class="card-footer text-muted">
-    View Scholarship
-  </div>
-</div>
 
 <!-- Cards End -->
   </div>
 </div>
-<div>
+
 </section>
 
 
