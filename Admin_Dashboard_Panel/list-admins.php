@@ -18,11 +18,11 @@ $sql = "SELECT * FROM users WHERE username NOT REGEXP '^4[Aa][Ll][0-9]{2}[A-Za-z
 <table class="table">
   <thead class="thead-light">
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">Username</th>
-      <th scope="col">First Name</th>
-      <th scope="col">Last Name</th>
-      <th scope="col">Remove</th>
+      <th scope="col"><label>#</label></th>
+      <th scope="col"><label> Username</label></th>
+      <th scope="col"><label>First Name</label></th>
+      <th scope="col"><label>Last Name</label></th>
+      <th scope="col"><label>Remove</label></th>
     </tr>
   </thead>
   <tbody>
@@ -32,10 +32,10 @@ $sql = "SELECT * FROM users WHERE username NOT REGEXP '^4[Aa][Ll][0-9]{2}[A-Za-z
             if($result->num_rows > 0){
                 while($row = $result->fetch_array()){ ?>
         <tr>
-            <th scope="row"><?php echo $id ?></th>
-            <td><?php echo $row['username']?></td>
-            <td><?php echo $row['first_name']?></td>
-            <td><?php echo $row['last_name']?></td>
+            <th scope="row"><label><?php echo $id ?></label></th>
+            <td><label><?php echo $row['username']?></label></td>
+            <td><label><?php echo $row['first_name']?></label></td>
+            <td><label><?php echo $row['last_name']?></label></td>
             <td>
                 <?php echo "<a class='btn btn-outline-danger' onclick=\"return confirm('Do you really want to delete this record?')\" href=\"user-delete.php?id=" . $row['id'] . " \">Remove</a>"; ?>
                             <script>
