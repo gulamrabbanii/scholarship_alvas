@@ -3,6 +3,8 @@ include("sidebar-layout.php");
 require_once("../db/config.php");
 
 $sql = "SELECT * FROM scholarship_details WHERE (sch_start_date <= CURDATE()) AND (sch_deadline >= CURDATE()) ORDER BY sch_deadline";
+
+$private_sch_sql = "SELECT * FROM scholarship_details WHERE (sch_start_date <= CURDATE()) AND (sch_deadline >= CURDATE()) AND (sch_type = 'Business, Company, or Corporation' OR sch_type = 'NGO / Non-Profit') ORDER BY sch_deadline";
 ?>
 <title>SCHOLARSHIP</title>
 
@@ -24,7 +26,7 @@ $sql = "SELECT * FROM scholarship_details WHERE (sch_start_date <= CURDATE()) AN
     <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true" style="cursor: pointer;" onclick="window.location='live-scholarship.php';">All Scholarships</button>
     <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Category</button>
     <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Government</button>
-    <button class="nav-link" id="nav-non-govt-tab" data-bs-toggle="tab" data-bs-target="#nav-non-govt" type="button" role="tab" aria-controls="nav-non-govt" aria-selected="false">Non-Government</button>
+    <button class="nav-link" id="nav-non-govt-tab" data-bs-toggle="tab" type="button" role="tab" aria-controls="nav-non-govt" aria-selected="false" data-bs-target="#nav-non-govt">Non-Government</button>
   </div>
 </nav>
 <div class="tab-content mt-5" id="nav-tabContent">
@@ -69,8 +71,6 @@ if($result = $link->query($sql)){
 } else{
     echo "ERROR: Could not able to execute $sql. " . $mysqli->error;
 }
-// Close connection
-$link->close();
 ?>
 </div>
 <!-- Cards End -->
@@ -157,6 +157,42 @@ $link->close();
   <div class="tab-pane fade" id="nav-non-govt" role="tabpanel" aria-labelledby="nav-non-govt-tab">
     <!-- Cards Start -->
 
+    <!-- Cards Start -->
+<h5 class="p-2">Live Scholarship</h5>
+<div class="row">
+<?php
+if($result = $link->query($private_sch_sql)){
+    if($result->num_rows > 0){
+        while($row = $result->fetch_array()){ ?>
+                <div class="col-sm-4">
+                <div class="card mt-5 text-center">
+                <div class="card-header">
+                <i class="fa-solid fa-calendar-days px-2"></i>Deadline: <?php echo $row["sch_deadline"] ?>
+                </div>
+                <div class="card-body">
+                <h5 class="card-title"><a href="<?php echo $row['sch_link'] ?>" target="_blank" rel="noopener noreferrer"><?php echo $row["sch_name"] ?></a></h5>
+                <p class="card-text">Eligibility</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+                <div class="card-footer">
+                <a href="#" class="text-decoration-none text-dark">View Scholarship</a>
+                </div>
+            </div>
+            </div>            
+<?php    } 
+        // Free result set
+        $result->free();
+    } else{
+        echo "No records matching your query were found.";
+    }
+} else{
+    echo "ERROR: Could not able to execute $sql. " . $mysqli->error;
+}
+// Close connection
+$link->close();
+?>
+</div>
+<!-- Cards End -->
 
 <!-- Cards End -->
   </div>
