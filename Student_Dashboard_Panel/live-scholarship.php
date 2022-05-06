@@ -96,7 +96,7 @@ $link->close();
   <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
   <div class="container">
   <div class="btn-group" role="group" aria-label="Basic outlined example">
-    <button type="button" class="btn btn-outline-primary" onclick="window.location.href = '#';">NATIONAL</button>
+    <button type="button" class="btn btn-outline-primary" onclick="window.location.href = '#';">GOVERNMENT OF INDIA</button>
     <button type="button" class="btn btn-outline-primary" onclick="window.location.href = '#';">KARNATAKA</button>
     <button type="button" class="btn btn-outline-primary" onclick="window.location.href = '#';">OTHERS STATE</button>
 </div>
