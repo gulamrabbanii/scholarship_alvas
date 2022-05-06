@@ -2,9 +2,9 @@
 include("sidebar-layout.php");
 require_once("../db/config.php");
 
-$sql = "SELECT * FROM scholarship_details WHERE (sch_start_date > CURDATE()) AND (sch_deadline > CURDATE()) ORDER BY sch_deadline";
+$sql = "SELECT * FROM scholarship_details t1 INNER JOIN elig_req t2 ON t2.sch_name = t1.sch_name WHERE (sch_start_date > CURDATE()) AND (sch_deadline > CURDATE()) ORDER BY sch_deadline";
 
-$private_sch_sql = "SELECT * FROM scholarship_details WHERE (sch_start_date <= CURDATE()) AND (sch_deadline >= CURDATE()) AND (sch_type = 'Business, Company, or Corporation' OR sch_type = 'NGO / Non-Profit') ORDER BY sch_deadline";
+$private_sch_sql = "SELECT * FROM scholarship_details t1 INNER JOIN elig_req t2 ON t2.sch_name = t1.sch_name WHERE (sch_start_date <= CURDATE()) AND (sch_deadline >= CURDATE()) AND (sch_type = 'Business, Company, or Corporation' OR sch_type = 'NGO / Non-Profit') ORDER BY sch_deadline";
 ?>
 <title>SCHOLARSHIP</title>
 
@@ -22,6 +22,9 @@ $private_sch_sql = "SELECT * FROM scholarship_details WHERE (sch_start_date <= C
 .card-text-body {
   margin-top: 30px;
   height: calc(100% - 150px);
+}
+.txt:hover {
+    text-decoration: underline;
 }
 </style>
 
@@ -48,7 +51,7 @@ $private_sch_sql = "SELECT * FROM scholarship_details WHERE (sch_start_date <= C
 </div>
 
 <!-- Cards Start -->
-<h5 class="p-2">Live Scholarship</h5>
+<h5 class="p-2">Upcoming Scholarship</h5>
 <div class="row">
 <?php
 if($result = $link->query($sql)){
@@ -60,10 +63,30 @@ if($result = $link->query($sql)){
                 <i class="fa-solid fa-calendar-days px-2"></i>Launch Date: <?php echo $row["sch_start_date"] ?>
                 </div>
                 <div class="card-body">
-                <h5 class="card-title"><a class="text-decoration-none" href="<?php echo $row['sch_link'] ?>" target="_blank" rel="noopener noreferrer"><?php echo $row["sch_name"] ?></a></h5>
+                <h5 class="card-title txt"><a class="text-decoration-none text-secondary" href="<?php echo $row['sch_link'] ?>" target="_blank" rel="noopener noreferrer"><?php echo $row["sch_name"] ?></a></h5>
                 <hr>
                 <div class="card-text-body">
-                      <p class="card-text">Eligibility</p>
+                      <p class="card-text text-primary">Eligibility</p>
+                        <?php if(!empty($row['minority'])) {?>
+                        <p><small class="text-muted"><?php echo $row['minority'] ?></small></p>
+                       <?php }?>
+                       <?php if(!empty($row['sc_st'])) {?>
+                        <p><small class="text-muted"><?php echo $row['sc_st'] ?></small></p>
+                       <?php }?>
+                       <?php if(!empty($row['girls'])) {?>
+                        <p><small class="text-muted"><?php echo $row['girls'] ?></small></p>
+                       <?php }?><?php if(!empty($row['community'])) {?>
+                        <p><small class="text-muted"><?php echo $row['community'] ?></small></p>
+                       <?php }?>
+                       <?php if(!empty($row['pwd'])) {?>
+                        <p><small class="text-muted"><?php echo $row['pwd'] ?></small></p>
+                       <?php }?>
+                       <?php if(!empty($row['atthletic'])) {?>
+                        <p><small class="text-muted"><?php echo $row['athletics'] ?></small></p>
+                       <?php }?>
+                       <?php if(!empty($row['other_sch'])) {?>
+                        <p><small class="text-muted"><?php echo $row['other_sch'] ?></small></p>
+                       <?php }?>
                 </div>
                 </div>
                 <div class="card-footer text-center bg-primary">
@@ -176,10 +199,30 @@ if($result = $link->query($private_sch_sql)){
                 <i class="fa-solid fa-calendar-days px-2"></i>Deadline: <?php echo $row["sch_deadline"] ?>
                 </div>
                 <div class="card-body">
-                <h5 class="card-title"><a class="text-decoration-none" href="<?php echo $row['sch_link'] ?>" target="_blank" rel="noopener noreferrer"><?php echo $row["sch_name"] ?></a></h5>
+                <h5 class="card-title txt"><a class="text-decoration-none text-secondary" href="<?php echo $row['sch_link'] ?>" target="_blank" rel="noopener noreferrer"><?php echo $row["sch_name"] ?></a></h5>
                 <hr>
                 <div class="card-text-body">
-                      <p class="card-text">Eligibility</p>
+                      <p class="card-text text-primary">Eligibility</p>
+                        <?php if(!empty($row['minority'])) {?>
+                        <p><small class="text-muted"><?php echo $row['minority'] ?></small></p>
+                       <?php }?>
+                       <?php if(!empty($row['sc_st'])) {?>
+                        <p><small class="text-muted"><?php echo $row['sc_st'] ?></small></p>
+                       <?php }?>
+                       <?php if(!empty($row['girls'])) {?>
+                        <p><small class="text-muted"><?php echo $row['girls'] ?></small></p>
+                       <?php }?><?php if(!empty($row['community'])) {?>
+                        <p><small class="text-muted"><?php echo $row['community'] ?></small></p>
+                       <?php }?>
+                       <?php if(!empty($row['pwd'])) {?>
+                        <p><small class="text-muted"><?php echo $row['pwd'] ?></small></p>
+                       <?php }?>
+                       <?php if(!empty($row['atthletic'])) {?>
+                        <p><small class="text-muted"><?php echo $row['athletics'] ?></small></p>
+                       <?php }?>
+                       <?php if(!empty($row['other_sch'])) {?>
+                        <p><small class="text-muted"><?php echo $row['other_sch'] ?></small></p>
+                       <?php }?>
                 </div>
                 </div>
                 <div class="card-footer text-center bg-primary">
