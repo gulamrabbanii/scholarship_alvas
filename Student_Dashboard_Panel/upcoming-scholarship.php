@@ -48,7 +48,7 @@ if($result = $link->query($sql)){
                 <div class="col-sm-4">
                 <div class="card mt-5 text-center">
                 <div class="card-header">
-                <i class="fa-solid fa-calendar-days px-2"></i>Deadline: <?php echo $row["sch_deadline"] ?>
+                <i class="fa-solid fa-calendar-days px-2"></i>Registration Start Date: <?php echo $row["sch_start_date"] ?>
                 </div>
                 <div class="card-body">
                 <h5 class="card-title"><a href="<?php echo $row['sch_link'] ?>" target="_blank" rel="noopener noreferrer"><?php echo $row["sch_name"] ?></a></h5>

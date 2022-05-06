@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 06, 2022 at 09:28 AM
+-- Generation Time: May 06, 2022 at 11:24 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.1
 
@@ -45,6 +45,17 @@ CREATE TABLE `doc_req` (
   `other_cert` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `doc_req`
+--
+
+INSERT INTO `doc_req` (`sch_name`, `govt_id`, `domicile`, `income`, `pwd`, `bonafide`, `caste`, `parent_aadhar`, `bank_passbook`, `college_fee`, `sslc_puc`, `sem`, `diploma`, `self_dec`, `other_cert`) VALUES
+('NATIONAL SCHOLARSHIP PORTAL', 'Government ID Proof(eg. Aadhar Card, Driving License etc.)', 'Domicile/Residential Certificate', 'Income Certificate issued from the Competent Authority', 'PwD Certificate issued from the Competent Authority (For PwD Candidate only)', 'Bonafide Certificate', 'Caste Certificate', '', 'Bank Passbook of Student(Aadhar Card should be link with Bank A/C)', 'College Fee Receipt', '', 'Previous 2 Semester Marks Card', '', 'Self Declaration Minority Certificate', ''),
+('THE CADENCE SCHOLARSHIP PROGRAM', 'Government ID Proof(eg. Aadhar Card, Driving License etc.)', 'Domicile/Residential Certificate', 'Income Certificate issued from the Competent Authority', '', 'Bonafide Certificate', 'Caste Certificate', '', '', 'College Fee Receipt', '', 'Previous 2 Semester Marks Card', '', 'Self Declaration Minority Certificate', ''),
+('SHOOLINI ACADEMIC PROGRESSION SCHOLARSHIP (SAPS)', 'Government ID Proof(eg. Aadhar Card, Driving License etc.)', '', 'Income Certificate issued from the Competent Authority', '', 'Bonafide Certificate', 'Caste Certificate', '', 'Bank Passbook of Student(Aadhar Card should be link with Bank A/C)', 'College Fee Receipt', '10 or 12 Marks Cards', '', '', '', ''),
+('CANARA BANK SCHOLARSHIP', 'Government ID Proof(eg. Aadhar Card, Driving License etc.)', 'Domicile/Residential Certificate', 'Income Certificate issued from the Competent Authority', '', '', 'Caste Certificate', '', 'Bank Passbook of Student(Aadhar Card should be link with Bank A/C)', '', '', '', '', 'Self Declaration Minority Certificate', ''),
+('MAULANA AZAD NATIONAL FELLOWSHIP FOR MINORITY STUDENTS MANF', 'Government ID Proof(eg. Aadhar Card, Driving License etc.)', 'Domicile/Residential Certificate', 'Income Certificate issued from the Competent Authority', '', 'Bonafide Certificate', 'Caste Certificate', '', '', '', '', 'Previous 2 Semester Marks Card', '', 'Self Declaration Minority Certificate', '');
+
 -- --------------------------------------------------------
 
 --
@@ -63,6 +74,17 @@ CREATE TABLE `elig_req` (
   `other_sch` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `elig_req`
+--
+
+INSERT INTO `elig_req` (`sch_name`, `minority`, `sc_st`, `girls`, `community`, `military`, `pwd`, `athletic`, `other_sch`) VALUES
+('NATIONAL SCHOLARSHIP PORTAL', 'Scholarship for Minorities(SC/ST/OBC)', '', '', '', '', '', '', ''),
+('THE CADENCE SCHOLARSHIP PROGRAM', '', '', '', '', '', '', '', 'Students who are already pursuing graduation'),
+('SHOOLINI ACADEMIC PROGRESSION SCHOLARSHIP (SAPS)', '', '', '', '', '', '', '', 'Post Matric Scholarship'),
+('CANARA BANK SCHOLARSHIP', 'Scholarship for Minorities(SC/ST/OBC)', '', '', '', '', '', '', ''),
+('MAULANA AZAD NATIONAL FELLOWSHIP FOR MINORITY STUDENTS MANF', 'Scholarship for Minorities(SC/ST/OBC)', '', '', '', '', '', '', '');
+
 -- --------------------------------------------------------
 
 --
@@ -77,8 +99,19 @@ CREATE TABLE `scholarship_details` (
   `sch_type` varchar(255) DEFAULT NULL,
   `sch_deadline` date DEFAULT NULL,
   `sch_mode` varchar(50) DEFAULT NULL,
-  `sch_link` varchar(255) DEFAULT NULL
+  `sch_link` varchar(512) CHARACTER SET ascii NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `scholarship_details`
+--
+
+INSERT INTO `scholarship_details` (`id`, `sch_name`, `sch_provider`, `sch_start_date`, `sch_type`, `sch_deadline`, `sch_mode`, `sch_link`) VALUES
+(15, 'NATIONAL SCHOLARSHIP PORTAL', 'Central Government', '2022-05-02', 'Central Government', '2022-06-22', 'Both', 'https://scholarships.gov.in/fresh/schemeSelRegfrmInstruction'),
+(16, 'THE CADENCE SCHOLARSHIP PROGRAM', 'Cadence Design Systems Private Limited &amp; Concern India Foundation', '2022-04-06', 'Business, Company, or Corporation', '2022-05-30', 'Online', 'https://cadence.com'),
+(17, 'SHOOLINI ACADEMIC PROGRESSION SCHOLARSHIP (SAPS)', 'Shoolini University', '2022-04-19', 'NGO / Non-Profit', '2022-06-30', 'Online', 'https://shooliniuniversity.com'),
+(18, 'CANARA BANK SCHOLARSHIP', 'Canara Bank', '2022-05-31', 'Business, Company, or Corporation', '2022-07-14', 'Both', 'https://scholarship.canarabank.in'),
+(19, 'MAULANA AZAD NATIONAL FELLOWSHIP FOR MINORITY STUDENTS MANF', 'Government of India', '2022-06-24', 'Central Government', '2022-07-30', 'Both', 'http://www.ugc.ac.in');
 
 -- --------------------------------------------------------
 
@@ -145,7 +178,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `scholarship_details`
 --
 ALTER TABLE `scholarship_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `users`

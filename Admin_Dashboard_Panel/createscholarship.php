@@ -45,7 +45,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $sch_mode = htmlspecialchars(strip_tags(trim($_POST["sch-mode"])));
     $website_link = htmlspecialchars(strip_tags(trim($_POST["web-link"])));
     
-    
     // Validate scholarship name
     if(empty($sch_name)){
         $sch_name_err = "Please enter scholarship name.";
@@ -86,7 +85,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     } else{
         $provider_name = $provider_name;
     }
-     
+    
+    // Check, if not have http:// or https:// then prepend it
+    if (!preg_match('#^http(s)?://#', $website_link)) {
+        $website_link = 'http://' . $website_link;
+    } 
+
     // Check input errors before inserting in database
     if(empty($sch_name_err) && empty($provider_err) && empty($academic_year_err)){
         
@@ -164,7 +168,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $stmt->close();
         }
     }
-    header("Refresh:0 , url =  view-scholarships.php");
+    echo "<script>alert('Scholarship has been successfully added.')</script>";
+    header("Refresh:0 , url =  createscholarship.php");
 
     // Close connection
     $link->close();
@@ -208,8 +213,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     <label class="form-check-label" for="private">Business, Company, or Corporation</label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" value="Central Government" name="sch-type" type="radio" id="c-govt">
-                    <label class="form-check-label" for="c-govt">Central Government</label>
+                    <input class="form-check-input" value="Government of India" name="sch-type" type="radio" id="c-govt">
+                    <label class="form-check-label" for="c-govt">Government of India</label>
                 </div> 
                 <div class="form-check">
                     <input class="form-check-input" value="Karnataka" name="sch-type" type="radio" id="k-govt">
@@ -225,8 +230,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     <label for="elig-crit" class="form-label fw-bolder mt-5">Eligibility Requirements (Select all that apply)</label>
                     <div id="elig-crit">
                         <div class="form-check form-switch">
-                            <input class="form-check-input" name="minority" value="Scholarship for Minorities(SC/ST/OBC)" type="checkbox" role="switch" id="minority">
-                            <label for="minority" class="form-check-label">Scholarship for Minorities(SC/ST/OBC)</label>
+                            <input class="form-check-input" name="minority" value="Minority Communities Students(SC/ST/OBC)" type="checkbox" role="switch" id="minority">
+                            <label for="minority" class="form-check-label">Minority Communities Students(SC/ST/OBC)</label>
                         </div>
                         <div class="form-check form-switch">
                             <input class="form-check-input" name="sc-st" value="Scholarship for SC/ST only" type="checkbox" role="switch" id="sc-st">
