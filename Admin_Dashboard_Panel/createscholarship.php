@@ -234,12 +234,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             <label for="minority" class="form-check-label">Minority Communities Students(SC/ST/OBC)</label>
                         </div>
                         <div class="form-check form-switch">
-                            <input class="form-check-input" name="sc-st" value="Scholarship for SC/ST only" type="checkbox" role="switch" id="sc-st">
-                            <label for="sc-st" class="form-check-label">Scholarship for SC/ST only</label>
+                            <input class="form-check-input" name="sc-st" value="SC/ST Communities Students only" type="checkbox" role="switch" id="sc-st">
+                            <label for="sc-st" class="form-check-label">SC/ST Communities Students only</label>
                         </div>
                         <div class="form-check form-switch">
-                            <input class="form-check-input" name="sch-girls" value="Scholarship for Girls" type="checkbox" role="switch" id="s-girls">
-                            <label for="s-girls" class="form-check-label">Scholarship for Girls</label>
+                            <input class="form-check-input" name="sch-girls" value="Scholarship for Girls Students" type="checkbox" role="switch" id="s-girls">
+                            <label for="s-girls" class="form-check-label">Scholarship for Girls Students</label>
                         </div>
                         <div class="form-check form-switch">
                             <input class="form-check-input" name="sch-service" value="Community Service Scholarship" type="checkbox" role="switch" id="c-service">
@@ -250,8 +250,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             <label for="m-scholarship" class="form-check-label">Military Scholarship</label>
                         </div>
                         <div class="form-check form-switch">
-                            <input class="form-check-input" name="sch-pwd" value="PwD(Person With Disability) Scholarship (For PwD Candidate only.)" type="checkbox" role="switch" id="s-pwd">
-                            <label for="s-pwd" class="form-check-label">PwD(Person With Disability) Scholarship</label>
+                            <input class="form-check-input" name="sch-pwd" value="PwD(Person With Disability) For PwD Candidate" type="checkbox" role="switch" id="s-pwd">
+                            <label for="s-pwd" class="form-check-label">For PwD(Person With Disability) Candidate</label>
                         </div>
                         <div class="form-check form-switch">
                             <input class="form-check-input" name="sch-athletics" value="Athletic Scholarship" type="checkbox" role="switch" id="athletics">

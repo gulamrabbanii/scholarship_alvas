@@ -16,6 +16,13 @@ $private_sch_sql = "SELECT * FROM scholarship_details WHERE (sch_start_date <= C
         -13px -13px 20px #ffffff;
     height: 400px;
 }
+.card-body {
+  width: 
+}
+.card-text-body {
+  margin-top: 30px;
+  height: calc(100% - 150px);
+}
 </style>
 
 <section>
@@ -48,16 +55,18 @@ if($result = $link->query($sql)){
     if($result->num_rows > 0){
         while($row = $result->fetch_array()){ ?>
                 <div class="col-sm-4">
-                <div class="card mt-5 text-center">
-                <div class="card-header">
+                <div class="card mt-3">
+                <div class="card-header text-center bg-danger">
                 <i class="fa-solid fa-calendar-days px-2"></i>Deadline: <?php echo $row["sch_deadline"] ?>
                 </div>
                 <div class="card-body">
-                <h5 class="card-title"><a href="<?php echo $row['sch_link'] ?>" target="_blank" rel="noopener noreferrer"><?php echo $row["sch_name"] ?></a></h5>
-                <p class="card-text">Eligibility</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+                <h5 class="card-title"><a class="text-decoration-none" href="<?php echo $row['sch_link'] ?>" target="_blank" rel="noopener noreferrer"><?php echo $row["sch_name"] ?></a></h5>
+                <hr>
+                <div class="card-text-body">
+                      <p class="card-text">Eligibility</p>
                 </div>
-                <div class="card-footer">
+                </div>
+                <div class="card-footer text-center bg-primary">
                 <a href="#" class="text-decoration-none text-dark">View Scholarship</a>
                 </div>
             </div>
@@ -162,16 +171,18 @@ if($result = $link->query($private_sch_sql)){
     if($result->num_rows > 0){
         while($row = $result->fetch_array()){ ?>
                 <div class="col-sm-4">
-                <div class="card mt-5 text-center">
-                <div class="card-header">
+                <div class="card mt-3">
+                <div class="card-header text-center bg-danger">
                 <i class="fa-solid fa-calendar-days px-2"></i>Deadline: <?php echo $row["sch_deadline"] ?>
                 </div>
                 <div class="card-body">
-                <h5 class="card-title"><a href="<?php echo $row['sch_link'] ?>" target="_blank" rel="noopener noreferrer"><?php echo $row["sch_name"] ?></a></h5>
-                <p class="card-text">Eligibility</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+                <h5 class="card-title"><a class="text-decoration-none" href="<?php echo $row['sch_link'] ?>" target="_blank" rel="noopener noreferrer"><?php echo $row["sch_name"] ?></a></h5>
+                <hr>
+                <div class="card-text-body">
+                      <p class="card-text">Eligibility</p>
                 </div>
-                <div class="card-footer">
+                </div>
+                <div class="card-footer text-center bg-primary">
                 <a href="#" class="text-decoration-none text-dark">View Scholarship</a>
                 </div>
             </div>
