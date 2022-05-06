@@ -2,7 +2,7 @@
 include("sidebar-layout.php");
 require_once("../db/config.php");
 
-$sql = "SELECT * FROM scholarship_details WHERE (sch_start_date >= CURDATE()) AND (sch_deadline <= CURDATE()) ORDER BY sch_deadline";
+$sql = "SELECT * FROM scholarship_details WHERE (sch_start_date <= CURDATE()) AND (sch_deadline >= CURDATE()) ORDER BY sch_deadline";
 ?>
 <title>SCHOLARSHIP</title>
 
