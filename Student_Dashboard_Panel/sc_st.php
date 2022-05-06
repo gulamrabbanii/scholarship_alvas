@@ -1,5 +1,8 @@
 <?php 
 include("sidebar-layout.php");
+require_once("../db/config.php");
+
+$sql = "SELECT * FROM scholarship_details WHERE sch_deadline <= CURDATE() ORDER BY sch_deadline";
 ?>
 <title>SCHOLARSHIP</title>
 
@@ -25,19 +28,8 @@ include("sidebar-layout.php");
   </div>
 </nav>
 <div class="tab-content mt-5" id="nav-tabContent">
-  <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+  <div class="tab-pane fade show active" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
  
-<div class="container">
-  <div class="btn-group" role="group" aria-label="Basic outlined example">
-  <button type="button" class="btn btn-outline-primary" onclick="window.location.href = 'live-scholarship.php';">LIVE SCHOLARSHIPS</button>
-  <button type="button" class="btn btn-outline-primary" onclick="window.location.href = 'upcoming-scholarship.php';">UPCOMING SCHOLARSHIPS</button>
-  <button type="button" class="btn btn-outline-primary" onclick="window.location.href = 'always-open.php';">ALWAYS OPEN</button>
-</div>
-</div>
-</div>
-
-
-  <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
 <div class="container">
 <div class="btn-group" role="group" aria-label="Basic outlined example">
     <button type="button" class="btn btn-outline-primary" onclick="window.location.href = '#';">SC/CT/OBC</button>
@@ -82,6 +74,70 @@ $link->close();
 ?>
 </div>
 <!-- Cards End -->
+
+</div>
+</div>
+
+  <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+<div class="container">
+<div class="btn-group" role="group" aria-label="Basic outlined example">
+    <button type="button" class="btn btn-outline-primary" onclick="window.location.href = '#';">SC/CT/OBC</button>
+    <button type="button" class="btn btn-outline-primary" onclick="window.location.href = '#';">GIRLS</button>
+    <button type="button" class="btn btn-outline-primary" onclick="window.location.href = '#';">MINORITY</button>
+    <button type="button" class="btn btn-outline-primary" onclick="window.location.href = '#';">PHYSICALLY DISABLED</button>
+</div>
+</div>
+
+<!-- Cards Start -->
+<div class="row">
+<div class="col-sm-4">
+<div class="card mt-5 text-center">
+  <div class="card-header">
+     <i class="fa-solid fa-calendar-days px-2"></i>Deadline: 26/04/2022
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Scholarship Name</h5>
+    <p class="card-text">Eligibility</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+  <div class="card-footer text-muted">
+    View Scholarship
+  </div>
+</div>
+</div>
+
+<div class="col-sm-4">
+<div class="card mt-5 text-center">
+  <div class="card-header">
+     <i class="fa-solid fa-calendar-days px-2"></i>Deadline: 26/04/2022
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Scholarship Name</h5>
+    <p class="card-text">Eligibility</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+  <div class="card-footer text-muted">
+    View Scholarship
+  </div>
+</div>
+</div>
+
+<div class="col-sm-4">
+<div class="card mt-5 text-center">
+  <div class="card-header">
+     <i class="fa-solid fa-calendar-days px-2"></i>Deadline: 26/04/2022
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Scholarship Name</h5>
+    <p class="card-text">Eligibility</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+  <div class="card-footer text-muted">
+    View Scholarship
+  </div>
+</div>
+</div>
+</div>
 <!-- Cards End -->
   </div>
   <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
@@ -199,6 +255,5 @@ $link->close();
   </div>
 </div>
 <div>
+
 </section>
-
-

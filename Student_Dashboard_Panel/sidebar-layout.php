@@ -31,7 +31,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     </div>
     <ul>
           <li><a href="profile.php"><i class="fas fa-qrcode"></i>Profile</a></li>
-          <li><a href="scholarship.php"><i class="fa-solid fa-graduation-cap"></i>Scholarship</a></li>
+          <li><a href="live-scholarship.php"><i class="fa-solid fa-graduation-cap"></i>Scholarship</a></li>
           <li><a href="verification.php"><i class="fas fa-check-circle"></i>Verification</a></li>
           <li><a href="status.php"><i class="fa-solid fa-flag"></i>Status</a></li>
           <li><a href="reset-password.php"><i class="fas fa-question-circle"></i>Reset Password</a></li>

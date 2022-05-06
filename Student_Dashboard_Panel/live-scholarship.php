@@ -1,5 +1,8 @@
 <?php 
 include("sidebar-layout.php");
+require_once("../db/config.php");
+
+$sql = "SELECT * FROM scholarship_details WHERE sch_deadline <= CURDATE() ORDER BY sch_deadline";
 ?>
 <title>SCHOLARSHIP</title>
 
@@ -34,20 +37,9 @@ include("sidebar-layout.php");
   <button type="button" class="btn btn-outline-primary" onclick="window.location.href = 'always-open.php';">ALWAYS OPEN</button>
 </div>
 </div>
-</div>
-
-
-  <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-<div class="container">
-<div class="btn-group" role="group" aria-label="Basic outlined example">
-    <button type="button" class="btn btn-outline-primary" onclick="window.location.href = '#';">SC/CT/OBC</button>
-    <button type="button" class="btn btn-outline-primary" onclick="window.location.href = '#';">GIRLS</button>
-    <button type="button" class="btn btn-outline-primary" onclick="window.location.href = '#';">MINORITY</button>
-    <button type="button" class="btn btn-outline-primary" onclick="window.location.href = '#';">PHYSICALLY DISABLED</button>
-</div>
-</div>
 
 <!-- Cards Start -->
+<h5 class="p-2">Live Scholarship</h5>
 <div class="row">
 <?php
 if($result = $link->query($sql)){
@@ -82,7 +74,24 @@ $link->close();
 ?>
 </div>
 <!-- Cards End -->
-<!-- Cards End -->
+
+</div>
+
+
+  <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+<div class="container">
+<div class="btn-group" role="group" aria-label="Basic outlined example">
+    <button type="button" class="btn btn-outline-primary" onclick="window.location.href = '#';">MINORITY(SC/ST/OBC)</button>
+    <button type="button" class="btn btn-outline-primary" onclick="window.location.href = '#';">SC/ST ONLY</button>
+    <button type="button" class="btn btn-outline-primary" onclick="window.location.href = '#';">GIRLS</button>
+    <button type="button" class="btn btn-outline-primary" onclick="window.location.href = '#';">MINORITY</button>
+    <button type="button" class="btn btn-outline-primary" onclick="window.location.href = '#';">PHYSICALLY DISABLED</button>
+</div>
+</div>
+
+<!-- card
+ -->
+
   </div>
   <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
   <div class="container">
