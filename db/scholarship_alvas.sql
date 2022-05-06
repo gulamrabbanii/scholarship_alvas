@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 04, 2022 at 08:45 PM
+-- Generation Time: May 06, 2022 at 09:28 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.1
 
@@ -45,13 +45,6 @@ CREATE TABLE `doc_req` (
   `other_cert` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `doc_req`
---
-
-INSERT INTO `doc_req` (`sch_name`, `govt_id`, `domicile`, `income`, `pwd`, `bonafide`, `caste`, `parent_aadhar`, `bank_passbook`, `college_fee`, `sslc_puc`, `sem`, `diploma`, `self_dec`, `other_cert`) VALUES
-('National Scholarship', 'Government ID Proof(eg. Aadhar Card, Driving License etc.)', '', '', '', 'Bonafide Certificate', 'Caste Certificate', '', 'Bank Passbook of Student(Aadhar Card should be link with Bank A/C)', 'College Fee Receipt', '', 'Previous 2 Semester Marks Card', '', 'Self Declaration Minority Certificate', '');
-
 -- --------------------------------------------------------
 
 --
@@ -70,13 +63,6 @@ CREATE TABLE `elig_req` (
   `other_sch` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `elig_req`
---
-
-INSERT INTO `elig_req` (`sch_name`, `minority`, `sc_st`, `girls`, `community`, `military`, `pwd`, `athletic`, `other_sch`) VALUES
-('National Scholarship', 'Scholarship for Minorities(SC/ST/OBC)', '', '', '', '', '', '', '');
-
 -- --------------------------------------------------------
 
 --
@@ -87,19 +73,12 @@ CREATE TABLE `scholarship_details` (
   `id` int(11) NOT NULL,
   `sch_name` varchar(255) DEFAULT NULL,
   `sch_provider` varchar(255) DEFAULT NULL,
-  `sch_academic_year` varchar(255) DEFAULT NULL,
+  `sch_start_date` date DEFAULT NULL,
   `sch_type` varchar(255) DEFAULT NULL,
   `sch_deadline` date DEFAULT NULL,
   `sch_mode` varchar(50) DEFAULT NULL,
   `sch_link` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `scholarship_details`
---
-
-INSERT INTO `scholarship_details` (`id`, `sch_name`, `sch_provider`, `sch_academic_year`, `sch_type`, `sch_deadline`, `sch_mode`, `sch_link`) VALUES
-(5, 'National Scholarship', 'Central Government', '2022-23', 'Central Government', '2022-05-28', 'Both', 'https://scholarships.gov.in/fresh/schemeSelRegfrmInstruction');
 
 -- --------------------------------------------------------
 
@@ -166,7 +145,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `scholarship_details`
 --
 ALTER TABLE `scholarship_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `users`

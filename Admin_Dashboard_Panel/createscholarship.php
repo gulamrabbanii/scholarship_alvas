@@ -6,15 +6,16 @@ error_reporting(E_ALL & ~E_WARNING  & ~E_NOTICE & ~E_STRICT & ~E_DEPRECATED);
 
 
 // Define variables and initialize with empty values
-$sch_name_err = $provider_err = $academic_year_err = "";
+$sch_name_err = $provider_err = "";
 
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     // Setting variables to values
-    $sch_name = htmlspecialchars(strip_tags(trim($_POST["sch-name"])));
+    $sch_name = strtoupper(htmlspecialchars(strip_tags(trim($_POST["sch-name"]))));
     $provider_name = htmlspecialchars(strip_tags(trim($_POST["provider-name"])));
-    $sch_academic_year = htmlspecialchars(strip_tags(trim($_POST["sch-acad-year"])));
+    $sch_start_date = htmlspecialchars(strip_tags(trim($_POST["sch-start-date"])));
+    $start_date = date("Y-m-d", strtotime($sch_start_date));
     $sch_type = htmlspecialchars(strip_tags(trim($_POST["sch-type"])));
     $sch_deadline = htmlspecialchars(strip_tags(trim($_POST["sch-deadline"])));
     $deadline_date = date("Y-m-d", strtotime($sch_deadline));
@@ -85,17 +86,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     } else{
         $provider_name = $provider_name;
     }
-    if(empty($sch_academic_year)){
-        $academic_year_err = "Please enter academic year for scholarship.";     
-    } else{
-        $sch_academic_year = $sch_academic_year;
-    }
      
     // Check input errors before inserting in database
     if(empty($sch_name_err) && empty($provider_err) && empty($academic_year_err)){
         
         // Prepare an insert statement
-        $scholarship_details_sql = "INSERT INTO scholarship_details (sch_name, sch_provider, sch_academic_year, sch_type, sch_deadline, sch_mode, sch_link) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        $scholarship_details_sql = "INSERT INTO scholarship_details (sch_name, sch_provider, sch_start_date, sch_type, sch_deadline, sch_mode, sch_link) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
         $elig_req_sql = "INSERT INTO elig_req (sch_name, minority, sc_st, girls, community, military, pwd, athletic, other_sch) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
@@ -103,12 +99,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
          
         if($stmt = $link->prepare($scholarship_details_sql)){
             // Bind variables to the prepared statement as parameters
-            $stmt->bind_param("sssssss", $param_sch_name, $param_sch_provider, $param_academic_year, $param_sch_type, $param_sch_deadline, $param_sch_mode, $param_sch_link);
+            $stmt->bind_param("sssssss", $param_sch_name, $param_sch_provider, $param_start_date, $param_sch_type, $param_sch_deadline, $param_sch_mode, $param_sch_link);
             
             // Set parameters
             $param_sch_name = $sch_name;
             $param_sch_provider = $provider_name;
-            $param_academic_year = $sch_academic_year;
+            $param_start_date = $start_date;
             $param_sch_type = $sch_type;
             $param_sch_deadline = $deadline_date;
             $param_sch_mode = $sch_mode;
@@ -192,9 +188,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <label for="scholarship-provider" class="form-label fw-bolder">Scholarship Provider</label>
                     <input type="text" name="provider-name" class="form-control <?php echo (!empty($provider_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $provider_name; ?>" id="scholarship-provider" placeholder="SCHOLARSHIP PROVIDER NAME" required />
                 </div>
-                <div class="col-md-6 mt-5">
-                <label for="scholarship-year" class="form-label fw-bolder">Scholarship For Academic Year</label>
-                    <input type="text" name="sch-acad-year" class="form-control <?php echo (!empty($academic_year_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $sch_academic_year; ?>" id="scholarship-year" placeholder="eg. 2022-23" pattern="[0-9]{4}-[0-9]{2}" required />
+                  <div class="col-md-6">
+                <label for="app-start" class="form-label fw-bolder mt-5">Registration Start Date</label>
+                    <input type="date" name="sch-start-date" class="form-control" id="app-start" placeholder="LAST DATE TO APPLY" required />
+                </div>
+                <div class="col-md-6">
+                <label for="app-deadline" class="form-label fw-bolder mt-5">Registration Deadline</label>
+                    <input type="date" name="sch-deadline" class="form-control" id="app-deadline" placeholder="LAST DATE TO APPLY" required />
                 </div>
             <div class="col-md-12">
                 <label for="scholarship-type" class="form-label fw-bolder mt-5">Choose Provider Type</label>
@@ -221,10 +221,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 </div>    
                </div>
             </div>
-                <div class="col-md-6">
-                <label for="app-deadline" class="form-label fw-bolder mt-5">Application Deadline</label>
-                    <input type="date" name="sch-deadline" class="form-control" id="app-deadline" placeholder="LAST DATE TO APPLY" required />
-                </div>
                 <div class="col-md-12">
                     <label for="elig-crit" class="form-label fw-bolder mt-5">Eligibility Requirements (Select all that apply)</label>
                     <div id="elig-crit">
@@ -249,7 +245,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             <label for="m-scholarship" class="form-check-label">Military Scholarship</label>
                         </div>
                         <div class="form-check form-switch">
-                            <input class="form-check-input" name="sch-pwd" value="PwD(Person With Disability) Scholarship" type="checkbox" role="switch" id="s-pwd">
+                            <input class="form-check-input" name="sch-pwd" value="PwD(Person With Disability) Scholarship (For PwD Candidate only.)" type="checkbox" role="switch" id="s-pwd">
                             <label for="s-pwd" class="form-check-label">PwD(Person With Disability) Scholarship</label>
                         </div>
                         <div class="form-check form-switch">
@@ -282,8 +278,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             <label for="income-cert" class="form-check-label">Income Certificate issued from the Competent Authority</label>
                         </div>
                         <div class="form-check form-switch">
-                            <input class="form-check-input" name="pwd-cert" value="PwD Certificate issued from the Competent Authority" type="checkbox" role="switch" id="pwd-cert">
-                            <label for="pwd-cert" class="form-check-label">PwD Certificate issued from the Competent Authority</label>
+                            <input class="form-check-input" name="pwd-cert" value="PwD Certificate issued from the Competent Authority (For PwD Candidate only)" type="checkbox" role="switch" id="pwd-cert">
+                            <label for="pwd-cert" class="form-check-label">PwD Certificate issued from the Competent Authority (For PwD Candidate only)</label>
                         </div>
                         <div class="form-check form-switch">
                             <input class="form-check-input" name="bonf-cert" value="Bonafide Certificate" type="checkbox" role="switch" id="bonf-cert">
@@ -335,7 +331,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     </div>
                 </div>
             <div class="col-md-12">
-                <label for="sch-mode" class="form-label fw-bolder">Scholarship Mode</label>
+                <label for="sch-mode" class="form-label fw-bolder">Scholarship Application Mode</label>
                 <div id="sch-mode">
                     <div class="form-check">
                         <input class="form-check-input" value="Offline" name="sch-mode" type="radio" id="offline">

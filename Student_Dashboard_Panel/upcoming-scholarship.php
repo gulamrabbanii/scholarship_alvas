@@ -51,7 +51,7 @@ if($result = $link->query($sql)){
                 <i class="fa-solid fa-calendar-days px-2"></i>Deadline: <?php echo $row["sch_deadline"] ?>
                 </div>
                 <div class="card-body">
-                <h5 class="card-title"><?php echo $row["sch_name"] ?></h5>
+                <h5 class="card-title"><a href="<?php echo $row['sch_link'] ?>" target="_blank" rel="noopener noreferrer"><?php echo strtoupper($row["sch_name"]) ?></a></h5>
                 <p class="card-text">Eligibility</p>
                 <a href="#" class="btn btn-primary">Go somewhere</a>
                 </div>
@@ -59,7 +59,7 @@ if($result = $link->query($sql)){
                 <a href="#" class="text-decoration-none text-dark">View Scholarship</a>
                 </div>
             </div>
-            </div>            
+            </div>          
 <?php    } 
         // Free result set
         $result->free();
