@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 06, 2022 at 04:44 PM
+-- Generation Time: May 06, 2022 at 07:41 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.1
 
@@ -139,8 +139,9 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `username`, `passwd`, `first_name`, `last_name`, `dept`, `year`, `phone`, `created_at`) VALUES
 (9, '4al18cs099', '$2y$10$MNkATxHXwrGV7FUkmEXgUuwQqAWRFPwcGBs2.5YSVF9asniY35y42', 'ijaz', 'ibrahim', 'INFORMATION TECHNOLOGY ENGG', 4, 1594562580, '2022-05-02 01:34:36'),
 (10, 'admin', '$2y$10$eKZbj4xwL.9HFS9/GZ0R9O2VegaK/mYVK9.6MaMzU/O78zckkY92a', 'Gulam', 'Rabbani', '', 0, 2147483647, '2022-05-01 23:25:56'),
-(11, 'admin@admin.com', '$2y$10$AK.IMWMsH0JGX8tXmkmW8ebHkyJLv1zpB0VoWrY9zEE0fSOBoB9qW', 'Scholarship', 'Section', '', 0, 2147483647, '2022-05-02 01:35:53'),
-(13, '4al18cs026', '$2y$10$PsHAdIlm0nurm.0aEoneeOniFqq3hqPxQHDk.7Zcab7Gq5KgeBiIC', 'Ijaz', 'Ibrahim', 'COMPUTER SCIENCE &amp;amp; ENGG', 3, 2147483647, '2022-05-03 06:58:25');
+(13, '4al18cs026', '$2y$10$PsHAdIlm0nurm.0aEoneeOniFqq3hqPxQHDk.7Zcab7Gq5KgeBiIC', 'Ijaz', 'Ibrahim', 'COMPUTER SCIENCE &amp;amp; ENGG', 3, 2147483647, '2022-05-03 06:58:25'),
+(14, 'admin@admin.com', '$2y$10$K.Bb/hFj/IGqRtaiE25rgusnzYjdBBJaiN/Z1MO756occmlOuHaI6', 'Paul', 'J Burch', '', 0, 2147483647, '2022-05-06 17:28:24'),
+(15, 'admin@aiet.org', '$2y$10$1.vOQGOtDopLeFOu3twiWeWpD3ctMrKTyPP0NTKBYw73IQKCvCc1m', 'Carol', 'J Gracia', '', 0, 2147483647, '2022-05-06 17:29:35');
 
 --
 -- Indexes for dumped tables
@@ -185,7 +186,7 @@ ALTER TABLE `scholarship_details`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- Constraints for dumped tables
