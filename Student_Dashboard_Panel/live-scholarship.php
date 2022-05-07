@@ -42,14 +42,6 @@ $private_sch_sql = "SELECT * FROM scholarship_details t1 INNER JOIN elig_req t2 
 <div class="tab-content mt-5" id="nav-tabContent">
   <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
  
-<!-- <div class="container">
-  <div class="btn-group" role="group" aria-label="Basic outlined example">
-  <button type="button" class="btn btn-outline-primary" onclick="window.location.href = 'live-scholarship.php';">LIVE SCHOLARSHIPS</button>
-  <button type="button" class="btn btn-outline-primary" onclick="window.location.href = 'upcoming-scholarship.php';">UPCOMING SCHOLARSHIPS</button>
-  <button type="button" class="btn btn-outline-primary" onclick="window.location.href = 'always-open.php';">ALWAYS OPEN</button>
-</div>
-</div> -->
-
 <div class="container">
   <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
   <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>

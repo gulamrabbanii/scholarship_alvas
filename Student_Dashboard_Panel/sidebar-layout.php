@@ -4,6 +4,11 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     header("location: ../index.php");
     exit;
 }
+require_once("../db/config.php");
+$username = $_SESSION['username'];
+$sql = "SELECT * FROM users WHERE username = '$username'";
+$result = $link->query($sql);
+foreach ($result as $row) {
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -26,7 +31,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     <div class="title">
       <div class="logo"><img src="../assets/img/person.png" style="margin:5px; width: 80px; height: 80px; border-radius: 50%;"  alt="" srcset="">
     </div>
-    <div class="p-2" style="position: relative; top: 20px;"><h4 class="f-name">Gulam</h4><h4 class="s-name">Rabbani</h4></div>
+    <div class="p-2" style="position: relative; top: 20px;"><h5><?php echo ucwords($row['first_name']);?></h5><h5><?php echo ucwords($row['last_name']); ?></h5></div>
       <label class=" button cancel" for="check"><i class="fas fa-times"></i></label>
     </div>
     <ul>
@@ -50,7 +55,9 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         </div> -->
         
   </div>
-
+<?php 
+}
+?>
   <!-- JavaScript Bundle with Popper -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
