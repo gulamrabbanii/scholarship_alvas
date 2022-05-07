@@ -92,7 +92,7 @@ if($result = $link->query($sql)){
                 <div class="card-footer">
                   <div class="d-flex justify-content-center">
                       <div class="btn btn-sm"><i class="fas fa-eye-slash" aria-hidden="true">
-                        <?php echo "<a class='px-1 text-decoration-none text-muted' onclick=\"return confirm('Do you really want to disable this scholarship?')\" href=\"../scholarship-operation/disable-scholarship.php?id=" . $row['id'] . " \">Disable</a>"; ?>
+                        <?php echo "<a class='px-1 text-decoration-none text-muted' onclick=\"return confirm('Do you really want to disable this scholarship?')\" href=\"../scholarship-operation/disable-scholarship.php?id=" . $row['id'] . " \">DISABLE</a>"; ?>
                             <script>
                                 document.getElementById('a.delete').on('click', function() {
                                     var choice = confirm('Disable this scholarship?');
@@ -105,7 +105,18 @@ if($result = $link->query($sql)){
                       </i>                   
                     </div>
                       <div class="btn btn-sm"><i class="fas fa-edit" aria-hidden="true"></i><span class="px-1">Modify</span></div>
-                      <div class="btn btn-sm"><i class="fa fa-trash" aria-hidden="true"></i><span class="px-1">Delete</span></div>
+                      <div class="btn btn-sm"><i class="fa fa-trash" aria-hidden="true">
+                        <?php echo "<a class='px-1 text-decoration-none text-danger' onclick=\"return confirm('Do you really want to delete this scholarship?')\" href=\"../scholarship-operation/delete-scholarship.php?id=" . $row['id'] . " \">DELETE</a>"; ?>
+                            <script>
+                                document.getElementById('a.delete').on('click', function() {
+                                    var choice = confirm('Delete this scholarship?');
+                                    if (choice === true) {
+                                        return true;
+                                    }
+                                    return false;
+                                });
+                            </script>
+                      </i></div>
                       </div>
                        </div>
                 <div class="card-footer text-center bg-primary">
