@@ -2,7 +2,7 @@
 include("admin-layout.php");
 require_once("../db/config.php");
 
-$sql = "SELECT * FROM scholarship_details t1 INNER JOIN elig_req t2 ON t2.sch_name = t1.sch_name ORDER BY created_at DESC";
+$sql = "SELECT * FROM scholarship_details t1 INNER JOIN elig_req t2 ON t2.sch_name = t1.sch_name WHERE (sch_start_date > CURDATE()) AND (sch_deadline > CURDATE()) ORDER BY sch_start_date";
 ?>
 <title>ALL SCHOLARSHIPS</title>
         <div class="dash-content">
@@ -13,13 +13,13 @@ $sql = "SELECT * FROM scholarship_details t1 INNER JOIN elig_req t2 ON t2.sch_na
 
 <div class="container">
   <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-  <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
+  <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off">
   <label class="btn btn-outline-primary" for="btnradio1" onclick="window.location.href = 'view-scholarships.php';">ALL SCHOLARSHIP</label>
 
   <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
   <label class="btn btn-outline-primary" for="btnradio2" onclick="window.location.href = 'live-scholarship.php';">LIVE SCHOLARSHIP</label>
 
-  <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
+  <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off" checked>
   <label class="btn btn-outline-primary" for="btnradio3" onclick="window.location.href = 'upcoming-scholarship.php';">UPCOMING SCHOLARSHIP</label>
 </div>
 </div>
@@ -56,8 +56,8 @@ if($result = $link->query($sql)){
         while($row = $result->fetch_array()){ ?>
                 <div class="col-sm-4">
                 <div class="card mt-3">
-                <div class="card-header text-center <?php echo ($row['sch_start_date'] > date("Y-m-d")) ? 'bg-success' : 'bg-danger'; ?>">
-                <i class="fa-solid fa-calendar-days px-2"></i><?php echo ($row['sch_start_date'] > date("Y-m-d")) ? "Launch Date: " . $row["sch_start_date"] : "Deadline: " . $row["sch_deadline"]; ?>
+                <div class="card-header text-center bg-success">
+                <i class="fa-solid fa-calendar-days px-2"></i>Launch Date: <?php echo $row["sch_start_date"] ?>
                 </div>
                 <div class="card-body">
                 <h5 class="card-title txt"><a class="text-decoration-none text-secondary" href="<?php echo $row['sch_link'] ?>" target="_blank" rel="noopener noreferrer"><?php echo $row["sch_name"] ?></a></h5>
