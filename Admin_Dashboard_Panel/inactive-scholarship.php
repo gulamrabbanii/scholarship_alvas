@@ -103,7 +103,18 @@ if($result = $link->query($sql)){
                                 });
                             </script>
                       </i></div>
-                      <div class="btn btn-sm"><i class="fas fa-edit" aria-hidden="true"></i><span class="px-1">Modify</span></div>
+                      <div class="btn btn-sm"><i class="fas fa-edit" aria-hidden="true">
+                          <?php echo "<a class='px-1 text-decoration-none text-success' onclick=\"return confirm('Do you really want to modify this scholarship?')\" href=\"update-scholarship.php?id=" . $row['id'] . " \">MODIFY</a>"; ?>
+                            <script>
+                                document.getElementById('a.delete').on('click', function() {
+                                    var choice = confirm('Modify this scholarship?');
+                                    if (choice === true) {
+                                        return true;
+                                    }
+                                    return false;
+                                });
+                            </script>
+                      </i></div>
                       <div class="btn btn-sm"><i class="fa fa-trash" aria-hidden="true">
                           <?php echo "<a class='px-1 text-decoration-none text-danger' onclick=\"return confirm('Do you really want to delete this scholarship?')\" href=\"../scholarship-operation/delete-scholarship.php?id=" . $row['id'] . " \">DELETE</a>"; ?>
                             <script>
