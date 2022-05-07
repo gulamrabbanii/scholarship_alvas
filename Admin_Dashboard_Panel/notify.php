@@ -1,12 +1,12 @@
 <?php
 include("admin-layout.php");
 ?>
-<title>Notify Students</title>
+<title>SEND NOTIFICATION</title>
         <div class="dash-content">
             <div class="overview">
                 <div class="title">
                     <i class="uil uil-tachometer-fast-alt"></i>
-                    <span class="text">Notify Students</span>
+                    <span class="text">Send Notification</span>
                 </div>
     
 <!-- Add contents here -->

@@ -118,7 +118,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 ?>
 
 
-<title>Register | Admin</title>
+<title>REGISTER NEW ADMIN</title>
 
         <div class="dash-content">
             <div class="overview">

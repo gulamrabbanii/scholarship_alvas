@@ -4,7 +4,7 @@ require_once("../db/config.php");
 
 $sql = "SELECT * FROM scholarship_details t1 INNER JOIN elig_req t2 ON t2.sch_name = t1.sch_name WHERE (sch_start_date > CURDATE()) AND (sch_deadline > CURDATE()) AND status = 'active' ORDER BY sch_start_date";
 ?>
-<title>ALL SCHOLARSHIPS</title>
+<title>UPCOMING SCHOLARSHIPS</title>
         <div class="dash-content">
             <div class="overview">
                 <div class="title">

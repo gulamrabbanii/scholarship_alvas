@@ -177,7 +177,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $link->close();
 }
 ?>
-<title>Create Scholarship</title>
+<title>CREATE SCHOLARSHIP</title>
 <div class="dash-content">
             <div class="overview">
                 <div class="title">

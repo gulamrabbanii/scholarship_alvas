@@ -1,7 +1,7 @@
 <?php
 include("admin-layout.php");
 ?>
-<title>Admin Dashboard Panel</title>
+<title>ADMIN DASHBOARD PANEL</title>
 
     <div class="dash-content">
             <div class="overview">

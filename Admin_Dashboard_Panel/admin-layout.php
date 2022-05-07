@@ -16,6 +16,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
      <link rel="stylesheet" href="../assets/style/style_admin.css">
     <!----===== Iconscout CSS ===== -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
@@ -35,20 +36,22 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                     <span class="link-name">Dahsboard</span>
                 </a></li>
                 <li><a href="createscholarship.php">
-                    <i class="uil uil-files-landscapes"></i>
+                    <i class="fa fa-graduation-cap" aria-hidden="true"></i>
                     <span class="link-name">Add Scholarship</span>
+                </a></li>
+
+                <li><a href="view-scholarships.php">
+                    <i class="bi bi-bookmarks"></i>
+                    <span class="link-name">View scholarships</span>
                 </a></li>
                 
                 <li><a href="verification.php">
-                    <i class="uil uil-thumbs-up"></i>
+                    <i class="bi bi-patch-check"></i>
                     <span class="link-name">Verify Docs</span>
                 </a></li>
-                <li><a href="view-scholarships.php">
-                    <i class="uil uil-chart"></i>
-                    <span class="link-name">View scholarships</span>
-                </a></li>
+
                 <li><a href="notify.php">
-                    <i class="uil uil-chart"></i>
+                    <i class="bi bi-info-square"></i>
                     <span class="link-name">Notify</span>
                 </a></li>
                 <?php if ($_SESSION["username"] == "admin"){ 
