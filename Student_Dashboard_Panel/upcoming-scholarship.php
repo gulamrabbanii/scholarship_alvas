@@ -2,9 +2,9 @@
 include("sidebar-layout.php");
 require_once("../db/config.php");
 
-$sql = "SELECT * FROM scholarship_details t1 INNER JOIN elig_req t2 ON t2.sch_name = t1.sch_name WHERE (sch_start_date > CURDATE()) AND (sch_deadline > CURDATE()) ORDER BY sch_start_date";
+$sql = "SELECT * FROM scholarship_details t1 INNER JOIN elig_req t2 ON t2.sch_name = t1.sch_name WHERE (sch_start_date > CURDATE()) AND (sch_deadline > CURDATE()) AND status='active' ORDER BY sch_start_date";
 
-$private_sch_sql = "SELECT * FROM scholarship_details t1 INNER JOIN elig_req t2 ON t2.sch_name = t1.sch_name WHERE (sch_start_date <= CURDATE()) AND (sch_deadline >= CURDATE()) AND (sch_type = 'Business, Company, or Corporation' OR sch_type = 'NGO / Non-Profit') ORDER BY sch_deadline";
+$private_sch_sql = "SELECT * FROM scholarship_details t1 INNER JOIN elig_req t2 ON t2.sch_name = t1.sch_name WHERE (sch_start_date <= CURDATE()) AND (sch_deadline >= CURDATE()) AND (sch_type = 'Business, Company, or Corporation' OR sch_type = 'NGO / Non-Profit') AND status='active' ORDER BY sch_deadline";
 ?>
 <title>SCHOLARSHIP</title>
 
