@@ -107,7 +107,7 @@ body{
 .media_icons a:nth-child(4){
   color: #ff0000;
 }
-label{
+.button{
   font-size: 17px;
   color: #31344b;
   box-shadow: -3px -3px 7px #ffffff,
@@ -120,7 +120,7 @@ label{
   cursor: pointer;
   transition: all 0.3s ease;
 }
-label:hover{
+.button:hover{
   box-shadow: inset -3px -3px 7px #ffffff,
               inset 3px 3px 5px #ceced1;
   color: #3498db;
@@ -136,13 +136,13 @@ label:hover{
 #check:checked ~ .side_bar{
   left: 0;
 }
-#check:checked~label .bars {
+#check:checked~.bars {
   left: 300px;
   opacity: 0;
   pointer-events: none;
 }
 
-#check:checked~label .cancel {
+#check:checked~.cancel {
   left: 195px;
 }
 
