@@ -2,7 +2,7 @@
 include("admin-layout.php");
 require_once("../db/config.php");
 
-$sql = "SELECT * FROM scholarship_details t1 INNER JOIN elig_req t2 ON t2.sch_name = t1.sch_name WHERE (sch_start_date > CURDATE()) AND (sch_deadline > CURDATE()) ORDER BY sch_start_date";
+$sql = "SELECT * FROM scholarship_details t1 INNER JOIN elig_req t2 ON t2.sch_name = t1.sch_name WHERE (sch_start_date > CURDATE()) AND (sch_deadline > CURDATE()) AND status = 'active' ORDER BY sch_start_date";
 ?>
 <title>ALL SCHOLARSHIPS</title>
         <div class="dash-content">
@@ -21,6 +21,9 @@ $sql = "SELECT * FROM scholarship_details t1 INNER JOIN elig_req t2 ON t2.sch_na
 
   <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off" checked>
   <label class="btn btn-outline-primary" for="btnradio3" onclick="window.location.href = 'upcoming-scholarship.php';">UPCOMING SCHOLARSHIP</label>
+
+  <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
+  <label class="btn btn-outline-primary" for="btnradio3" onclick="window.location.href = 'inactive-scholarship.php';">INACTIVE SCHOLARSHIP</label>
 </div>
 </div>
 
@@ -33,14 +36,11 @@ $sql = "SELECT * FROM scholarship_details t1 INNER JOIN elig_req t2 ON t2.sch_na
   .card {
     border-radius: 5px;
     background: rgba(236, 240, 243, 0.6);
-    height: 400px;
-}
-.card-body {
-  width: 
+    height: 450px;
 }
 .card-text-body {
-  margin-top: 30px;
-  height: calc(100% - 150px);
+  margin-top: 10px;
+  height: calc(100% - 300px);
 }
 .txt:hover {
     text-decoration: underline;
@@ -84,12 +84,30 @@ if($result = $link->query($sql)){
                        <?php if(!empty($row['other_sch'])) {?>
                         <p><small class="text-muted"><?php echo $row['other_sch'] ?></small></p>
                        <?php }?>
-                       <br>
                       <div class="card-text text-primary"><small> Last Updated On:</small>
                         <p><small class="text-muted"><?php echo $row['created_at'] ?></small></p>
                       </div>
                 </div>
                 </div>
+                <div class="card-footer">
+                  <div class="d-flex justify-content-center">
+                      <div class="btn btn-sm"><i class="fas fa-eye-slash" aria-hidden="true">
+
+                      <?php echo "<a class='px-1 text-decoration-none text-muted' onclick=\"return confirm('Do you really want to disable this scholarship?')\" href=\"../scholarship-operation/disable-scholarship.php?id=" . $row['id'] . " \">Disable</a>"; ?>
+                            <script>
+                                document.getElementById('a.delete').on('click', function() {
+                                    var choice = confirm('Disable this scholarship?');
+                                    if (choice === true) {
+                                        return true;
+                                    }
+                                    return false;
+                                });
+                            </script>
+                      </i></div>
+                      <div class="btn btn-sm"><i class="fas fa-edit" aria-hidden="true"></i><span class="px-1">Modify</span></div>
+                      <div class="btn btn-sm"><i class="fa fa-trash" aria-hidden="true"></i><span class="px-1">Delete</span></div>
+                      </div>
+                       </div>
                 <div class="card-footer text-center bg-primary">
                 <a href="#" class="text-decoration-none text-dark">View Scholarship</a>
                 </div>

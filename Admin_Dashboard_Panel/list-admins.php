@@ -37,10 +37,10 @@ $sql = "SELECT * FROM users WHERE username NOT REGEXP '^4[Aa][Ll][0-9]{2}[A-Za-z
             <td><label><?php echo $row['first_name']?></label></td>
             <td><label><?php echo $row['last_name']?></label></td>
             <td>
-                <?php echo "<a class='btn btn-outline-danger' onclick=\"return confirm('Do you really want to delete this record?')\" href=\"user-delete.php?id=" . $row['id'] . " \">Remove</a>"; ?>
+                <?php echo "<a class='btn btn-outline-danger' onclick=\"return confirm('Do you really want to delete this user?')\" href=\"user-delete.php?id=" . $row['id'] . " \">Remove</a>"; ?>
                             <script>
                                 document.getElementById('a.delete').on('click', function() {
-                                    var choice = confirm('Delete this record?');
+                                    var choice = confirm('Delete this user?');
                                     if (choice === true) {
                                         return true;
                                     }

@@ -2,7 +2,7 @@
 include("admin-layout.php");
 require_once("../db/config.php");
 
-$sql = "SELECT * FROM scholarship_details t1 INNER JOIN elig_req t2 ON t2.sch_name = t1.sch_name WHERE (sch_start_date <= CURDATE()) AND (sch_deadline >= CURDATE()) AND status = 'active' ORDER BY sch_deadline";
+$sql = "SELECT * FROM scholarship_details t1 INNER JOIN elig_req t2 ON t2.sch_name = t1.sch_name WHERE status != 'active' ORDER BY created_at DESC";
 ?>
 <title>ALL SCHOLARSHIPS</title>
         <div class="dash-content">
@@ -16,13 +16,13 @@ $sql = "SELECT * FROM scholarship_details t1 INNER JOIN elig_req t2 ON t2.sch_na
   <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off">
   <label class="btn btn-outline-primary" for="btnradio1" onclick="window.location.href = 'view-scholarships.php';">ALL SCHOLARSHIP</label>
 
-  <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" checked>
+  <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
   <label class="btn btn-outline-primary" for="btnradio2" onclick="window.location.href = 'live-scholarship.php';">LIVE SCHOLARSHIP</label>
 
   <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
   <label class="btn btn-outline-primary" for="btnradio3" onclick="window.location.href = 'upcoming-scholarship.php';">UPCOMING SCHOLARSHIP</label>
 
-  <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
+  <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off" checked>
   <label class="btn btn-outline-primary" for="btnradio3" onclick="window.location.href = 'inactive-scholarship.php';">INACTIVE SCHOLARSHIP</label>
 </div>
 </div>
@@ -56,8 +56,8 @@ if($result = $link->query($sql)){
         while($row = $result->fetch_array()){ ?>
                 <div class="col-sm-4">
                 <div class="card mt-3">
-                <div class="card-header text-center bg-danger">
-                <i class="fa-solid fa-calendar-days px-2"></i>Deadline: <?php echo $row["sch_deadline"] ?>
+                <div class="card-header text-center <?php echo ($row['sch_start_date'] > date("Y-m-d")) ? 'bg-success' : 'bg-danger'; ?>">
+                <i class="fa-solid fa-calendar-days px-2"></i><?php echo ($row['sch_start_date'] > date("Y-m-d")) ? "Launch Date: " . $row["sch_start_date"] : "Deadline: " . $row["sch_deadline"]; ?>
                 </div>
                 <div class="card-body">
                 <h5 class="card-title txt"><a class="text-decoration-none text-secondary" href="<?php echo $row['sch_link'] ?>" target="_blank" rel="noopener noreferrer"><?php echo $row["sch_name"] ?></a></h5>
@@ -84,31 +84,30 @@ if($result = $link->query($sql)){
                        <?php if(!empty($row['other_sch'])) {?>
                         <p><small class="text-muted"><?php echo $row['other_sch'] ?></small></p>
                        <?php }?>
-                      <div class="card-text text-primary"><small> Last Updated On:</small>
+                      <div class="card-text text-primary mt-auto"><small> Last Updated On:</small>
                         <p><small class="text-muted"><?php echo $row['created_at'] ?></small></p>
                       </div>
-                </div>
+                </div>         
                 </div>
                 <div class="card-footer">
                   <div class="d-flex justify-content-center">
-                      <div class="btn btn-sm"><i class="fas fa-eye-slash" aria-hidden="true">
-                        <?php echo "<a class='px-1 text-decoration-none text-muted' onclick=\"return confirm('Do you really want to disable this scholarship?')\" href=\"../scholarship-operation/disable-scholarship.php?id=" . $row['id'] . " \">Disable</a>"; ?>
+                      <div class="btn btn-sm"><i class="fas fa-eye" aria-hidden="true">
+                        <?php echo "<a class='px-1 text-decoration-none text-muted' onclick=\"return confirm('Do you really want to Enable this scholarship?')\" href=\"../scholarship-operation/activate-scholarship.php?id=" . $row['id'] . " \">Enable</a>"; ?>
                             <script>
                                 document.getElementById('a.delete').on('click', function() {
-                                    var choice = confirm('Disable this scholarship?');
+                                    var choice = confirm('Enable this scholarship?');
                                     if (choice === true) {
                                         return true;
                                     }
                                     return false;
                                 });
                             </script>
-                      </i>                   
-                    </div>
+                      </i></div>
                       <div class="btn btn-sm"><i class="fas fa-edit" aria-hidden="true"></i><span class="px-1">Modify</span></div>
                       <div class="btn btn-sm"><i class="fa fa-trash" aria-hidden="true"></i><span class="px-1">Delete</span></div>
                       </div>
                        </div>
-                <div class="card-footer text-center bg-primary">
+                 <div class="card-footer text-center bg-primary">
                 <a href="#" class="text-decoration-none text-dark">View Scholarship</a>
                 </div>
             </div>

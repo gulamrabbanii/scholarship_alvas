@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 06, 2022 at 07:41 PM
+-- Generation Time: May 07, 2022 at 02:11 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.1
 
@@ -54,7 +54,9 @@ INSERT INTO `doc_req` (`sch_name`, `govt_id`, `domicile`, `income`, `pwd`, `bona
 ('SHOOLINI ACADEMIC PROGRESSION SCHOLARSHIP (SAPS)', 'Government ID Proof(eg. Aadhar Card, Driving License etc.)', '', 'Income Certificate issued from the Competent Authority', '', 'Bonafide Certificate', 'Caste Certificate', '', 'Bank Passbook of Student(Aadhar Card should be link with Bank A/C)', 'College Fee Receipt', '10 or 12 Marks Cards', '', '', '', ''),
 ('CANARA BANK SCHOLARSHIP', 'Government ID Proof(eg. Aadhar Card, Driving License etc.)', 'Domicile/Residential Certificate', 'Income Certificate issued from the Competent Authority', '', '', 'Caste Certificate', '', 'Bank Passbook of Student(Aadhar Card should be link with Bank A/C)', '', '', '', '', 'Self Declaration Minority Certificate', ''),
 ('NATIONAL SCHOLARSHIP PORTAL', 'Government ID Proof(eg. Aadhar Card, Driving License etc.)', 'Domicile/Residential Certificate', 'Income Certificate issued from the Competent Authority', '', 'Bonafide Certificate', 'Caste Certificate', '', 'Bank Passbook of Student(Aadhar Card should be link with Bank A/C)', '', '', 'Previous 2 Semester Marks Card', '', 'Self Declaration Minority Certificate', ''),
-('MAULANA AZAD NATIONAL FELLOWSHIP FOR MINORITY STUDENTS MANF', 'Government ID Proof(eg. Aadhar Card, Driving License etc.)', 'Domicile/Residential Certificate', '', '', 'Bonafide Certificate', 'Caste Certificate', '', 'Bank Passbook of Student(Aadhar Card should be link with Bank A/C)', '', '', '', '', 'Self Declaration Minority Certificate', '');
+('MAULANA AZAD NATIONAL FELLOWSHIP FOR MINORITY STUDENTS MANF', 'Government ID Proof(eg. Aadhar Card, Driving License etc.)', 'Domicile/Residential Certificate', '', '', 'Bonafide Certificate', 'Caste Certificate', '', 'Bank Passbook of Student(Aadhar Card should be link with Bank A/C)', '', '', '', '', 'Self Declaration Minority Certificate', ''),
+('VIDYASAARATHI PORTAL', 'Government ID Proof(eg. Aadhar Card, Driving License etc.)', 'Domicile/Residential Certificate', 'Income Certificate issued from the Competent Authority', '', 'Bonafide Certificate', 'Caste Certificate', '', '', '', '', 'Previous 2 Semester Marks Card', '', 'Self Declaration Minority Certificate', ''),
+('POST MATRIC SCHOLARSHIP PORTAL', 'Government ID Proof(eg. Aadhar Card, Driving License etc.)', '', 'Income Certificate issued from the Competent Authority', '', '', '', '', 'Bank Passbook of Student(Aadhar Card should be link with Bank A/C)', '', '', '', '', 'Self Declaration Minority Certificate', '');
 
 -- --------------------------------------------------------
 
@@ -83,7 +85,9 @@ INSERT INTO `elig_req` (`sch_name`, `minority`, `sc_st`, `girls`, `community`, `
 ('SHOOLINI ACADEMIC PROGRESSION SCHOLARSHIP (SAPS)', '', '', '', '', '', '', '', 'Post Matric Scholarship'),
 ('CANARA BANK SCHOLARSHIP', 'Scholarship for Minorities(SC/ST/OBC)', '', '', '', '', '', '', ''),
 ('NATIONAL SCHOLARSHIP PORTAL', 'Minority Communities Students(SC/ST/OBC)', '', '', '', '', '', '', ''),
-('MAULANA AZAD NATIONAL FELLOWSHIP FOR MINORITY STUDENTS MANF', 'Minority Communities Students(SC/ST/OBC)', '', '', '', '', '', '', '');
+('MAULANA AZAD NATIONAL FELLOWSHIP FOR MINORITY STUDENTS MANF', 'Minority Communities Students(SC/ST/OBC)', '', '', '', '', '', '', ''),
+('VIDYASAARATHI PORTAL', 'Minority Communities Students(SC/ST/OBC)', '', '', '', '', '', '', ''),
+('POST MATRIC SCHOLARSHIP PORTAL', 'Minority Communities Students(SC/ST/OBC)', '', '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -100,6 +104,7 @@ CREATE TABLE `scholarship_details` (
   `sch_deadline` date DEFAULT NULL,
   `sch_mode` varchar(50) DEFAULT NULL,
   `sch_link` varchar(512) CHARACTER SET ascii NOT NULL,
+  `status` varchar(20) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -107,12 +112,14 @@ CREATE TABLE `scholarship_details` (
 -- Dumping data for table `scholarship_details`
 --
 
-INSERT INTO `scholarship_details` (`id`, `sch_name`, `sch_provider`, `sch_start_date`, `sch_type`, `sch_deadline`, `sch_mode`, `sch_link`, `created_at`) VALUES
-(16, 'THE CADENCE SCHOLARSHIP PROGRAM', 'Cadence Design Systems Private Limited &amp; Concern India Foundation', '2022-04-06', 'Business, Company, or Corporation', '2022-05-30', 'Online', 'https://cadence.com', '2022-05-06 14:31:31'),
-(17, 'SHOOLINI ACADEMIC PROGRESSION SCHOLARSHIP (SAPS)', 'Shoolini University', '2022-04-19', 'NGO / Non-Profit', '2022-06-30', 'Online', 'https://shooliniuniversity.com', '2022-05-06 14:31:31'),
-(18, 'CANARA BANK SCHOLARSHIP', 'Canara Bank', '2022-05-31', 'Business, Company, or Corporation', '2022-07-14', 'Both', 'https://scholarship.canarabank.in', '2022-05-06 14:31:31'),
-(20, 'NATIONAL SCHOLARSHIP PORTAL', 'Central Government', '2022-04-13', 'Government of India', '2022-07-28', 'Both', 'https://scholarships.gov.in/fresh/schemeSelRegfrmInstruction', '2022-05-06 14:31:31'),
-(21, 'MAULANA AZAD NATIONAL FELLOWSHIP FOR MINORITY STUDENTS MANF', 'Government of India', '2022-06-30', 'Government of India', '2022-07-31', 'Both', 'http://www.ugc.ac.in', '2022-05-06 14:31:31');
+INSERT INTO `scholarship_details` (`id`, `sch_name`, `sch_provider`, `sch_start_date`, `sch_type`, `sch_deadline`, `sch_mode`, `sch_link`, `status`, `created_at`) VALUES
+(16, 'THE CADENCE SCHOLARSHIP PROGRAM', 'Cadence Design Systems Private Limited &amp; Concern India Foundation', '2022-04-06', 'Business, Company, or Corporation', '2022-05-30', 'Online', 'https://cadence.com', 'disabled', '2022-05-06 14:31:31'),
+(17, 'SHOOLINI ACADEMIC PROGRESSION SCHOLARSHIP (SAPS)', 'Shoolini University', '2022-04-19', 'NGO / Non-Profit', '2022-06-30', 'Online', 'https://shooliniuniversity.com', 'active', '2022-05-06 14:31:31'),
+(18, 'CANARA BANK SCHOLARSHIP', 'Canara Bank', '2022-05-31', 'Business, Company, or Corporation', '2022-07-14', 'Both', 'https://scholarship.canarabank.in', 'active', '2022-05-06 14:31:31'),
+(20, 'NATIONAL SCHOLARSHIP PORTAL', 'Central Government', '2022-04-13', 'Government of India', '2022-07-28', 'Both', 'https://scholarships.gov.in/fresh/schemeSelRegfrmInstruction', 'active', '2022-05-06 14:31:31'),
+(21, 'MAULANA AZAD NATIONAL FELLOWSHIP FOR MINORITY STUDENTS MANF', 'Government of India', '2022-06-30', 'Government of India', '2022-07-31', 'Both', 'http://www.ugc.ac.in', 'active', '2022-05-06 14:31:31'),
+(22, 'VIDYASAARATHI PORTAL', 'Protean eGov Technologies Limited', '2022-06-25', 'Government of India', '2022-08-31', 'Online', 'https://www.vidyasaarathi.co.in/Vidyasaarathi/', 'active', '2022-05-07 04:56:35'),
+(23, 'POST MATRIC SCHOLARSHIP PORTAL', 'Bihar Government', '2022-06-01', 'Other State', '2022-08-25', 'Online', 'https://pmsonline.bih.nic.in/pmsedu/(S(w3daib0s22uixjbkqojlomhu))/pms/Default.aspx', 'active', '2022-05-07 05:33:52');
 
 -- --------------------------------------------------------
 
@@ -137,11 +144,11 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `passwd`, `first_name`, `last_name`, `dept`, `year`, `phone`, `created_at`) VALUES
-(9, '4al18cs099', '$2y$10$MNkATxHXwrGV7FUkmEXgUuwQqAWRFPwcGBs2.5YSVF9asniY35y42', 'ijaz', 'ibrahim', 'INFORMATION TECHNOLOGY ENGG', 4, 1594562580, '2022-05-02 01:34:36'),
 (10, 'admin', '$2y$10$eKZbj4xwL.9HFS9/GZ0R9O2VegaK/mYVK9.6MaMzU/O78zckkY92a', 'Gulam', 'Rabbani', '', 0, 2147483647, '2022-05-01 23:25:56'),
 (13, '4al18cs026', '$2y$10$PsHAdIlm0nurm.0aEoneeOniFqq3hqPxQHDk.7Zcab7Gq5KgeBiIC', 'Ijaz', 'Ibrahim', 'COMPUTER SCIENCE &amp;amp; ENGG', 3, 2147483647, '2022-05-03 06:58:25'),
 (14, 'admin@admin.com', '$2y$10$K.Bb/hFj/IGqRtaiE25rgusnzYjdBBJaiN/Z1MO756occmlOuHaI6', 'Paul', 'J Burch', '', 0, 2147483647, '2022-05-06 17:28:24'),
-(15, 'admin@aiet.org', '$2y$10$1.vOQGOtDopLeFOu3twiWeWpD3ctMrKTyPP0NTKBYw73IQKCvCc1m', 'Carol', 'J Gracia', '', 0, 2147483647, '2022-05-06 17:29:35');
+(15, 'admin@aiet.org', '$2y$10$1.vOQGOtDopLeFOu3twiWeWpD3ctMrKTyPP0NTKBYw73IQKCvCc1m', 'Carol', 'J Gracia', '', 0, 2147483647, '2022-05-06 17:29:35'),
+(17, '4al18cs099', '$2y$10$2HUgJSYt3gmuWmzs3u7jD.fTcpIifLrzUM5if7XxsbUpPsf4Q/UPa', 'Gulam', 'Rabbani', 'COMPUTER SCIENCE &amp; ENGG', 4, 1534865975, '2022-05-07 08:13:36');
 
 --
 -- Indexes for dumped tables
@@ -180,13 +187,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `scholarship_details`
 --
 ALTER TABLE `scholarship_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- Constraints for dumped tables
