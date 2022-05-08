@@ -70,7 +70,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             }
                         $password = implode($pass);
 		                $subject = "Your New Password.";
-		                $message = "Please use this password to login Alvas's Scholarship Portal. " . $password;
+		                $message = "Please use this password to login " . $password;
 
                         //Server settings
                         //$mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
@@ -88,7 +88,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
                         //Content
                         $mail->isHTML(true);                                  //Set email format to HTML
-                        $mail->Subject = 'Please use this password to login';
+                        $mail->Subject = "Please use this password to login Alvas's Scholarship Portal. ";
                         $mail->Body    = $message;
 
                         $mail->send();
