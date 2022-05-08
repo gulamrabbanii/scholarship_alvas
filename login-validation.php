@@ -15,8 +15,8 @@ if($_SESSION["username"] == "admin"){
 if((preg_match($pattern, $_SESSION["username"]))){
     header("Location: Student_Dashboard_Panel/live-scholarship.php");
 }
-$admin_user = '/^[a-zA-Z0-9_]+$/';
-if((preg_match($admin_user, $_SESSION["username"]))){
+$email = "^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$^";
+if((preg_match($email, $_SESSION["username"]))){
     header("Location: Admin_Dashboard_Panel/dashboard.php");
 }
 ?>

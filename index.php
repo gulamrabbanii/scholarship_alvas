@@ -1,6 +1,7 @@
 <?php
 // Initialize the session
 session_start();
+error_reporting(E_ALL & ~E_WARNING  & ~E_NOTICE & ~E_STRICT & ~E_DEPRECATED); 
  
 // Check if the user is already logged in, if yes then redirect him to welcome page
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
@@ -101,14 +102,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <link rel="icon" href="./assets/img/icon.png" type="image/icon type">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./assets/style/style.css">
-    <link rel="stylesheet" href="./assets/style/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
 </head>
 <body>
 
 <div class="vstack" style="align-items: center;">
     <?php 
     if(!empty($login_err)){
-    echo '<div class="alert alert-danger w-75 text-center">' . $login_err . '</div>';
+    echo '<div class="alert alert-danger w-100 text-center">' . $login_err . '</div>';
     }        
     ?>
     <div class="login-div">
@@ -121,13 +123,44 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             
             <div class="password"><svg fill="#999" viewBox="0 0 1024 1024"><path class="path1" d="M742.4 409.6h-25.6v-76.8c0-127.043-103.357-230.4-230.4-230.4s-230.4 103.357-230.4 230.4v76.8h-25.6c-42.347 0-76.8 34.453-76.8 76.8v409.6c0 42.347 34.453 76.8 76.8 76.8h512c42.347 0 76.8-34.453 76.8-76.8v-409.6c0-42.347-34.453-76.8-76.8-76.8zM307.2 332.8c0-98.811 80.389-179.2 179.2-179.2s179.2 80.389 179.2 179.2v76.8h-358.4v-76.8zM768 896c0 14.115-11.485 25.6-25.6 25.6h-512c-14.115 0-25.6-11.485-25.6-25.6v-409.6c0-14.115 11.485-25.6 25.6-25.6h512c14.115 0 25.6 11.485 25.6 25.6v409.6z"></path></svg><input type="password" name="password" class="pass-input <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $password; ?>" placeholder="Password" required/></div>
         </div>
-        <button type="submit" class="signin-button">Login</button>
+        <button type="submit" value="Login" class="signin-button">Login</button>
         </form>
         <div class="link">
-            <a href="#">Forgot Password?</a> or 
+            <a href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Forgot Password?</a> or 
+            
             <a href="stud-register.php">Sign up</a>
         </div>
     </div>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Forgot Password?</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+    <form action="forgot-password.php" method="post">
+      <div class="modal-body">
+        <div class="col-md-12">
+        <label for="username" class="form-label">Username</label>
+        <input type="text" name="username" class="form-control" id="username" placeholder="Your Username." />
+        </div>
+        <label for="email" class="form-label">Your registred e-mail to get password.</label>
+        <input type="email" name="email" class="form-control" id="email" placeholder="Your Registered e-mail." />
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" value="Send" class="btn btn-primary">Send</button>
+      </div>
+    </form>
+    </div>
+  </div>
+</div>
+
+
+<!-- Bootstrap Js -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>

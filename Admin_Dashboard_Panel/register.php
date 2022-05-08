@@ -8,7 +8,7 @@ error_reporting(E_ALL & ~E_WARNING  & ~E_NOTICE & ~E_STRICT & ~E_DEPRECATED);
 // Define variables and initialize with empty values
 $username = $password = $confirm_password = $phone_err = $email_err = "";
 $username_err = $password_err = $confirm_password_err = "";
-$email_pattern = "^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$^";
+$pattern = "^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$^";
 // Processing form data when form is submitted
 if ($_SESSION['username'] != "admin") {
     header("location: dashboard.php");
@@ -21,10 +21,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
  
     if(empty($username)){
         $username_err = "Please enter a username.";
-    } elseif(!preg_match('/^[a-zA-Z0-9_]+$/', $username)){
-        $username_err = "Username can only contain letters, numbers, and underscores.";
-    } elseif(strlen($username < 5)){
-        $username_err = "Username must contain atleast 4 characters";
+    } elseif(!preg_match($pattern, $username)){
+        $username_err = "Username can only your email address";
     } else {
         // Prepare a select statement
         $sql = "SELECT id FROM users WHERE username = ?";
@@ -92,14 +90,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     } else{
         $phone = $phone;
     }
-    // Email Validation
-    if(empty($email)){
-        $email_err = "Please enter your email.";
-    } elseif(!preg_match($email_pattern, $email)){
-        $email_err = "Please enter a valid email.";
-    } else{
-        $email = $email;
-    }
+
     // Check input errors before inserting in database
     if(empty($username_err) && empty($password_err) && empty($confirm_password_err)){
         
@@ -116,7 +107,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $param_f_name = $first_name;
             $param_l_name = $last_name;
             $param_phone = $phone;
-            $param_email = $email;
+            $param_email = $username;
             // Attempt to execute the prepared statement
             if($stmt->execute()){
                 // Redirect to login page
@@ -160,15 +151,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     </div>
                     <div class="col-md-12">
                         <label for="username" class="form-label">Username</label>
-                        <input type="text" name="username" class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>" id="username"
+                        <input type="email" name="username" class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>" id="username"
                             placeholder="Username must contain " />
                             <span class="invalid-feedback"><?php echo $username_err; ?></span>
                     </div>
                     <div class="col-md-12">
                         <label for="email" class="form-label">Email</label>
-                        <input type="email" name="email" class="form-control <?php echo (!empty($email_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $email; ?>" id="email"
+                        <input type="email" name="email" class="form-control" id="email"
                             placeholder="YOUR E-MAIL ID" />
-                            <span class="invalid-feedback"><?php echo $email_err; ?></span>
                     </div>
                     <div class="col-md-12">
                         <div class="form-group">
