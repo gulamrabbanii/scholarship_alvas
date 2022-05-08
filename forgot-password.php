@@ -92,7 +92,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         $mail->Body    = $message;
 
                         $mail->send();
-                        echo "<script>alert('Your Password has been sent to your email id');</script>";
+                        
 
                         // Prepare an update statement
                         $password_sql = "UPDATE users SET passwd = ? WHERE username = '$username'";
@@ -107,7 +107,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             // Attempt to execute the prepared statement
                             if($stmt2->execute()){
                                 // Password updated successfully. Destroy the session, and redirect to login page
-                                session_destroy();
+                                session_destroy(); 
+                                echo "<script>alert('Your Password has been sent to your email id');</script>";
+                                header("Refresh:0 , url = index.php");
                             } else{
                                 echo "Oops! Something went wrong. Please try again later.";
                                 header("location: index.php");
@@ -133,9 +135,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         // Close statement
         $stmt->close();
         }
-    }
-      
-    
+    }  
     // Close connection
     $link->close();
 }
