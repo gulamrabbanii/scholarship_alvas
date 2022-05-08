@@ -4,9 +4,9 @@ session_start();
 
 // Include config file
 require_once("db/config.php");
-require 'PHPMailer/src/Exception.php';
-require 'PHPMailer/src/PHPMailer.php';
-require 'PHPMailer/src/SMTP.php';
+require 'PHPMailer/Exception.php';
+require 'PHPMailer/PHPMailer.php';
+require 'PHPMailer/SMTP.php';
 
 //Import PHPMailer classes into the global namespace
 //These must be at the top of your script, not inside a function
@@ -72,6 +72,28 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 		                $subject = "Your New Password.";
 		                $message = "Please use this password to login " . $password;
 
+                        //Server settings
+                        //$mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
+                        $mail->isSMTP();                                            //Send using SMTP
+                        $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+                        $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+                        $mail->Username   = 'smartboygr07@gmail.com';                     //SMTP username
+                        $mail->Password   = 'RAZA@rabbani1610';                               //SMTP password
+                        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+                        $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure =                     PHPMailer::ENCRYPTION_STARTTLS`
+
+                        //Recipients
+                        $mail->setFrom('smartboygr07@gmail.com', "Alva's Scholarship Portal");
+                        $mail->addAddress($email);               //Name is optional
+
+                        //Content
+                        $mail->isHTML(true);                                  //Set email format to HTML
+                        $mail->Subject = 'Please use this password to login';
+                        $mail->Body    = $message;
+
+                        $mail->send();
+                        echo "<script>alert('Your Password has been sent to your email id');</script>";
+
                         // Prepare an update statement
                         $password_sql = "UPDATE users SET passwd = ? WHERE username = '$username'";
         
@@ -95,28 +117,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             // Close statement
                             $stmt2->close();
                         }
-
-                        //Server settings
-                        //$mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
-                        $mail->isSMTP();                                            //Send using SMTP
-                        $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
-                        $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-                        $mail->Username   = 'smartboygr07@gmail.com';                     //SMTP username
-                        $mail->Password   = 'RAZA@rabbani1610';                               //SMTP password
-                        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
-                        $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure =                     PHPMailer::ENCRYPTION_STARTTLS`
-
-                        //Recipients
-                        $mail->setFrom('smartboygr07@gmail.com', "Alva's Scholarship Portal");
-                        $mail->addAddress($email);               //Name is optional
-
-                        //Content
-                        $mail->isHTML(true);                                  //Set email format to HTML
-                        $mail->Subject = 'Please use this password to login';
-                        $mail->Body    = $message;
-
-                        $mail->send();
-                        echo "<script>alert('Your Password has been sent to your email id');</script>";
                     } catch (Exception $e) {
                         echo "<script>alert('Failed to send your password, try again.');</script>";
                         header("Refresh:0 , url = index.php");
