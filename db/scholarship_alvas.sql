@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 07, 2022 at 02:11 PM
+-- Generation Time: May 08, 2022 at 11:53 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.1
 
@@ -119,7 +119,7 @@ INSERT INTO `scholarship_details` (`id`, `sch_name`, `sch_provider`, `sch_start_
 (20, 'NATIONAL SCHOLARSHIP PORTAL', 'Central Government', '2022-04-13', 'Government of India', '2022-07-28', 'Both', 'https://scholarships.gov.in/fresh/schemeSelRegfrmInstruction', 'active', '2022-05-06 14:31:31'),
 (21, 'MAULANA AZAD NATIONAL FELLOWSHIP FOR MINORITY STUDENTS MANF', 'Government of India', '2022-06-30', 'Government of India', '2022-07-31', 'Both', 'http://www.ugc.ac.in', 'active', '2022-05-06 14:31:31'),
 (22, 'VIDYASAARATHI PORTAL', 'Protean eGov Technologies Limited', '2022-06-25', 'Government of India', '2022-08-31', 'Online', 'https://www.vidyasaarathi.co.in/Vidyasaarathi/', 'active', '2022-05-07 04:56:35'),
-(23, 'POST MATRIC SCHOLARSHIP PORTAL', 'Bihar Government', '2022-06-01', 'Other State', '2022-08-25', 'Online', 'https://pmsonline.bih.nic.in/pmsedu/(S(w3daib0s22uixjbkqojlomhu))/pms/Default.aspx', 'active', '2022-05-07 05:33:52');
+(23, 'POST MATRIC SCHOLARSHIP PORTAL', 'Bihar Government', '2022-06-01', 'Other State', '2022-08-25', 'Online', 'https://pmsonline.bih.nic.in/pmsedu/(S(w3daib0s22uixjbkqojlomhu))/pms/Default.aspx', 'disabled', '2022-05-07 05:33:52');
 
 -- --------------------------------------------------------
 
@@ -133,6 +133,7 @@ CREATE TABLE `users` (
   `passwd` varchar(100) NOT NULL,
   `first_name` varchar(100) NOT NULL,
   `last_name` varchar(100) NOT NULL,
+  `email` varchar(255) DEFAULT NULL,
   `dept` text NOT NULL,
   `year` tinyint(4) NOT NULL,
   `phone` int(11) NOT NULL,
@@ -143,12 +144,13 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `passwd`, `first_name`, `last_name`, `dept`, `year`, `phone`, `created_at`) VALUES
-(10, 'admin', '$2y$10$eKZbj4xwL.9HFS9/GZ0R9O2VegaK/mYVK9.6MaMzU/O78zckkY92a', 'Gulam', 'Rabbani', '', 0, 2147483647, '2022-05-01 23:25:56'),
-(13, '4al18cs026', '$2y$10$PsHAdIlm0nurm.0aEoneeOniFqq3hqPxQHDk.7Zcab7Gq5KgeBiIC', 'Ijaz', 'Ibrahim', 'COMPUTER SCIENCE &amp;amp; ENGG', 3, 2147483647, '2022-05-03 06:58:25'),
-(14, 'admin@admin.com', '$2y$10$K.Bb/hFj/IGqRtaiE25rgusnzYjdBBJaiN/Z1MO756occmlOuHaI6', 'Paul', 'J Burch', '', 0, 2147483647, '2022-05-06 17:28:24'),
-(15, 'admin@aiet.org', '$2y$10$1.vOQGOtDopLeFOu3twiWeWpD3ctMrKTyPP0NTKBYw73IQKCvCc1m', 'Carol', 'J Gracia', '', 0, 2147483647, '2022-05-06 17:29:35'),
-(17, '4al18cs099', '$2y$10$2HUgJSYt3gmuWmzs3u7jD.fTcpIifLrzUM5if7XxsbUpPsf4Q/UPa', 'Gulam', 'Rabbani', 'COMPUTER SCIENCE &amp; ENGG', 4, 1534865975, '2022-05-07 08:13:36');
+INSERT INTO `users` (`id`, `username`, `passwd`, `first_name`, `last_name`, `email`, `dept`, `year`, `phone`, `created_at`) VALUES
+(10, 'admin', '$2y$10$eKZbj4xwL.9HFS9/GZ0R9O2VegaK/mYVK9.6MaMzU/O78zckkY92a', 'Gulam', 'Rabbani', NULL, '', 0, 2147483647, '2022-05-01 23:25:56'),
+(13, '4al18cs026', '$2y$10$PsHAdIlm0nurm.0aEoneeOniFqq3hqPxQHDk.7Zcab7Gq5KgeBiIC', 'Ijaz', 'Ibrahim', NULL, 'COMPUTER SCIENCE &amp;amp; ENGG', 3, 2147483647, '2022-05-03 06:58:25'),
+(17, '4al18cs099', '$2y$10$2HUgJSYt3gmuWmzs3u7jD.fTcpIifLrzUM5if7XxsbUpPsf4Q/UPa', 'Gulam', 'Rabbani', NULL, 'COMPUTER SCIENCE &amp; ENGG', 4, 1534865975, '2022-05-07 08:13:36'),
+(18, 'jared', '$2y$10$X9k9mxWj2IfRaAkbi5JDkevdPKb1RPgTaCCR5b9ashilkBGU31SMy', 'Jared', 'L Monroe', 'jeff1974@gmail.com', '', 0, 1542481474, '2022-05-08 09:42:58'),
+(19, 'user', '$2y$10$Z1SvQMC5cYllbHplWYDWLeUKxFScwQ/HPBMNHayAQMIVlipxZO0L.', 'Richard', 'C Buchanan', 'erich.ullri@hotmail.com', '', 0, 1234567890, '2022-05-08 09:44:21'),
+(20, 'whoami', '$2y$10$uuKfg2HtNtmsCHzWCxuU4uCJDaErdFg87IW3SY2qbW1QqoAKzDi3a', 'Jo', 'A Miller', 'lenna.ferr8@gmail.com', '', 0, 2147483647, '2022-05-08 09:49:23');
 
 --
 -- Indexes for dumped tables
@@ -193,7 +195,7 @@ ALTER TABLE `scholarship_details`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- Constraints for dumped tables

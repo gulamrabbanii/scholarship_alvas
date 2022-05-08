@@ -1,10 +1,12 @@
 <?php
 // Include config file
 require_once "db/config.php";
+error_reporting(E_ALL & ~E_WARNING  & ~E_NOTICE & ~E_STRICT & ~E_DEPRECATED); 
  
 // Define variables and initialize with empty values
-$username = $password = $confirm_password = "";
+$username = $password = $confirm_password = $phone_err = $email_err = "";
 $username_err = $password_err = $confirm_password_err = "";
+$email_pattern = "^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$^";
 $pattern = "/4(al)[0-9]{2}[A-Za-z]{2}[0-9]{3}/i";
  
 // Processing form data when form is submitted
@@ -76,15 +78,32 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $phone = htmlspecialchars(strip_tags(trim($_POST["phone"])));
     $dept = htmlspecialchars(strip_tags(trim($_POST["sel-branch"])));
     $year = htmlspecialchars(strip_tags(trim($_POST["year"])));
+    $email = htmlspecialchars(strip_tags(trim($_POST["email"])));
+    // phone validation
+    if(empty($phone)){
+        $phone_err = "Please enter phone number.";     
+    } elseif(strlen($phone) != 10){
+        $phone_err = "Phone number must have 10 digits.";
+    } else{
+        $phone = $phone;
+    }
+    // Email Validation
+    if(empty($email)){
+        $email_err = "Please enter your email.";
+    } elseif(!preg_match($email_pattern, $email)){
+        $email_err = "Please enter a valid email.";
+    } else{
+        $email = $email;
+    }
     // Check input errors before inserting in database
     if(empty($username_err) && empty($password_err) && empty($confirm_password_err)){
         
         // Prepare an insert statement
-        $sql = "INSERT INTO users (username, passwd, first_name, last_name, dept, year, phone) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO users (username, passwd, first_name, last_name, email, dept, year, phone) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
          
         if($stmt = $link->prepare($sql)){
             // Bind variables to the prepared statement as parameters
-            $stmt->bind_param("sssssss", $param_username, $param_password, $param_f_name, $param_l_name, $param_dept, $param_year, $param_phone);
+            $stmt->bind_param("ssssssss", $param_username, $param_password, $param_f_name, $param_l_name, $param_emai, $param_dept, $param_year, $param_phone);
             
             // Set parameters
             $param_username = $username;
@@ -94,7 +113,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $param_dept = $dept;
             $param_year = $year;
             $param_phone = $phone;
-            
+            $param_emai = $email;
             // Attempt to execute the prepared statement
             if($stmt->execute()){
                 // Redirect to login page
@@ -190,6 +209,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         <input type="text" name="username" class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>" id="username" placeholder="YOUR USN" minlength="10"
                             maxlength="10" pattern="^4[Aa][Ll][0-9]{2}[A-Za-z]{2}[0-9]{3}" />
                             <span class="invalid-feedback"><?php echo $username_err; ?></span>
+                    </div>
+                    <div class="col-md-12">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" name="email" class="form-control <?php echo (!empty($email_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $email; ?>" id="email"
+                            placeholder="YOUR VALID E-MAIL ID" />
+                            <span class="invalid-feedback"><?php echo $email_err; ?></span>
                     </div>
                     <div class="col-md-12">
                         <div class="form-group">
