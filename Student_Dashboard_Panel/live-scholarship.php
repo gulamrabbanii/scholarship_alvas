@@ -93,7 +93,7 @@ if($result = $link->query($sql)){
                 </div>
                 </div>
                 <div class="card-footer text-center bg-primary">
-                <a href="#" class="text-decoration-none text-dark">View Scholarship</a>
+                <a href="../scholarship-operation/scholarship-details.php?id=<?php echo urlencode($row['id']) ?>" class="text-decoration-none text-dark">View Scholarship</a>
                 </div>
             </div>
             </div>            
@@ -229,7 +229,7 @@ if($result = $link->query($private_sch_sql)){
                 </div>
                 </div>
                 <div class="card-footer text-center bg-primary">
-                <a href="#" class="text-decoration-none text-dark">View Scholarship</a>
+                <a href="../scholarship-operation/scholarship-details.php?id=<?php echo urlencode($row['id']) ?>" class="text-decoration-none text-dark">View Scholarship</a>
                 </div>
             </div>
             </div>            
