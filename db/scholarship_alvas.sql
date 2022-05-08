@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 08, 2022 at 11:53 AM
+-- Generation Time: May 08, 2022 at 07:02 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.1
 
@@ -147,10 +147,10 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `username`, `passwd`, `first_name`, `last_name`, `email`, `dept`, `year`, `phone`, `created_at`) VALUES
 (10, 'admin', '$2y$10$eKZbj4xwL.9HFS9/GZ0R9O2VegaK/mYVK9.6MaMzU/O78zckkY92a', 'Gulam', 'Rabbani', NULL, '', 0, 2147483647, '2022-05-01 23:25:56'),
 (13, '4al18cs026', '$2y$10$PsHAdIlm0nurm.0aEoneeOniFqq3hqPxQHDk.7Zcab7Gq5KgeBiIC', 'Ijaz', 'Ibrahim', NULL, 'COMPUTER SCIENCE &amp;amp; ENGG', 3, 2147483647, '2022-05-03 06:58:25'),
-(17, '4al18cs099', '$2y$10$2HUgJSYt3gmuWmzs3u7jD.fTcpIifLrzUM5if7XxsbUpPsf4Q/UPa', 'Gulam', 'Rabbani', NULL, 'COMPUTER SCIENCE &amp; ENGG', 4, 1534865975, '2022-05-07 08:13:36'),
-(18, 'jared', '$2y$10$X9k9mxWj2IfRaAkbi5JDkevdPKb1RPgTaCCR5b9ashilkBGU31SMy', 'Jared', 'L Monroe', 'jeff1974@gmail.com', '', 0, 1542481474, '2022-05-08 09:42:58'),
-(19, 'user', '$2y$10$Z1SvQMC5cYllbHplWYDWLeUKxFScwQ/HPBMNHayAQMIVlipxZO0L.', 'Richard', 'C Buchanan', 'erich.ullri@hotmail.com', '', 0, 1234567890, '2022-05-08 09:44:21'),
-(20, 'whoami', '$2y$10$uuKfg2HtNtmsCHzWCxuU4uCJDaErdFg87IW3SY2qbW1QqoAKzDi3a', 'Jo', 'A Miller', 'lenna.ferr8@gmail.com', '', 0, 2147483647, '2022-05-08 09:49:23');
+(17, '4al18cs099', '$2y$10$1GgFD153hfcb3/wW2iuNqea0G/6Aubo1XzKhSWYk1Fpb6roUL5g.G', 'Gulam', 'Rabbani', 'smartboygr07@gmail.com', 'COMPUTER SCIENCE &amp; ENGG', 4, 1534865975, '2022-05-08 16:53:12'),
+(21, 'admin@admin.com', '$2y$10$ayemzdQzrYy4mYlX0q1z5OyTYkgIYosppwZJYg4P5mDlS24yCVTB6', 'Prerna', 'Pall', 'admin@admin.com', '', 0, 2147483647, '2022-05-08 16:57:49'),
+(22, 'anjana@admin.com', '$2y$10$nD9/cSuGisIFFRf/Ce.lJeWWpy29FplnNChrrXFV/0HkJ2AhXL7k.', 'Anjana', 'Bahl', 'anjana@admin.com', '', 0, 2147483647, '2022-05-08 16:59:11'),
+(23, 'pirzada@admin.com', '$2y$10$Q7YnlaAnJAfi6o7TIN9G1urgVrXv0.TnXuah3jsfH7UTMl5B8zQMq', 'Pirzada', 'Kade', 'pirzada@admin.com', '', 0, 1234567890, '2022-05-08 17:01:25');
 
 --
 -- Indexes for dumped tables
@@ -195,7 +195,7 @@ ALTER TABLE `scholarship_details`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- Constraints for dumped tables
