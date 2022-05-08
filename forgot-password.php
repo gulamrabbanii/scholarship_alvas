@@ -70,7 +70,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             }
                         $password = implode($pass);
 		                $subject = "Your New Password.";
-		                $message = "Please use this password to login " . $password;
+		                $message = "Please use this password to login Alvas's Scholarship Portal. " . $password;
 
                         //Server settings
                         //$mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
@@ -108,7 +108,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             if($stmt2->execute()){
                                 // Password updated successfully. Destroy the session, and redirect to login page
                                 session_destroy(); 
-                                echo "<script>alert('Your Password has been sent to your email id');</script>";
+                                echo "<script>alert('Your Password has been sent to your email id.');</script>";
                                 header("Refresh:0 , url = index.php");
                             } else{
                                 echo "Oops! Something went wrong. Please try again later.";
