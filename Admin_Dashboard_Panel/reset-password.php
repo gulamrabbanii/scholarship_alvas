@@ -73,7 +73,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             <div class="overview">
                 <div class="title">
                     <i class="uil uil-tachometer-fast-alt"></i>
-                    <span class="text">Reset Password</span>
+                    <span class="text">RESET PASSWORD</span>
                 </div>
             </div>
 <!-- Add contents here -->

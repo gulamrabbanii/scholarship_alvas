@@ -133,7 +133,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             <div class="overview">
                 <div class="title">
                     <i class="fa-regular fa-pen-to-square"></i>
-                    <div class="text">Administrator Registration</div>
+                    <div class="text">ADMINISTRATOR REGIRSTRATION</div>
                 </div>    
             </div> 
 <!-- Add contents here -->

@@ -119,7 +119,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             <div class="container position-relative px-lg-5 px-md-5">
                 <div class="row gx-5 gx-lg-5 px-sm-5 px-lg-4 justify-content-center vh-100">
                     <div class="login-div col-xl-7 pt-4 col-sm-12 col-md-12 col-lg-8">
-                        <div class="logo"><img src="assets/img/icon.png" alt="Alva's Logo" srcset=""></div>
+                        <div class="logo"><img style="height: 100px; width: 100px" src="assets/img/icon.png" alt="Alva's Logo" srcset=""></div>
                         <div class="title">ALVA'S</div>
                         <div class="sub-title">Education Foundation</div>
                         <form class="login-form px-3 mt-2" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">

@@ -6,7 +6,7 @@ include("admin-layout.php");
             <div class="overview">
                 <div class="title">
                     <i class="uil uil-tachometer-fast-alt"></i>
-                    <span class="text">Send Notification</span>
+                    <span class="text">SEND NOTIFICATION</span>
                 </div>
     
 <!-- Add contents here -->

@@ -40,7 +40,7 @@ foreach ($result as $row) {
           <li><a href="verification.php"><i class="fas fa-check-circle"></i>Verification</a></li>
           <li><a href="status.php"><i class="fa-solid fa-flag"></i>Status</a></li>
           <li><a href="reset-password.php"><i class="fas fa-question-circle"></i>Reset Password</a></li>
-          <li><a href="notification.php"><i class="fas fa-phone-volume"></i>Notification</a></li>
+          <li><a href="notification.php"><i class="fas fa-phone-volume"></i>Notification<span class="badge bg-primary rounded-pill mx-auto">14</span></a></li>
           <li><a href="feedback.php"><i class="fas fa-comments"></i>Feedback</a></li>
     </ul>
         

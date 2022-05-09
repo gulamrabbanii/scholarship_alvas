@@ -182,7 +182,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             <div class="overview">
                 <div class="title">
                     <i class="fa fa-graduation-cap" aria-hidden="true"></i>
-                    <span class="text">Create or List Scholarship</span>
+                    <span class="text">CREATE OR LIST SCHOLARSHIP</span>
                 </div>
             </div>
 <!-- Add contents here -->
