@@ -42,17 +42,17 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                 </a></li>
 
                 <li><a href="view-scholarships.php">
-                    <i class="bi bi-bookmarks"></i>
+                    <i class="bi bi-bookmarks-fill"></i>
                     <span class="link-name">View scholarships</span>
                 </a></li>
                 
                 <li><a href="verify-docs.php">
-                    <i class="bi bi-patch-check"></i>
+                    <i class="bi bi-patch-check-fill"></i>
                     <span class="link-name">Verify Docs</span>
                 </a></li>
 
                 <li><a href="notify.php">
-                    <i class="bi bi-info-square"></i>
+                    <i class="bi bi-info-square-fill"></i>
                     <span class="link-name">Send Notification</span>
                 </a></li>
                 <?php if ($_SESSION["username"] == "admin"){ 
