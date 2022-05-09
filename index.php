@@ -111,7 +111,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <div class="vstack" style="align-items: center;">
     <?php 
     if(!empty($login_err)){
-    echo '<div class="alert mt-5 alert-danger vw-100 text-center">' . $login_err . '</div>';
+    echo '<div class="alert alert-danger vw-100 text-center">' . $login_err . '</div>';
     }        
     ?>
     <div class="container position-relative px-2 px-lg-5">

@@ -46,7 +46,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                     <span class="link-name">View scholarships</span>
                 </a></li>
                 
-                <li><a href="verification.php">
+                <li><a href="verify-docs.php">
                     <i class="bi bi-patch-check"></i>
                     <span class="link-name">Verify Docs</span>
                 </a></li>
