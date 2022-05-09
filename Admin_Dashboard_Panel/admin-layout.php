@@ -53,7 +53,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
                 <li><a href="notify.php">
                     <i class="bi bi-info-square"></i>
-                    <span class="link-name">Notify</span>
+                    <span class="link-name">Send Notification</span>
                 </a></li>
                 <?php if ($_SESSION["username"] == "admin"){ 
                     echo '<li><a href="register.php">
