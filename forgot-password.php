@@ -73,21 +73,21 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 		                $message = "Please use this password to login " . $password;
 
                         //Server settings
-                        //$mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
-                        $mail->isSMTP();                                            //Send using SMTP
+                        //$mail->SMTPDebug = SMTP::DEBUG_SERVER;                  //Enable verbose debug output
+                        $mail->isSMTP();                                          //Send using SMTP
                         $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
-                        $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-                        $mail->Username   = 'smartboygr07@gmail.com';                     //SMTP username
-                        $mail->Password   = 'RAZA@rabbani1610';                               //SMTP password
-                        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
-                        $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure =                     PHPMailer::ENCRYPTION_STARTTLS`
+                        $mail->SMTPAuth   = true;                                 //Enable SMTP authentication
+                        $mail->Username   = 'smartboygr07@gmail.com';             //SMTP username
+                        $mail->Password   = 'RAZA@rabbani1610';                   //SMTP password
+                        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;          //Enable implicit TLS encryption
+                        $mail->Port       = 465;                                  //TCP port to connect to; use 587 if you have set `SMTPSecure =                     PHPMailer::ENCRYPTION_STARTTLS`
 
                         //Recipients
                         $mail->setFrom('smartboygr07@gmail.com', "Alva's Scholarship Portal");
-                        $mail->addAddress($email);               //Name is optional
+                        $mail->addAddress($email);                                //Name is optional
 
                         //Content
-                        $mail->isHTML(true);                                  //Set email format to HTML
+                        $mail->isHTML(true);                                      //Set email format to HTML
                         $mail->Subject = "Please use this password to login Alvas's Scholarship Portal. ";
                         $mail->Body    = $message;
 
