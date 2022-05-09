@@ -37,10 +37,10 @@ foreach ($result as $row) {
     <ul>
           <li><a href="profile.php"><i class="fas fa-qrcode"></i>Profile</a></li>
           <li><a href="live-scholarship.php"><i class="fa-solid fa-graduation-cap"></i>Scholarship</a></li>
-          <li><a href="verification.php"><i class="fas fa-check-circle"></i>Verification</a></li>
-          <li><a href="status.php"><i class="fa-solid fa-flag"></i>Status</a></li>
+          <li><a href="verification.php"><i class="fas fa-check-circle"></i>Upload Docs</a></li>
+          <li><a href="status.php"><i class="fa-solid fa-flag"></i>Update Result</a></li>
           <li><a href="reset-password.php"><i class="fas fa-question-circle"></i>Reset Password</a></li>
-          <li><a href="notification.php"><i class="fas fa-phone-volume"></i>Notification<span class="badge bg-primary rounded-pill mx-auto">14</span></a></li>
+          <li><a href="notification.php"><i class="fas fa-phone-volume"></i>Notification<span class="badge bg-primary rounded-pill mx-2">14</span></a></li>
           <li><a href="feedback.php"><i class="fas fa-comments"></i>Feedback</a></li>
     </ul>
         

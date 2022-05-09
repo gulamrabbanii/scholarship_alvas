@@ -8,7 +8,7 @@ $sql = "SELECT * FROM scholarship_details ORDER BY sch_name ASC";
         <div class="dash-content">
             <div class="overview">
                 <div class="title">
-                    <i class="uil uil-tachometer-fast-alt"></i>
+                    <i class="bi bi-folder2"></i>
                     <span class="text">VERIFY DOCUMENTS
                     </span>
                 </div>
