@@ -1,78 +1,61 @@
-body{
+body {
     margin: 0;
     height: 100vh;
     width: 100vw;
     overflow: auto;
     font-family: 'Lato', sans-serif;
     font-weight: 700;
-    display:flex;
     align-items: center;
     justify-content: center;
     color: #555;
     background: url("../img/bg.png") no-repeat center center / cover !important;
 }
-.login-div{
-    margin-top: 15px;
-    margin-bottom: 15px;
-    padding: 10px 35px 35px 35px;
+
+.login-div {
+    height: 93%;
+    margin-top: 5vh;
     border-radius: 40px;
     background: rgba(236, 240, 243, 0.5);
     box-shadow: 13px 13px 20px #cbced1, -13px -13px 20px #ffffff;
-    width: 450px;
-    height: 590px;
 }
-.form-title {
-    font-weight: bold;
-    font-size: 25px;
-    color: #24cfaa;
+
+.login-form {
+    margin-top: 4vh;
 }
-.logo{
+.logo {
     background: url("../img/icon.png") no-repeat center;
     width: 100px;
     height: 100px;
     border-radius: 50%;
     margin: 0 auto;
 }
-.title{
+
+.title {
     text-align: center;
     font-size: 28px;
-    padding-top: 24px;
+    padding-top: 20px;
     letter-spacing: 0.5px;
 }
-.sub-title{
+
+.sub-title {
     color: red;
     text-align: center;
     font-size: 15px;
     padding-top: 7px;
     letter-spacing: 3px;
 }
-.fields{
-    width: 100%;
-    padding: 75px 5px 5px 5px;
+.signin-button:hover {
+    background: #2fdbb6;
 }
-input{
-    border: none;
-    outline: none;
-    background: none;
-    font-size: 18px;
-    color: #555;
-    padding: 20px 10px 20px 5px;
-}
-.username, .password{
-    margin-bottom: 30px;
-    border-radius: 25px;
-    box-shadow: inset 8px 8px 8px #cbced1, inset -8px -8px 8px #ffffff;
 
+.signin-button:active {
+    background: #1da88a;
 }
-.fields svg{
-    height: 22px;
-    margin: 0 10px -3px 25px;
-}
-.signin-button{
+
+.signin-button {
     outline: none;
     border: none;
     cursor: pointer;
-    width: 100%;
     height: 60px;
     border-radius: 30px;
     font-size: 20px;
@@ -84,50 +67,35 @@ input{
     box-shadow: 3px 3px 8px #b1b1b1, -3px -3px 8px #ffffff;
     transition: 0.5s;
 }
-.signin-button:hover{
-    background: #2fdbb6;
+
+input {
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 18px;
+    color: #555;
+    padding: 20px 10px 20px 5px;
 }
-.signin-button:active{
-    background: #1da88a;
+
+.username,
+.password {
+    margin-bottom: 30px;
+    border-radius: 25px;
+    box-shadow: inset 8px 8px 8px #cbced1, inset -8px -8px 8px #ffffff;
 }
-.link{
+
+svg {
+    height: 22px;
+    margin: 0 10px -3px 25px;
+}
+
+.link {
     padding-top: 20px;
     text-align: center;
 }
-.link a{
+
+.link a {
     text-decoration: none;
     color: #aaa;
     font-size: 15px;
-}
-@media only screen and (max-width: 768px) {
-    .login-div, .fields {
-        height: 100%;
-        width: 100%;
-    }
-    .username, .password {
-        margin-bottom: 10px;
-    }
-    .login-div {
-        margin-bottom: 20px;
-    }
-    .fields {
-        padding: 25px 2px 2px 2px;
-    }
-}
-@media only screen and (max-width: 330px) {
-    .title {
-        padding-top: 5px;
-        padding-bottom: 5px;
-    }
-    input,
-    .signin-button,
-    .sub-title {
-        font-size: 14px;
-    }
-    input {
-        padding: 10px 5px 10px 3px;
-    }
-    .signin-button {
-        height: inherit;
-    }
 }
