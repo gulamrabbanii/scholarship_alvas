@@ -2,7 +2,7 @@
 include("admin-layout.php");
 require_once("../db/config.php");
 
-$sql = "SELECT * FROM scholarship_details t1 INNER JOIN elig_req t2 ON t2.sch_name = t1.sch_name WHERE status != 'active' ORDER BY created_at DESC";
+$sql = "SELECT * FROM scholarship_details t1 INNER JOIN elig_req t2 ON t2.sch_name = t1.sch_name WHERE (status != 'active' OR status IS NULL) ORDER BY created_at DESC";
 ?>
 <title>INACTIVE SCHOLARSHIPS</title>
         <div class="dash-content">

@@ -2,7 +2,7 @@
 include("admin-layout.php");
 require_once("../db/config.php");
 
-$sql = "SELECT * FROM scholarship_details t1 INNER JOIN elig_req t2 ON t2.sch_name = t1.sch_name WHERE (sch_start_date <= CURDATE()) AND (sch_deadline >= CURDATE()) AND status = 'active' ORDER BY sch_deadline";
+$sql = "SELECT * FROM scholarship_details t1 INNER JOIN elig_req t2 ON t2.sch_name = t1.sch_name WHERE (sch_start_date <= CURDATE()) AND (sch_deadline >= CURDATE()) AND (status = 'active' OR status IS NULL) ORDER BY sch_deadline";
 ?>
 <title>LIVE SCHOLARSHIPS</title>
         <div class="dash-content">
