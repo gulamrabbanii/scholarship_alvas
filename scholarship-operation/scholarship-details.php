@@ -6,7 +6,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 }
 require_once("../db/config.php");
 $sch_id = urldecode($_GET['id']);
-$sql = "SELECT * FROM scholarship_details t1 INNER JOIN elig_req t2 ON t2.sch_name = t1.sch_name WHERE t1.id = '$sch_id'";
+$sql = "SELECT * FROM scholarship_details t1 INNER JOIN elig_req t2 ON t2.sch_name = t1.sch_name INNER JOIN doc_req t3 ON t3.sch_name = t1.sch_name WHERE t1.id = '$sch_id'";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -93,14 +93,30 @@ if($result = $link->query($sql)){
                   <h4 class="pt-1 text-white"><?php echo $row['sch_name'] ?></h4>
             </div>
             <div class="card-body">
-              <h5 class="card-title">Special title treatment</h5>
-              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+              <h5 class="card-title fw-bold">Eligibility</h5>
+              <p class="fw-bold">To be eligible, an applicant must -</p>
+              <p class="card-text"><ul><li>
+                Hold an M.Sc. degree or equivalent (with minimum 60% marks) in Agriculture/Biotechnology/Plant Science/Botany, Life Science or equivalent
+              </li></ul></p>
             </div>
+            <div class="card-body">
+              <h5 class="card-title fw-bold">Required Documents</h5>
+              <p class="card-text"><ul><li>Certificates, (from Class Xth onwards)</li></ul></p>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title fw-bold">How To Apply</h5>
+              <p class="card-text">Step 1: </p>
+              <p class="card-text">Step 2: </p>
+              <p class="card-text">Step 3: </p>
+            </div>
+
+            <button type="button" onclick="window.open('<?php echo $row['sch_link']?>','_blank' );" class="btn btn-primary">Apply Now</button>
         </div>
     </div>
 <?php }
 }
 } ?>
+<div class="mb-5"></div>
 </body>
 
 </html>
