@@ -81,7 +81,7 @@ if($result = $link->query($sql)){
     </header>
 
 <div class="btn-group bg-dark w-100" role="group" aria-label="Basic outlined example">
-  <button type="button" class="btn btn-outline-light" onClick="history.go(-1);">Go Back</button>
+  <button type="button" class="btn btn-outline-light" onclick="history.back()">Go Back</button>
   <button type="button" class="btn btn-outline-light" onclick="window.location.href='#program';">About The Program</button>
   <button type="button" class="btn btn-outline-light" onclick="window.location.href='#elig';">Eligibility</button>
   <button type="button" class="btn btn-outline-light" onclick="window.location.href='#docs';">Required Documents</button>
