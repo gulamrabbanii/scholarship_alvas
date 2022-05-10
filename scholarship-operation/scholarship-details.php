@@ -82,35 +82,101 @@ if($result = $link->query($sql)){
 
 <div class="btn-group bg-dark w-100" role="group" aria-label="Basic outlined example">
   <button type="button" class="btn btn-outline-light" onClick="history.go(-1);">Go Back</button>
-  <button type="button" class="btn btn-outline-light">About The Program</button>
-  <button type="button" class="btn btn-outline-light">Eligibility</button>
-  <button type="button" class="btn btn-outline-light">Required Documents</button>
-  <button type="button" class="btn btn-outline-light">How To Apply</button>
+  <button type="button" class="btn btn-outline-light" onclick="window.location.href='#program';">About The Program</button>
+  <button type="button" class="btn btn-outline-light" onclick="window.location.href='#elig';">Eligibility</button>
+  <button type="button" class="btn btn-outline-light" onclick="window.location.href='#docs';">Required Documents</button>
+  <button type="button" class="btn btn-outline-light" onclick="window.location.href='#apply';">How To Apply</button>
 </div>
     <div class="container mt-5 px-4 px-lg-5">
         <div class="card row gx-4 gx-lg-5 justify-content-center">
             <div class="text-capitalize font-monospace card-header w-100 col-md-10" style="background-color: #4E4E91;">
-                  <h4 class="pt-1 text-white"><?php echo $row['sch_name'] ?></h4>
+                  <h4 class="pt-1 text-white" id="program"><?php echo $row['sch_name'] ?></h4>
             </div>
             <div class="card-body">
-              <h5 class="card-title fw-bold">Eligibility</h5>
+              <h5 class="card-title fw-bold" id="elig">Eligibility</h5>
               <p class="fw-bold">To be eligible, an applicant must -</p>
-              <p class="card-text"><ul><li>
-                Hold an M.Sc. degree or equivalent (with minimum 60% marks) in Agriculture/Biotechnology/Plant Science/Botany, Life Science or equivalent
-              </li></ul></p>
+              <p class="card-text"><ul>
+                      <?php if(!empty($row['minority'])) {?>
+                        <li><small class="text-muted"><?php echo $row['minority'] ?></small></li>
+                       <?php }?>
+                       <?php if(!empty($row['sc_st'])) {?>
+                        <li><small class="text-muted"><?php echo $row['sc_st'] ?></small></li>
+                       <?php }?>
+                       <?php if(!empty($row['girls'])) {?>
+                        <li><small class="text-muted"><?php echo $row['girls'] ?></small></li>
+                       <?php }?><?php if(!empty($row['community'])) {?>
+                        <li><small class="text-muted"><?php echo $row['community'] ?></small></li>
+                       <?php }?>
+                       <?php if(!empty($row['pwd'])) {?>
+                        <li><small class="text-muted"><?php echo $row['pwd'] ?></small></li>
+                       <?php }?>
+                       <?php if(!empty($row['atthletic'])) {?>
+                        <li><small class="text-muted"><?php echo $row['athletics'] ?></small></li>
+                       <?php }?>
+                       <?php if(!empty($row['other_sch'])) {?>
+                        <li><small class="text-muted"><?php echo $row['other_sch'] ?></small></li>
+                       <?php }?>
+              </ul></p>
             </div>
             <div class="card-body">
-              <h5 class="card-title fw-bold">Required Documents</h5>
-              <p class="card-text"><ul><li>Certificates, (from Class Xth onwards)</li></ul></p>
-            </div>
-            <div class="card-body">
-              <h5 class="card-title fw-bold">How To Apply</h5>
-              <p class="card-text">Step 1: </p>
-              <p class="card-text">Step 2: </p>
-              <p class="card-text">Step 3: </p>
-            </div>
+              <h5 class="card-title fw-bold" id="docs">Required Documents</h5>
+              <p class="card-text"><ul>
 
+                      <?php if(!empty($row['govt_id'])) {?>
+                        <li><small class="text-muted"><?php echo $row['govt_id'] ?></small></li>
+                       <?php }?>
+                       <?php if(!empty($row['domicile'])) {?>
+                        <li><small class="text-muted"><?php echo $row['domicile'] ?></small></li>
+                       <?php }?>
+                       <?php if(!empty($row['income'])) {?>
+                        <li><small class="text-muted"><?php echo $row['income'] ?></small></li>
+                       <?php }?><?php if(!empty($row['pwd'])) {?>
+                        <li><small class="text-muted"><?php echo $row['pwd'] ?></small></li>
+                       <?php }?>
+                       <?php if(!empty($row['bonafide'])) {?>
+                        <li><small class="text-muted"><?php echo $row['bonafide'] ?></small></li>
+                       <?php }?>
+                       <?php if(!empty($row['caste'])) {?>
+                        <li><small class="text-muted"><?php echo $row['caste'] ?></small></li>
+                       <?php }?>
+                       <?php if(!empty($row['parent_aadhar'])) {?>
+                        <li><small class="text-muted"><?php echo $row['parent_aadhar'] ?></small></li>
+                       <?php }?>
+                       <?php if(!empty($row['bank_passbook'])) {?>
+                        <li><small class="text-muted"><?php echo $row['bank_passbook'] ?></small></li>
+                       <?php }?>
+                       <?php if(!empty($row['college_fee'])) {?>
+                        <li><small class="text-muted"><?php echo $row['college_fee'] ?></small></li>
+                       <?php }?>
+                       <?php if(!empty($row['sslc_puc'])) {?>
+                        <li><small class="text-muted"><?php echo $row['sslc_puc'] ?></small></li>
+                       <?php }?>
+                       <?php if(!empty($row['sem'])) {?>
+                        <li><small class="text-muted"><?php echo $row['sem'] ?></small></li>
+                       <?php }?>
+                       <?php if(!empty($row['diploma'])) {?>
+                        <li><small class="text-muted"><?php echo $row['diploma'] ?></small></li>
+                       <?php }?>
+                       <?php if(!empty($row['self_dec'])) {?>
+                        <li><small class="text-muted"><?php echo $row['self_dec'] ?></small></li>
+                       <?php }?>
+                       <?php if(!empty($row['other_cert'])) {?>
+                        <li><small class="text-muted"><?php echo $row['other_cert'] ?></small></li>
+                       <?php }?>
+              </ul></p>
+              
+            </div>
+            <div class="card-body">
+              <h5 class="card-title fw-bold" id="apply">How To Apply</h5>
+              <p class="text-muted">Step 1: <small>Click on the 'Apply Now' button.</small></p>
+              <p class="text-muted">Step 2: <small>Navigate to the official website of <?php echo $row['sch_name'] ?>.</small></p>
+              <p class="text-muted">Step 3: <small>You need to <stron> register yourself </strong>with the <?php echo $row['sch_name'] ?> before you can apply for a scholarship.</small></p>
+              <p class="text-muted">Step 4: <small>Filling the National Scholarship Portal Application Form.</small></p>
+              <p class="text-muted">Step 5: <small>Uploading the Documents.</small></p>
+            </div>
+            <div class="d-grid gap-2 mb-5 col-2 mx-auto">
             <button type="button" onclick="window.open('<?php echo $row['sch_link']?>','_blank' );" class="btn btn-primary">Apply Now</button>
+            </div>
         </div>
     </div>
 <?php }
