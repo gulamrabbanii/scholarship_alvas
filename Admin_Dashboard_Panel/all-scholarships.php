@@ -14,7 +14,7 @@ $sql = "SELECT * FROM scholarship_details t1 INNER JOIN elig_req t2 ON t2.sch_na
 <div class="container">
   <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
   <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
-  <label class="btn btn-outline-primary" for="btnradio1" onclick="window.location.href = 'view-scholarships.php';">ALL SCHOLARSHIP</label>
+  <label class="btn btn-outline-primary" for="btnradio1" onclick="window.location.href = 'all-scholarships.php';">ALL SCHOLARSHIP</label>
 
   <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
   <label class="btn btn-outline-primary" for="btnradio2" onclick="window.location.href = 'live-scholarship.php';">LIVE SCHOLARSHIP</label>
@@ -45,6 +45,14 @@ $sql = "SELECT * FROM scholarship_details t1 INNER JOIN elig_req t2 ON t2.sch_na
 .txt:hover {
     text-decoration: underline;
 }
+p {
+margin: 0;
+padding: 2px;
+text-align: justify;
+text-justify:initial;
+word-break: break-all;
+line-height: 1;
+}
 </style>
 
 
@@ -64,30 +72,33 @@ if($result = $link->query($sql)){
                 <hr>
                 <div class="card-text-body">
                       <div class="card-text text-primary">Eligibility</div>
+                        <ul>
                         <?php if(!empty($row['minority'])) {?>
-                        <p><small class="text-muted"><?php echo $row['minority'] ?></small></p>
+                        <li><p><small class="text-muted"><?php echo $row['minority']; ?></small></p></li>
+                        <?php }?>
+                        <?php if(!empty($row['sc_st'])) {?>
+                        <li><p><small class="text-muted"><?php echo $row['sc_st']; ?></small></p></li>
+                        <?php }?>
+                        <?php if(!empty($row['girls'])) {?>
+                        <li><p><small class="text-muted"><?php echo $row['girls']; ?></small></p></li>
+                        <?php }?><?php if(!empty($row['community'])) {?>
+                        <li><p><small class="text-muted"><?php echo $row['community']; ?></small></p></li>
+                        <?php }?>
+                        <?php if(!empty($row['pwd'])) {?>
+                        <li><p><small class="text-muted"><?php echo $row['pwd']; ?></small></p>
+                        <?php }?></li>
+                        <?php if(!empty($row['athletic'])) {?>
+                        <li><p><small class="text-muted"><?php echo $row['athletic']; ?></small></p></li>
+                        <?php }?>
+                        <?php if(!empty($row['other_sch'])) {?>
+                        <li><p><small class="text-muted"><?php echo $row['other_sch']; ?></small></p></li>
                        <?php }?>
-                       <?php if(!empty($row['sc_st'])) {?>
-                        <p><small class="text-muted"><?php echo $row['sc_st'] ?></small></p>
-                       <?php }?>
-                       <?php if(!empty($row['girls'])) {?>
-                        <p><small class="text-muted"><?php echo $row['girls'] ?></small></p>
-                       <?php }?><?php if(!empty($row['community'])) {?>
-                        <p><small class="text-muted"><?php echo $row['community'] ?></small></p>
-                       <?php }?>
-                       <?php if(!empty($row['pwd'])) {?>
-                        <p><small class="text-muted"><?php echo $row['pwd'] ?></small></p>
-                       <?php }?>
-                       <?php if(!empty($row['atthletic'])) {?>
-                        <p><small class="text-muted"><?php echo $row['athletics'] ?></small></p>
-                       <?php }?>
-                       <?php if(!empty($row['other_sch'])) {?>
-                        <p><small class="text-muted"><?php echo $row['other_sch'] ?></small></p>
-                       <?php }?>
-                      <div class="card-text text-primary mt-auto"><small> Last Updated On:</small>
-                        <p><small class="text-muted"><?php echo $row['created_at'] ?></small></p>
-                      </div>
+                    <ul>                     
                 </div>         
+                </div>
+                <div class="card-footer d-flex justify-content-between">
+                <small> Last Updated On:</small>
+                <small class="text-muted"><?php echo $row['created_at'] ?></small>   
                 </div>
                 <div class="card-footer">
                   <div class="d-flex justify-content-center">
@@ -130,7 +141,7 @@ if($result = $link->query($sql)){
                       </div>
                        </div>
                  <div class="card-footer text-center bg-primary">
-                <a href="../scholarship-operation/scholarship-details.php?id=<?php echo urlencode($row['id']) ?>" class="text-decoration-none text-dark">View Scholarship</a>
+                <a href="../scholarship-operation/scholarship-details.php?id=<?php echo urlencode($row['id']) ?>" class="text-decoration-none text-white">View Scholarship</a>
                 </div>
             </div>
             </div>            

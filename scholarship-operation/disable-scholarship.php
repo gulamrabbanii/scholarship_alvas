@@ -14,7 +14,7 @@ if($result = $link->query($sql)){
     exit();
 } else {
     echo "<script>alert('Failed to Diable')</script>";
-    header("Refresh: 0 , url = ../Admin_Dashboard_Panel/view-scholarships.php");
+    header("Refresh: 0 , url = ../Admin_Dashboard_Panel/all-scholarships.php");
     exit();
 }
 // Close connection

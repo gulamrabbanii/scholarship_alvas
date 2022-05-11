@@ -165,7 +165,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             // Attempt to execute the prepared statement
             if($stmt->execute()) {
                 echo "<script>alert('Scholarship has been successfully added.')</script>";
-                header("Refresh:0 , url =  view-scholarships.php");
+                header("Refresh:0 , url =  all-scholarships.php");
             }
             // Close statement
             $stmt->close();

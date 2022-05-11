@@ -33,6 +33,14 @@ color: black;
 }
 .txt:hover {
     text-decoration: underline;
+} 
+p {
+margin: 0;
+padding: 2px;
+text-align: justify;
+text-justify:initial;
+word-break: break-all;
+line-height: 1;
 }
 </style>
 
@@ -101,19 +109,25 @@ color: black;
       <!-- Nav pills -->
   <ul class="nav nav-pills" role="tablist">
     <li class="nav-item">
-      <a class="nav-link active" data-bs-toggle="pill" href="#minority">MINORITY</a>
+      <a class="nav-link active" data-bs-toggle="pill" href="#minority"> MINORITY</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" data-bs-toggle="pill" href="#sc-st">SC/ST</a>
+      <a class="nav-link" data-bs-toggle="pill" href="#sc-st"> SC/ST ONLY</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" data-bs-toggle="pill" href="#girls">GIRLS</a>
+      <a class="nav-link" data-bs-toggle="pill" href="#girls"> GIRLS </a>
     </li>
     <li class="nav-item">
       <a class="nav-link" data-bs-toggle="pill" href="#athletics">ATHLETICS</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" data-bs-toggle="pill" href="#pwd">PHYSICALY DISABLED</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-bs-toggle="pill" href="#community">COMMUNITY SERVICE</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-bs-toggle="pill" href="#military">MILITARY</a>
     </li>
   </ul>
 
@@ -142,6 +156,16 @@ color: black;
     <div id="pwd" class="container tab-pane fade"><br>
       <?php 
         include("../scholarship-operation/pwd-scholarship.php");
+        ?>
+    </div>
+    <div id="community" class="container tab-pane fade"><br>
+      <?php 
+        include("../scholarship-operation/community-scholarship.php");
+        ?>
+    </div>
+    <div id="military" class="container tab-pane fade"><br>
+      <?php 
+        include("../scholarship-operation/military-scholarship.php");
         ?>
     </div>
   </div>

@@ -42,7 +42,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true || preg_match
                     <span class="link-name">Add Scholarship</span>
                 </a></li>
 
-                <li><a href="view-scholarships.php">
+                <li><a href="all-scholarships.php">
                     <i class="fas fa-award"></i>
                     <span class="link-name">View scholarships</span>
                 </a></li>

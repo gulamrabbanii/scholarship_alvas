@@ -11,7 +11,7 @@ $sql =  "UPDATE `scholarship_details` SET `status`='active' WHERE id = '$sch_id'
 
 if($result = $link->query($sql)){
     echo "<script>alert('Successfully Enabled')</script>";
-    header("Refresh: 0 , url = ../Admin_Dashboard_Panel/view-scholarships.php");
+    header("Refresh: 0 , url = ../Admin_Dashboard_Panel/all-scholarships.php");
     exit();
 } else {
     echo "<script>alert('Failed to Enable')</script>";
