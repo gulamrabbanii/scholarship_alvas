@@ -99,7 +99,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
         $elig_req_sql = "INSERT INTO elig_req (sch_name, minority, sc_st, girls, community, military, pwd, athletic, other_sch) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-        $doc_req_sql = "INSERT INTO doc_req (sch_name, govt_id, domicile, income, pwd, bonafide, caste, parent_aadhar, bank_passbook, college_fee, sslc_puc, sem, diploma, self_dec, other_cert) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $doc_req_sql = "INSERT INTO doc_req (sch_name, govt_id, domicile, income, pwd_cert, bonafide, caste, parent_aadhar, bank_passbook, college_fee, sslc_puc, sem, diploma, self_dec, other_cert) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
          
         if($stmt = $link->prepare($scholarship_details_sql)){
             // Bind variables to the prepared statement as parameters

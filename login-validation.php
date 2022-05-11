@@ -13,7 +13,7 @@ if($_SESSION["username"] == "admin"){
     header("Location: Admin_Dashboard_Panel/dashboard.php");
 }
 if((preg_match($pattern, $_SESSION["username"]))){
-    header("Location: Student_Dashboard_Panel/live-scholarship.php");
+    header("Location: Student_Dashboard_Panel/scholarship.php");
 }
 $email = "^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$^";
 if((preg_match($email, $_SESSION["username"]))){

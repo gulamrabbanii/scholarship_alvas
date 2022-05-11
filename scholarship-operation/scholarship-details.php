@@ -130,8 +130,8 @@ if($result = $link->query($sql)){
                        <?php }?>
                        <?php if(!empty($row['income'])) {?>
                         <li><small class="text-muted"><?php echo $row['income'] ?></small></li>
-                       <?php }?><?php if(!empty($row['pwd'])) {?>
-                        <li><small class="text-muted"><?php echo $row['pwd'] ?></small></li>
+                       <?php }?><?php if(!empty($row['pwd_cert'])) {?>
+                        <li><small class="text-muted"><?php echo $row['pwd_cert'] ?></small></li>
                        <?php }?>
                        <?php if(!empty($row['bonafide'])) {?>
                         <li><small class="text-muted"><?php echo $row['bonafide'] ?></small></li>
@@ -171,7 +171,7 @@ if($result = $link->query($sql)){
               <p class="text-muted">Step 1: <small>Click on the 'Apply Now' button.</small></p>
               <p class="text-muted">Step 2: <small>Navigate to the official website of <?php echo $row['sch_name'] ?>.</small></p>
               <p class="text-muted">Step 3: <small>You need to <stron> register yourself </strong>with the <?php echo $row['sch_name'] ?> before you can apply for a scholarship.</small></p>
-              <p class="text-muted">Step 4: <small>Filling the National Scholarship Portal Application Form.</small></p>
+              <p class="text-muted">Step 4: <small>Filling the <?php echo $row['sch_name'] ?> Form.</small></p>
               <p class="text-muted">Step 5: <small>Uploading the Documents.</small></p>
             </div>
             <div class="d-grid gap-2 mb-5 col-2 mx-auto">

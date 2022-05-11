@@ -1,6 +1,7 @@
 <?php
 session_start();
-if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+$pattern = "/4(al)[0-9]{2}[A-Za-z]{2}[0-9]{3}/i";
+if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true || !preg_match($pattern, $_SESSION["username"])){
     header("location: ../index.php");
     exit;
 }
@@ -37,7 +38,7 @@ foreach ($result as $row) {
     </div>
     <ul>
           <li><a href="profile.php"><i class="fas fa-qrcode"></i>Profile</a></li>
-          <li><a href="live-scholarship.php"><i class="fa-solid fa-graduation-cap"></i>Scholarship</a></li>
+          <li><a href="scholarship.php"><i class="fa-solid fa-graduation-cap"></i>Scholarship</a></li>
           <li><a href="verification.php"><i class="fa fa-folder" aria-hidden="true"></i>
 Upload Docs</a></li>
           <li><a href="status.php"><i class="fa-solid fa-flag"></i>Update Result</a></li>
