@@ -1,7 +1,7 @@
-
 <?php
 session_start();
-if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+$pattern = "/4(al)[0-9]{2}[A-Za-z]{2}[0-9]{3}/i";
+if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true || preg_match($pattern, $_SESSION["username"])){
     header("location: ../index.php");
     exit;
 }
