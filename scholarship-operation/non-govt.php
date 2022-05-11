@@ -22,6 +22,7 @@ if($result = $link->query($sql)){
                 <h5 class="card-title txt"><a class="text-decoration-none text-secondary" href="<?php echo $row['sch_link'] ?>" target="_blank" rel="noopener noreferrer"><?php echo $row["sch_name"] ?></a></h5>
                 <hr>
                 <div class="card-text-body">
+                    <div class="card-text text-primary">Eligibility</div>
                       <ul>
                         <?php if(!empty($row['minority'])) {?>
                         <li><p><small class="text-muted"><?php echo $row['minority']; ?></small></p></li>
@@ -47,7 +48,7 @@ if($result = $link->query($sql)){
                 </div>
                 </div>
                 <div class="card-footer text-center bg-primary">
-                <a href="../scholarship-operation/scholarship-details.php?id=<?php echo urlencode($row['id']) ?>" class="text-decoration-none text-dark">View Scholarship</a>
+                <a href="../scholarship-operation/scholarship-details.php?id=<?php echo urlencode($row['id']) ?>" class="text-decoration-none text-white">View Scholarship</a>
                 </div>
             </div>
             </div>            
