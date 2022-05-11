@@ -149,7 +149,8 @@ if($result = $link->query($sql)){
         // Free result set
         $result->free();
     } else{
-        echo "No records matching your query were found.";
+        echo "<br>";
+        echo "There are currently no scholarships available.";
     }
 } else{
     echo "ERROR: Could not able to execute $sql. " . $mysqli->error;
