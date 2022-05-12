@@ -12,19 +12,19 @@ include("admin-layout.php");
     
                 <div class="boxes">
                     <div class="box box1">
-                        <i class="uil uil-thumbs-up"></i>
-                        <span class="text">Total Scholarships Applied</span>
+                        <i class="mb-2 mt-1 fa fa-graduation-cap" aria-hidden="true"></i>
+                        <span class="text"># Total Scholarships</span>
                         <span class="number">50,120</span>
                     </div>
                     
                     <div class="box box2">
-                        <i class="uil uil-comments"></i>
-                        <span class="text">Verified</span>
+                        <i class="my-2 fa fa-paper-plane" aria-hidden="true"></i>
+                        <span class="text"># Scholarship Application</span>
                         <span class="number">20,120</span>
                     </div>
                     <div class="box box3">
-                        <i class="uil uil-share"></i>
-                        <span class="text">Rejected</span>
+                        <i class="uil uil-thumbs-up"></i>
+                        <span class="text"># Received Scholarship</span>
                         <span class="number">10,120</span>
                     </div>
                 </div>

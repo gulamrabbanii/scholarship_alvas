@@ -33,28 +33,25 @@ if($result = $link->query($sql)){
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
+      <th scope="col">USN</th>
+      <th scope="col">Name</th>
+      <th scope="col">Year</th>
+      <th scope="col">Applied Scholarship</th>
+      <th scope="col">Academic Year</th>
+      <th scope="col">Download</th>
+      <th scope="col">Verified</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td colspan="2">Larry the Bird</td>
-      <td>@twitter</td>
+      <td>4AL18CS099</td>
+      <td>Gulam Rabbani</td>
+      <td>4</td>
+      <td>National Scholarship Portal</td>
+      <td>2022-23</td>
+      <td class="justify-content-center d-flex"><a href="#"><i class="bi bi-file-earmark-arrow-down-fill"></i></a></td>
+      <td><a href="#"><i class="px-4 bi bi-patch-check-fill"></i></a></td>
     </tr>
   </tbody>
 </table>
