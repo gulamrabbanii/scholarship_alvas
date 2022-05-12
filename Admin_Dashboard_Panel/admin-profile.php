@@ -89,23 +89,23 @@ include("admin-layout.php");
                     </div>
                     <div class="data type">
                         <span class="data-title">Scholarship Name</span>
-                        <span class="data-list">New</span>
-                        <span class="data-list">Member</span>
-                        <span class="data-list">Member</span>
-                        <span class="data-list">New</span>
-                        <span class="data-list">Member</span>
-                        <span class="data-list">New</span>
-                        <span class="data-list">Member</span>
+                        <span class="data-list">National Scholarship Portal</span>
+                        <span class="data-list">Post Matric Scholarship</span>
+                        <span class="data-list">e-pass Scholarship</span>
+                        <span class="data-list">Vidya Sarthi Scholarship</span>
+                        <span class="data-list">Canara Scholarship</span>
+                        <span class="data-list">HDFC Scholarship</span>
+                        <span class="data-list">Jindal Scholarship</span>
                     </div>
                     <div class="data status">
                         <span class="data-title">Status</span>
                         <span class="data-list">Verified</span>
-                        <span class="data-list">Rejected</span>
+                        <span class="data-list">Pending</span>
                         <span class="data-list">Verified</span>
                         <span class="data-list">Verified</span>
-                        <span class="data-list">Rejected</span>
+                        <span class="data-list">Pending</span>
                         <span class="data-list">Verified</span>
-                        <span class="data-list">Rejected</span>
+                        <span class="data-list"></span>
                     </div>
                 </div>
             </div>

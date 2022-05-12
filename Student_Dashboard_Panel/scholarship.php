@@ -180,7 +180,7 @@ line-height: 1;
       <a class="nav-link active" data-bs-toggle="pill" href="#govt-india">GOVERNMENT OF INDIA</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" data-bs-toggle="pill" href="#karnataka">KARNATAK</a>
+      <a class="nav-link" data-bs-toggle="pill" href="#karnataka">KARNATAKA</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" data-bs-toggle="pill" href="#other-state">OTHER STATE</a>
