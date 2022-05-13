@@ -4,7 +4,7 @@ require_once("../db/config.php");
 $username = $_SESSION['username'];
 $sql = "SELECT * FROM users WHERE username = '$username'";
 $result = $link->query($sql);
-foreach ($result as $row) 
+foreach ($result as $row) {
 ?>
 <style>
 .card{
@@ -56,11 +56,12 @@ border-radius: 0 0 15px 15px;
 <!-- Profile Image -->
   <div class="card card-img">
     <img src="https://www.nautec.com/wp-content/uploads/2018/04/placeholder-person.png" alt="">
-    <h2>Gulam Rabbani</h2>
-    <h6>4AL18CS099</h6>
-    <h6>g.rabbani4me07@gmail.com</h6>
-    <h6>76674594562</h6>
+    <h2><?php echo ucwords($row['first_name']);?> <?php echo $row['last_name'];?></h2>
+    <h6><?php echo strtoupper($row['username']);?></h6>
+    <h6><?php echo $row['email'];?></h6>
+    <h6><?php echo $row['phone'];?></h6>
   </div>
+  
 <!-- Profile Details -->
   <div class="card mt-2">
     <div class="row mx-3">
@@ -82,6 +83,9 @@ border-radius: 0 0 15px 15px;
       <div class="col col-lg-4 col-12 mb-2">e-mail Address : <span class="value"></span>
       </div>
     </div>
+    <?php
+    }
+  ?>
     <form action="#" method="post">
       <button type="submit" class="btn" style="float: right;"><i class="fas fa-edit"></i></button>
     </form>

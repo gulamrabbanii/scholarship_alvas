@@ -79,6 +79,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $dept = htmlspecialchars(strip_tags(trim($_POST["sel-branch"])));
     $year = htmlspecialchars(strip_tags(trim($_POST["year"])));
     $email = htmlspecialchars(strip_tags(trim($_POST["email"])));
+    $gender = htmlspecialchars(strip_tags(trim($_POST["gender"])));
+    $sem = htmlspecialchars(strip_tags(trim($_POST["sem"])));
+    $section = htmlspecialchars(strip_tags(trim($_POST["section"])));
     // phone validation
     if(empty($phone)){
         $phone_err = "Please enter phone number.";     
@@ -99,11 +102,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     if(empty($username_err) && empty($password_err) && empty($confirm_password_err)){
         
         // Prepare an insert statement
-        $sql = "INSERT INTO users (username, passwd, first_name, last_name, email, dept, year, phone) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO users (username, passwd, first_name, last_name, gender, email, dept, semester, section, year, phone) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
          
         if($stmt = $link->prepare($sql)){
             // Bind variables to the prepared statement as parameters
-            $stmt->bind_param("ssssssss", $param_username, $param_password, $param_f_name, $param_l_name, $param_emai, $param_dept, $param_year, $param_phone);
+            $stmt->bind_param("sssssssssss", $param_username, $param_password, $param_f_name, $param_l_name, $param_gender, $param_email, $param_dept, $param_year, $param_sem, $param_section, $param_phone);
             
             // Set parameters
             $param_username = $username;
@@ -113,7 +116,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $param_dept = $dept;
             $param_year = $year;
             $param_phone = $phone;
-            $param_emai = $email;
+            $param_email = $email;
+            $param_gender = $gender;
+            $param_sem = $sem;
+            $param_section = $section;
             // Attempt to execute the prepared statement
             if($stmt->execute()){
                 // Redirect to login page
@@ -161,7 +167,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 }
     .wrapper {
     background-color: rgba(255, 255, 255, 0.7);
-    margin-top: 20px;
     margin-left: 100px;
     margin-right: 100px;
     margin-bottom: 20px;
@@ -170,6 +175,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 @media (max-width: 768px) {
     .wrapper {
     margin: 10px;
+    margin-top: 5px;
     padding: 10px;
     }
 }
@@ -210,16 +216,21 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             maxlength="10" pattern="^4[Aa][Ll][0-9]{2}[A-Za-z]{2}[0-9]{3}" />
                             <span class="invalid-feedback"><?php echo $username_err; ?></span>
                     </div>
-                    <div class="col-md-12">
-                        <label for="email" class="form-label">Email</label>
-                        <input type="email" name="email" class="form-control <?php echo (!empty($email_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $email; ?>" id="email"
-                            placeholder="YOUR VALID E-MAIL ID" />
-                            <span class="invalid-feedback"><?php echo $email_err; ?></span>
+                     <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="gender" class="form-label">Gender</label>
+                            <select name="gender" id="inputState" class="form-control" required>
+                                <option value="" selected>Choose...</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
                     </div>
                     <div class="col-md-12">
                         <div class="form-group">
                             <label for="branch" class="form-label">Branch</label>
-                            <select name="sel-branch" id="inputState" class="form-control" required>
+                            <select name="sel-branch" id="branch" class="form-control" required>
                                 <option value="" selected>Choose...</option>
                                 <option value="AGRICULTURE ENGG">Agriculture Engg</option>
                                 <option value="AIML ENGG">Artificial Intelligence and Machine Learning Engg</option>
@@ -232,10 +243,25 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             </select>
                         </div>
                     </div>
-                    <div class="col-md-12">
+                    <div class="col-md-4">
                         <label for="current-year" class="form-label">Current Year</label>
                         <input type="number" name="year" min="1" max="4" class="form-control" id="current-year" placeholder="eg. 3"
                             required>
+                    </div><div class="col-md-4">
+                        <label for="current-sem" class="form-label">Current Semester</label>
+                        <input type="number" name="sem" min="1" max="8" class="form-control" id="current-sem" placeholder="eg. 7"
+                            required>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="section" class="form-label">Section</label>
+                        <input type="text" name="section" min="1" max="1" class="form-control" id="section" placeholder="eg. B"
+                            required>
+                    </div>
+                    <div class="col-md-12">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" name="email" class="form-control <?php echo (!empty($email_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $email; ?>" id="email"
+                            placeholder="YOUR VALID E-MAIL ID" />
+                            <span class="invalid-feedback"><?php echo $email_err; ?></span>
                     </div>
                     <div class="col-md-12">
                         <div class="form-group">
