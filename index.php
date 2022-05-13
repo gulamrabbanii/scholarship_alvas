@@ -103,8 +103,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <link rel="icon" href="./assets/img/icon.png" type="image/icon type">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/style/style.css">
-        
+    <link rel="stylesheet" href="assets/style/style.css">     
 </head
  <body>
 
@@ -151,7 +150,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     <h5 class="modal-title" id="staticBackdropLabel">Forgot Password?</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="forgot-password.php" method="post">
+                <form action="<?php echo htmlspecialchars("forgot-password.php");?>" method="post">
                     <div class="modal-body">
                         <div class="col-md-12">
                             <label for="username" class="form-label">Username</label>

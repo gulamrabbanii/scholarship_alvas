@@ -66,21 +66,21 @@ border-radius: 0 0 15px 15px;
   <div class="card mt-2">
     <div class="row mx-3">
       <p><i class="label">Basic Details</i></p>
-      <div class="col col-lg-4 col-12 mb-2">USN Number : <span class="value"></span>
+      <div class="col col-lg-4 col-12 mb-2">USN Number : <span><?php echo $row['username'];?></span>
       </div>
-      <div class="col col-lg-4 col-12 mb-2">Gender : <span class="value"></span>
+      <div class="col col-lg-4 col-12 mb-2">Gender : <span><?php echo $row['gender'];?></span>
       </div>
-      <div class="col col-lg-4 col-12 mb-2">Year : <span class="value"></span>
+      <div class="col col-lg-4 col-12 mb-2">Year : <span><?php echo $row['year'];?></span>
       </div>
-      <div class="col col-lg-4 col-12 mb-2">Semester : <span class="value"></span>
+      <div class="col col-lg-4 col-12 mb-2">Semester : <span><?php echo $row['semester'];?></span>
       </div>
-      <div class="col col-lg-4 col-12 mb-2">Section : <span class="value"></span>
+      <div class="col col-lg-4 col-12 mb-2">Section : <span><?php echo $row['section'];?></span>
       </div>
-      <div class="col col-lg-4 col-12 mb-2">Branch : <span class="value"></span>
+      <div class="col col-lg-4 col-12 mb-2">Branch : <span><?php echo $row['dept'];?></span>
       </div>
-      <div class="col col-lg-4 col-12 mb-2">Mobile Number : <span class="value"></span>
+      <div class="col col-lg-4 col-12 mb-2">Mobile Number : <span><?php echo $row['phone'];?></span>
       </div>
-      <div class="col col-lg-4 col-12 mb-2">e-mail Address : <span class="value"></span>
+      <div class="col col-lg-8 col-12 mb-2">e-mail Address : <span><?php echo $row['email'];?></span>
       </div>
     </div>
     <?php
@@ -99,11 +99,11 @@ border-radius: 0 0 15px 15px;
   <div class="card"> 
     <div class="row mx-3">
       <p>#<span class="value"></span></p>
-      <div class="col col-lg-4 col-12 mb-2">Scholarship Name : <span class="value"></span>
+      <div class="col col-lg-12 col-12 mb-2">Scholarship Name : <span class="value"></span>
         </div>
-        <div class="col col-lg-4 col-12 mb-2">Academic Year : <span class="value"></span>
+        <div class="col col-lg-6 col-12 mb-2">Academic Year : <span class="value"></span>
         </div>
-        <div class="col col-lg-4 col-12 mb-2">Status : <span class="value"></span>
+        <div class="col col-lg-6 col-12 mb-2">Status : <span class="value"></span>
         </div>
     </div>
   </div>

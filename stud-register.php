@@ -102,7 +102,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     if(empty($username_err) && empty($password_err) && empty($confirm_password_err)){
         
         // Prepare an insert statement
-        $sql = "INSERT INTO users (username, passwd, first_name, last_name, gender, email, dept, semester, section, year, phone) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO users (username, passwd, first_name, last_name, gender, email, dept, year, semester, section, phone) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
          
         if($stmt = $link->prepare($sql)){
             // Bind variables to the prepared statement as parameters
@@ -245,7 +245,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     </div>
                     <div class="col-md-4">
                         <label for="current-year" class="form-label">Current Year</label>
-                        <input type="number" name="year" min="1" max="4" class="form-control" id="current-year" placeholder="eg. 3"
+                        <input type="number" name="year" min="1" max="4" class="form-control" id="current-year" placeholder="eg. 4"
                             required>
                     </div><div class="col-md-4">
                         <label for="current-sem" class="form-label">Current Semester</label>
