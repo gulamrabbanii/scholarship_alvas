@@ -29,7 +29,7 @@ if($result = $link->query($sql)){
             <div id="flush-collapse<?php echo $i; ?>" class="accordion-collapse collapse" aria-labelledby="flush-heading<?php echo $i; ?>" data-bs-parent="#accordionFlushExample">
                 <div class="accordion-body">
                     
-                    <table class="table">
+                    <table class="table table-hover">
   <thead>
     <tr>
       <th scope="col">#</th>

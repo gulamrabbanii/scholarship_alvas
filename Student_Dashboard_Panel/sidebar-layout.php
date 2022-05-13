@@ -42,7 +42,7 @@ Upload Docs</a></li>
           <li><a href="status.php"><i class="fa-solid fa-flag"></i>Update Result</a></li>
           <li><a href="reset-password.php"><i class="fa fa-undo"></i></i>Reset Password</a></li>
           <li><a href="notification.php"><i class="fas fa-phone-volume"></i>Notification<span class="badge bg-primary rounded-pill mx-2">14</span></a></li>
-          <li><a href="feedback.php"><i class="fas fa-comments"></i>Feedback</a></li>
+          <!-- <li><a href="feedback.php"><i class="fas fa-comments"></i>Feedback</a></li> -->
     </ul>
         
       <div class="media_icons" >
