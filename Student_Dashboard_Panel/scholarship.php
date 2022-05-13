@@ -47,11 +47,11 @@ line-height: 1;
 
 <section>
 <div class="container p-4">
-  <h2>Scholarship</h2>
+  <h2 style="letter-spacing: 0.2rem; background:rgba(255,255,255, 1); color: #4E4E91;">SCHOLARSHIP</h2>
 
 
 <!-- Nav tabs -->
-  <ul class="nav nav-tabs" role="tablist">
+  <ul class="nav nav-tabs mt-3" role="tablist">
     <li class="nav-item">
       <a class="nav-link active" data-bs-toggle="tab" href="#all-scholarship">All Scholarship</a>
     </li>

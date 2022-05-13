@@ -28,9 +28,10 @@ foreach ($result as $row) {
   <label class="button bars" for="check"><i class="fas fa-bars"></i></label>
   <div class="side_bar">
     <div class="title">
-      <div class="logo"><img src="../assets/img/person.png" style="margin:5px; width: 80px; height: 80px; border-radius: 50%;"  alt="" srcset="">
+      <div class="logo"><img src="https://www.nautec.com/wp-content/uploads/2018/04/placeholder-person.png" style="margin:5px; width: 80px; height: 80px; border-radius: 50%;background-image: linear-gradient(60deg, #2AAA8A, #4169E1);
+    padding: 1px;"  alt="" srcset="">
     </div>
-    <div class="p-2" style="position: relative; top: 20px;"><h5><?php echo ucwords($row['first_name']);?></h5><h5><?php echo ucwords($row['last_name']); ?></h5></div>
+    <div class="p-2" style="position: relative; top: 20px;"><h5 style="font-family: cursive;"><?php echo ucwords($row['first_name']);?></h5><h5 style="font-family: cursive;"><?php echo ucwords($row['last_name']); ?></h5></div>
       <label class=" button cancel" for="check"><i class="fas fa-times"></i></label>
     </div>
     <ul>
