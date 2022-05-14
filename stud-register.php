@@ -157,7 +157,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
     body{
-    font-family: 'Lato', sans-serif;
+    font-family: Raleway;
     font-weight: 700;
     background: url("assets/img/bg.png") no-repeat center center / cover !important;
 }
@@ -202,17 +202,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" class="row g-3 ">
                     <div class="col-md-6">
                         <label for="first-name" class="form-label">First Name</label>
-                        <input type="text" name="f-name" class="form-control username" id="first-name" placeholder="YOUR FIRST NAME"
+                        <input type="text" name="f-name" class="form-control username" id="first-name" placeholder="First Name"
                             required />
                     </div>
                     <div class="col-md-6">
                         <label for="first-name" class="form-label">Last Name</label>
-                        <input type="text" name="l-name" class="form-control username" id="first-name" placeholder="YOUR LAST NAME"
+                        <input type="text" name="l-name" class="form-control username" id="first-name" placeholder="Last Name"
                             required />
                     </div>
                     <div class="col-md-12">
                         <label for="username" class="form-label">Username</label>
-                        <input type="text" name="username" class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>" id="username" placeholder="YOUR USN" minlength="10"
+                        <input type="text" name="username" class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>" id="username" placeholder="Your USN..." minlength="10"
                             maxlength="10" pattern="^4[Aa][Ll][0-9]{2}[A-Za-z]{2}[0-9]{3}" />
                             <span class="invalid-feedback"><?php echo $username_err; ?></span>
                     </div>
@@ -260,13 +260,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     <div class="col-md-12">
                         <label for="email" class="form-label">Email</label>
                         <input type="email" name="email" class="form-control <?php echo (!empty($email_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $email; ?>" id="email"
-                            placeholder="YOUR VALID E-MAIL ID" />
+                            placeholder="Valid e-mail address" />
                             <span class="invalid-feedback"><?php echo $email_err; ?></span>
                     </div>
                     <div class="col-md-12">
                         <div class="form-group">
                             <label for="phone" class="form-label">Mobile Number</label>
-                            <input type="tel" name="phone" class="form-control" id="phone" placeholder="10-digit MOBILE NUMBER" pattern="[0-9]{10}" minlength="10" maxlength="10" required />
+                            <input type="tel" name="phone" class="form-control" id="phone" placeholder="10-digit mobile number" pattern="[0-9]{10}" minlength="10" maxlength="10" required />
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -278,7 +278,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     <div class="col-md-6">
                         <label for="confirm-paaswd" class="form-label">Confirm Password</label>
                         <input type="password" name="cfpassword" id="confirm-paaswd" class="form-control <?php echo (!empty($confirm_password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $confirm_password; ?>"
-                            placeholder="CONFIRM PASSWORD">
+                            placeholder="Confirm Password">
 <span class="invalid-feedback"><?php echo $confirm_password_err; ?></span>
                     </div>
                     <div class="col-md-2">
