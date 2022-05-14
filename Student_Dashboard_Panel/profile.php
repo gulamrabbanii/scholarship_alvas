@@ -37,15 +37,6 @@ border-radius: 0 0 15px 15px;
 .card h2{
     margin: 10px 0;
 }
-.label {
-  color: #97A1BF;
-  font-size: 14px;
-  font-weight: 800;
-}
-.value {
-  color: #161E37;
-  font-size: 12px;
-}
 </style>
 
 <title>STUDENT | PROFILE</title>
@@ -65,7 +56,7 @@ border-radius: 0 0 15px 15px;
 <!-- Profile Details -->
   <div class="card mt-2">
     <div class="row mx-3">
-      <p><i class="label">Basic Details</i></p>
+      <p><i class="fw-bold" style="color: #4E4E91;">Basic Details</i></p>
       <div class="col col-lg-4 col-12 mb-2">USN Number : <span><?php echo $row['username'];?></span>
       </div>
       <div class="col col-lg-4 col-12 mb-2">Gender : <span><?php echo $row['gender'];?></span>
@@ -93,7 +84,7 @@ border-radius: 0 0 15px 15px;
 <!-- Scholarship Applied -->
   <div class="card card-sch mt-2"> 
     <div class="row mx-3">
-      <i class="label">Scholarship Details</i>
+      <i class="fw-bold" style="color: #4E4E91;">Scholarship Details</i>
     </div>
   </div>
   <div class="card"> 

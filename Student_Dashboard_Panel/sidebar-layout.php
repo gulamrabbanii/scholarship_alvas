@@ -37,7 +37,7 @@ foreach ($result as $row) {
     <ul>
           <li><a href="profile.php"><i class="fas fa-qrcode"></i>Profile</a></li>
           <li><a href="scholarship.php"><i class="fa-solid fa-graduation-cap"></i>Scholarship</a></li>
-          <li><a href="verification.php"><i class="fa fa-folder" aria-hidden="true"></i>
+          <li><a href="upload-docs.php"><i class="fa fa-folder" aria-hidden="true"></i>
 Upload Docs</a></li>
           <li><a href="status.php"><i class="fa-solid fa-flag"></i>Update Result</a></li>
           <li><a href="reset-password.php"><i class="fa fa-undo"></i></i>Reset Password</a></li>
