@@ -122,12 +122,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         <div class="title">ALVA'S</div>
                         <div class="sub-title">Education Foundation</div>
                         <form class="login-form px-3 mt-2" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-                            <div class="username px-4"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="#999" viewBox="0 10 448 512"><path d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z" /></svg>
-                            <input type="username" name="username" class="user-input <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>" placeholder="Username" required /></div>
+                            <div class="username" style="padding: 0 0 0 25px;"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="#999" viewBox="0 10 448 512"><path d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z" /></svg>
+                            <input type="username" name="username" class="<?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>" placeholder="Username" required /></div>
                             
-                            <div class="password px-4"><svg fill="#999" width="22" height="22" viewBox="0 120 1024 1024"><path class="path1"
+                            <div class="password" style="padding: 0 0 0 25px;"><svg fill="#999" width="22" height="22" viewBox="0 120 1024 1024"><path class="path1"
                             d="M742.4 409.6h-25.6v-76.8c0-127.043-103.357-230.4-230.4-230.4s-230.4 103.357-230.4 230.4v76.8h-25.6c-42.347 0-76.8 34.453-76.8 76.8v409.6c0 42.347 34.453 76.8 76.8 76.8h512c42.347 0 76.8-34.453 76.8-76.8v-409.6c0-42.347-34.453-76.8-76.8-76.8zM307.2 332.8c0-98.811 80.389-179.2 179.2-179.2s179.2 80.389 179.2 179.2v76.8h-358.4v-76.8zM768 896c0 14.115-11.485 25.6-25.6 25.6h-512c-14.115 0-25.6-11.485-25.6-25.6v-409.6c0-14.115 11.485-25.6 25.6-25.6h512c14.115 0 25.6 11.485 25.6 25.6v409.6z"></path></svg>
-                            <input type="password" name="password" class="pass-input <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $password; ?>" placeholder="Password" required /></div>
+                            <input type="password" name="password" class="<?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $password; ?>" placeholder="Password" required /></div>
                             <button type="submit" class="btn signin-button w-100">Login</button>
                             <div class="link">
                                 <a href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Forgot Password?</a> or <a href="stud-register.php">Sign up</a>
