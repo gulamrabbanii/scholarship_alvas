@@ -189,10 +189,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         });
 
         // prevent form submit
-        const form = document.querySelector("form");
-        form.addEventListener('submit', function (e) {
-            e.preventDefault();
-        });
+        // const form = document.querySelector("form");
+        // form.addEventListener('submit', function (e) {
+        //     e.preventDefault();
+        // });
     </script>
 </body>
 </html>
