@@ -157,7 +157,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
     body{
-    font-family: Raleway;
     font-weight: 700;
     background: url("assets/img/bg.png") no-repeat center center / cover !important;
 }
