@@ -1,6 +1,7 @@
 <?php 
 include("sidebar-layout.php");
 ?>
+<link rel="stylesheet" href="../assets/style/nav-style.css">
 <style>
 #regForm {
     margin: 0px auto;
@@ -74,9 +75,6 @@ button:focus{
     background-color: #bbbbbb;
     border: none;
     border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     font-size: 15px;
     color: #6a1b9a;
     opacity: 0.5;
@@ -98,13 +96,27 @@ button:focus{
 .thanks-message {
     display: none
 }
+.card {
+    background: rgba(255, 255, 255, 0.4);
+}
+.step i {
+    position: relative;
+    top: 7px;
+    left: -2px;
+}
+#prevBtn i {
+    position: relative;
+    top: -1px;
+    left: -8px;
+}
 </style>
 <title>SCHOLARSHIP | RESULT</title>
  <section>
         <div class="container p-4">
             <h2 style="letter-spacing: 0.2rem; word-spacing: 0.5rem; background:rgba(255,255,255, 1); color: #4E4E91;">SCHOLARSHIP APPLICATION RESULT</h2>
 <!-- Content -->
-      <div class="row card mt-3 d-flex justify-content-center align-items-center">
+      <div class="btn-1 card mt-4">
+          <span class="row d-flex justify-content-center align-items-center">
         <div class="col-md-8">
             <form id="regForm">
                 <h2 id="register">Update Scholarship Result</h2>
@@ -158,6 +170,7 @@ button:focus{
                 </div>
             </form>
         </div>
+        </span>
     </div>
 <!-- End of Content -->
       </div>
