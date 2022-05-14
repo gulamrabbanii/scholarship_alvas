@@ -104,7 +104,7 @@ include("sidebar-layout.php");
       </div>
       <div class="input-group mb-3">
             <input type="file" class="form-control" id="diploma-cert">
-            <label class="input-group-text w-50 bg-danger text-white" for="diploma-cert">Copy of Admission Letter to Diploma</label>
+            <label class="input-group-text w-50 bg-danger text-white" for="diploma-cert">Admission Letter to Diploma</label>
       </div>
       <div class="input-group mb-3">
             <input type="file" class="form-control" id="self-decl">
