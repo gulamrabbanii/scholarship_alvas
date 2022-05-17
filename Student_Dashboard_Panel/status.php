@@ -158,7 +158,7 @@ include("sidebar-layout.php");
                             <p><input type="text" placeholder="format: 2022-23" id="myInput2" name="sch-year"></p>
                             <div class="d-flex" style="float:right;">
                                 <button type="button" class="mx-2 prevBtn"><i class="fa fa-angle-double-left"></i></button>
-                                <button type="button" class="nextBtn" onclick="goAhead2()"><i class="fa fa-angle-double-right"></i></button>
+                                <button type="button" class="nextBtn" id="myBtn2" onclick="goAhead2()"><i class="fa fa-angle-double-right"></i></button>
                             </div>
                         </div>
 
@@ -167,7 +167,7 @@ include("sidebar-layout.php");
                             <p><input type="text" placeholder="eg. National Scholarship Portal" id="myInput3" name="sch-name"></p>
                             <div class="d-flex" style="float:right;">
                                 <button type="button" class="mx-2 prevBtn"><i class="fa fa-angle-double-left"></i></button>
-                                <button type="button" class="nextBtn" onclick="goAhead3()"><i class="fa fa-angle-double-right"></i></button>
+                                <button type="button" class="nextBtn" id="myBtn3" onclick="goAhead3()"><i class="fa fa-angle-double-right"></i></button>
                             </div>
                         </div>
 
@@ -176,7 +176,7 @@ include("sidebar-layout.php");
                             <p><input type="text" placeholder="eg. Central Government" id="myInput4" name="sch-provider"></p>
                             <div class="d-flex" style="float:right;">
                                 <button type="button" class="mx-2 prevBtn"><i class="fa fa-angle-double-left"></i></button>
-                                <button type="button" class="nextBtn" onclick="goAhead4()"><i class="fa fa-angle-double-right"></i></button>
+                                <button type="button" class="nextBtn" id="myBtn4" onclick="goAhead4()"><i class="fa fa-angle-double-right"></i></button>
                             </div>
                         </div>
 
@@ -216,6 +216,30 @@ include("sidebar-layout.php");
     const progressSteps = document.querySelectorAll('.progress-step');
 
     let formStepsNum = 0;
+
+    var input = document.getElementById("myInput2");
+    input.addEventListener("keypress", function(event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            document.getElementById("myBtn2").click();
+        }
+    });
+
+    var input = document.getElementById("myInput3");
+    input.addEventListener("keypress", function(event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            document.getElementById("myBtn3").click();
+        }
+    });
+
+    var input = document.getElementById("myInput4");
+    input.addEventListener("keypress", function(event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            document.getElementById("myBtn4").click();
+        }
+    });
 
     function goAhead1() {
         var select = document.getElementById('myInput1');
