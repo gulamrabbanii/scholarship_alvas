@@ -6,39 +6,92 @@ include("sidebar-layout.php");
     #regForm {
         margin: 0px auto;
         font-family: Raleway;
-        padding: 40px;
+        padding: 40px 40px 70px 40px;
         border-radius: 10px
     }
 
     #register {
-        color: #6A1B9A;
+        color: #9c5cc4;
     }
 
     #regForm h2 {
-        text-align: center
+        text-align: center;
+        margin-bottom: 30px;
     }
 
+    select,
     input {
-        padding: 10px;
+        display: block;
+        padding: 8px;
         width: 100%;
         font-size: 17px;
         font-family: Raleway;
         border: 1px solid #aaaaaa;
         border-radius: 10px;
         -webkit-appearance: none;
+        margin-bottom: 20px;
     }
 
-    .tab input:focus {
+    .form-step input:focus,
+    .form-step select:focus {
         border: 1px solid #6a1b9a !important;
         outline: none;
     }
 
-    input.invalid {
-        border: 1px solid #e03a0666;
+    .form-step {
+        margin-top: 4rem;
+        display: none;
     }
 
-    .tab {
-        display: none
+    .form-step-active {
+        display: block;
+    }
+
+    .progressbar {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        counter-reset: step;
+    }
+
+    .progress-step,
+    progress {
+        width: 3rem;
+        height: 3rem;
+        margin: 1rem 0.7rem;
+        background-color: #dcdcdc;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1rem;
+        z-index: 1;
+    }
+
+    /* .progressbar::before, .progress {
+    content: '';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 8px;
+    width: 70%;
+    background-color: #dcdcdc;
+} */
+    .progress-step::before {
+        counter-increment: step;
+        content: counter(step);
+    }
+
+    .progress-step-active {
+        background-color: #6A1B9A;
+        color: white;
+    }
+
+    .progress {
+        background-color: #6A1B9A;
+        width: 0%;
+        position: absolute;
+        left: -1;
     }
 
     button {
@@ -46,10 +99,12 @@ include("sidebar-layout.php");
         color: #ffffff;
         border: none;
         border-radius: 50%;
-        padding: 10px 20px;
+        padding: 20px 20px;
         font-size: 17px;
         font-family: Raleway;
-        cursor: pointer
+        cursor: pointer;
+        margin: 2rem 0;
+        height: 55px;
     }
 
     button:hover {
@@ -60,132 +115,91 @@ include("sidebar-layout.php");
         outline: none !important;
     }
 
-    #nextBtn,
-    #prevBtn {
-        height: 40px;
-        width: 40px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    #prevBtn {
-        background-color: #bbbbbb
-    }
-
-    .all-steps {
-        text-align: center;
-        margin-top: 30px;
-        margin-bottom: 30px;
-        width: 100%;
-        display: inline-flex;
-        justify-content: center;
-    }
-
-    .step {
-        height: 40px;
-        width: 40px;
-        margin: 0 2px;
-        background-color: #bbbbbb;
-        border: none;
-        border-radius: 50%;
-        font-size: 15px;
-        color: #6a1b9a;
-        opacity: 0.5;
-    }
-
-    .step.active {
-        opacity: 1
-    }
-
-    .step.finish {
-        color: #fff;
-        background: #6a1b9a;
-        opacity: 1;
-    }
-
-    .all-steps {
-        text-align: center;
-        margin-top: 30px;
-        margin-bottom: 30px
-    }
-
-    .thanks-message {
-        display: none
-    }
-
     .card {
         background: rgba(255, 255, 255, 0.4);
-    }
-
-    .step i {
-        position: relative;
-        top: 9px;
-        left: -2px;
-    }
-
-    #prevBtn i {
-        position: relative;
-        top: -1px;
-        left: -8px;
     }
 </style>
 <title>SCHOLARSHIP | RESULT</title>
 <section>
     <div class="container p-4">
-        <h2 style="letter-spacing: 0.2rem; word-spacing: 0.5rem; background:rgba(255,255,255, 1); color: #4E4E91;">SCHOLARSHIP APPLICATION RESULT</h2>
+        <h2 style="letter-spacing: 0.2rem; word-spacing: 0.5rem; background:rgba(255,255,255, 1); color: #4E4E91;">
+            SCHOLARSHIP APPLICATION RESULT</h2>
         <!-- Content -->
         <div class="btn-1 card mt-4">
             <span class="row d-flex justify-content-center align-items-center">
                 <div class="col-md-8">
-                    <form id="regForm">
+                    <form id="regForm" action="#">
                         <h2 id="register">Update Scholarship Result</h2>
-                        <div class="all-steps" id="all-steps">
-                            <span class="step"><i class="fa fa-user"></i></span>
-                            <span class="step"><i class="fa fa-map-marker"></i></span>
-                            <span class="step"><i class="fa fa-shopping-bag"></i></span>
-                            <span class="step"><i class="fa fa-car"></i></span>
-                            <span class="step"><i class="fa fa-spotify"></i></span>
-                            <span class="step"><i class="fa fa-mobile-phone"></i></span>
+                        <div class="progressbar">
+                            <div class="progress" id="progress"></div>
+                            <div class="progress-step progress-step-active"></div>
+                            <div class="progress-step"></div>
+                            <div class="progress-step"></div>
+                            <div class="progress-step"></div>
+                            <div class="progress-step"></div>
+                            <div class="progress-step"></div>
                         </div>
 
-                        <div class="tab">
+                        <div class="form-step form-step-active">
                             <h6>Have you applied for any scholarships?</h6>
-                            <p>
-                                <input placeholder="Name..." id="myInput1" name="fname">
+                            <p><select id="myInput1" name="applied">
+                                    <option selected>Select...</option>
+                                    <option value="yes">Yes</option>
+                                    <option value="no">No</option>
+                                </select>
                             </p>
-
-                        </div>
-                        <div class="tab">
-                            <h6>Which academic year did you apply for the scholarship?</h6>
-                            <p><input placeholder="City" id="myInput2" name="dd"></p>
-
-                        </div>
-                        <div class="tab">
-                            <h6>What's the scholarship name?</h6>
-                            <p><input placeholder="Favourite Shopping site" id="myInput3" name="email"></p>
-
-                        </div>
-                        <div class="tab">
-                            <h6>Name the scholarship provider, please.</h6>
-                            <p><input placeholder="Favourite car" id="myInput4" name="uname"></p>
-                        </div>
-
-                        <div class="tab">
-                            <h6>Have you received your scholarship?</h6>
-                            <p><input placeholder="Favourite Song" id="myInput5" name="uname"></p>
-                        </div>
-                        <div class="tab">
-                            <h6>Please include a copy of your bank's proof of scholarship award receipt.</h6>
-                            <p><input placeholder="Favourite Mobile Brand" id="myInput6" name="uname"></p>
-                        </div>
-                        <div class="thanks-message text-center" id="text-message"> <img src="https://i.imgur.com/O18mJ1K.png" width="100" class="mb-4">
-                            <h3>Thankyou for your feedback!</h3> <span><br><br><br></span>
-                        </div>
-                        <div style="overflow:auto;" id="nextprevious">
                             <div class="d-flex" style="float:right;">
-                                <button type="button" class="mx-2" id="prevBtn" onclick="nextPrev(-1)"><i class="fa fa-angle-double-left"></i></button>
-                                <button type="button" id="nextBtn" onclick="nextPrev(1)"><i class="fa fa-angle-double-right"></i></button>
+                                <button type="button" onclick="goAhead1()"><i class="fa fa-angle-double-right"></i></button>
+                            </div>
+                        </div>
+
+                        <div class="form-step">
+                            <h6>Which academic year did you apply for the scholarship?</h6>
+                            <p><input type="text" placeholder="format: 2022-23" id="myInput2" name="sch-year"></p>
+                            <div class="d-flex" style="float:right;">
+                                <button type="button" class="mx-2 prevBtn"><i class="fa fa-angle-double-left"></i></button>
+                                <button type="button" class="nextBtn" onclick="goAhead2()"><i class="fa fa-angle-double-right"></i></button>
+                            </div>
+                        </div>
+
+                        <div class="form-step">
+                            <h6>What's the scholarship name?</h6>
+                            <p><input type="text" placeholder="eg. National Scholarship Portal" id="myInput3" name="sch-name"></p>
+                            <div class="d-flex" style="float:right;">
+                                <button type="button" class="mx-2 prevBtn"><i class="fa fa-angle-double-left"></i></button>
+                                <button type="button" class="nextBtn" onclick="goAhead3()"><i class="fa fa-angle-double-right"></i></button>
+                            </div>
+                        </div>
+
+                        <div class="form-step">
+                            <h6>Name the scholarship provider, please.</h6>
+                            <p><input type="text" placeholder="eg. Central Government" id="myInput4" name="sch-provider"></p>
+                            <div class="d-flex" style="float:right;">
+                                <button type="button" class="mx-2 prevBtn"><i class="fa fa-angle-double-left"></i></button>
+                                <button type="button" class="nextBtn" onclick="goAhead4()"><i class="fa fa-angle-double-right"></i></button>
+                            </div>
+                        </div>
+
+                        <div class="form-step">
+                            <h6>Have you received your scholarship?</h6>
+                            <p><select id="myInput5" name="received">
+                                    <option selected value="">Select...</option>
+                                    <option value="yes">Yes</option>
+                                    <option value="no">No</option>
+                                </select>
+                            </p>
+                            <div class="d-flex" style="float:right;">
+                                <button type="button" class="mx-2 prevBtn"><i class="fa fa-angle-double-left"></i></button>
+                                <button type="button" class="nextBtn" onclick="goAhead5()"><i class="fa fa-angle-double-right"></i></button>
+                            </div>
+                        </div>
+
+                        <div class="form-step">
+                            <h6>Please include a copy of your bank's proof of scholarship award receipt.</h6>
+                            <p><input type="file" id="myInput6" name="sch-proof"></p>
+                            <div class="d-flex" style="float:right;">
+                                <button type="button" class="mx-2 prevBtn"><i class="fa fa-angle-double-left"></i></button>
+                                <button type="submit" class="nextBtn" onclick="goAhead6()"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
                             </div>
                         </div>
                     </form>
@@ -195,77 +209,118 @@ include("sidebar-layout.php");
         <!-- End of Content -->
     </div>
 </section>
-
-
-
 <script>
-    var el;
-    var prefix = 'myInput';
-    for (var i = 1; el = document.getElementById(prefix + i); i++) {
-        el.addEventListener("keydown", function(event) {
-            if (event.key === "Enter") {
-                event.preventDefault();
-                document.getElementById("nextBtn").click();
-            }
-        })
-    };
+    const prevBtns = document.querySelectorAll('.prevBtn');
+    const progress = document.getElementById('progress');
+    const formSteps = document.querySelectorAll('.form-step');
+    const progressSteps = document.querySelectorAll('.progress-step');
 
-    var currentTab = 0;
-    document.addEventListener("DOMContentLoaded", function(event) {
-        showTab(currentTab);
+    let formStepsNum = 0;
+
+    function goAhead1() {
+        var select = document.getElementById('myInput1');
+        var text = select.options[select.selectedIndex].value;
+        if (text === "yes") {
+            formStepsNum++;
+            updateFormSteps();
+            updateProgressbar();
+        } else if (text === "no") {
+            // const list = document.getElementById("text-message").classList;
+            // list.add("form-step-active");
+            alert("Thank you; please apply for a relevant scholarship.");
+            window.location.href = 'scholarship.php';
+        } else {
+            alert("Please choose one of the options.");
+        }
+    }
+
+    function goAhead2() {
+        var inputtxt = document.getElementById('myInput2');
+        if (inputtxt.value.length != 7) {
+            alert("Please match the requested format.");
+        } else {
+            formStepsNum++;
+            updateFormSteps();
+            updateProgressbar();
+        }
+    }
+
+    function goAhead3() {
+        var inputtxt = document.getElementById('myInput3');
+        if (inputtxt.value.length > 4) {
+            formStepsNum++;
+            updateFormSteps();
+            updateProgressbar();
+        } else {
+            alert("Please type the scholarship's complete name.");
+        }
+    }
+
+    function goAhead4() {
+        var inputtxt = document.getElementById('myInput4');
+        if (inputtxt.value.length > 4) {
+            formStepsNum++;
+            updateFormSteps();
+            updateProgressbar();
+        } else {
+            alert("Name the scholarship provider, please.");
+        }
+    }
+
+    function goAhead5() {
+        var select = document.getElementById('myInput5');
+        var text = select.options[select.selectedIndex].value;
+        if (text === "yes") {
+            formStepsNum++;
+            updateFormSteps();
+            updateProgressbar();
+        } else if (text === "no") {
+            // const list = document.getElementById("text-message").classList;
+            // list.add("form-step-active");
+            alert("Thank you; please apply for a relevant scholarship.");
+            window.location.href = 'scholarship.php';
+        } else {
+            alert("Please choose one of the options.");
+        }
+    }
+
+    function goAhead6() {
+        var file = document.getElementById("myInput6");
+        if (file.files.length == 0) {
+            alert("No files selected");
+            const form = document.querySelector("form");
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+            });
+        } else {
+            alert("Thank you for your time.");
+        }
+    }
+    prevBtns.forEach(btn => {
+        btn.addEventListener("click", () => {
+            formStepsNum--;
+            updateFormSteps();
+            updateProgressbar();
+        });
     });
 
-    function showTab(n) {
-        var x = document.getElementsByClassName("tab");
-        x[n].style.display = "block";
-        if (n == 0) {
-            document.getElementById("prevBtn").style.display = "none";
-        } else {
-            document.getElementById("prevBtn").style.display = "inline";
-        }
-        if (n == (x.length - 1)) {
-            document.getElementById("nextBtn").innerHTML = '<i class="fa fa-angle-double-left"></i>';
-        } else {
-            document.getElementById("nextBtn").innerHTML = '<i class="fa fa-angle-double-right"></i>';
-        }
-        fixStepIndicator(n)
+    function updateFormSteps() {
+        formSteps.forEach((formStep) => {
+            formStep.classList.contains("form-step-active") && formStep.classList.remove("form-step-active");
+        });
+        formSteps[formStepsNum].classList.add("form-step-active");
     }
 
-    function nextPrev(n) {
-        var x = document.getElementsByClassName("tab");
-        if (n == 1 && !validateForm()) return false;
-        x[currentTab].style.display = "none";
-        currentTab = currentTab + n;
-        if (currentTab >= x.length) {
-            document.getElementById("nextprevious").style.display = "none";
-            document.getElementById("all-steps").style.display = "none";
-            document.getElementById("register").style.display = "none";
-            document.getElementById("text-message").style.display = "block";
-        }
-        showTab(currentTab);
-    }
-
-    function validateForm() {
-        var x, y, i, valid = true;
-        x = document.getElementsByClassName("tab");
-        y = x[currentTab].getElementsByTagName("input");
-        for (i = 0; i < y.length; i++) {
-            if (y[i].value == "") {
-                y[i].className += " invalid";
-                valid = false;
+    function updateProgressbar() {
+        progressSteps.forEach((progressStep, idx) => {
+            if (idx < formStepsNum + 1) {
+                progressStep.classList.add("progress-step-active");
+            } else {
+                progressStep.classList.remove("progress-step-active");
             }
-        }
-        if (valid) {
-            document.getElementsByClassName("step")[currentTab].className += " finish";
-        }
-        return valid;
-    }
+        });
+        // const progressActive = document.querySelectorAll(".progress-step-active");
 
-    function fixStepIndicator(n) {
-        var i, x = document.getElementsByClassName("step");
-        for (i = 0; i < x.length; i++) {
-            x[i].className = x[i].className.replace(" active", "");
-        }
-        x[n].className += " active";
+        // progress.style.width = ((progressActive.length - 1) / (progressSteps.length - 1)) * 100 + '%';
     }
 </script>
