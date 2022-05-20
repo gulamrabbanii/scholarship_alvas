@@ -1,46 +1,46 @@
 <?php
 // Include config file
 require_once "db/config.php";
-error_reporting(E_ALL & ~E_WARNING  & ~E_NOTICE & ~E_STRICT & ~E_DEPRECATED); 
- 
+error_reporting(E_ALL & ~E_WARNING  & ~E_NOTICE & ~E_STRICT & ~E_DEPRECATED);
+
 // Define variables and initialize with empty values
 $username = $password = $confirm_password = $phone_err = $email_err = "";
 $username_err = $password_err = $confirm_password_err = "";
 $email_pattern = "^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$^";
 $pattern = "/4(al)[0-9]{2}[A-Za-z]{2}[0-9]{3}/i";
- 
+
 // Processing form data when form is submitted
-if($_SERVER["REQUEST_METHOD"] == "POST"){
- 
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
     // Validate username
     $username = htmlspecialchars(strip_tags(trim($_POST["username"])));
 
-    if(empty($username)){
+    if (empty($username)) {
         $username_err = "Please enter a username.";
-    } elseif(!preg_match($pattern, $username)){
+    } elseif (!preg_match($pattern, $username)) {
         $username_err = "Username must be your USN No.";
-    } else{
+    } else {
         // Prepare a select statement
         $sql = "SELECT id FROM users WHERE username = ?";
-        
-        if($stmt = $link->prepare($sql)){
+
+        if ($stmt = $link->prepare($sql)) {
             // Bind variables to the prepared statement as parameters
             $stmt->bind_param("s", $param_username);
-            
+
             // Set parameters
             $param_username = $username;
-            
+
             // Attempt to execute the prepared statement
-            if($stmt->execute()){
+            if ($stmt->execute()) {
                 // store result
                 $stmt->store_result();
-                
-                if($stmt->num_rows == 1){
+
+                if ($stmt->num_rows == 1) {
                     $username_err = "This username is already taken.";
-                } else{
-	                $username = $username;
+                } else {
+                    $username = $username;
                 }
-            } else{
+            } else {
                 echo "Oops! Something went wrong. Please try again later.";
             }
 
@@ -48,26 +48,26 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $stmt->close();
         }
     }
-    
+
     // Validate password
     $password = htmlspecialchars(strip_tags(trim($_POST["password"])));
 
-    if(empty($password)){
-        $password_err = "Please enter a password.";     
-    } elseif(strlen($password) < 6){
+    if (empty($password)) {
+        $password_err = "Please enter a password.";
+    } elseif (strlen($password) < 6) {
         $password_err = "Password must have atleast 6 characters.";
-    } else{
+    } else {
         $password = $password;
     }
-    
+
     // Validate confirm password
     $confirm_password = htmlspecialchars(strip_tags(trim($_POST["cfpassword"])));
 
-    if(empty($confirm_password)){
-        $confirm_password_err = "Please confirm password.";     
-    } else{
+    if (empty($confirm_password)) {
+        $confirm_password_err = "Please confirm password.";
+    } else {
         $confirm_password = $confirm_password;
-        if(empty($password_err) && ($password != $confirm_password)){
+        if (empty($password_err) && ($password != $confirm_password)) {
             $confirm_password_err = "Password did not match.";
         }
     }
@@ -83,31 +83,31 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $sem = htmlspecialchars(strip_tags(trim($_POST["sem"])));
     $section = htmlspecialchars(strip_tags(trim($_POST["section"])));
     // phone validation
-    if(empty($phone)){
-        $phone_err = "Please enter phone number.";     
-    } elseif(strlen($phone) != 10){
+    if (empty($phone)) {
+        $phone_err = "Please enter phone number.";
+    } elseif (strlen($phone) != 10) {
         $phone_err = "Phone number must have 10 digits.";
-    } else{
+    } else {
         $phone = $phone;
     }
     // Email Validation
-    if(empty($email)){
+    if (empty($email)) {
         $email_err = "Please enter your email.";
-    } elseif(!preg_match($email_pattern, $email)){
+    } elseif (!preg_match($email_pattern, $email)) {
         $email_err = "Please enter a valid email.";
-    } else{
+    } else {
         $email = $email;
     }
     // Check input errors before inserting in database
-    if(empty($username_err) && empty($password_err) && empty($confirm_password_err)){
-        
+    if (empty($username_err) && empty($password_err) && empty($confirm_password_err)) {
+
         // Prepare an insert statement
         $sql = "INSERT INTO users (username, passwd, first_name, last_name, gender, email, dept, year, semester, section, phone) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-         
-        if($stmt = $link->prepare($sql)){
+
+        if ($stmt = $link->prepare($sql)) {
             // Bind variables to the prepared statement as parameters
-            $stmt->bind_param("sssssssssss", $param_username, $param_password, $param_f_name, $param_l_name, $param_gender, $param_email, $param_dept, $param_year, $param_sem, $param_section, $param_phone);
-            
+            $stmt->bind_param("sssssssiiss", $param_username, $param_password, $param_f_name, $param_l_name, $param_gender, $param_email, $param_dept, $param_year, $param_sem, $param_section, $param_phone);
+
             // Set parameters
             $param_username = $username;
             $param_password = password_hash($password, PASSWORD_DEFAULT); // Creates a password hash
@@ -121,10 +121,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $param_sem = $sem;
             $param_section = $section;
             // Attempt to execute the prepared statement
-            if($stmt->execute()){
+            if ($stmt->execute()) {
                 // Redirect to login page
                 header("location: index.php");
-            } else{
+            } else {
                 echo "Oops! Something went wrong. Please try again later.";
             }
 
@@ -132,7 +132,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $stmt->close();
         }
     }
-    
+
     // Close connection
     $link->close();
 }
@@ -150,43 +150,43 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <link rel="icon" href="assets/img/icon.png" type="image/icon type">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700&display=swap" rel="stylesheet">
     <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
-        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
-    body{
-    font-weight: 700;
-    background: url("assets/img/bg.png") no-repeat center center / cover !important;
-}
-.bg-opacity {
-    background-color: rgba(255, 255, 255, 0.7);
-    box-shadow: 13px 13px 20px #f4f5f7, -13px -13px 20px #ffffff;
-}
-    .wrapper {
-    background-color: rgba(255, 255, 255, 0.7);
-    margin-left: 100px;
-    margin-right: 100px;
-    margin-bottom: 20px;
-    padding: 60px;
-}  
-@media (max-width: 768px) {
-    .wrapper {
-    margin: 10px;
-    margin-top: 5px;
-    padding: 10px;
-    }
-}
-</style>
+        body {
+            font-weight: 700;
+            background: url("assets/img/bg.png") no-repeat center center / cover !important;
+        }
+
+        .bg-opacity {
+            background-color: rgba(255, 255, 255, 0.7);
+            box-shadow: 13px 13px 20px #f4f5f7, -13px -13px 20px #ffffff;
+        }
+
+        .wrapper {
+            background-color: rgba(255, 255, 255, 0.7);
+            margin-left: 100px;
+            margin-right: 100px;
+            margin-bottom: 20px;
+            padding: 60px;
+        }
+
+        @media (max-width: 768px) {
+            .wrapper {
+                margin: 10px;
+                margin-top: 5px;
+                padding: 10px;
+            }
+        }
+    </style>
 </head>
+
 <body>
     <div class="row">
         <nav class="navbar navbar-light bg-opacity">
             <div class="container-fluid">
                 <div class="navbar-brand">
-                    <img src="assets/img/icon.png" alt="Alva's Icon" width="30" height="30"
-                        class="d-inline-block align-text-top">
+                    <img src="assets/img/icon.png" alt="Alva's Icon" width="30" height="30" class="d-inline-block align-text-top">
                     Alva's Institute of Engineering and Technology
                 </div>
             </div>
@@ -201,21 +201,18 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" class="row g-3 ">
                     <div class="col-md-6">
                         <label for="first-name" class="form-label">First Name</label>
-                        <input type="text" name="f-name" class="form-control username" id="first-name" placeholder="First Name"
-                            required />
+                        <input type="text" name="f-name" class="form-control username" id="first-name" placeholder="First Name" required />
                     </div>
                     <div class="col-md-6">
                         <label for="first-name" class="form-label">Last Name</label>
-                        <input type="text" name="l-name" class="form-control username" id="first-name" placeholder="Last Name"
-                            required />
+                        <input type="text" name="l-name" class="form-control username" id="first-name" placeholder="Last Name" required />
                     </div>
                     <div class="col-md-12">
                         <label for="username" class="form-label">Username</label>
-                        <input type="text" name="username" class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>" id="username" placeholder="Your USN..." minlength="10"
-                            maxlength="10" pattern="^4[Aa][Ll][0-9]{2}[A-Za-z]{2}[0-9]{3}" />
-                            <span class="invalid-feedback"><?php echo $username_err; ?></span>
+                        <input type="text" name="username" class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>" id="username" placeholder="Your USN..." minlength="10" maxlength="10" pattern="^4[Aa][Ll][0-9]{2}[A-Za-z]{2}[0-9]{3}" />
+                        <span class="invalid-feedback"><?php echo $username_err; ?></span>
                     </div>
-                     <div class="col-md-12">
+                    <div class="col-md-12">
                         <div class="form-group">
                             <label for="gender" class="form-label">Gender</label>
                             <select name="gender" id="inputState" class="form-control" required>
@@ -244,23 +241,20 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     </div>
                     <div class="col-md-4">
                         <label for="current-year" class="form-label">Current Year</label>
-                        <input type="number" name="year" min="1" max="4" class="form-control" id="current-year" placeholder="eg. 4"
-                            required>
-                    </div><div class="col-md-4">
+                        <input type="number" name="year" min="1" max="4" class="form-control" id="current-year" placeholder="eg. 4" required>
+                    </div>
+                    <div class="col-md-4">
                         <label for="current-sem" class="form-label">Current Semester</label>
-                        <input type="number" name="sem" min="1" max="8" class="form-control" id="current-sem" placeholder="eg. 7"
-                            required>
+                        <input type="number" name="sem" min="1" max="8" class="form-control" id="current-sem" placeholder="eg. 7" required>
                     </div>
                     <div class="col-md-4">
                         <label for="section" class="form-label">Section</label>
-                        <input type="text" name="section" min="1" max="1" class="form-control" id="section" placeholder="eg. B"
-                            required>
+                        <input type="text" name="section" min="1" max="1" class="form-control" id="section" placeholder="eg. B" required>
                     </div>
                     <div class="col-md-12">
                         <label for="email" class="form-label">Email</label>
-                        <input type="email" name="email" class="form-control <?php echo (!empty($email_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $email; ?>" id="email"
-                            placeholder="Valid e-mail address" />
-                            <span class="invalid-feedback"><?php echo $email_err; ?></span>
+                        <input type="email" name="email" class="form-control <?php echo (!empty($email_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $email; ?>" id="email" placeholder="Valid e-mail address" />
+                        <span class="invalid-feedback"><?php echo $email_err; ?></span>
                     </div>
                     <div class="col-md-12">
                         <div class="form-group">
@@ -270,15 +264,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     </div>
                     <div class="col-md-6">
                         <label for="passwd" class="form-label">Password</label>
-                        <input type="password" name="password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $password; ?>" id="passwd" minlength="6" maxlength="20"
-                            placeholder="Password">
-                            <span class="invalid-feedback"><?php echo $password_err; ?></span>
+                        <input type="password" name="password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $password; ?>" id="passwd" minlength="6" maxlength="20" placeholder="Password">
+                        <span class="invalid-feedback"><?php echo $password_err; ?></span>
                     </div>
                     <div class="col-md-6">
                         <label for="confirm-paaswd" class="form-label">Confirm Password</label>
-                        <input type="password" name="cfpassword" id="confirm-paaswd" class="form-control <?php echo (!empty($confirm_password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $confirm_password; ?>"
-                            placeholder="Confirm Password">
-<span class="invalid-feedback"><?php echo $confirm_password_err; ?></span>
+                        <input type="password" name="cfpassword" id="confirm-paaswd" class="form-control <?php echo (!empty($confirm_password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $confirm_password; ?>" placeholder="Confirm Password">
+                        <span class="invalid-feedback"><?php echo $confirm_password_err; ?></span>
                     </div>
                     <div class="col-md-2">
                         <button type="submit" class="btn btn-primary">Sign in</button>
