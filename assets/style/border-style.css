@@ -1,0 +1,208 @@
+.btn-1 {
+    display: inline-block;
+    position: relative;
+    left: -13px;
+    background: none;
+    border: none;
+    color: #413F42;
+    font-size: 2rem;
+    cursor: pointer;
+    width:100%;
+}
+
+.btn-1 span {
+    display: block;
+    padding-left: 5px;
+}
+
+.btn-1::before,
+.btn-1::after {
+    content: "";
+    width: 0;
+    height: 1px;
+    position: absolute;
+    transition: all 0.2s linear;
+    background: #413F42;
+}
+
+.btn-1 span::before,
+.btn-1 span::after {
+    content: "";
+    width: 1px;
+    height: 0;
+    position: absolute;
+    transition: all 0.2s linear;
+    background: #413F42;
+}
+
+.btn-1:hover::before,
+.btn-1:hover::after {
+    width: 100%;
+}
+
+.btn-1:hover span::before,
+.btn-1:hover span::after {
+    height: 100%;
+}
+
+/*----- btn-1 1 -----*/
+.btn-1::before,
+.btn-1::after {
+    transition-delay: 0.2s;
+}
+
+.btn-1 span::before,
+.btn-1 span::after {
+    transition-delay: 0s;
+}
+
+.btn-1::before {
+    right: 0;
+    top: 0;
+}
+
+.btn-1::after {
+    left: 0;
+    bottom: 0;
+}
+
+.btn-1 span::before {
+    left: 0;
+    top: 0;
+}
+
+.btn-1 span::after {
+    right: 0;
+    bottom: 0;
+}
+
+.btn-1:hover::before,
+.btn-1:hover::after {
+    transition-delay: 0s;
+}
+
+.btn-1:hover span::before,
+.btn-1:hover span::after {
+    transition-delay: 0.2s;
+}
+
+ #regForm {
+     margin: 0px auto;
+     font-family: Raleway;
+     padding: 40px 40px 70px 40px;
+     border-radius: 10px
+ }
+
+ #register {
+     color: #413F42;
+ }
+
+ #regForm h2 {
+     text-align: center;
+     margin-bottom: 30px;
+ }
+
+ select,
+ input {
+     display: block;
+     padding: 8px;
+     width: 100%;
+     font-size: 17px;
+     font-family: Raleway;
+     border: 1px solid #413F42;
+     border-radius: 10px;
+     -webkit-appearance: none;
+     margin-bottom: 20px;
+ }
+
+ .form-step input:focus,
+ .form-step select:focus {
+     border: 1px solid #1da1f2 !important;
+     outline: none;
+ }
+
+ .form-step {
+     margin-top: 4rem;
+     display: none;
+ }
+
+ .form-step-active {
+     display: block;
+ }
+
+ .progressbar {
+     position: relative;
+     display: flex;
+     justify-content: center;
+     counter-reset: step;
+ }
+
+ .progress-step,
+ progress {
+     width: 3rem;
+     height: 3rem;
+     margin: 1rem 0.7rem;
+     color: white;
+     background-color: rgba(126, 126, 126, 1);
+     border-radius: 50%;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     font-size: 1.2rem;
+     z-index: 1;
+ }
+
+ h6 {
+     color: black;
+ }
+
+ /* .progressbar::before, .progress {
+    content: '';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 8px;
+    width: 70%;
+    background-color: #dcdcdc;
+} */
+ .progress-step::before {
+     counter-increment: step;
+     content: counter(step);
+ }
+
+ .progress-step-active {
+     background-color: #413F42;
+     color: white;
+ }
+
+ .progress {
+     background-color: #413F42;
+     width: 0%;
+     position: absolute;
+     left: -1;
+ }
+
+ button {
+     background-color: #413F42;
+     color: #ffffff;
+     border: none;
+     border-radius: 50%;
+     padding: 20px 20px;
+     font-size: 17px;
+     font-family: Raleway;
+     cursor: pointer;
+     margin: 2rem 0;
+     height: 55px;
+ }
+
+ button:hover {
+     opacity: 0.8
+ }
+
+ button:focus {
+     outline: none !important;
+ }
+
+ .card {
+     background: rgba(255, 255, 255, 0.4);
+ }

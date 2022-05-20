@@ -1,7 +1,7 @@
 <?php
 include("sidebar-layout.php");
 require_once("../db/config.php");
-$usn = $_SESSION['usn'];
+$usn = $_SESSION['username'];
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST['sch-name'])) {
     $sch_name = htmlspecialchars(strip_tags(trim($_POST["sch-name"])));
@@ -42,11 +42,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST['sch-name'])) {
         $stmt->close();
     }
 
-    if ($sch_IsApplied == 'yes' && $sch_IsReceived == 'no') {
+    if ($sch_IsApplied === 'yes' && $sch_IsReceived === 'no') {
 
-        $sql = "INSERT INTO `sch_receipt_proof`(`usn`, `sch_name`, `sch_provider`, `is_applied`, `academic_year`, `is_received`) VALUES (?, ?, ?, ?, ?, ?)";
+        $sql_IsApplied = "INSERT INTO `sch_receipt_proof`(`usn`, `sch_name`, `sch_provider`, `is_applied`, `academic_year`, `is_received`) VALUES (?, ?, ?, ?, ?, ?)";
 
-        if ($stmt = $link->prepare($sql)) {
+        if ($stmt = $link->prepare($sql_IsApplied)) {
             // Bind variables to the prepared statement as parameters
             $stmt->bind_param("ssssss", $param_usn, $param_sch_name, $param_sch_provider, $param_is_applied, $param_applied_year, $param_is_received);
 
@@ -93,157 +93,40 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST['sch-name'])) {
 
         // Verify MYME type of the file
         if (in_array($filetype, $allowed)) {
-            $sql = "INSERT INTO `sch_receipt_proof`(`usn`, `sch_name`, `sch_provider`, `is_applied`, `academic_year`, `is_received`, `receipt_proof) VALUES (?, ?, ?, ?, ?, ?, ?)";
+            $sql_IsReceived = "INSERT INTO `sch_receipt_proof`(`usn`, `sch_name`, `sch_provider`, `is_applied`, `academic_year`, `is_received`, `receipt_proof) VALUES (?, ?, ?, ?, ?, ?, ?)";
             // Bind variables to the prepared statement as parameters
+            if ($stmt = $link->prepare($sql_IsReceived)) {
+                $stmt->bind_param("ssssssb", $param_usn, $param_sch_name, $param_sch_provider, $param_is_applied, $param_applied_year, $param_is_received, $param_file_name);
 
-            $stmt->bind_param("ssssssb", $param_usn, $param_sch_name, $param_sch_provider, $param_is_applied, $param_applied_year, $param_is_received, $param_file_name);
+                // Set parameters
+                $param_usn = $usn;
+                $param_sch_name = $sch_name;
+                $param_sch_provider = $sch_provider;
+                $param_is_applied = $sch_IsApplied;
+                $param_applied_year = $sch_applied_year;
+                $param_is_received = $sch_IsReceived;
+                $param_file_name = $newfilename;
 
-            // Set parameters
-            $param_usn = $usn;
-            $param_sch_name = $sch_name;
-            $param_sch_provider = $sch_provider;
-            $param_is_applied = $sch_IsApplied;
-            $param_applied_year = $sch_applied_year;
-            $param_is_received = $sch_IsReceived;
-            $param_file_name = $newfilename;
-
-            // Attempt to execute the prepared statement
-            $stmt->execute();
-            // Close statement
-            $stmt->close();
+                // Attempt to execute the prepared statement
+                $stmt->execute();
+                // Close statement
+                $stmt->close();
+            }
         }
     }
 }
-
 ?>
-<link rel="stylesheet" href="../assets/style/nav-style.css">
-<style>
-    #regForm {
-        margin: 0px auto;
-        font-family: Raleway;
-        padding: 40px 40px 70px 40px;
-        border-radius: 10px
-    }
-
-    #register {
-        color: #9c5cc4;
-    }
-
-    #regForm h2 {
-        text-align: center;
-        margin-bottom: 30px;
-    }
-
-    select,
-    input {
-        display: block;
-        padding: 8px;
-        width: 100%;
-        font-size: 17px;
-        font-family: Raleway;
-        border: 1px solid #aaaaaa;
-        border-radius: 10px;
-        -webkit-appearance: none;
-        margin-bottom: 20px;
-    }
-
-    .form-step input:focus,
-    .form-step select:focus {
-        border: 1px solid #6a1b9a !important;
-        outline: none;
-    }
-
-    .form-step {
-        margin-top: 4rem;
-        display: none;
-    }
-
-    .form-step-active {
-        display: block;
-    }
-
-    .progressbar {
-        position: relative;
-        display: flex;
-        justify-content: center;
-        counter-reset: step;
-    }
-
-    .progress-step,
-    progress {
-        width: 3rem;
-        height: 3rem;
-        margin: 1rem 0.7rem;
-        background-color: #dcdcdc;
-        border-radius: 50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 1rem;
-        z-index: 1;
-    }
-
-    /* .progressbar::before, .progress {
-    content: '';
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    height: 8px;
-    width: 70%;
-    background-color: #dcdcdc;
-} */
-    .progress-step::before {
-        counter-increment: step;
-        content: counter(step);
-    }
-
-    .progress-step-active {
-        background-color: #6A1B9A;
-        color: white;
-    }
-
-    .progress {
-        background-color: #6A1B9A;
-        width: 0%;
-        position: absolute;
-        left: -1;
-    }
-
-    button {
-        background-color: #6A1B9A;
-        color: #ffffff;
-        border: none;
-        border-radius: 50%;
-        padding: 20px 20px;
-        font-size: 17px;
-        font-family: Raleway;
-        cursor: pointer;
-        margin: 2rem 0;
-        height: 55px;
-    }
-
-    button:hover {
-        opacity: 0.8
-    }
-
-    button:focus {
-        outline: none !important;
-    }
-
-    .card {
-        background: rgba(255, 255, 255, 0.4);
-    }
-</style>
+<link rel="stylesheet" href="../assets/style/border-style.css">
 <title>SCHOLARSHIP | RESULT</title>
 <section>
     <div class="container p-4">
-        <h2 style="letter-spacing: 0.2rem; word-spacing: 0.5rem; background:rgba(255,255,255, 1); color: #4E4E91;">
+        <h2 style="letter-spacing: 0.2rem; word-spacing: 0.5rem; background:rgba(255,255,255, 1); color: #413F42;">
             SCHOLARSHIP APPLICATION RESULT</h2>
         <!-- Content -->
         <div class="btn-1 card mt-4">
             <span class="row d-flex justify-content-center align-items-center">
                 <div class="col-md-8">
-                    <form id="regForm" action="#" accept-charset="utf-8" enctype="multipart/form-data">
+                    <form id="regForm" action="status-update.php" id="myForm" accept-charset="utf-8" enctype="multipart/form-data">
                         <h2 id="register">Update Scholarship Result</h2>
                         <div class="progressbar">
                             <div class="progress" id="progress"></div>
@@ -315,7 +198,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST['sch-name'])) {
                             <input type="hidden" name="MAX_FILE_SIZE" value="307200" />
                             <div class="d-flex" style="float:right;">
                                 <button type="button" class="mx-2 prevBtn"><i class="fa fa-angle-double-left"></i></button>
-                                <button type="submit" class="nextBtn" onclick="goAhead6()"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+                                <button type="button" class="nextBtn" onclick="goAhead6()"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
                             </div>
                         </div>
                     </form>
@@ -417,6 +300,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST['sch-name'])) {
         } else if (text === "no") {
             // const list = document.getElementById("text-message").classList;
             // list.add("form-step-active");
+            document.getElementById("myForm").submit();
             alert("Thank you; please apply for a relevant scholarship.");
             window.location.href = 'scholarship.php';
         } else {
@@ -428,11 +312,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST['sch-name'])) {
         var file = document.getElementById("myInput6");
         if (file.files.length == 0) {
             alert("No files selected");
-            const form = document.querySelector("form");
-            form.addEventListener('submit', function(e) {
-                e.preventDefault();
-            });
         } else {
+            document.getElementById("myForm").submit();
             alert("Thank you for your time.");
         }
     }
