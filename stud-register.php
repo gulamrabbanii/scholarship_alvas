@@ -80,6 +80,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $year = htmlspecialchars(strip_tags(trim($_POST["year"])));
     $email = htmlspecialchars(strip_tags(trim($_POST["email"])));
     $gender = htmlspecialchars(strip_tags(trim($_POST["gender"])));
+    $caste = htmlspecialchars(strip_tags(trim($_POST["caste"])));
     $sem = htmlspecialchars(strip_tags(trim($_POST["sem"])));
     $section = htmlspecialchars(strip_tags(trim($_POST["section"])));
     // phone validation
@@ -102,11 +103,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($username_err) && empty($password_err) && empty($confirm_password_err)) {
 
         // Prepare an insert statement
-        $sql = "INSERT INTO users (username, passwd, first_name, last_name, gender, email, dept, year, semester, section, phone) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO users (username, passwd, first_name, last_name, gender, caste, email, dept, year, semester, section, phone) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         if ($stmt = $link->prepare($sql)) {
             // Bind variables to the prepared statement as parameters
-            $stmt->bind_param("sssssssiiss", $param_username, $param_password, $param_f_name, $param_l_name, $param_gender, $param_email, $param_dept, $param_year, $param_sem, $param_section, $param_phone);
+            $stmt->bind_param("ssssssssiiss", $param_username, $param_password, $param_f_name, $param_l_name, $param_gender, $param_caste, $param_email, $param_dept, $param_year, $param_sem, $param_section, $param_phone);
 
             // Set parameters
             $param_username = $username;
@@ -118,12 +119,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $param_phone = $phone;
             $param_email = $email;
             $param_gender = $gender;
+            $param_caste = $caste;
             $param_sem = $sem;
             $param_section = $section;
             // Attempt to execute the prepared statement
             if ($stmt->execute()) {
                 // Redirect to login page
-                header("location: index.php");
+                echo "<script>alert('Your have been successfully registered.');</script>";
+                header("Refresh:0 , url = index.php");
             } else {
                 echo "Oops! Something went wrong. Please try again later.";
             }
@@ -137,7 +140,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $link->close();
 }
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -212,14 +214,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <input type="text" name="username" class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>" id="username" placeholder="Your USN..." minlength="10" maxlength="10" pattern="^4[Aa][Ll][0-9]{2}[A-Za-z]{2}[0-9]{3}" />
                         <span class="invalid-feedback"><?php echo $username_err; ?></span>
                     </div>
-                    <div class="col-md-12">
+                    <div class="col-md-6">
                         <div class="form-group">
                             <label for="gender" class="form-label">Gender</label>
-                            <select name="gender" id="inputState" class="form-control" required>
+                            <select name="gender" id="gender" class="form-control" required>
                                 <option value="" selected>Choose...</option>
                                 <option value="Male">Male</option>
                                 <option value="Female">Female</option>
                                 <option value="Other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="caste" class="form-label">Caste</label>
+                            <select name="caste" id="caste" class="form-control" required>
+                                <option value="" selected>Choose...</option>
+                                <option value="General">General</option>
+                                <option value="Minority">Minority(OBC)</option>
+                                <option value="SC/ST">SC/ST</option>
                             </select>
                         </div>
                     </div>
@@ -272,7 +285,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <input type="password" name="cfpassword" id="confirm-paaswd" class="form-control <?php echo (!empty($confirm_password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $confirm_password; ?>" placeholder="Confirm Password">
                         <span class="invalid-feedback"><?php echo $confirm_password_err; ?></span>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-2 w-25">
                         <button type="submit" class="btn btn-primary">Sign in</button>
                     </div>
                     <div class="col-md-1">

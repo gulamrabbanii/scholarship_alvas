@@ -7,6 +7,12 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true || !preg_mat
 }
 require_once("../db/config.php");
 $username = $_SESSION['username'];
+
+$sql1 = "SELECT id, subject, msg_body FROM notification WHERE usn = '$username' AND status = 'unseen';";
+$result1 = $link->query($sql1);
+$noti_count_sql = "SELECT COUNT(*) FROM notification WHERE usn = '$username' AND status = 'unseen';";
+$noti_count = $link->query($noti_count_sql);
+
 $sql = "SELECT * FROM users WHERE username = '$username'";
 $result = $link->query($sql);
 foreach ($result as $row) {
@@ -45,27 +51,27 @@ foreach ($result as $row) {
             Upload Docs</a></li>
         <li><a href="status.php"><i class="fa-solid fa-flag"></i>Update Result</a></li>
         <li><a href="reset-password.php"><i class="fa fa-undo"></i></i>Reset Password</a></li>
-        <li><a class="btn" id="liveToastBtn"><i class="fas fa-phone-volume"></i>Notification<span class="badge bg-primary rounded-pill mx-2">14</span></a></li>
+        <li><a class="btn" id="liveToastBtn"><i class="fas fa-phone-volume"></i>Notification<span class="badge bg-primary rounded-pill mx-2"><?php foreach ($noti_count as $noti) echo $noti['COUNT(*)']; ?></span></a></li>
 
         <!-- <li><a href="feedback.php"><i class="fas fa-comments"></i>Feedback</a></li> -->
       </ul>
 
-
-      <div class="position-fixed top-0 end-0 p-3" style="z-index: 11">
-        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-          <div class="toast-header">
-            <img src="..." class="rounded me-2" alt="...">
-            <strong class="me-auto">Bootstrap</strong>
-            <small>11 mins ago</small>
-            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-          </div>
-          <div class="toast-body">
-            Hello, world! This is a toast message.
-          </div>
-        </div>
-      </div>
-
-
+      <?php
+      while ($row1 = mysqli_fetch_array($result1)) {
+        echo '<div class="position-fixed top-0 end-0 p-3" style="z-index: 11">';
+        echo '<div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">';
+        echo '<div class="toast-header">';
+        // <!-- <img src="..." class="rounded me-2" alt="..."> -->
+        echo '<strong class="me-auto" id="sub">' . $row1['subject'] . '</strong>';
+        // <!-- <small>11 mins ago</small> -->
+        echo '<button type="button" onClick="update(' . $row1["id"] . ')" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>';
+        echo '</div>';
+        echo '<div class="toast-body" id="body">' . $row1['msg_body'];
+        echo '</div>';
+        echo '</div>';
+        echo '</div>';
+      }
+      ?>
 
       <div class="media_icons">
         <a href="../logout.php"><i class="fa-solid fa-power-off"></i></a>
@@ -88,12 +94,24 @@ foreach ($result as $row) {
   <script>
     var toastTrigger = document.getElementById('liveToastBtn')
     var toastLiveExample = document.getElementById('liveToast')
+
+    //do your AJAX stuff here
     if (toastTrigger) {
       toastTrigger.addEventListener('click', function() {
         var toast = new bootstrap.Toast(toastLiveExample)
 
         toast.show()
       })
+    }
+
+
+    function update(id) {
+      var xmlhttp = new XMLHttpRequest();
+      xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {}
+      };
+      xmlhttp.open("GET", "noti.php?id=" + id, true);
+      xmlhttp.send();
     }
   </script>
   </body>
