@@ -80,6 +80,8 @@ foreach ($result as $row) {
           </div>
         </div>
       <?php
+      // Close connection
+      $link->close();
     }
       ?>
       <form action="#" method="post">
