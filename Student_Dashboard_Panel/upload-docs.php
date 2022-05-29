@@ -11,11 +11,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST['sch-name'])) {
       $sch_name = htmlspecialchars(strip_tags(trim($_POST["sch-name"])));
       $sch_applied_year = htmlspecialchars(strip_tags(trim($_POST["sch-year"])));
 
-      $sql = "SELECT id FROM upload_sch_docs WHERE usn = ? AND sch_name = ? AND sch_applied_year = ?";
+      $sql = "SELECT uid FROM upload_sch_docs WHERE usn = ? AND sch_name = ? AND sch_applied_year = ?";
 
       if ($stmt = $link->prepare($sql)) {
             // Bind variables to the prepared statement as parameters
-            $stmt->bind_param("sss", $param_usn, $param_sch_name, $param_applied_year);
+            $stmt->bind_param("iss", $param_usn, $param_sch_name, $param_applied_year);
 
             // Set parameters
             $param_usn = $usn;
@@ -45,6 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST['sch-name'])) {
 
       $allowed = array("jpg" => "image/jpg", "jpeg" => "image/jpeg", "pdf" => "application/pdf");
 
+      $uploads_dir = '/uploads';
       // scholarship acronym 
       $words = preg_split("/[\s,_-]+/", $sch_name);
       $acronym = "";
@@ -71,6 +72,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST['sch-name'])) {
             $ext = pathinfo($file1, PATHINFO_EXTENSION);
             if (!array_key_exists($ext, $allowed) && !in_array($file1_type, $allowed) && ($file1_size > $maxsize || $file1_size <  $minsize)) {
                   $err1 = "Invalid file format or Invalid File size";
+            } else {
+                  move_uploaded_file($file1_tmp, "$uploads_dir/$file1");
             }
       }
 
@@ -88,6 +91,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST['sch-name'])) {
             $ext = pathinfo($file2, PATHINFO_EXTENSION);
             if (!array_key_exists($ext, $allowed) && !in_array($file2_type, $allowed) && ($file2_size > $maxsize || $file2_size <  $minsize)) {
                   $err2 = "Invalid file format or Invalid File size";
+            } else {
+                  move_uploaded_file($file2_tmp, "$uploads_dir/$file2");
             }
       }
 
@@ -105,6 +110,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST['sch-name'])) {
             $ext = pathinfo($file3, PATHINFO_EXTENSION);
             if (!array_key_exists($ext, $allowed) && !in_array($file3_type, $allowed) && ($file3_size > $maxsize || $file3_size <  $minsize)) {
                   $err3 = "Invalid file format or Invalid File size";
+            } else {
+                  move_uploaded_file($file3_tmp, "$uploads_dir/$file3");
             }
       }
 
@@ -122,6 +129,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST['sch-name'])) {
             $ext = pathinfo($file4, PATHINFO_EXTENSION);
             if (!array_key_exists($ext, $allowed) && !in_array($file4_type, $allowed) && ($file4_size > $maxsize || $file4_size <  $minsize)) {
                   $err4 = "Invalid file format or Invalid File size";
+            } else {
+                  move_uploaded_file($file4_tmp, "$uploads_dir/$file4");
             }
       }
 
@@ -139,6 +148,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST['sch-name'])) {
             $ext = pathinfo($file5, PATHINFO_EXTENSION);
             if (!array_key_exists($ext, $allowed) && !in_array($file5_type, $allowed) && ($file5_size > $maxsize || $file5_size <  $minsize)) {
                   $err5 = "Invalid file format or Invalid File size";
+            } else {
+                  move_uploaded_file($file5_tmp, "$uploads_dir/$file5");
             }
       }
 
@@ -156,6 +167,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST['sch-name'])) {
             $ext = pathinfo($file6, PATHINFO_EXTENSION);
             if (!array_key_exists($ext, $allowed) && !in_array($file6_type, $allowed) && ($file6_size > $maxsize || $file6_size <  $minsize)) {
                   $err6 = "Invalid file format or Invalid File size";
+            } else {
+                  move_uploaded_file($file6_tmp, "$uploads_dir/$file6");
             }
       }
 
@@ -173,6 +186,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST['sch-name'])) {
             $ext = pathinfo($file7, PATHINFO_EXTENSION);
             if (!array_key_exists($ext, $allowed) && !in_array($file7_type, $allowed) && ($file7_size > $maxsize || $file7_size <  $minsize)) {
                   $err7 = "Invalid file format or Invalid File size";
+            } else {
+                  move_uploaded_file($file7_tmp, "$uploads_dir/$file7");
             }
       }
 
@@ -190,6 +205,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST['sch-name'])) {
             $ext = pathinfo($file8, PATHINFO_EXTENSION);
             if (!array_key_exists($ext, $allowed) && !in_array($file8_type, $allowed) && ($file8_size > $maxsize || $file8_size <  $minsize)) {
                   $err8 = "Invalid file format or Invalid File size";
+            } else {
+                  move_uploaded_file($file8_tmp, "$uploads_dir/$file8");
             }
       }
 
@@ -207,6 +224,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST['sch-name'])) {
             $ext = pathinfo($file9, PATHINFO_EXTENSION);
             if (!array_key_exists($ext, $allowed) && !in_array($file9_type, $allowed) && ($file9_size > $maxsize || $file9_size <  $minsize)) {
                   $err9 = "Invalid file format or Invalid File size";
+            } else {
+                  move_uploaded_file($file9_tmp, "$uploads_dir/$file9");
             }
       }
 
@@ -224,6 +243,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST['sch-name'])) {
             $ext = pathinfo($file10, PATHINFO_EXTENSION);
             if (!array_key_exists($ext, $allowed) && !in_array($file10_type, $allowed) && ($file10_size > $maxsize || $file10_size <  $minsize)) {
                   $err10 = "Invalid file format or Invalid File size";
+            } else {
+                  move_uploaded_file($file10_tmp, "$uploads_dir/$file10");
             }
       }
 
@@ -241,6 +262,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST['sch-name'])) {
             $ext = pathinfo($file11, PATHINFO_EXTENSION);
             if (!array_key_exists($ext, $allowed) && !in_array($file11_type, $allowed) && ($file11_size > $maxsize || $file11_size <  $minsize)) {
                   $err11 = "Invalid file format or Invalid File size";
+            } else {
+                  move_uploaded_file($file11_tmp, "$uploads_dir/$file11");
             }
       }
 
@@ -258,6 +281,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST['sch-name'])) {
             $ext = pathinfo($file12, PATHINFO_EXTENSION);
             if (!array_key_exists($ext, $allowed) && !in_array($file12_type, $allowed) && ($file12_size > $maxsize || $file12_size <  $minsize)) {
                   $err12 = "Invalid file format or Invalid File size";
+            } else {
+                  move_uploaded_file($file12_tmp, "$uploads_dir/$file12");
             }
       }
 
@@ -275,6 +300,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST['sch-name'])) {
             $ext = pathinfo($file13, PATHINFO_EXTENSION);
             if (!array_key_exists($ext, $allowed) && !in_array($file13_type, $allowed) && ($file13_size > $maxsize || $file13_size <  $minsize)) {
                   $err13 = "Invalid file format or Invalid File size";
+            } else {
+                  move_uploaded_file($file13_tmp, "$uploads_dir/$file13");
             }
       }
 
@@ -292,6 +319,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST['sch-name'])) {
             $ext = pathinfo($file14, PATHINFO_EXTENSION);
             if (!array_key_exists($ext, $allowed) && !in_array($file14_type, $allowed) && ($file14_size > $maxsize || $file14_size <  $minsize)) {
                   $err14 = "Invalid file format or Invalid File size";
+            } else {
+                  move_uploaded_file($file14_tmp, "$uploads_dir/$file14");
             }
       }
 
