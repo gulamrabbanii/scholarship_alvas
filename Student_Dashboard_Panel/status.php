@@ -98,8 +98,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST['sch-name'])) {
         if (in_array($filetype, $allowed)) {
 
             $sql_IsReceived = "INSERT INTO `sch_receipt_proof`(`usn`, `sch_name`, `sch_provider`, `is_applied`, `academic_year`, `is_received`, `file_name`, `receipt_proof`) VALUES ('$usn', '$sch_name', '$sch_provider', '$sch_IsApplied', '$sch_applied_year', '$sch_IsReceived', '$newfilename', '{$file_tmp}');";
+
+            $sql_update = "INSERT INTO `upload_sch_docs`(`is_received`) VALUES ('$sch_IsReceived') WHERE usn = '$usn' AND sch_name = '$sch_name' AND sch_applied_year = '$sch_applied_year';";
+
             // Bind variables to the prepared statement as parameters
             if ($stmt = $link->query($sql_IsReceived)) {
+                $link->query($sql_update);
                 echo '<script>alert("Thank you for your time.");</script>';
             }
         }
