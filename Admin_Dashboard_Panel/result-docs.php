@@ -1,7 +1,7 @@
 <?php
 include("admin-layout.php");
 require_once("../db/config.php");
-$sql = "SELECT * FROM scholarship_details ORDER BY sch_name ASC";
+$sql = "SELECT * FROM sch_receipt_proof ORDER BY sch_name ASC";
 ?>
 <title>DOCs VERIFICATION</title>
 
@@ -9,7 +9,7 @@ $sql = "SELECT * FROM scholarship_details ORDER BY sch_name ASC";
     <div class="overview">
         <div class="title">
             <i class="bi bi-folder2"></i>
-            <span class="text">VERIFY DOCUMENTS
+            <span class="text">DOWNLOAD SCHOLARSHIP RECEIPT PROOFS
             </span>
         </div>
     </div>
@@ -30,7 +30,7 @@ $sql = "SELECT * FROM scholarship_details ORDER BY sch_name ASC";
                         </h2>
                         <div id="flush-collapse<?php echo $i; ?>" class="accordion-collapse collapse" aria-labelledby="flush-heading<?php echo $i; ?>" data-bs-parent="#accordionFlushExample">
                             <div class="accordion-body">
-                                <?php $sql1 = "SELECT * FROM `upload_sch_docs` t1 INNER JOIN users t2 ON t2.username = t1.usn WHERE sch_name = '$sch_name' ORDER BY t1.created_at DESC;";
+                                <?php $sql1 = "SELECT * FROM `sch_receipt_proof` t1 INNER JOIN users t2 ON t2.username = t1.usn WHERE sch_name = '$sch_name' ORDER BY t1.created_at DESC;";
                                 $query = $link->query($sql1);
                                 if (mysqli_num_rows($query) > 0) {
                                 ?>
@@ -42,6 +42,7 @@ $sql = "SELECT * FROM scholarship_details ORDER BY sch_name ASC";
                                                 <th scope="col">Name</th>
                                                 <th scope="col">Year</th>
                                                 <th scope="col">Applied Scholarship</th>
+                                                <th scope="col">Scholarship Provider</th>
                                                 <th scope="col">Academic Year</th>
                                                 <th scope="col">Download</th>
                                                 <th scope="col">Action</th>
@@ -57,9 +58,11 @@ $sql = "SELECT * FROM scholarship_details ORDER BY sch_name ASC";
                                                     <td><?php echo ucwords($row1['first_name']); ?> <?php echo $row1['last_name']; ?></td>
                                                     <td><?php echo $row1['year'] ?></td>
                                                     <td><?php echo $row1['sch_name']; ?></td>
-                                                    <td><?php echo $row1['sch_applied_year'] ?></td>
-                                                    <td><a href="../scholarship-operation/download-docs.php?FileNo=<?php echo $row1['uid']; ?>" class="btn btn-primary">Download</a></td>
-                                                    <td><a href="#" class="btn btn-primary">Verify</a></td>
+
+                                                    <td><?php echo $row1['sch_provider']; ?></td>
+                                                    <td><?php echo $row1['academic_year'] ?></td>
+                                                    <td><a href="../scholarship-operation/download-result.php?FileNo=<?php echo $row1['uid']; ?>" class="btn btn-primary">Download</a></td>
+                                                    <td><a href="#" class="btn btn-primary">Hide</a></td>
                                                 </tr>
                                         <?php
                                                 $idpro++;

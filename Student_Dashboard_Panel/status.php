@@ -30,8 +30,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST['sch-name'])) {
             $stmt->store_result();
 
             if ($stmt->num_rows == 1) {
-                echo "<script>alert('This scholarship result has already been updated by you.')</script>";
-                header("Refresh:0 , url =  status.php");
+                echo "<script>alert('This scholarship result has already been updated by you.');
+                window.location.href='status.php';</script>";
                 exit();
             } else {
                 $sch_name = $sch_name;
@@ -70,7 +70,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST['sch-name'])) {
 
     if ($sch_IsApplied == 'yes' && $sch_IsReceived == 'yes' && !empty($sch_applied_year) && isset($_FILES["sch-proof"]) && $_FILES["sch-proof"]["error"] == 0) {
 
-        $allowed = array("jpg" => "image/jpg", "jpeg" => "image/jpeg", "pdf" => "application/pdf");
+        $allowed = array("jpg" => "image/jpg", "jpeg" => "image/jpeg", "png" => "image/png", "pdf" => "application/pdf");
         $filename = $_FILES["sch-proof"]["name"];
         $filetype = $_FILES["sch-proof"]["type"];
         $file_tmp = addslashes(file_get_contents($_FILES['sch-proof']['tmp_name']));
@@ -91,13 +91,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST['sch-name'])) {
 
         // Verify file size - 5MB maximum
         $maxsize = 307200;
-        $minsize = 51200;
+        $minsize = 10240;
         if ($filesize > $maxsize || $filesize <  $minsize) die("Error: File size is larger/lesser than the allowed limit.");
 
         // Verify MYME type of the file
         if (in_array($filetype, $allowed)) {
 
-            $sql_IsReceived = "INSERT INTO `sch_receipt_proof`(`usn`, `sch_name`, `sch_provider`, `is_applied`, `academic_year`, `is_received`, `file_name`, `receipt_proof`) VALUES ('$usn', '$sch_name', '$sch_provider', '$sch_IsApplied', '$sch_applied_year', '$sch_IsReceived', '$newfilename', '{$file_tmp}');";
+            $sql_IsReceived = "INSERT INTO `sch_receipt_proof`(`usn`, `sch_name`, `sch_provider`, `is_applied`, `academic_year`, `is_received`, `file_name`,`file_type`,`file_size`, `receipt_proof`) VALUES ('$usn', '$sch_name', '$sch_provider', '$sch_IsApplied', '$sch_applied_year', '$sch_IsReceived', '$newfilename','$filetype','$filesize', '{$file_tmp}');";
 
             $sql_update = "INSERT INTO `upload_sch_docs`(`is_received`) VALUES ('$sch_IsReceived') WHERE usn = '$usn' AND sch_name = '$sch_name' AND sch_applied_year = '$sch_applied_year';";
 
@@ -189,8 +189,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST['sch-name'])) {
                         </div>
 
                         <div class="form-step">
-                            <h6>Please include a copy of your bank's proof of scholarship award receipt. <small class="text-danger d-block">(allowed: pdf, jpeg/jpg of File size: 50 kb to 300 kb)</small></h6>
-                            <p><input type="file" id="myInput6" name="sch-proof" accept=".pdf, .jpeg, .jpg"></p>
+                            <h6>Please include a copy of your bank's proof of scholarship award receipt. <small class="text-danger d-block">(allowed: pdf, jpeg, jpg, png of File size: 10 kb to 300 kb)</small></h6>
+                            <p><input type="file" id="myInput6" name="sch-proof" accept=".pdf, .jpeg, .jpg, .png"></p>
                             <input type="hidden" name="MAX_FILE_SIZE" value="307200" />
                             <div class="d-flex" style="float:right;">
                                 <button type="button" class="mx-2 prevBtn"><i class="fa fa-angle-double-left"></i></button>

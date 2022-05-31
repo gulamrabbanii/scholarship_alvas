@@ -28,9 +28,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST['sch-name'])) {
                   $stmt->store_result();
 
                   if ($stmt->num_rows == 1) {
-                        echo "<script>alert('This scholarship result has already been updated by you.')</script>";
-                        header("Refresh:0 , url =  upload-docs.php");
-                        $stmt->close();
+                        echo "<script>alert('This scholarship result has already been updated by you.');
+                        window.location.href='upload-docs.php';</script>";
                         exit();
                   } else {
                         $sch_name = $sch_name;
@@ -43,9 +42,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST['sch-name'])) {
             $stmt->close();
       }
 
-      $allowed = array("jpg" => "image/jpg", "jpeg" => "image/jpeg", "pdf" => "application/pdf");
+      $allowed = array("jpg" => "image/jpg", "jpeg" => "image/jpeg", "png" => "image/png", "pdf" => "application/pdf");
 
-      $uploads_dir = '/uploads';
       // scholarship acronym 
       $words = preg_split("/[\s,_-]+/", $sch_name);
       $acronym = "";
@@ -55,7 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST['sch-name'])) {
 
       // allowed file size
       $maxsize = 307200;
-      $minsize = 51200;
+      $minsize = 10240;
 
       if (isset($_FILES["aadhar"]) && $_FILES["aadhar"]["error"] == 0) {
             // access file values
@@ -70,10 +68,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST['sch-name'])) {
 
             // Verify file extension and Verify file size
             $ext = pathinfo($file1, PATHINFO_EXTENSION);
-            if (!array_key_exists($ext, $allowed) && !in_array($file1_type, $allowed) && ($file1_size > $maxsize || $file1_size <  $minsize)) {
+
+            if (!array_key_exists($ext, $allowed)) {
                   $err1 = "Invalid file format or Invalid File size";
-            } else {
-                  move_uploaded_file($file1_tmp, "$uploads_dir/$file1");
+            }
+            if (!in_array($file1_type, $allowed)) {
+                  $err1 = "Invalid file format or Invalid File size";
+            }
+            if ($file1_size > $maxsize || $file1_size <  $minsize) {
+                  $err1 = "Invalid file format or Invalid File size";
             }
       }
 
@@ -89,10 +92,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST['sch-name'])) {
 
             // Verify file extension and Verify file size
             $ext = pathinfo($file2, PATHINFO_EXTENSION);
-            if (!array_key_exists($ext, $allowed) && !in_array($file2_type, $allowed) && ($file2_size > $maxsize || $file2_size <  $minsize)) {
+            if (!array_key_exists($ext, $allowed)) {
                   $err2 = "Invalid file format or Invalid File size";
-            } else {
-                  move_uploaded_file($file2_tmp, "$uploads_dir/$file2");
+            }
+            if (!in_array($file2_type, $allowed)) {
+                  $err2 = "Invalid file format or Invalid File size";
+            }
+            if ($file2_size > $maxsize || $file2_size <  $minsize) {
+                  $err2 = "Invalid file format or Invalid File size";
             }
       }
 
@@ -108,10 +115,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST['sch-name'])) {
 
             // Verify file extension
             $ext = pathinfo($file3, PATHINFO_EXTENSION);
-            if (!array_key_exists($ext, $allowed) && !in_array($file3_type, $allowed) && ($file3_size > $maxsize || $file3_size <  $minsize)) {
+            if (!array_key_exists($ext, $allowed)) {
                   $err3 = "Invalid file format or Invalid File size";
-            } else {
-                  move_uploaded_file($file3_tmp, "$uploads_dir/$file3");
+            }
+            if (!in_array($file3_type, $allowed)) {
+                  $err3 = "Invalid file format or Invalid File size";
+            }
+            if ($file3_size > $maxsize || $file3_size <  $minsize) {
+                  $err3 = "Invalid file format or Invalid File size";
             }
       }
 
@@ -127,10 +138,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST['sch-name'])) {
 
             // Verify file extension
             $ext = pathinfo($file4, PATHINFO_EXTENSION);
-            if (!array_key_exists($ext, $allowed) && !in_array($file4_type, $allowed) && ($file4_size > $maxsize || $file4_size <  $minsize)) {
+            if (!array_key_exists($ext, $allowed)) {
                   $err4 = "Invalid file format or Invalid File size";
-            } else {
-                  move_uploaded_file($file4_tmp, "$uploads_dir/$file4");
+            }
+            if (!in_array($file4_type, $allowed)) {
+                  $err4 = "Invalid file format or Invalid File size";
+            }
+            if ($file4_size > $maxsize || $file4_size <  $minsize) {
+                  $err4 = "Invalid file format or Invalid File size";
             }
       }
 
@@ -146,10 +161,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST['sch-name'])) {
 
             // Verify file extension
             $ext = pathinfo($file5, PATHINFO_EXTENSION);
-            if (!array_key_exists($ext, $allowed) && !in_array($file5_type, $allowed) && ($file5_size > $maxsize || $file5_size <  $minsize)) {
+            if (!array_key_exists($ext, $allowed)) {
                   $err5 = "Invalid file format or Invalid File size";
-            } else {
-                  move_uploaded_file($file5_tmp, "$uploads_dir/$file5");
+            }
+            if (!in_array($file5_type, $allowed)) {
+                  $err5 = "Invalid file format or Invalid File size";
+            }
+            if ($file5_size > $maxsize || $file5_size <  $minsize) {
+                  $err5 = "Invalid file format or Invalid File size";
             }
       }
 
@@ -165,10 +184,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST['sch-name'])) {
 
             // Verify file extension
             $ext = pathinfo($file6, PATHINFO_EXTENSION);
-            if (!array_key_exists($ext, $allowed) && !in_array($file6_type, $allowed) && ($file6_size > $maxsize || $file6_size <  $minsize)) {
+            if (!array_key_exists($ext, $allowed)) {
                   $err6 = "Invalid file format or Invalid File size";
-            } else {
-                  move_uploaded_file($file6_tmp, "$uploads_dir/$file6");
+            }
+            if (!in_array($file6_type, $allowed)) {
+                  $err6 = "Invalid file format or Invalid File size";
+            }
+            if ($file6_size > $maxsize || $file6_size <  $minsize) {
+                  $err6 = "Invalid file format or Invalid File size";
             }
       }
 
@@ -184,10 +207,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST['sch-name'])) {
 
             // Verify file extension
             $ext = pathinfo($file7, PATHINFO_EXTENSION);
-            if (!array_key_exists($ext, $allowed) && !in_array($file7_type, $allowed) && ($file7_size > $maxsize || $file7_size <  $minsize)) {
+            if (!array_key_exists($ext, $allowed)) {
                   $err7 = "Invalid file format or Invalid File size";
-            } else {
-                  move_uploaded_file($file7_tmp, "$uploads_dir/$file7");
+            }
+            if (!in_array($file7_type, $allowed)) {
+                  $err7 = "Invalid file format or Invalid File size";
+            }
+            if ($file7_size > $maxsize || $file7_size <  $minsize) {
+                  $err7 = "Invalid file format or Invalid File size";
             }
       }
 
@@ -203,10 +230,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST['sch-name'])) {
 
             // Verify file extension
             $ext = pathinfo($file8, PATHINFO_EXTENSION);
-            if (!array_key_exists($ext, $allowed) && !in_array($file8_type, $allowed) && ($file8_size > $maxsize || $file8_size <  $minsize)) {
+            if (!array_key_exists($ext, $allowed)) {
                   $err8 = "Invalid file format or Invalid File size";
-            } else {
-                  move_uploaded_file($file8_tmp, "$uploads_dir/$file8");
+            }
+            if (!in_array($file8_type, $allowed)) {
+                  $err8 = "Invalid file format or Invalid File size";
+            }
+            if ($file8_size > $maxsize || $file8_size <  $minsize) {
+                  $err8 = "Invalid file format or Invalid File size";
             }
       }
 
@@ -224,8 +255,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST['sch-name'])) {
             $ext = pathinfo($file9, PATHINFO_EXTENSION);
             if (!array_key_exists($ext, $allowed) && !in_array($file9_type, $allowed) && ($file9_size > $maxsize || $file9_size <  $minsize)) {
                   $err9 = "Invalid file format or Invalid File size";
-            } else {
-                  move_uploaded_file($file9_tmp, "$uploads_dir/$file9");
             }
       }
 
@@ -241,10 +270,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST['sch-name'])) {
 
             // Verify file extension
             $ext = pathinfo($file10, PATHINFO_EXTENSION);
-            if (!array_key_exists($ext, $allowed) && !in_array($file10_type, $allowed) && ($file10_size > $maxsize || $file10_size <  $minsize)) {
+            if (!array_key_exists($ext, $allowed)) {
                   $err10 = "Invalid file format or Invalid File size";
-            } else {
-                  move_uploaded_file($file10_tmp, "$uploads_dir/$file10");
+            }
+            if (!in_array($file10_type, $allowed)) {
+                  $err10 = "Invalid file format or Invalid File size";
+            }
+            if ($file10_size > $maxsize || $file10_size <  $minsize) {
+                  $err10 = "Invalid file format or Invalid File size";
             }
       }
 
@@ -260,10 +293,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST['sch-name'])) {
 
             // Verify file extension
             $ext = pathinfo($file11, PATHINFO_EXTENSION);
-            if (!array_key_exists($ext, $allowed) && !in_array($file11_type, $allowed) && ($file11_size > $maxsize || $file11_size <  $minsize)) {
+            if (!array_key_exists($ext, $allowed)) {
                   $err11 = "Invalid file format or Invalid File size";
-            } else {
-                  move_uploaded_file($file11_tmp, "$uploads_dir/$file11");
+            }
+            if (!in_array($file11_type, $allowed)) {
+                  $err11 = "Invalid file format or Invalid File size";
+            }
+            if ($file11_size > $maxsize || $file11_size <  $minsize) {
+                  $err11 = "Invalid file format or Invalid File size";
             }
       }
 
@@ -279,10 +316,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST['sch-name'])) {
 
             // Verify file extension
             $ext = pathinfo($file12, PATHINFO_EXTENSION);
-            if (!array_key_exists($ext, $allowed) && !in_array($file12_type, $allowed) && ($file12_size > $maxsize || $file12_size <  $minsize)) {
+            if (!array_key_exists($ext, $allowed)) {
                   $err12 = "Invalid file format or Invalid File size";
-            } else {
-                  move_uploaded_file($file12_tmp, "$uploads_dir/$file12");
+            }
+            if (!in_array($file12_type, $allowed)) {
+                  $err12 = "Invalid file format or Invalid File size";
+            }
+            if ($file12_size > $maxsize || $file12_size <  $minsize) {
+                  $err12 = "Invalid file format or Invalid File size";
             }
       }
 
@@ -298,10 +339,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST['sch-name'])) {
 
             // Verify file extension
             $ext = pathinfo($file13, PATHINFO_EXTENSION);
-            if (!array_key_exists($ext, $allowed) && !in_array($file13_type, $allowed) && ($file13_size > $maxsize || $file13_size <  $minsize)) {
+            if (!array_key_exists($ext, $allowed)) {
                   $err13 = "Invalid file format or Invalid File size";
-            } else {
-                  move_uploaded_file($file13_tmp, "$uploads_dir/$file13");
+            }
+            if (!in_array($file13_type, $allowed)) {
+                  $err13 = "Invalid file format or Invalid File size";
+            }
+            if ($file13_size > $maxsize || $file13_size <  $minsize) {
+                  $err13 = "Invalid file format or Invalid File size";
             }
       }
 
@@ -317,21 +362,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST['sch-name'])) {
 
             // Verify file extension
             $ext = pathinfo($file14, PATHINFO_EXTENSION);
-            if (!array_key_exists($ext, $allowed) && !in_array($file14_type, $allowed) && ($file14_size > $maxsize || $file14_size <  $minsize)) {
+            if (!array_key_exists($ext, $allowed)) {
                   $err14 = "Invalid file format or Invalid File size";
-            } else {
-                  move_uploaded_file($file14_tmp, "$uploads_dir/$file14");
+            }
+            if (!in_array($file14_type, $allowed)) {
+                  $err14 = "Invalid file format or Invalid File size";
+            }
+            if ($file14_size > $maxsize || $file14_size <  $minsize) {
+                  $err14 = "Invalid file format or Invalid File size";
             }
       }
 
       if (empty($err1) && empty($err2) && empty($err3) && empty($err4) && empty($err5) && empty($err6) && empty($err7) && empty($err8) && empty($err9) && empty($err10) && empty($err11) && empty($err12) && empty($err13) && empty($err14) && !empty($sch_name) && !empty($sch_applied_year)) {
 
-            $sql_upload = "INSERT INTO `upload_sch_docs`(`usn`, `sch_name`, `sch_applied_year`, `govt_id`, `file1`, `domicile`, `file2`, `income`, `file3`, `pwd`, `file4`, `bonafide`, `file5`, `caste`, `file6`, `parent_aadhar`, `file7`, `passbook`, `file8`, `clg_fee`, `file9`, `sslc_puc`, `file10`, `sem_marks`, `file11`, `diploma`, `file12`, `self_decl`, `file13`, `ration`, `file14`) VALUES ('$usn','$sch_name','$sch_applied_year','$file1','{$file1_tmp}','$file2','{$file2_tmp}','$file3','{$file3_tmp}','$file4','{$file4_tmp}','$file5','{$file5_tmp}','$file6','{$file6_tmp}','$file7','{$file7_tmp}','$file8','{$file8_tmp}','$file9','{$file9_tmp}','$file10','{$file10_tmp}','$file11','{$file11_tmp}','$file12','{$file12_tmp}','$file13','{$file13_tmp}','$file14','{$file14_tmp}');";
+            $sql_upload = "INSERT INTO `upload_sch_docs`(`usn`, `sch_name`, `sch_applied_year`, `govt_id`,`file1_type`,`file1_size`, `file1`, `domicile`,`file2_type`,`file2_size`, `file2`, `income`,`file3_type`,`file3_size`, `file3`, `pwd`,`file4_type`,`file4_size`, `file4`, `bonafide`,`file5_type`,`file5_size`, `file5`, `caste`,`file6_type`,`file6_size`, `file6`, `parent_aadhar`,`file7_type`,`file7_size`, `file7`, `passbook`,`file8_type`,`file8_size`, `file8`, `clg_fee`,`file9_type`,`file9_size`, `file9`, `sslc_puc`,`file10_type`,`file10_size`, `file10`, `sem_marks`,`file11_type`,`file11_size`, `file11`, `diploma`,`file12_type`,`file12_size`, `file12`, `self_decl`,`file13_type`,`file13_size`, `file13`, `ration`,`file14_type`,`file14_size`, `file14`) VALUES ('$usn','$sch_name','$sch_applied_year','$file1','$file1_type','$file1_size','{$file1_tmp}','$file2','$file2_type','$file2_size','{$file2_tmp}','$file3','$file3_type','$file3_size','{$file3_tmp}','$file4','$file4_type','$file4_size','{$file4_tmp}','$file5','$file5_type','$file5_size','{$file5_tmp}','$file6','$file6_type','$file6_size','{$file6_tmp}','$file7','$file7_type','$file7_size','{$file7_tmp}','$file8','$file8_type','$file8_size','{$file8_tmp}','$file9','$file9_type','$file9_size','{$file9_tmp}','$file10','$file10_type','$file10_size','{$file10_tmp}','$file11','$file11_type','$file11_size','{$file11_tmp}','$file12','$file12_type','$file12_size','{$file12_tmp}','$file13','$file13_type','$file13_size','{$file13_tmp}','$file14','$file14_type','$file14_size','{$file14_tmp}');";
 
             if ($stmt1 = $link->query($sql_upload)) {
                   echo '<script>alert("File successfully uploaded.");</script>';
             } else {
-                  echo '<script>alert("Oops! Something went wrong. Please upload documents in required format.");</script>';
+                  echo '<script>alert("Please upload documents in required format.");</script>';
             }
       }
       // Close connection
@@ -398,61 +447,61 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST['sch-name'])) {
                               </div>
                         </div>
                   </div>
-                  <p class="fw-bold" style="color: #4E4E91;">Please only choose documents that are relevant to your scholarship.</p>
+                  <p class="fw-bold" style="color: #4E4E91;">Please only choose documents that are relevant to your scholarship.<small class="text-danger d-block">(allowed: pdf, jpeg, jpg, png of File size: 10 kb to 300 kb)</small></p>
                   <div class="input-group mb-3">
-                        <input type="file" name="aadhar" class="form-control" id="govt-id" required>
+                        <input type="file" name="aadhar" class="form-control" id="govt-id" accept=".pdf, .jpeg, .jpg, .png" required>
                         <label class="input-group-text bg-danger w-50 text-white" for="govt-id">Government ID Proof (eg. Aadhar Card, Driving License)</label>
                   </div>
                   <div class="input-group mb-3">
-                        <input type="file" name="resident" class="form-control" id="domicile">
+                        <input type="file" name="resident" class="form-control" id="domicile" accept=".pdf, .jpeg, .jpg, .png">
                         <label class="input-group-text w-50 bg-danger text-white" for="domicile">Domicile/Residential Certificate</label>
                   </div>
                   <div class="input-group mb-3">
-                        <input type="file" name="income" class="form-control" id="income">
+                        <input type="file" name="income" class="form-control" id="income" accept=".pdf, .jpeg, .jpg, .png">
                         <label class="input-group-text w-50 bg-danger text-white" for="income">Income Certificate</label>
                   </div>
                   <div class="input-group mb-3">
-                        <input type="file" name="pwd" class="form-control" id="pwd-cert">
+                        <input type="file" name="pwd" class="form-control" id="pwd-cert" accept=".pdf, .jpeg, .jpg, .png">
                         <label class="input-group-text w-50 bg-danger text-white" for="pwd-cert">PwD(Person With Disability) Certificate</label>
                   </div>
                   <div class="input-group mb-3">
-                        <input type="file" name="bonafide" class="form-control" id="bonafide">
+                        <input type="file" name="bonafide" class="form-control" id="bonafide" accept=".pdf, .jpeg, .jpg, .png">
                         <label class="input-group-text w-50 bg-danger text-white" for="bonafide">Bonafide Certificate</label>
                   </div>
                   <div class="input-group mb-3">
-                        <input type="file" name="caste" class="form-control" id="caste-cert">
+                        <input type="file" name="caste" class="form-control" id="caste-cert" accept=".pdf, .jpeg, .jpg, .png">
                         <label class="input-group-text w-50 bg-danger text-white" for="caste-cert">Caste Certificate</label>
                   </div>
                   <div class="input-group mb-3">
-                        <input type="file" name="parent_aadhar" class="form-control" id="parent-aadhar">
+                        <input type="file" name="parent_aadhar" class="form-control" id="parent-aadhar" accept=".pdf, .jpeg, .jpg, .png">
                         <label class="input-group-text w-50 bg-danger text-white" for="parent-aadhar"> Aadhar Card of Mother & Father/Guardian</label>
                   </div>
                   <div class="input-group mb-3">
-                        <input type="file" name="passbook" class="form-control" id="bank-passbook">
+                        <input type="file" name="passbook" class="form-control" id="bank-passbook" accept=".pdf, .jpeg, .jpg, .png">
                         <label class="input-group-text w-50 bg-danger text-white" for="bank-passbook">Bank Passbook of Student</label>
                   </div>
                   <div class="input-group mb-3">
-                        <input type="file" name="clg_fee" class="form-control" id="college-fee">
+                        <input type="file" name="clg_fee" class="form-control" id="college-fee" accept=".pdf, .jpeg, .jpg, .png">
                         <label class="input-group-text w-50 bg-danger text-white" for="college-fee">College Fee Receipt</label>
                   </div>
                   <div class="input-group mb-3">
-                        <input type="file" name="sslc_puc" class="form-control" id="sslc-puc">
+                        <input type="file" name="sslc_puc" class="form-control" id="sslc-puc" accept=".pdf, .jpeg, .jpg, .png">
                         <label class="input-group-text w-50 bg-danger text-white" for="sslc-puc">10<sup>th</sup> or 12<sup>th</sup> Marks Cards</label>
                   </div>
                   <div class="input-group mb-3">
-                        <input type="file" name="sem_marks" class="form-control" id="sem-marks">
+                        <input type="file" name="sem_marks" class="form-control" id="sem-marks" accept=".pdf, .jpeg, .jpg, .png">
                         <label class="input-group-text w-50 bg-danger text-white" for="sem-marks">Previous 2 Semester Marks Card</label>
                   </div>
                   <div class="input-group mb-3">
-                        <input type="file" name="diploma" class="form-control" id="diploma-cert">
+                        <input type="file" name="diploma" class="form-control" id="diploma-cert" accept=".pdf, .jpeg, .jpg, .png">
                         <label class="input-group-text w-50 bg-danger text-white" for="diploma-cert">Admission Letter to Diploma</label>
                   </div>
                   <div class="input-group mb-3">
-                        <input type="file" name="self_minority" class="form-control" id="self-decl">
+                        <input type="file" name="self_minority" class="form-control" id="self-decl" accept=".pdf, .jpeg, .jpg, .png">
                         <label class="input-group-text w-50 bg-danger text-white" for="self-decl">Self Declaration Minority Certificate</label>
                   </div>
                   <div class="input-group mb-3">
-                        <input type="file" name="ration" class="form-control" id="ration-card">
+                        <input type="file" name="ration" class="form-control" id="ration-card" accept=".pdf, .jpeg, .jpg, .png">
                         <label class="input-group-text w-50 bg-danger text-white" for="ration-card">Ration Card</label>
                   </div>
 
