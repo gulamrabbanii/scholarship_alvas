@@ -81,9 +81,9 @@ foreach ($result as $row) {
           <div class="col col-lg-8 col-12 mb-2">e-mail Address : <span><?php echo $row['email']; ?></span>
           </div>
         </div>
-        <form>
-          <button type=" submit" class="btn" style="float: right;"><a href="update-profile.php"><i class="fas fa-edit"></i></a></button>
-        </form>
+        <span>
+          <button class="btn" style="float: right;"><a href="update-profile.php"><i class="fas fa-edit"></i></a></button>
+        </span>
       </div>
 
 
