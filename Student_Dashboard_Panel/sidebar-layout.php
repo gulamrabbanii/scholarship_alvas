@@ -112,6 +112,7 @@ foreach ($result as $row) {
       };
       xmlhttp.open("GET", "noti.php?id=" + id, true);
       xmlhttp.send();
+      window.location.reload();
     }
   </script>
   </body>

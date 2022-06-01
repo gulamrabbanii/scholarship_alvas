@@ -8,6 +8,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $to = htmlspecialchars(strip_tags(trim($_POST["sel-to"])));
     $usn = htmlspecialchars(strip_tags(trim($_POST["person-usn"])));
 
+    $delete = "DELETE FROM notification WHERE date < (CURDATE() - INTERVAL 90 DAY);";
+    $link->query($delete);
+
     if (!empty($sub) && !empty($body)) {
         if ($to == 'all') {
             // Prepare an insert statement
