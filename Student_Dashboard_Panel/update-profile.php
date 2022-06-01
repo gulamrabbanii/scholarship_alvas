@@ -132,22 +132,12 @@ foreach ($result as $row) {
                                 <input type="tel" name="phone" value="<?php echo $row['phone']; ?>" class="form-control" id="phone" placeholder="10-digit mobile number" pattern="[0-9]{10}" minlength="10" maxlength="10" required />
                             </div>
                         </div>
-
-                        <div class="col-md-2 mb-4 w-25">
-                            <button type="submit" class="btn btn-primary">Update</button>
-                        </div>
-                        <div class="col-md-1 mb-4">
-                            <a href="profile.php">
-                                <button type="button" class="btn btn-danger">Cancel</button>
-                            </a>
+                        <div class="form-group mb-4">
+                            <input type="submit" class="btn btn-primary" value="Update">
+                            <a class="btn btn-danger" href="profile.php">Cancel</a>
                         </div>
                     </form>
                 </div>
-
-
-
-
-
                 <!-- End -->
             </div>
     </section>

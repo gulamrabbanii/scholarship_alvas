@@ -286,13 +286,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <input type="password" name="cfpassword" id="confirm-paaswd" class="form-control <?php echo (!empty($confirm_password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $confirm_password; ?>" placeholder="Confirm Password">
                         <span class="invalid-feedback"><?php echo $confirm_password_err; ?></span>
                     </div>
-                    <div class="col-md-2 w-25">
-                        <button type="submit" class="btn btn-primary">Sign in</button>
-                    </div>
-                    <div class="col-md-1">
-                        <a href="index.php">
-                            <button type="button" class="btn btn-danger">Cancel</button>
-                        </a>
+
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-primary" value="Sign in">
+                        <a class="btn btn-danger" href="index.php">Cancel</a>
                     </div>
                 </form>
             </div>
