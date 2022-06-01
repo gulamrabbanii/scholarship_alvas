@@ -12,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST['sch-name'])) {
     $sch_applied_year = htmlspecialchars(strip_tags(trim($_POST["sch-year"])));
     $sch_provider = htmlspecialchars(strip_tags(trim($_POST["sch-provider"])));
 
-    $sql = "SELECT id FROM sch_receipt_proof WHERE usn = ? AND sch_name = ? AND sch_provider = ? AND academic_year = ?";
+    $sql = "SELECT uid FROM sch_receipt_proof WHERE usn = ? AND sch_name = ? AND sch_provider = ? AND academic_year = ?";
 
     if ($stmt = $link->prepare($sql)) {
         // Bind variables to the prepared statement as parameters
@@ -103,8 +103,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST['sch-name'])) {
 
             // Bind variables to the prepared statement as parameters
             if ($stmt = $link->query($sql_IsReceived)) {
-                $link->query($sql_update);
-                echo '<script>alert("Thank you for your time.");</script>';
+                try {
+                    $link->query($sql_update);
+                }
+                //catch exception
+                catch (Exception $e) {
+                    echo '';
+                }
+                echo '<script>alert("Thank you for your time."); window.location.href="status.php";</script>';
             }
         }
     }

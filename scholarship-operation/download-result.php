@@ -1,4 +1,9 @@
 <?php
+$pattern = "/4(al)[0-9]{2}[A-Za-z]{2}[0-9]{3}/i";
+if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true || preg_match($pattern, $_SESSION["username"])) {
+    header("location: ../index.php");
+    exit;
+}
 require_once("../db/config.php");
 
 if (isset($_GET['FileNo'])) {
@@ -21,7 +26,6 @@ if (isset($_GET['FileNo'])) {
     header("Content-Disposition: attachment; filename=$file_name");
     ob_clean();
     flush();
-
     echo $receipt_proof;
 
     mysqli_close($link);

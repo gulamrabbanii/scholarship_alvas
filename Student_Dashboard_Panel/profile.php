@@ -66,11 +66,13 @@ foreach ($result as $row) {
           </div>
           <div class="col col-lg-4 col-12 mb-2">Gender : <span><?php echo $row['gender']; ?></span>
           </div>
+          <div class="col col-lg-4 col-12 mb-2">Caste : <span><?php echo $row['caste']; ?></span>
+          </div>
           <div class="col col-lg-4 col-12 mb-2">Year : <span><?php echo $row['year']; ?></span>
           </div>
           <div class="col col-lg-4 col-12 mb-2">Semester : <span><?php echo $row['semester']; ?></span>
           </div>
-          <div class="col col-lg-4 col-12 mb-2">Section : <span><?php echo $row['section']; ?></span>
+          <div class="col col-lg-4 col-12 mb-2">Section : <span><?php echo strtoupper($row['section']); ?></span>
           </div>
           <div class="col col-lg-4 col-12 mb-2">Branch : <span><?php echo $row['dept']; ?></span>
           </div>
@@ -79,8 +81,8 @@ foreach ($result as $row) {
           <div class="col col-lg-8 col-12 mb-2">e-mail Address : <span><?php echo $row['email']; ?></span>
           </div>
         </div>
-        <form action="#" method="post">
-          <button type="submit" class="btn" style="float: right;"><i class="fas fa-edit"></i></button>
+        <form>
+          <button type=" submit" class="btn" style="float: right;"><a href="update-profile.php"><i class="fas fa-edit"></i></a></button>
         </form>
       </div>
 
@@ -104,7 +106,9 @@ foreach ($result as $row) {
               </div>
               <div class="col col-lg-6 col-12 mb-2">Academic Year : <span class="value"><?php echo $row1['sch_applied_year']; ?></span>
               </div>
-              <div class="col col-lg-6 col-12 mb-2">Status : <span class="value"><?php echo $row1['is_received']; ?></span>
+              <div class="col col-lg-12 col-12 mb-2">College Verification : <span class="value"><?php echo $row1['is_verified']; ?></span>
+              </div>
+              <div class="col col-lg-12 col-12 mb-2">Scholarship Received : <span class="value"><?php echo $row1['is_received']; ?></span>
               </div>
             </div>
           </div>

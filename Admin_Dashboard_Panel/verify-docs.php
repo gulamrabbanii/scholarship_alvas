@@ -44,7 +44,7 @@ $sql = "SELECT * FROM scholarship_details ORDER BY sch_name ASC";
                                                 <th scope="col">Applied Scholarship</th>
                                                 <th scope="col">Academic Year</th>
                                                 <th scope="col">Download</th>
-                                                <th scope="col">Action</th>
+                                                <th scope="col">College Verification</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -59,7 +59,7 @@ $sql = "SELECT * FROM scholarship_details ORDER BY sch_name ASC";
                                                     <td><?php echo $row1['sch_name']; ?></td>
                                                     <td><?php echo $row1['sch_applied_year'] ?></td>
                                                     <td><a href="../scholarship-operation/download-docs.php?FileNo=<?php echo $row1['uid']; ?>" class="btn btn-primary">Download</a></td>
-                                                    <td><a href="#" class="btn btn-primary">Verify</a></td>
+                                                    <td><a href="../scholarship-operation/verify.php" class="btn btn-primary">Verify</a></td>
                                                 </tr>
                                         <?php
                                                 $idpro++;

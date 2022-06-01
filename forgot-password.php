@@ -110,8 +110,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             if ($stmt2->execute()) {
                                 // Password updated successfully. Destroy the session, and redirect to login page
                                 session_destroy();
-                                echo "<script>alert('Your Password has been sent to your email id.');</script>";
-                                header("Refresh:0 , url = index.php");
+                                echo "<script>alert('Your Password has been sent to your email id.');
+                                window.location.href='index.php';</script>";
                             } else {
                                 echo "Oops! Something went wrong. Please try again later.";
                                 header("location: index.php");
@@ -122,15 +122,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             $stmt2->close();
                         }
                     } catch (Exception $e) {
-                        echo "<script>alert('Failed to send your password, try again.');</script>";
-                        header("Refresh:0 , url = index.php");
-                        exit();
+                        echo "<script>alert('Failed to send your password, try again.');
+                        window.location.href='index.php';</script>";
                     }
                 } else {
                     // Username doesn't exist, display a generic error message
-                    echo "<script>alert('Invalid username or email');</script>";
-                    header("Refresh:0 , url = index.php");
-                    exit();
+                    echo "<script>alert('Invalid username or email');
+                    window.location.href='index.php';</script>";
                 }
             }
             // Close statement

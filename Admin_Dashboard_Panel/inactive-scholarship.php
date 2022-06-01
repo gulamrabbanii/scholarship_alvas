@@ -131,7 +131,7 @@ $sql = "SELECT * FROM scholarship_details t1 INNER JOIN elig_req t2 ON t2.sch_na
                                                 </script>
                                             </i></div>
                                         <div class="btn btn-sm"><i class="fas fa-edit" aria-hidden="true">
-                                                <?php echo "<a class='px-1 text-decoration-none text-success' onclick=\"return confirm('Do you really want to modify this scholarship?')\" href=\"update-scholarship.php?id=" . $row['id'] . " \">MODIFY</a>"; ?>
+                                                <?php echo "<a class='px-1 text-decoration-none text-success' onclick=\"return confirm('Do you really want to modify this scholarship?')\" href=\"modify-scholarship.php?id=" . $row['id'] . " \">MODIFY</a>"; ?>
                                                 <script>
                                                     document.getElementById('a.delete').on('click', function() {
                                                         var choice = confirm('Modify this scholarship?');

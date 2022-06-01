@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST['sch-name'])) {
 
       if ($stmt = $link->prepare($sql)) {
             // Bind variables to the prepared statement as parameters
-            $stmt->bind_param("iss", $param_usn, $param_sch_name, $param_applied_year);
+            $stmt->bind_param("sss", $param_usn, $param_sch_name, $param_applied_year);
 
             // Set parameters
             $param_usn = $usn;
@@ -375,12 +375,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST['sch-name'])) {
 
       if (empty($err1) && empty($err2) && empty($err3) && empty($err4) && empty($err5) && empty($err6) && empty($err7) && empty($err8) && empty($err9) && empty($err10) && empty($err11) && empty($err12) && empty($err13) && empty($err14) && !empty($sch_name) && !empty($sch_applied_year)) {
 
-            $sql_upload = "INSERT INTO `upload_sch_docs`(`usn`, `sch_name`, `sch_applied_year`, `govt_id`,`file1_type`,`file1_size`, `file1`, `domicile`,`file2_type`,`file2_size`, `file2`, `income`,`file3_type`,`file3_size`, `file3`, `pwd`,`file4_type`,`file4_size`, `file4`, `bonafide`,`file5_type`,`file5_size`, `file5`, `caste`,`file6_type`,`file6_size`, `file6`, `parent_aadhar`,`file7_type`,`file7_size`, `file7`, `passbook`,`file8_type`,`file8_size`, `file8`, `clg_fee`,`file9_type`,`file9_size`, `file9`, `sslc_puc`,`file10_type`,`file10_size`, `file10`, `sem_marks`,`file11_type`,`file11_size`, `file11`, `diploma`,`file12_type`,`file12_size`, `file12`, `self_decl`,`file13_type`,`file13_size`, `file13`, `ration`,`file14_type`,`file14_size`, `file14`) VALUES ('$usn','$sch_name','$sch_applied_year','$file1','$file1_type','$file1_size','{$file1_tmp}','$file2','$file2_type','$file2_size','{$file2_tmp}','$file3','$file3_type','$file3_size','{$file3_tmp}','$file4','$file4_type','$file4_size','{$file4_tmp}','$file5','$file5_type','$file5_size','{$file5_tmp}','$file6','$file6_type','$file6_size','{$file6_tmp}','$file7','$file7_type','$file7_size','{$file7_tmp}','$file8','$file8_type','$file8_size','{$file8_tmp}','$file9','$file9_type','$file9_size','{$file9_tmp}','$file10','$file10_type','$file10_size','{$file10_tmp}','$file11','$file11_type','$file11_size','{$file11_tmp}','$file12','$file12_type','$file12_size','{$file12_tmp}','$file13','$file13_type','$file13_size','{$file13_tmp}','$file14','$file14_type','$file14_size','{$file14_tmp}');";
+            $sql_upload = "INSERT INTO `upload_sch_docs`(`usn`, `sch_name`, `sch_applied_year`, `govt_id`, `file1_type`, `file1_size`, `file1`, `domicile`, `file2_type`, `file2_size`, `file2`, `income`, `file3_type`, `file3_size`, `file3`, `pwd`, `file4_type`, `file4_size`, `file4`, `bonafide`, `file5_type`, `file5_size`, `file5`, `caste`, `file6_type`, `file6_size`, `file6`, `parent_aadhar`, `file7_type`, `file7_size`, `file7`, `passbook`, `file8_type`, `file8_size`, `file8`, `clg_fee`, `file9_type`, `file9_size`, `file9`, `sslc_puc`, `file10_type`, `file10_size`, `file10`, `sem_marks`, `file11_type`, `file11_size`, `file11`, `diploma`, `file12_type`, `file12_size`, `file12`, `self_decl`, `file13_type`, `file13_size`, `file13`, `ration`, `file14_type`, `file14_size`, `file14`) VALUES ('$usn','$sch_name','$sch_applied_year','$file1','$file1_type','$file1_size','{$file1_tmp}','$file2','$file2_type','$file2_size','{$file2_tmp}','$file3','$file3_type','$file3_size','{$file3_tmp}','$file4','$file4_type','$file4_size','{$file4_tmp}','$file5','$file5_type','$file5_size','{$file5_tmp}','$file6','$file6_type','$file6_size','{$file6_tmp}','$file7','$file7_type','$file7_size','{$file7_tmp}','$file8','$file8_type','$file8_size','{$file8_tmp}','$file9','$file9_type','$file9_size','{$file9_tmp}','$file10','$file10_type','$file10_size','{$file10_tmp}','$file11','$file11_type','$file11_size','{$file11_tmp}','$file12','$file12_type','$file12_size','{$file12_tmp}','$file13','$file13_type','$file13_size','{$file13_tmp}','$file14','$file14_type','$file14_size','{$file14_tmp}');";
 
             if ($stmt1 = $link->query($sql_upload)) {
-                  echo '<script>alert("File successfully uploaded.");</script>';
+                  echo '<script>alert("File successfully uploaded.");window.location.href="upload-docs.php";</script>';
             } else {
-                  echo '<script>alert("Please upload documents in required format.");</script>';
+                  echo '<script>alert("Invalid file format or Invalid File size.");window.location.href="upload-docs.php";</script>';
             }
       }
       // Close connection

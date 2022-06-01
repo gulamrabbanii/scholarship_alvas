@@ -70,7 +70,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $param_msg_body = $body;
                     $stmt->execute();
                 }
-                echo "<script>alert('Messege successfully sent.');</script>";
+                echo "<script>alert('Messege successfully sent.');
+                window.location.href='notify.php';</script>";
                 // Close statement
                 $stmt->close();
             }
@@ -92,7 +93,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $param_msg_body = $body;
                     $stmt->execute();
                 }
-                echo "<script>alert('Messege successfully sent.');</script>";
+                echo "<script>alert('Messege successfully sent.');
+                window.location.href='notify.php';</script>";
                 // Close statement
                 $stmt->close();
             }
@@ -114,7 +116,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $param_msg_body = $body;
                     $stmt->execute();
                 }
-                echo "<script>alert('Messege successfully sent.');</script>";
+                echo "<script>alert('Messege successfully sent.');
+                window.location.href='notify.php';</script>";
                 // Close statement
                 $stmt->close();
             }

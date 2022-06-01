@@ -10,14 +10,11 @@ $sch_id = $_GET['id'];
 $sql =  "DELETE FROM `scholarship_details` WHERE id = '$sch_id'";
 
 if($result = $link->query($sql)){
-    echo "<script>alert('Successfully deleted')</script>";
-    header("Refresh: 0 , url = ../Admin_Dashboard_Panel/all-scholarships.php");
-    exit();
+    echo "<script>alert('Successfully deleted');
+    window.location.href='../Admin_Dashboard_Panel/all-scholarships.php';</script>";
 } else {
-    echo "<script>alert('Failed to delete')</script>";
-    header("Refresh: 0 , url = ../Admin_Dashboard_Panel/all-scholarships.php");
-    exit();
+    echo "<script>alert('Failed to delete');
+    window.location.href='../Admin_Dashboard_Panel/all-scholarships.php';</script>";
 }
 // Close connection
 $link->close();
-?>

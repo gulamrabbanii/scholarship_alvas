@@ -125,10 +125,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Attempt to execute the prepared statement
             if ($stmt->execute()) {
                 // Redirect to login page
-                echo "<script>alert('Your have been successfully registered.');</script>";
-                header("Refresh:0 , url = index.php");
+                echo "<script>alert('Your have been successfully registered.');
+                window.location.href='index.php';</script>";
             } else {
-                echo "Oops! Something went wrong. Please try again later.";
+                echo "<script>alert('Oops! Something went wrong. Please try again later.');
+                window.location.href='stud-register.php';</script>";
             }
 
             // Close statement

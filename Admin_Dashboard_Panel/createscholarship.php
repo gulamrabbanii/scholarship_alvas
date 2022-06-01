@@ -65,9 +65,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $stmt->store_result();
 
                 if ($stmt->num_rows == 1) {
-                    echo "<script>alert('This scholarship already exists.')</script>";
-                    header("Refresh:0 , url =  createscholarship.php");
-                    exit();
+                    echo "<script>alert('This scholarship already exists.');
+                    window.location.href='createscholarship.php';</script>";
                 } else {
                     $sch_name = $sch_name;
                 }
@@ -99,7 +98,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $elig_req_sql = "INSERT INTO elig_req (sch_name, minority, sc_st, girls, community, military, pwd, athletic, other_sch) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-        $doc_req_sql = "INSERT INTO doc_req (sch_name, govt_id, domicile, income, pwd_cert, bonafide, caste, parent_aadhar, bank_passbook, college_fee, sslc_puc, sem, diploma, self_dec, other_cert) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $doc_req_sql = "INSERT INTO doc_req (sch_name, govt_id, domicile, income, pwd_cert, bonafide, caste, parent_aadhar, bank_passbook, college_fee, sslc_puc, sem, diploma, self_dec, photo, other_cert) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         if ($stmt = $link->prepare($scholarship_details_sql)) {
             // Bind variables to the prepared statement as parameters
@@ -143,7 +142,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if ($stmt = $link->prepare($doc_req_sql)) {
             // Bind variables to the prepared statement as parameters
-            $stmt->bind_param("sssssssssssssss", $param_sch_name, $param_govt_id, $param_domicile, $param_income, $param_pwd_cert, $param_bonafide, $param_caste, $param_parent_aadhar, $param_bank_passbook, $param_college_fee, $param_sslc_puc, $param_sem, $param_diploma, $param_self_dec, $param_other_cert);
+            $stmt->bind_param("ssssssssssssssss", $param_sch_name, $param_govt_id, $param_domicile, $param_income, $param_pwd_cert, $param_bonafide, $param_caste, $param_parent_aadhar, $param_bank_passbook, $param_college_fee, $param_sslc_puc, $param_sem, $param_diploma, $param_self_dec, $param_photo, $param_other_cert);
 
             // Set parameters
             $param_sch_name = $sch_name;
@@ -160,12 +159,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $param_sem = $sem_marks;
             $param_diploma = $diploma_cert;
             $param_self_dec = $self_dec;
+            $param_photo = $photography;
             $param_other_cert = $doc_name;
 
             // Attempt to execute the prepared statement
             if ($stmt->execute()) {
-                echo "<script>alert('Scholarship has been successfully added.')</script>";
-                header("Refresh:0 , url =  all-scholarships.php");
+                echo "<script>alert('Scholarship has been successfully added.');
+                window.location.href='all-scholarships.php'</script>";
             }
             // Close statement
             $stmt->close();

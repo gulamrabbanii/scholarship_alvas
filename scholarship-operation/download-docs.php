@@ -1,4 +1,10 @@
 <?php
+$pattern = "/4(al)[0-9]{2}[A-Za-z]{2}[0-9]{3}/i";
+if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true || preg_match($pattern, $_SESSION["username"])) {
+    header("location: ../index.php");
+    exit;
+}
+error_reporting(E_ALL & ~E_WARNING  & ~E_NOTICE & ~E_STRICT & ~E_DEPRECATED);
 require_once("../db/config.php");
 
 if (isset($_GET['FileNo'])) {
@@ -16,125 +22,169 @@ if (isset($_GET['FileNo'])) {
         $acronym .= $w[0];
     }
 
-
-    // header("Content-length: $size1");
-    // header("Content-type: $type1");
-    // header("Content-Disposition: attachment; filename=$file1_name");
-    // ob_clean();
-    // flush();
-
-
-
-
-    // header("Content-length: $size2");
-    // header("Content-type: $type2");
-    // header("Content-Disposition: attachment; filename=$file2_name");
-    // ob_clean();
-    // flush();
-
-    // header("Content-length: $size3");
-    // header("Content-type: $type3");
-    // header("Content-Disposition: attachment; filename=$file3_name");
-    // ob_clean();
-    // flush();
-
-    // header("Content-length: $size4");
-    // header("Content-type: $type4");
-    // header("Content-Disposition: attachment; filename=$file4_name");
-    // ob_clean();
-    // flush();
-
-    // header("Content-length: $size5");
-    // header("Content-type: $type5");
-    // header("Content-Disposition: attachment; filename=$file5_name");
-    // ob_clean();
-    // flush();
-
-    // header("Content-length: $size6");
-    // header("Content-type: $type6");
-    // header("Content-Disposition: attachment; filename=$file6_name");
-    // ob_clean();
-    // flush();
-
-    // header("Content-length: $size7");
-    // header("Content-type: $type7");
-    // header("Content-Disposition: attachment; filename=$file7_name");
-    // ob_clean();
-    // flush();
-
-    // header("Content-length: $size8");
-    // header("Content-type: $type8");
-    // header("Content-Disposition: attachment; filename=$file8_name");
-    // ob_clean();
-    // flush();
-
-    // header("Content-length: $size9");
-    // header("Content-type: $type9");
-    // header("Content-Disposition: attachment; filename=$file9_name");
-    // ob_clean();
-    // flush();
-
-    // header("Content-length: $size10");
-    // header("Content-type: $type10");
-    // header("Content-Disposition: attachment; filename=$file10_name");
-    // ob_clean();
-    // flush();
-
-    // header("Content-length: $size11");
-    // header("Content-type: $type11");
-    // header("Content-Disposition: attachment; filename=$file11_name");
-    // ob_clean();
-    // flush();
-
-    // header("Content-length: $size12");
-    // header("Content-type: $type12");
-    // header("Content-Disposition: attachment; filename=$file12_name");
-    // ob_clean();
-    // flush();
-
-
-    // header("Content-length: $size13");
-    // header("Content-type: $type13");
-    // header("Content-Disposition: attachment; filename=$file13_name");
-    // ob_clean();
-    // flush();
-
-
-    // header("Content-length: $size14");
-    // header("Content-type: $type14");
-    // header("Content-Disposition: attachment; filename=$file14_name");
-    // ob_clean();
-    // flush();
-
-
-    $files = array();
-
-    if ($file1_name)
-        array_push($files, $file1_name);
-
-    if ($file14_name)
-        array_push($files, $file14_name);
-
     $zipname = $usn . "_" . $acronym . '.zip';
     $zip = new ZipArchive;
-    $zip->open($zipname, ZipArchive::CREATE);
-    foreach ($files as $file) {
-        $zip->addFile($file);
-    }
-    $zip->close();
 
-    header('Content-Description: File Transfer');
-    header('Content-Type: application/zip');
-    header('Content-Disposition: attachment; filename=' . basename($zipname));
-    header('Content-Transfer-Encoding: binary');
-    header('Expires: 0');
-    header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
-    header('Pragma: public');
-    header('Content-Length: ' . filesize($zipname));
-    ob_clean();
-    flush();
-    readfile($zipname);
-    exit;
+
+    if ($file1_name) {
+        // file_put_contents($file1_name, $content1);
+        // if ($zip->open($zipname, ZipArchive::CREATE) === TRUE) {
+        $zip->open($zipname, ZipArchive::CREATE);
+
+        // $zip->addFile($file1_name);
+        $zip->addFromString($file1_name, $content1);
+        // }
+    }
+
+    if ($file2_name) {
+        // file_put_contents($file2_name, $content2);
+        // if ($zip->open($zipname, ZipArchive::CREATE) === TRUE) {
+        $zip->open($zipname, ZipArchive::CREATE);
+
+        $zip->addFromString($file2_name, $content2);
+        // }
+    }
+
+    if ($file3_name) {
+        // file_put_contents($file3_name, $content3);
+        // if ($zip->open($zipname, ZipArchive::CREATE) === TRUE) {
+        $zip->open($zipname, ZipArchive::CREATE);
+
+        $zip->addFromString($file3_name, $content3);
+        // }
+    }
+
+    if ($file4_name) {
+        $zip->open($zipname, ZipArchive::CREATE);
+        // file_put_contents($file4_name, $content4);
+        // if ($zip->open($zipname, ZipArchive::CREATE) === TRUE) {
+        // $zip->addFile($file4_name);
+        $zip->addFromString($file4_name, $content4);
+        // }
+    }
+
+    if ($file5_name) {
+        // file_put_contents($file5_name, $content5);
+        $zip->open($zipname, ZipArchive::CREATE);
+
+        // if ($zip->open($zipname, ZipArchive::CREATE) === TRUE) {
+        // $zip->addFile($file5_name);
+        $zip->addFromString($file5_name, $content5);
+        // }
+    }
+
+    if ($file6_name) {
+        // file_put_contents($file6_name, $content6);
+        // if ($zip->open($zipname, ZipArchive::CREATE) === TRUE) {
+        $zip->open($zipname, ZipArchive::CREATE);
+        // $zip->addFile($file6_name);
+        $zip->addFromString($file6_name, $content6);
+        // }
+    }
+
+    if ($file7_name) {
+        // file_put_contents($file7_name, $content7);
+        // if ($zip->open($zipname, ZipArchive::CREATE) === TRUE) {
+        $zip->open($zipname, ZipArchive::CREATE);
+
+        // $zip->addFile($file7_name);
+        $zip->addFromString($file7_name, $content7);
+        // }
+    }
+
+    if ($file8_name) {
+        // file_put_contents($file8_name, $content8);
+        $zip->open($zipname, ZipArchive::CREATE);
+
+        // if ($zip->open($zipname, ZipArchive::CREATE) === TRUE) {
+        // $zip->addFile($file8_name);
+        $zip->addFromString($file8_name, $content8);
+        // }
+    }
+
+    if ($file9_name) {
+        $zip->open($zipname, ZipArchive::CREATE);
+        // file_put_contents($file9_name, $content9);
+        // if ($zip->open($zipname, ZipArchive::CREATE) === TRUE) {
+        // $zip->addFile($file9_name);
+        $zip->addFromString($file9_name, $content9);
+        // }
+    }
+
+    if ($file10_name) {
+        // file_put_contents($file10_name, $content10);
+        $zip->open($zipname, ZipArchive::CREATE);
+
+        // if ($zip->open($zipname, ZipArchive::CREATE) === TRUE) {
+        // $zip->addFile($file10_name);
+        $zip->addFromString($file10_name, $content10);
+        // }
+    }
+
+    if ($file11_name) {
+        $zip->open($zipname, ZipArchive::CREATE);
+        // file_put_contents($file11_name, $content11);
+        // if ($zip->open($zipname, ZipArchive::CREATE) === TRUE) {
+        // $zip->addFile($file11_name);
+        $zip->addFromString($file11_name, $content11);
+        // }
+    }
+
+    if ($file12_name) {
+        // file_put_contents($file12_name, $content12);
+        // if ($zip->open($zipname, ZipArchive::CREATE) === TRUE) {
+        $zip->open($zipname, ZipArchive::CREATE);
+        // $zip->addFile($file12_name);
+        $zip->addFromString($file12_name, $content12);
+        // }
+    }
+
+    if ($file13_name) {
+        // file_put_contents($file13_name, $content13);
+        $zip->open($zipname, ZipArchive::CREATE);
+        // $zip->open($zipname, ZipArchive::CREATE) === TRUE);
+        // $zip->addFile($file13_name);
+        $zip->addFromString($file13_name, $content13);
+    }
+
+    if ($file14_name) {
+        // file_put_contents($file14_name, $content14);
+        $zip->open($zipname, ZipArchive::CREATE);
+        // $zip->addFile($file14_name);
+        $zip->addFromString($file14_name, $content14);
+    }
+
+
+    //open zip file and put all files in zip
+    // foreach ($files as $f) {
+
+    //         // $new_filename = substr($f, strrpos($f, '/'));
+    //         // echo $new_filename;
+    //         // $zip->addFile($f, $new_filename);
+
+    // }
+
+    //check zip file create or not and download it
+    if (file_exists($zipname)) {
+        header('Content-Description: File Transfer');
+        header('Content-Type: application/zip');
+        header('Content-Disposition: attachment; filename=' . basename($zipname));
+        header('Content-Transfer-Encoding: binary');
+        header('Expires: 0');
+        header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
+        header('Pragma: public');
+        header('Content-Length: ' . filesize($zipname));
+        ob_clean();
+        flush();
+        // sleep one second
+        sleep(1);
+        readfile($zipname);
+        fclose($zipname);
+    } else {
+        die('Error: Could not download the file. Please try again.');
+    }
+
+    mysqli_free_result($result);
 
     mysqli_close($link);
 }
