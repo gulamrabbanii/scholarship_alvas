@@ -30,7 +30,7 @@ $sql = "SELECT * FROM scholarship_details ORDER BY sch_name ASC";
                         </h2>
                         <div id="flush-collapse<?php echo $i; ?>" class="accordion-collapse collapse" aria-labelledby="flush-heading<?php echo $i; ?>" data-bs-parent="#accordionFlushExample">
                             <div class="accordion-body">
-                                <?php $sql1 = "SELECT * FROM `upload_sch_docs` t1 INNER JOIN users t2 ON t2.username = t1.usn WHERE sch_name = '$sch_name' AND is_verified = 'pending' ORDER BY t1.created_at DESC;";
+                                <?php $sql1 = "SELECT * FROM `upload_sch_docs` t1 INNER JOIN users t2 ON t2.username = t1.usn WHERE sch_name = '$sch_name' ORDER BY t1.created_at DESC;";
                                 $query = $link->query($sql1);
                                 if (mysqli_num_rows($query) > 0) {
                                 ?>
@@ -44,7 +44,8 @@ $sql = "SELECT * FROM scholarship_details ORDER BY sch_name ASC";
                                                 <th scope="col">Applied Scholarship</th>
                                                 <th scope="col">Academic Year</th>
                                                 <th scope="col">Download</th>
-                                                <th scope="col">College Verification</th>
+                                                <th scope="col">Action</th>
+                                                <th scope="col">College Verified</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -60,6 +61,7 @@ $sql = "SELECT * FROM scholarship_details ORDER BY sch_name ASC";
                                                     <td><?php echo $row1['sch_applied_year'] ?></td>
                                                     <td><a href="../scholarship-operation/download-docs.php?FileNo=<?php echo $row1['uid']; ?>" class="btn btn-primary">Download</a></td>
                                                     <td><a href="../scholarship-operation/verify.php?FileId=<?php echo $row1['uid']; ?>" class="btn btn-primary">Verify</a></td>
+                                                    <td><?php echo $row1['is_verified'] ?></td>
                                                 </tr>
                                         <?php
                                                 $idpro++;
