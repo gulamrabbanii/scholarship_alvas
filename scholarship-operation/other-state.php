@@ -1,9 +1,5 @@
 <?php
-$pattern = "/4(al)[0-9]{2}[A-Za-z]{2}[0-9]{3}/i";
-if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true || !preg_match($pattern, $_SESSION["username"])) {
-    header("location: ../index.php");
-    exit;
-}
+
 require_once("../db/config.php");
 
 $sql = $sql = "SELECT * FROM scholarship_details t1 INNER JOIN elig_req t2 ON t2.sch_name = t1.sch_name WHERE (status = 'active' OR status IS NULL) AND (sch_type = 'Other State') ORDER BY sch_deadline";

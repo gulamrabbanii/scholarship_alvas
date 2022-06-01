@@ -30,7 +30,7 @@ $sql = "SELECT * FROM scholarship_details ORDER BY sch_name ASC";
                         </h2>
                         <div id="flush-collapse<?php echo $i; ?>" class="accordion-collapse collapse" aria-labelledby="flush-heading<?php echo $i; ?>" data-bs-parent="#accordionFlushExample">
                             <div class="accordion-body">
-                                <?php $sql1 = "SELECT * FROM `upload_sch_docs` t1 INNER JOIN users t2 ON t2.username = t1.usn WHERE sch_name = '$sch_name' ORDER BY t1.created_at DESC;";
+                                <?php $sql1 = "SELECT * FROM `upload_sch_docs` t1 INNER JOIN users t2 ON t2.username = t1.usn WHERE sch_name = '$sch_name' AND is_verified = 'pending' ORDER BY t1.created_at DESC;";
                                 $query = $link->query($sql1);
                                 if (mysqli_num_rows($query) > 0) {
                                 ?>
@@ -59,7 +59,7 @@ $sql = "SELECT * FROM scholarship_details ORDER BY sch_name ASC";
                                                     <td><?php echo $row1['sch_name']; ?></td>
                                                     <td><?php echo $row1['sch_applied_year'] ?></td>
                                                     <td><a href="../scholarship-operation/download-docs.php?FileNo=<?php echo $row1['uid']; ?>" class="btn btn-primary">Download</a></td>
-                                                    <td><a href="../scholarship-operation/verify.php" class="btn btn-primary">Verify</a></td>
+                                                    <td><a href="../scholarship-operation/verify.php?FileId=<?php echo $row1['uid']; ?>" class="btn btn-primary">Verify</a></td>
                                                 </tr>
                                         <?php
                                                 $idpro++;
@@ -69,7 +69,6 @@ $sql = "SELECT * FROM scholarship_details ORDER BY sch_name ASC";
                                         } ?>
                                         </tbody>
                                     </table>
-
                             </div>
                         </div>
                     </div>
