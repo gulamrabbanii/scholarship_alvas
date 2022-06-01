@@ -36,7 +36,7 @@
         $link->query($q);
 
         $subject = "Scholarship Verified";
-        $message = "Your scholarship " . $sch_name . " for academic year " . $sch_applied_year . " has been successfully verified at college level.";
+        $message = "Your scholarship application <b>" . $sch_name . "</b> for academic year <b>" . $sch_applied_year . "</b> has been successfully verified at college level.";
 
         // Prepare an insert statement
         $sql1 = "SELECT username FROM users WHERE username = '$usn';";
@@ -54,6 +54,6 @@
                 $param_msg_body = $message;
                 $stmt->execute();
             }
-            echo "<script>alert('Verified');window.location.href='../Admin_Dashboard_Panel/verify-docs.php'</script>";
+            echo "<script>window.location.href='../Admin_Dashboard_Panel/verify-docs.php'</script>";
         }
     }
