@@ -3,6 +3,8 @@
 require_once "../db/config.php";
 include("admin-layout.php");
 error_reporting(E_ALL & ~E_WARNING  & ~E_NOTICE & ~E_STRICT & ~E_DEPRECATED);
+$q = "SELECT * FROM scholarship_details;";
+$r = $link->query($q);
 
 if (isset($_GET['id'])) {
     $id = htmlspecialchars(strip_tags(trim($_GET['id'])));
@@ -25,7 +27,12 @@ if (isset($_GET['id'])) {
             <input type="text" name="sch-id" value="<?php echo $_GET['id']; ?>" id="" hidden>
             <div class="col-md-6">
                 <label for="scholarship-name" class="form-label fw-bolder">Scholarship Name</label>
-                <input type="text" name="sch-name" class="form-control" value="<?php echo $row['sch_name']; ?>" id="scholarship-name" placeholder="SCHOLARSHIP NAME" required />
+                <input type="text" name="sch-name" class="form-control" value="<?php echo $row['sch_name']; ?>" id="scholarship-name" list="scholarships" placeholder="SCHOLARSHIP NAME" required />
+                <datalist id="scholarships">
+                    <?php foreach ($r as $rr) { ?>
+                        <option value="<?php echo $rr['sch_name']; ?>">
+                        <?php } ?>
+                </datalist>
             </div>
             <div class="col-md-6">
                 <label for="scholarship-provider" class="form-label fw-bolder">Scholarship Provider</label>
