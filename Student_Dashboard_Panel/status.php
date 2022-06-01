@@ -3,6 +3,9 @@ include("sidebar-layout.php");
 error_reporting(E_ALL & ~E_WARNING  & ~E_NOTICE & ~E_STRICT & ~E_DEPRECATED);
 
 require_once("../db/config.php");
+$q = "SELECT * FROM scholarship_details;";
+$r = $link->query($q);
+
 $usn = $_SESSION['username'];
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST['sch-name'])) {
@@ -164,7 +167,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST['sch-name'])) {
 
                         <div class="form-step">
                             <h6>What's the scholarship name?</h6>
-                            <p><input type="text" placeholder="eg. National Scholarship Portal" id="myInput3" name="sch-name"></p>
+                            <p><input type="text" placeholder="eg. National Scholarship Portal" id="myInput3" name="sch-name" list="scholarships"></p>
+                            <datalist id="scholarships">
+                                <?php foreach ($r as $rr) { ?>
+                                    <option value="<?php echo $rr['sch_name']; ?>">
+                                    <?php } ?>
+                            </datalist>
                             <div class="d-flex" style="float:right;">
                                 <button type="button" class="mx-2 prevBtn"><i class="fa fa-angle-double-left"></i></button>
                                 <button type="button" class="nextBtn" id="myBtn3" onclick="goAhead3()"><i class="fa fa-angle-double-right"></i></button>
@@ -173,7 +181,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST['sch-name'])) {
 
                         <div class="form-step">
                             <h6>Name the scholarship provider, please.</h6>
-                            <p><input type="text" placeholder="eg. Central Government" id="myInput4" name="sch-provider"></p>
+                            <p><input type="text" placeholder="eg. Central Government" id="myInput4" name="sch-provider" list="provider"></p>
+                            <datalist id="provider">
+                                <?php foreach ($r as $rr) { ?>
+                                    <option value="<?php echo $rr['sch_provider']; ?>">
+                                    <?php } ?>
+                            </datalist>
                             <div class="d-flex" style="float:right;">
                                 <button type="button" class="mx-2 prevBtn"><i class="fa fa-angle-double-left"></i></button>
                                 <button type="button" class="nextBtn" id="myBtn4" onclick="goAhead4()"><i class="fa fa-angle-double-right"></i></button>

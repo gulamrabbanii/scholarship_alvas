@@ -3,6 +3,8 @@ include("sidebar-layout.php");
 error_reporting(E_ALL & ~E_WARNING  & ~E_NOTICE & ~E_STRICT & ~E_DEPRECATED);
 
 require_once("../db/config.php");
+$q = "SELECT * FROM scholarship_details;";
+$r = $link->query($q);
 $usn = $_SESSION['username'];
 
 $err1 = $err2 = $err3 = $err4 = $err5 = $err6 = $err7 = $err8 = $err9 = $err10 = $errr11 = $err12 = $err13 = $err14 = "";
@@ -439,7 +441,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST['sch-name'])) {
                         <div class="row m-3">
                               <div class="col-md-12">
                                     <label for="sch_name" class="form-label">Scholarship Name</label>
-                                    <input type="text" name="sch-name" class="form-control username" id="sch_name" placeholder="eg. National Scholarship Portal" required />
+                                    <input type="text" name="sch-name" class="form-control username" id="sch_name" placeholder="eg. National Scholarship Portal" list="scholarships" required />
+                                    <datalist id="scholarships">
+                                          <?php foreach ($r as $rr) { ?>
+                                                <option value="<?php echo $rr['sch_name']; ?>">
+                                                <?php } ?>
+                                    </datalist>
                               </div>
                               <div class="col-md-12 mt-2">
                                     <label for="sch-year" class="form-label">Scholarship Academic Year</label>
