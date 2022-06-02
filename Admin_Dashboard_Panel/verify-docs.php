@@ -4,36 +4,6 @@ require_once("../db/config.php");
 $sql = "SELECT * FROM scholarship_details ORDER BY sch_name ASC";
 ?>
 <title>DOCs VERIFICATION</title>
-<style>
-    .card {
-        display: flex;
-        flex-direction: column;
-        margin-top: 50px;
-        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-        padding-top: 15px;
-        border-radius: 0 0 0 0;
-        padding: 0 10px 0 10px;
-    }
-
-    .modal-content {
-        border-radius: 10px 10px 5px 5px;
-
-    }
-
-    .card-img {
-        align-items: center;
-        border-radius: 10px 10px 5px 5px;
-        margin-top: 0px;
-    }
-
-    .card img {
-        width: 80px;
-        height: 80px;
-        border-radius: 50%;
-        background-image: linear-gradient(60deg, #2AAA8A, #4169E1);
-        padding: 2px;
-    }
-</style>
 
 <div class="dash-content">
     <div class="overview">
@@ -84,8 +54,7 @@ $sql = "SELECT * FROM scholarship_details ORDER BY sch_name ASC";
                                             while ($row1 = mysqli_fetch_array($query)) { ?>
                                                 <tr>
                                                     <th scope="row"><?php echo $idpro ?></th>
-                                                    <td><a class="btn text-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"><?php echo strtoupper($row1['usn']);
-                                                                                                                                            $usn = $row1['usn']; ?></a></td>
+                                                    <td><?php echo strtoupper($row1['usn']); ?></td>
                                                     <td><?php echo ucwords($row1['first_name']); ?> <?php echo $row1['last_name']; ?></td>
                                                     <td><?php echo $row1['semester'] ?></td>
                                                     <td><?php echo $row1['section'] ?></td>
@@ -95,7 +64,6 @@ $sql = "SELECT * FROM scholarship_details ORDER BY sch_name ASC";
                                                     <td><?php echo $row1['is_verified'] ?></td>
                                                 </tr>
                                         <?php
-                                                include('../scholarship-operation/stud-profile.php');
                                                 $idpro++;
                                             }
                                         } else {
@@ -109,7 +77,6 @@ $sql = "SELECT * FROM scholarship_details ORDER BY sch_name ASC";
                 <?php $i++;
             } ?>
                 </div>
-
         <?php
         }
         $link->close();
