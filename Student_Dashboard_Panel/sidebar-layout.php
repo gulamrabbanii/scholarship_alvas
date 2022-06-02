@@ -79,7 +79,12 @@ foreach ($result as $row) {
             // echo $dateTime->format("H:i:s A");
             echo '<button type="button" onClick="update(' . $row1["id"] . ')" class="btn-close bg-white" data-bs-dismiss="toast" aria-label="Close"></button>';
             echo '</div>';
-            echo '<div class="toast-body" id="body">' . $row1['msg_body'];
+            echo '<div class="toast-body" style="text-align: justify;
+    word-wrap: break-word;
+  overflow-wrap: break-word;
+-webkit-hyphens: auto;
+   -moz-hyphens: auto;
+        hyphens: auto;" id="body">' . $row1['msg_body'];
             echo '</div>';
           }
           ?>
