@@ -55,27 +55,6 @@ foreach ($result as $row) {
 
         <!-- <li><a href="feedback.php"><i class="fas fa-comments"></i>Feedback</a></li> -->
       </ul>
-      <div class="position-fixed top-0 end-0 p-3" style="z-index: 11">
-        <div class="toast-container">
-          <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-            <?php
-            while ($row1 = mysqli_fetch_assoc($result1)) {
-              echo '<div class="toast-header" style="background: green; opacity: 0.8;">';
-              // <!-- <img src="..." class="rounded me-2" alt="..."> -->
-              echo '<strong class="me-auto text-white" id="sub">' . $row1['subject'] . '</strong>';
-              // $dateTime = new DateTime('now', new DateTimeZone('Asia/Kolkata'));
-              // // <!-- <small>11 mins ago</small> -->
-              // echo $dateTime->format("H:i:s A");
-              echo '<button type="button" onClick="update(' . $row1["id"] . ')" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>';
-              echo '</div>';
-              echo '<div class="toast-body" id="body">' . $row1['msg_body'];
-              echo '</div>';
-            }
-            ?>
-          </div>
-        </div>
-      </div>
-
       <div class="media_icons">
         <a href="../logout.php"><i class="fa-solid fa-power-off"></i></a>
       </div>
@@ -86,6 +65,26 @@ foreach ($result as $row) {
           <a href="#"><i class="fa-solid fa-power-off"></i></a>
         </div> -->
 
+    </div>
+    <div class="toast-container">
+      <div class="position-fixed top-0 end-0 p-3" style="z-index: 999;">
+        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+          <?php
+          while ($row1 = mysqli_fetch_assoc($result1)) {
+            echo '<div class="toast-header" style="background: green; opacity: 1;">';
+            // <!-- <img src="..." class="rounded me-2" alt="..."> -->
+            echo '<strong class="me-auto text-white" id="sub">' . $row1['subject'] . '</strong>';
+            // $dateTime = new DateTime('now', new DateTimeZone('Asia/Kolkata'));
+            // // <!-- <small>11 mins ago</small> -->
+            // echo $dateTime->format("H:i:s A");
+            echo '<button type="button" onClick="update(' . $row1["id"] . ')" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>';
+            echo '</div>';
+            echo '<div class="toast-body" id="body">' . $row1['msg_body'];
+            echo '</div>';
+          }
+          ?>
+        </div>
+      </div>
     </div>
   <?php
 }
