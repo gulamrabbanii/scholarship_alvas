@@ -23,7 +23,7 @@ $sql = "SELECT * FROM scholarship_details ORDER BY sch_name ASC";
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="flush-heading<?php echo $i; ?>">
                             <button class="accordion-button collapsed text-dark fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse<?php echo $i; ?>" aria-expanded="false" aria-controls="flush-collapse<?php echo $i; ?>">
-                                <?php echo $row['sch_name'];
+                                <?php echo strtoupper($row['sch_name']);
                                 $sch_name = $row['sch_name']; ?>
 
                             </button>
