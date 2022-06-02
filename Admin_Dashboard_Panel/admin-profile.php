@@ -44,7 +44,7 @@ $result4 = $link->query($sql4);
     </div>
 
     <div class="activity">
-        <div class="title">
+        <div class="title mt-5">
             <i class="uil uil-clock-three"></i>
             <span class="text">Recent Activity</span>
         </div>
