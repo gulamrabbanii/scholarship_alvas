@@ -40,9 +40,11 @@ $sql = "SELECT * FROM sch_receipt_proof ORDER BY sch_name ASC";
                                                 <th scope="col">#</th>
                                                 <th scope="col">USN</th>
                                                 <th scope="col">Name</th>
-                                                <th scope="col">Year</th>
+                                                <th scope="col">Sem</th>
+                                                <th scope="col">Section</th>
+
                                                 <th scope="col">Branch</th>
-                                                <th scope="col">Applied Scholarship</th>
+                                                <!-- <th scope="col">Applied Scholarship</th> -->
                                                 <th scope="col">Scholarship Provider</th>
                                                 <th scope="col">Academic Year</th>
                                                 <th scope="col">Download</th>
@@ -57,10 +59,9 @@ $sql = "SELECT * FROM sch_receipt_proof ORDER BY sch_name ASC";
                                                     <th scope="row"><?php echo $idpro ?></th>
                                                     <td><?php echo $row1['usn'] ?></td>
                                                     <td><?php echo ucwords($row1['first_name']); ?> <?php echo $row1['last_name']; ?></td>
-                                                    <td><?php echo $row1['year'] ?></td>
+                                                    <td><?php echo $row1['semester'] ?></td>
+                                                    <td><?php echo $row1['section'] ?></td>
                                                     <td><?php echo $row1['dept'] ?></td>
-                                                    <td><?php echo $row1['sch_name']; ?></td>
-
                                                     <td><?php echo $row1['sch_provider']; ?></td>
                                                     <td><?php echo $row1['academic_year'] ?></td>
                                                     <td><a href="../scholarship-operation/download-result.php?FileNo=<?php echo $row1['uid']; ?>" class="btn btn-primary">Download</a></td>

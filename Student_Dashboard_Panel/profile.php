@@ -20,6 +20,7 @@ foreach ($result as $row) {
     .card-img {
       align-items: center;
       border-radius: 15px 15px 0 0;
+      margin-top: 20px;
     }
 
     .card-details {
@@ -31,12 +32,12 @@ foreach ($result as $row) {
     }
 
     .card img {
-      width: 90px;
-      height: 90px;
+      width: 100px;
+      height: 100px;
       border-radius: 50%;
       background-image: linear-gradient(60deg, #2AAA8A, #4169E1);
       padding: 2px;
-      margin-top: -45px;
+      margin-top: -50px;
     }
 
     .card h2 {
