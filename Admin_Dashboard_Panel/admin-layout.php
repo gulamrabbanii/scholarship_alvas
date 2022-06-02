@@ -104,8 +104,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true || preg_matc
                 <!-- <input type="" placeholder="Search here..."> -->
             </div>
 
-            <img src="https://www.nautec.com/wp-content/uploads/2018/04/placeholder-person.png" style="width: 50px; height: 50px;background-image: linear-gradient(60deg, #2AAA8A, #4169E1);
-    padding: 1px;" alt="">
+            <img>
         </div>
 
         <!-- Js -->
