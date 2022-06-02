@@ -77,7 +77,7 @@ foreach ($result as $row) {
             // $dateTime = new DateTime('now', new DateTimeZone('Asia/Kolkata'));
             // // <!-- <small>11 mins ago</small> -->
             // echo $dateTime->format("H:i:s A");
-            echo '<button type="button" onClick="update(' . $row1["id"] . ')" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>';
+            echo '<button type="button" onClick="update(' . $row1["id"] . ')" class="btn-close bg-white" data-bs-dismiss="toast" aria-label="Close"></button>';
             echo '</div>';
             echo '<div class="toast-body" id="body">' . $row1['msg_body'];
             echo '</div>';
