@@ -72,7 +72,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         }
                         $password = implode($pass);
                         $subject = "Your New Password.";
-                        $message = "Please use this password to login <b>" . $password . "</b>";
+                        $message = "Please use this password: <b>" . $password . "</b> to login.";
 
                         //Server settings
                         //$mail->SMTPDebug = SMTP::DEBUG_SERVER;                  //Enable verbose debug output
@@ -80,7 +80,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
                         $mail->SMTPAuth   = true;                                 //Enable SMTP authentication
                         $mail->Username   = 'smartboygr07@gmail.com';             //SMTP username
-                        $mail->Password   = 'rabbani@RAZA#1610';                   //SMTP password
+                        $mail->Password   = 'RABBANI@raza#1610';                   //SMTP password
                         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;          //Enable implicit TLS encryption
                         $mail->Port       = 465;                                  //TCP port to connect to; use 587 if you have set `SMTPSecure =                     PHPMailer::ENCRYPTION_STARTTLS`
 
