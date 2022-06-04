@@ -72,7 +72,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         }
                         $password = implode($pass);
                         $subject = "Your New Password.";
-                        $message = "Please use this password to login " . $password;
+                        $message = "Please use this password to login <b>" . $password . "</b>";
 
                         //Server settings
                         //$mail->SMTPDebug = SMTP::DEBUG_SERVER;                  //Enable verbose debug output
