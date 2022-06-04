@@ -64,7 +64,9 @@ $result4 = $link->query($sql4);
                 <?php
                 while ($row = mysqli_fetch_array($query)) { ?>
                     <tr>
-                        <td><label><?php echo $row['username']; ?></label></td>
+                        <td><label><a class="btn text-primary" href="stud-profile.php?usn=<?php echo $row['username']; ?>"><?php echo strtoupper($row['username']);
+                                                                                                                            ?></a></label></td>
+
                         <td><label><?php echo $row['first_name'];
                                     echo " ";
                                     echo $row['last_name']; ?></label></td>

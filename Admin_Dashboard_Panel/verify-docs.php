@@ -5,6 +5,7 @@ $sql = "SELECT * FROM scholarship_details ORDER BY sch_name ASC";
 ?>
 <title>DOCs VERIFICATION</title>
 
+
 <div class="dash-content">
     <div class="overview">
         <div class="title">
@@ -51,10 +52,13 @@ $sql = "SELECT * FROM scholarship_details ORDER BY sch_name ASC";
                                         <tbody>
                                             <?php
                                             $idpro = 1;
-                                            while ($row1 = mysqli_fetch_array($query)) { ?>
+                                            while ($row1 = mysqli_fetch_array($query)) {
+                                                $usn = $row1['usn'];
+                                                $uniq = $usn . $idpro ?>
                                                 <tr>
                                                     <th scope="row"><?php echo $idpro ?></th>
-                                                    <td><?php echo strtoupper($row1['usn']); ?></td>
+                                                    <td><a class="btn text-primary" href="stud-profile.php?usn=<?php echo $row1['usn']; ?>"><?php echo strtoupper($row1['usn']);
+                                                                                                                                            ?></a></td>
                                                     <td><?php echo ucwords($row1['first_name']); ?> <?php echo $row1['last_name']; ?></td>
                                                     <td><?php echo $row1['semester'] ?></td>
                                                     <td><?php echo $row1['section'] ?></td>

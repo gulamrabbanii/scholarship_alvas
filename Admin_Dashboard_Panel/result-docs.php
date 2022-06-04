@@ -57,7 +57,8 @@ $sql = "SELECT * FROM sch_receipt_proof ORDER BY sch_name ASC";
                                             while ($row1 = mysqli_fetch_array($query)) { ?>
                                                 <tr>
                                                     <th scope="row"><?php echo $idpro ?></th>
-                                                    <td><?php echo $row1['usn'] ?></td>
+                                                    <td><a class="btn text-primary" href="stud-profile.php?usn=<?php echo $row1['usn']; ?>"><?php echo strtoupper($row1['usn']);
+                                                                                                                                            ?></a></td>
                                                     <td><?php echo ucwords($row1['first_name']); ?> <?php echo $row1['last_name']; ?></td>
                                                     <td><?php echo $row1['semester'] ?></td>
                                                     <td><?php echo $row1['section'] ?></td>

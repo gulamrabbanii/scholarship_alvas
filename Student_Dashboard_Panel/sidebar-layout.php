@@ -8,6 +8,15 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true || !preg_mat
 require_once("../db/config.php");
 $username = $_SESSION['username'];
 
+$img_path = 'https://www.nautec.com/wp-content/uploads/2018/04/placeholder-person.png';
+$p1 = 'SELECT * FROM display_pic where username="' . $_SESSION["username"] . '"';
+$res9 = $link->query($p1);
+// print_r($res9);
+if (mysqli_num_rows($res9) > 0) {
+  $res9 = mysqli_fetch_assoc($res9);
+  $img_path = $res9["dp"];
+}
+
 $sql1 = "SELECT id, subject, msg_body FROM notification WHERE usn = '$username' AND status = 'unseen';";
 $result1 = $link->query($sql1);
 $noti_count_sql = "SELECT COUNT(*) FROM notification WHERE usn = '$username' AND status = 'unseen';";
@@ -35,7 +44,7 @@ foreach ($result as $row) {
     <label class="button bars" for="check"><i class="fas fa-bars"></i></label>
     <div class="side_bar">
       <div class="title">
-        <div class="logo"><img src="https://www.nautec.com/wp-content/uploads/2018/04/placeholder-person.png" style="margin:5px; width: 80px; height: 80px; border-radius: 50%;background-image: linear-gradient(60deg, #2AAA8A, #4169E1);
+        <div class="logo"><img src="<?php echo $img_path ?>" style="margin:5px; width: 80px; height: 80px; border-radius: 50%;background-image: linear-gradient(60deg, #2AAA8A, #4169E1);
     padding: 1px;" alt="" srcset="">
         </div>
         <div class="p-2" style="position: relative; top: 20px;">
