@@ -1,6 +1,16 @@
 <?php
 include("sidebar-layout.php");
 require_once("../db/config.php");
+
+$img_path = 'https://www.nautec.com/wp-content/uploads/2018/04/placeholder-person.png';
+$p1 = 'SELECT * FROM display_pic where username="' . $_SESSION["username"] . '"';
+$res9 = $link->query($p1);
+// print_r($res9);
+if (mysqli_num_rows($res9) > 0) {
+  $res9 = mysqli_fetch_assoc($res9);
+  $img_path = $res9["dp"];
+}
+
 $username = $_SESSION['username'];
 $sql = "SELECT * FROM users WHERE username = '$username'";
 $result = $link->query($sql);
@@ -43,6 +53,39 @@ foreach ($result as $row) {
     .card h2 {
       margin: 10px 0;
     }
+
+    .card-img button {
+      display: none;
+    }
+
+    .profileUpload {
+      position: relative;
+      /* top: 200px; */
+      right: -82px;
+      top: -66px;
+      z-index: 1;
+    }
+
+    .profileDelete {
+      position: relative;
+      /* top: 200px; */
+      left: -15px;
+      top: -98px;
+      z-index: 1;
+    }
+
+    .profileDelete:hover {
+      display: block;
+    }
+
+    #img-wrapper:hover button {
+      display: block;
+      transition: display 250ms linear;
+    }
+
+    #imageUpload {
+      display: none;
+    }
   </style>
 
   <title>STUDENT | PROFILE</title>
@@ -52,7 +95,21 @@ foreach ($result as $row) {
 
       <!-- Profile Image -->
       <div class="card card-img">
-        <img src="https://www.nautec.com/wp-content/uploads/2018/04/placeholder-person.png" alt="">
+        <div id="img-wrapper">
+          <img id="profile_pich" src="<?php echo $img_path ?>" alt="">
+          <button id="profileImage" class="profileUpload btn btn-warning btn-sm" onclick="document.getElementById('imageUpload').click()" style="border-radius: 50%;">
+            <i class="fas fa-camera"></i>
+          </button>
+          <form action="profile_pic_delete.php" method="post">
+            <button id="profileDelete" class="profileDelete btn btn-danger btn-sm" style="border-radius: 50%;">
+              <i class="fas fa-trash"></i>
+            </button>
+          </form>
+        </div>
+        <form action="profile_pic_upload.php" method="post" style="display: none;" enctype="multipart/form-data">
+          <input id="imageUpload" onchange="" name="path" type="file" accept="image/png, image/gif, image/jpeg" />
+          <input type="submit" value="Submit" name="profile_pic" id="profile_pic_submit">
+        </form>
         <h2><?php echo ucwords($row['first_name']); ?> <?php echo $row['last_name']; ?></h2>
         <h6><?php echo strtoupper($row['username']); ?></h6>
         <h6><?php echo $row['email']; ?></h6>
@@ -123,6 +180,24 @@ foreach ($result as $row) {
       <!-- End -->
     </div>
   </section>
+  <script>
+    function fasterPreview(uploader) {
+      if (uploader.files && uploader.files[0]) {
+        $('#profile_pich').attr('src',
+          window.URL.createObjectURL(uploader.files[0]));
+        if ("space") {
+          document.getElementById("profile_pic_submit").click();
+          // $("#profile_pick_submit").click();
+          <?php unset($_SESSION['flag_pic']) ?>;
+        }
+
+      }
+    }
+
+    $("#imageUpload").change(function() {
+      fasterPreview(this);
+    });
+  </script>
 <?php
   // Close connection
   $link->close();
