@@ -83,9 +83,9 @@ include('sidebar-layout.php');
           <li class="nav-item">
             <a class="nav-link" data-bs-toggle="pill" href="#upcoming-scholarship">UPCOMING SCHOLARSHIP</a>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link" data-bs-toggle="pill" href="#always-open">ALWAYS OPEN</a>
-          </li>
+          </li> -->
         </ul>
 
         <!-- Tab panes -->
@@ -100,11 +100,11 @@ include('sidebar-layout.php');
             include("../scholarship-operation/upcoming-scholarship.php");
             ?>
           </div>
-          <div id="always-open" class="container tab-pane fade"><br>
+          <!-- <div id="always-open" class="container tab-pane fade"><br>
             <?php
-            include("../scholarship-operation/always-open.php");
+            // include("../scholarship-operation/always-open.php");
             ?>
-          </div>
+          </div> -->
         </div>
       </div>
 

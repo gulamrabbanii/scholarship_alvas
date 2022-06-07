@@ -120,7 +120,7 @@ foreach ($result as $row) {
       <div class="card mt-2">
         <div class="row mx-3">
           <p><i class="fw-bold" style="color: #4E4E91;">Basic Details</i></p>
-          <div class="col col-lg-4 col-12 mb-2">USN Number : <span><?php echo $row['username']; ?></span>
+          <div class="col col-lg-4 col-12 mb-2">USN Number : <span><?php echo strtoupper($row['username']); ?></span>
           </div>
           <div class="col col-lg-4 col-12 mb-2">Gender : <span><?php echo $row['gender']; ?></span>
           </div>

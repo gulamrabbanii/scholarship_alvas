@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 04, 2022 at 08:50 AM
+-- Generation Time: Jun 07, 2022 at 08:23 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.1
 
@@ -37,7 +37,10 @@ CREATE TABLE `display_pic` (
 --
 
 INSERT INTO `display_pic` (`username`, `dp`) VALUES
-('4al18cs099', '../profile_pic/4al18cs099.jpg');
+('4al18cs099', '../profile_pic/4al18cs099.jpg'),
+('4al18cs002', '../profile_pic/4al18cs002.jpeg'),
+('4al18cs023', '../profile_pic/4al18cs023.jpeg'),
+('4al18cs026', '../profile_pic/4al18cs026.jpeg');
 
 -- --------------------------------------------------------
 
@@ -239,10 +242,10 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `username`, `passwd`, `first_name`, `last_name`, `gender`, `caste`, `email`, `dept`, `year`, `semester`, `section`, `phone`, `dp`, `created_at`) VALUES
 (10, 'admin', '$2y$10$eKZbj4xwL.9HFS9/GZ0R9O2VegaK/mYVK9.6MaMzU/O78zckkY92a', 'Gulam', 'Rabbani', '', '', '', '', 0, 0, '', '2147483647', '', '2022-05-01 23:25:56'),
 (21, 'admin@admin.com', '$2y$10$ayemzdQzrYy4mYlX0q1z5OyTYkgIYosppwZJYg4P5mDlS24yCVTB6', 'Prerna', 'Pall', '', '', 'admin@admin.com', '', 0, 0, '', '2147483647', '', '2022-05-08 16:57:49'),
-(22, '4al18cs099', '$2y$10$D9/nqzE06VeYWibhTDHcBujyT2EDzExzom38Wp4neLp93N8w4ske.', 'Gulam', 'Rabbani', 'Male', 'Minority', 'smartboygr07@gmail.com', 'COMPUTER SCIENCE &amp; ENGG', 4, 8, 'B', '7458965896', '', '2022-06-04 06:40:43'),
-(23, '4al18cs026', '$2y$10$qteNd9GmdM6eM6WzoBUG6.3MqSEJC3wcGnRlCvyPke4T3DmYP2cAG', 'Ijaz', 'Ibrahi', 'Male', 'General', 'ijazibrahim@gmail.com', 'COMPUTER SCIENCE &amp; ENGG', 4, 8, 'B', '7591534560', '', '2022-06-04 06:46:31'),
-(24, '4al18cs002', '$2y$10$vV6EwmLrTSqKuDPtYralBOPu8rkNnm6AvugALpALgw3Tf2YsBuZbe', 'Abhishek', 'S H', 'Male', 'Minority', 'abhisheksh@gmail.com', 'COMPUTER SCIENCE &amp; ENGG', 4, 8, 'A', '7458965896', '', '2022-06-04 06:46:00'),
-(25, '4al18cs023', '$2y$10$VMVtbkJOZqz.wGoL7noDxO35VNWnlT5EFlTlJyTw5XGglnvVYYjkC', 'Anirudh', 'Gudugunti', 'Male', 'SC/ST', 'anirudh@gmail.com', 'COMPUTER SCIENCE &amp; ENGG', 4, 8, 'A', '7539514862', '', '2022-06-04 06:47:52');
+(22, '4al18cs099', '$2y$10$S4OBdC.AKoc3R2Y9EOk7T.SX36TDHcQul8I3.ACRjB2qcw6Q8w0RO', 'Gulam', 'Rabbani', 'Male', 'Minority', 'smartboygr07@gmail.com', 'COMPUTER SCIENCE &amp; ENGG', 4, 8, 'B', '7667459452', '', '2022-06-07 05:47:10'),
+(23, '4al18cs026', '$2y$10$qteNd9GmdM6eM6WzoBUG6.3MqSEJC3wcGnRlCvyPke4T3DmYP2cAG', 'Ijaz', 'Ibrahim', 'Male', 'Minority', 'ijazibrahim818@gmail.com', 'COMPUTER SCIENCE &amp; ENGG', 4, 8, 'A', '8497025434', '', '2022-06-07 06:11:31'),
+(24, '4al18cs002', '$2y$10$vV6EwmLrTSqKuDPtYralBOPu8rkNnm6AvugALpALgw3Tf2YsBuZbe', 'Abhishek', 'S H', 'Male', 'Minority', 'abhisheksharsoor@gmail.com', 'COMPUTER SCIENCE &amp; ENGG', 4, 8, 'A', '6363735618', '', '2022-06-07 05:49:35'),
+(25, '4al18cs023', '$2y$10$VMVtbkJOZqz.wGoL7noDxO35VNWnlT5EFlTlJyTw5XGglnvVYYjkC', 'Gudugunti', 'Anirudh', 'Male', 'General', 'anirudhg2308@gmail.com', 'COMPUTER SCIENCE &amp; ENGG', 4, 8, 'A', '6362488019', '', '2022-06-07 05:57:27');
 
 --
 -- Indexes for dumped tables
