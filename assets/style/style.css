@@ -1,87 +1,107 @@
-body {
-    margin: 0;
-    font-family: 'Lato', sans-serif;
-    font-weight: 700;
-    color: #555;
-    background: url("../img/bg.png") no-repeat center center / cover !important;
+
+.bg-image {
+    font-family: 'Poppins', sans-serif;
+    background-image: url(../img/bg.png) !important;
+    height: 100%;
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: fixed;
 }
 
-.login-div {
-    height: 93%;
-    margin-top: 3%;
+.card-login {
     border-radius: 6%;
     background: rgba(236, 240, 243, 0.5);
     box-shadow: 13px 13px 20px #cbced1, -13px -13px 20px #ffffff;
 }
-.login-form {
-    margin-top: 2vh;
+
+.form_bg {
+    height: 100vh;
+    display: flex;
+    align-items: center;
 }
-.logo {
-    width: 105px;
-    height: 85px;
-    margin: 0 auto;
+
+.form_icon {
+    -webkit-filter: drop-shadow(0px -7px 5px white);
+    font-size: 100px;
+    line-height: 85px;
 }
 
 .title {
-    text-align: center;
-    font-size: 5vh;
-    margin: 0 auto;
-    padding-top: 3.5vh;
-    letter-spacing: 0.5px;
+    color: rgb(0, 0, 0);
+    font-size: 23px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
-.sub-title {
-    color: red;
-    text-align: center;
-    font-size: 3vh;
-    letter-spacing: 3px;
-}
-.signin-button:hover {
-    background: #2fdbb6;
+.white {
+    color: rgb(211, 210, 210);
 }
 
-.signin-button:active {
-    background: #1da88a;
-}
-
-.signin-button {
-    outline: none;
-    border: none;
-    cursor: pointer;
-    height: 9.7vh;
-    border-radius: 30px;
+.in, .in:focus {
     font-size: 3.2vh;
     font-weight: 700;
     font-family: 'Lato', sans-serif;
-    color: #fff;
-    text-align: center;
-    background: #24cfaa;
-    box-shadow: 3px 3px 8px #b1b1b1, -3px -3px 8px #ffffff;
-    transition: 0.5s;
-}
-input {
-    border: none;
-    outline: none;
-    background: none;
-    font-size: 18px;
-    color: #555;
-    padding: 3vh 1.6vh 3.2vh 0;
-}
-.username,
-.password {
-    height: 5vh;
-    margin-bottom: 4vh;
+    width: 100%;
+    padding: 18px 40px 12px 48px;
+    margin: 8px 0;
     border-radius: 50px;
     box-shadow: inset 8px 8px 8px #cbced1, inset -8px -8px 8px #ffffff;
+    border: transparent;
 }
 
-svg {
-    height: 4.8vh;
-    margin: 0 1.6vh -3px 4vh;
+button {
+    background: #24cfaa;
+    box-shadow: 3px 3px 8px #b1b1b1, -3px -3px 8px #ffffff;
+    color: white;
+    padding: 14px 20px;
+    margin: 20px 0;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 3.2vh;
+    font-weight: 700;
+    font-family: 'Lato', sans-serif;
+}
+
+button:active {
+    background: #1da88a;
+}
+button:hover {
+    opacity: 0.8;
+}
+
+.container {
+    padding: 16px;
+}
+
+.fontuser {
+    position: relative;
+}
+
+.fontuser i {
+    position: absolute;
+    left: 20px;
+    top: 53px;
+    color: grey;
+}
+
+.fontpassword {
+    position: relative;
+}
+
+.fontpassword i {
+    position: absolute;
+    left: 20px;
+    top: 46px;
+    color: gray;
 }
 
 .link {
-    padding-top: 4vh;
+    font-weight: bolder;
     text-align: center;
 }
 
