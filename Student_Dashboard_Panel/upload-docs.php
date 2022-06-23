@@ -3,6 +3,8 @@ include("sidebar-layout.php");
 error_reporting(E_ALL & ~E_WARNING  & ~E_NOTICE & ~E_STRICT & ~E_DEPRECATED);
 
 require_once("../db/config.php");
+$link->query('SET GLOBAL max_allowed_packet=1073741824;');
+
 $q = "SELECT * FROM scholarship_details;";
 $r = $link->query($q);
 $usn = $_SESSION['username'];

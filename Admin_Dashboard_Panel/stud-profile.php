@@ -57,26 +57,24 @@ foreach ($result as $row) {
                 <div class="col-md-6 mb-2">
                     <input type="text" class="form-control" value="<?php echo $row['section'] . ' Section'; ?>" disabled readonly />
                 </div>
-                <h6>Scholarship Details:</h6>
                 <?php }
             $q = "SELECT * FROM `upload_sch_docs` WHERE usn = '$usn' ORDER BY created_at DESC;";
             $r = $link->query($q);
             if (mysqli_num_rows($r) > 0) {
+                echo '<h6>Scholarship Details:</h6>';
                 $cnt = 1;
                 while ($row2 = mysqli_fetch_array($r)) { ?>
                     <p>#<?php echo $cnt; ?><span class="value"></span></p>
                     <div class="col-md-12 mb-2">
                         <input type="text" class="form-control" value="<?php echo $row2['sch_name']; ?>" disabled readonly />
                     </div>
-                    <div class="col-md-4 mb-2">
+                    <div class="col-md-6 mb-2">
                         <input type="text" class="form-control" value="<?php echo $row2['sch_applied_year']; ?>" disabled readonly />
                     </div>
-                    <div class="col-md-4 mb-2">
+                    <div class="col-md-6 mb-2">
                         <input type="text" class="form-control" value="<?php echo 'College-Verified: ' . $row2['is_verified']; ?>" disabled readonly />
                     </div>
-                    <div class="col-md-4 mb-2">
-                        <input type="text" class="form-control" value="<?php echo 'Received: ' . $row2['is_received']; ?>" disabled readonly />
-                    </div>
+
             <?php $cnt++;
                 }
             } ?>

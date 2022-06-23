@@ -57,7 +57,6 @@ $result4 = $link->query($sql4);
                     <th scope="col"><label>Branch</label></th>
                     <th scope="col"><label>Scholarship Name</label></th>
                     <th scope="col"><label>Academic Year</label></th>
-                    <th scope="col"><label>College Verification</label></th>
                 </tr>
             </thead>
             <tbody>
@@ -74,7 +73,6 @@ $result4 = $link->query($sql4);
                         <td><label><?php echo $row['dept']; ?></label></td>
                         <td><label><?php echo $row['sch_name']; ?></label></td>
                         <td><label><?php echo $row['sch_applied_year']; ?></label></td>
-                        <td><label><?php echo $row['is_verified']; ?></label></td>
                     </tr>
                 <?php } ?>
             </tbody>
