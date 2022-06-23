@@ -459,59 +459,59 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST['sch-name'])) {
                   <p class="fw-bold" style="color: #4E4E91;">Please only choose documents that are relevant to your scholarship.<small class="text-danger d-block">(allowed: pdf, jpeg, jpg, png of File size: 10 kb to 300 kb)</small></p>
                   <div class="input-group mb-3">
                         <input type="file" name="aadhar" class="form-control" id="govt-id" accept=".pdf, .jpeg, .jpg, .png" required>
-                        <label class="input-group-text bg-danger w-50 text-white" for="govt-id">Government ID Proof (eg. Aadhar Card, Driving License)</label>
+                        <label class="input-group-text bg-primary w-50 text-white" for="govt-id">Government ID Proof (eg. Aadhar Card, Driving License)</label>
                   </div>
                   <div class="input-group mb-3">
                         <input type="file" name="resident" class="form-control" id="domicile" accept=".pdf, .jpeg, .jpg, .png">
-                        <label class="input-group-text w-50 bg-danger text-white" for="domicile">Domicile/Residential Certificate</label>
+                        <label class="input-group-text w-50 bg-primary text-white" for="domicile">Domicile/Residential Certificate</label>
                   </div>
                   <div class="input-group mb-3">
                         <input type="file" name="income" class="form-control" id="income" accept=".pdf, .jpeg, .jpg, .png">
-                        <label class="input-group-text w-50 bg-danger text-white" for="income">Income Certificate</label>
+                        <label class="input-group-text w-50 bg-primary text-white" for="income">Income Certificate</label>
                   </div>
                   <div class="input-group mb-3">
                         <input type="file" name="pwd" class="form-control" id="pwd-cert" accept=".pdf, .jpeg, .jpg, .png">
-                        <label class="input-group-text w-50 bg-danger text-white" for="pwd-cert">PwD(Person With Disability) Certificate</label>
+                        <label class="input-group-text w-50 bg-primary text-white" for="pwd-cert">PwD(Person With Disability) Certificate</label>
                   </div>
                   <div class="input-group mb-3">
                         <input type="file" name="bonafide" class="form-control" id="bonafide" accept=".pdf, .jpeg, .jpg, .png">
-                        <label class="input-group-text w-50 bg-danger text-white" for="bonafide">Bonafide Certificate</label>
+                        <label class="input-group-text w-50 bg-primary text-white" for="bonafide">Bonafide Certificate</label>
                   </div>
                   <div class="input-group mb-3">
                         <input type="file" name="caste" class="form-control" id="caste-cert" accept=".pdf, .jpeg, .jpg, .png">
-                        <label class="input-group-text w-50 bg-danger text-white" for="caste-cert">Caste Certificate</label>
+                        <label class="input-group-text w-50 bg-primary text-white" for="caste-cert">Caste Certificate</label>
                   </div>
                   <div class="input-group mb-3">
                         <input type="file" name="parent_aadhar" class="form-control" id="parent-aadhar" accept=".pdf, .jpeg, .jpg, .png">
-                        <label class="input-group-text w-50 bg-danger text-white" for="parent-aadhar"> Aadhar Card of Mother & Father/Guardian</label>
+                        <label class="input-group-text w-50 bg-primary text-white" for="parent-aadhar"> Aadhar Card of Mother & Father/Guardian</label>
                   </div>
                   <div class="input-group mb-3">
                         <input type="file" name="passbook" class="form-control" id="bank-passbook" accept=".pdf, .jpeg, .jpg, .png">
-                        <label class="input-group-text w-50 bg-danger text-white" for="bank-passbook">Bank Passbook of Student</label>
+                        <label class="input-group-text w-50 bg-primary text-white" for="bank-passbook">Bank Passbook of Student</label>
                   </div>
                   <div class="input-group mb-3">
                         <input type="file" name="clg_fee" class="form-control" id="college-fee" accept=".pdf, .jpeg, .jpg, .png">
-                        <label class="input-group-text w-50 bg-danger text-white" for="college-fee">College Fee Receipt</label>
+                        <label class="input-group-text w-50 bg-primary text-white" for="college-fee">College Fee Receipt</label>
                   </div>
                   <div class="input-group mb-3">
                         <input type="file" name="sslc_puc" class="form-control" id="sslc-puc" accept=".pdf, .jpeg, .jpg, .png">
-                        <label class="input-group-text w-50 bg-danger text-white" for="sslc-puc">10<sup>th</sup> or 12<sup>th</sup> Marks Cards</label>
+                        <label class="input-group-text w-50 bg-primary text-white" for="sslc-puc">10<sup>th</sup> or 12<sup>th</sup> Marks Cards</label>
                   </div>
                   <div class="input-group mb-3">
                         <input type="file" name="sem_marks" class="form-control" id="sem-marks" accept=".pdf, .jpeg, .jpg, .png">
-                        <label class="input-group-text w-50 bg-danger text-white" for="sem-marks">Previous 2 Semester Marks Card</label>
+                        <label class="input-group-text w-50 bg-primary text-white" for="sem-marks">Previous 2 Semester Marks Card</label>
                   </div>
                   <div class="input-group mb-3">
                         <input type="file" name="diploma" class="form-control" id="diploma-cert" accept=".pdf, .jpeg, .jpg, .png">
-                        <label class="input-group-text w-50 bg-danger text-white" for="diploma-cert">Admission Letter to Diploma</label>
+                        <label class="input-group-text w-50 bg-primary text-white" for="diploma-cert">Admission Letter to Diploma</label>
                   </div>
                   <div class="input-group mb-3">
                         <input type="file" name="self_minority" class="form-control" id="self-decl" accept=".pdf, .jpeg, .jpg, .png">
-                        <label class="input-group-text w-50 bg-danger text-white" for="self-decl">Self Declaration Minority Certificate</label>
+                        <label class="input-group-text w-50 bg-primary text-white" for="self-decl">Self Declaration Minority Certificate</label>
                   </div>
                   <div class="input-group mb-3">
                         <input type="file" name="ration" class="form-control" id="ration-card" accept=".pdf, .jpeg, .jpg, .png">
-                        <label class="input-group-text w-50 bg-danger text-white" for="ration-card">Ration Card</label>
+                        <label class="input-group-text w-50 bg-primary text-white" for="ration-card">Ration Card</label>
                   </div>
 
                   <div class="input-group mt-5">
