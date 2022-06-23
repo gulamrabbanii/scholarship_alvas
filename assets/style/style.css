@@ -28,20 +28,13 @@
     line-height: 85px;
 }
 
-.title {
-    color: rgb(0, 0, 0);
-    font-size: 23px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-}
 
 .white {
     color: rgb(211, 210, 210);
 }
 
 .in, .in:focus {
-    font-size: 3.2vh;
+    font-size: 22px;
     font-weight: 700;
     font-family: 'Lato', sans-serif;
     width: 100%;
