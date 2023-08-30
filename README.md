@@ -14,7 +14,7 @@ How to run the Scholarship Management System
 
 
 
-Note: If you face any error while importing "scholarship_alvas.sql". Copy paste following sql script.
+Note: If you face any error while importing "scholarship_alvas.sql". Create a new table and Copy & paste the following sql script.
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
